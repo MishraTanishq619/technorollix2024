@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const mailer = require("./mailer");
 const { User,
   Event,
   RegisteredTeam,
@@ -255,6 +256,7 @@ app.post("/api/create/team-invite", async (req, res) => {
     const invitation = await Invitation.create({
       eventId: team.eventId, teamId, inviterEmail, inviteeEmail
     });
+    const sendMail = await mailer(invitation.inviteeEmail,teamId);
     res.status(201).json(invitation);
   } catch (error) {
     res.status(500).send(`Error2 Inviting user ${inviteeEmail} with team ${teamId} by leader ${inviterEmail} \nerror: ${error}`)

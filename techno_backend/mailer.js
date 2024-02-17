@@ -4,6 +4,7 @@
 // await mailer(["email@hiascs.com", "email@hiascs.com"]);
 
 const nodemailer = require("nodemailer");
+const { Event, Invitation, User } = require("./db");
 
 const transporter = nodemailer.createTransport({
 	service: "gmail",
@@ -14,34 +15,50 @@ const transporter = nodemailer.createTransport({
 	},
 });
 
-function makeMessage(recieversList) {
-	const message = {
-		from: '"NodeMailer-Sender" <mishratanishq619@gmail.com>', // sender address
 
-		to: recieversList.join(","), // list of receivers
+async function makeMessage(recieversList, teamId) {
+	// const invitationDetails = invitationDets(teamId,recieversList)
 
-		subject: "This is subject.", // Subject line
+	const invitation = await Invitation.findOne({ teamId: teamId, inviteeEmail: recieversList });
+	const event = await Event.findOne({ eventId: invitation.eventId });
+	const user = await User.findOne({ userEmail: invitation.inviterEmail })
+	try {
 
-		text: "This is body.", // plain text body
-		//     or
-		// html: "<b>This is HTML.</b>", // html body
+		const message = {
 
-		// attachments: [
-		// 	{
-		// 		filename: "Text.txt",
-		// 		path: "./new.txt",
-		// 	},
-		// ],
-	};
+			from: '"NodeMailer-Sender" <mishratanishq619@gmail.com>', // sender address
 
-	return message;
+			to: recieversList, // list of receivers
+
+			subject: `Invitaion from ${user.userName} to join his team for ${event.eventName}`, // Subject line
+
+			// text: `This invitation is sent by ${user.userName}`, // plain text body
+			//     or
+			html: `<b>This invitation is sent by ${user.userName}</b>
+			<p>He/she wants you to join his team in Technorollix 2k24's event ${event.eventName} hosted by O.P. Jindal University Raigarh, Chhattisgarh</p>
+			<a href="https://codeforit.in">Invitation Link</a>
+			<h3>Thank you</h3>
+			`, // html body
+
+			// attachments: [
+			// 	{
+			// 		filename: "Text.txt",
+			// 		path: "./new.txt",
+			// 	},
+			// ],
+		};
+
+		return message;
+	} catch (error) {
+		return "error"
+	}
 }
 
 // async..await is not allowed in global scope, must use a wrapper
-async function main(listOfRecievers) {
+async function main(listOfRecievers, teamId) {
 	try {
 		// send mail with defined transport object
-		let message = makeMessage(listOfRecievers);
+		let message = await makeMessage(listOfRecievers, teamId);
 		const info = await transporter.sendMail(message, (err, info) => {
 			if (err) {
 				console.log(err);
