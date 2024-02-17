@@ -5,6 +5,7 @@
     "http": "^0.0.1-security",
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.2",
+    "nodemailer": "^6.9.9",
     "nodemon": "^3.0.3"
   }
 }
