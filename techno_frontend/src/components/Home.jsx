@@ -4,6 +4,7 @@ import Countdown from "./Countdown";
 
 function Home() {
 	return (
+		
 		<div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full">
 			<img
 				src="tehnoLogo_prev_ui.png"

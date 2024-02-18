@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import InputBox from "./InputBox";
-
+import Link from "next/link";
 function Registration() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("rjshrey");
@@ -14,28 +14,6 @@ function Registration() {
   const [pic, setPic] = useState("");
   const [isUserOPJUStudent, setisUserOPJUStudent] = useState(false);
 
-  const [userData, setUserData] = useState({
-    "userEmail": "",
-    "userName": "",
-    "userPic": "",
-    "userPhoneNumber": 7918022314,
-    "userUniversity": "OPJU",
-    "isUserOPJUStudent": true,
-    "userAddress": {
-        "district": "Raigarh",
-        "state": "CG",
-        "pincode": 496109
-    },
-    "userGender": "male"
-});
-
-const handleChange = (event) => {
-  const { name, value } = event.target;
-  setUserData((prevUserData) => ({
-    ...prevUserData,
-    [name]: value,
-  }));
-};
 
   return (
     <div className="absolute text-white pl-96">
@@ -155,6 +133,7 @@ const handleChange = (event) => {
           // }}
           >
             NEXT
+            {/* <Link href={`/legacy?email=${email}`}>NEXT</Link> */}
           </button>
         </div>
       </div>

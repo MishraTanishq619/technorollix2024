@@ -110,8 +110,9 @@ app.post("/api/create/event", async (req, res) => {
 app.get("/api/allEvents", async (req, res) => {
   try {
     const events = await Event.find();
-    const numberOfEvents = await Event.countDocuments();
-    res.json({ numberOfEvents, events });
+    // const numberOfEvents = await Event.countDocuments();
+    // res.json({ numberOfEvents, events });
+    res.json(events );
   } catch (error) {
     res.status(500).send(`Error fetching event details: ${error}`);
   }
@@ -119,10 +120,10 @@ app.get("/api/allEvents", async (req, res) => {
 
 
 // Team Registration
-app.post("/api/team-registration/event:email", async (req, res) => {
+app.post("/api/team-registration/event", async (req, res) => {
   try {
-    const leader = req.params.email;
-    const { eventId, additionalDetails } = req.body;
+    // const leader = req.params.email;
+    const { eventId, leader,additionalDetails } = req.body;
     if (eventId.length !== additionalDetails.length) {
       return res.status(400).send("eventId and additionalDetails array length should be the same");
     }
