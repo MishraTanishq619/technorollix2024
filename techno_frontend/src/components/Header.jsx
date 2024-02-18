@@ -7,15 +7,18 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 
 function Header() {
-  return (
-    <>
-      <div
-        id="div-conatiner"
-        className=" bg-black grid grid-cols-8 text-2xl  top-0 w-full left-0 relative pt-2 text-white"
-      >
-        <a href="/" className="transition-transform transform hover:scale-105">
-          <img src="/logo.png " className="col-span-2 pb-4"></img>
-        </a>
+	return (
+		<>
+			<div
+				id="div-conatiner"
+				className=" bg-[#000] bg-opacity-40 grid grid-cols-8 text-2xl fixed z-10 top-0 w-full left-0 pt-2 text-white"
+			>
+				<a
+					href="/"
+					className="transition-transform transform hover:scale-105"
+				>
+					<img src="/logo.png " className="col-span-2 pb-4"></img>
+				</a>
 
         <span id="space" className="col-span-1 "></span>
         <a
@@ -42,16 +45,6 @@ function Header() {
         >
           CONTACT
         </a>
-        {/* <GoogleOAuthProvider clientId="<your_client_id>">
-          <GoogleLogin
-            onSuccess={credentialResponse => {
-              console.log(credentialResponse);
-            }}
-            onError={() => {
-              console.log('Login Failed');
-            }}
-          />;
-        </GoogleOAuthProvider>; */}
         <div className="flex items-center justify-end pr-6 col-span-1 transition-transform transform hover:scale-105">
           <CiMenuFries />
         </div>

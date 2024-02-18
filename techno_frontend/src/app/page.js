@@ -2,15 +2,11 @@ import React from "react";
 import Home from "@/components/Home";
 
 const page = () => {
-  return (
-    <div className="">
-      <div className=" bg-cover bg-center flex">
-        <img src="/mainbg.jpg" className="relative" />
-
-        <Home />
-      </div>
-    </div>
-  );
+	return (
+		<div className="w-full h-screen bg-cover  bg-center bg-[url('/mainbg.jpg')]">
+			<Home />
+		</div>
+	);
 };
 
 export default page;
