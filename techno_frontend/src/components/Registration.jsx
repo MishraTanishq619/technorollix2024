@@ -95,29 +95,44 @@ function Registration() {
           <button
             className="m-3 bg-orange-600 ml-96 mb-8 rounded-md text-3xl px-6 py-3"
             onClick={() => {
-              fetch("", {
-                method: "POST",
-                body: JSON.stringify({
-                  userEmail: email,
-                  userName: name,
-                  userPic: pic,
-                  userPhoneNumber: phone,
-                  userUniversity: university,
-
-                  isUserOPJUStudent: isUserOPJUStudent,
-                  userAddress: {
-                    district: district,
-                    state: state,
-                    pincode: pincode,
+              try {
+                fetch("http://10.60.46.76:5252/api/create/user", {
+                  method: "POST",
+                  body: JSON.stringify({
+                    userEmail: email,
+                    userName: name,
+                    userPic: pic,
+                    userPhoneNumber: phone,
+                    userUniversity: university,
+                    isUserOPJUStudent: isUserOPJUStudent,
+                    userAddress: {
+                      district: district,
+                      state: state,
+                      pincode: pincode,
+                    },
+                    userGender: gender,
+                  }),
+                  headers: {
+                    "Content-type": "application/json",
                   },
-                  userGender: gender,
-                }),
-                headers: {
-                  "Content-type": "application/json",
-                },
-              }).then(async (res) => {
-                const json = await res.json();
-              });
+                })
+                  .then(async (res) => {
+                    if (!res.ok) {
+                      throw new Error(`HTTP error! Status: ${res.status}`);
+                    }
+                    // alert("ho gya bhenco");
+                    const json = await res.json();
+
+                    // Process the response JSON here
+                  })
+                  .catch((error) => {
+                    console.log("Error during fetch:", error);
+                    // Handle the error appropriately (e.g., show a message to the user)
+                  });
+                ``;
+              } catch (error) {
+                console.log(error);
+              }
             }}
           >
             NEXT
