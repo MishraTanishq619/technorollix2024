@@ -2,6 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const mailer = require("./mailer");
+const cors = require("cors")
+const corsOptions = {
+  origin: 'http://localhost:3000', // Allow requests from this origin
+  methods: ['GET', 'POST'],      // Allow only GET and POST requests
+  allowedHeaders: ['Content-Type'], // Allow only specific headers
+};
+app.use(cors(corsOptions))
+
 const { User,
   Event,
   RegisteredTeam,
@@ -11,7 +19,7 @@ const { User,
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const IP = '10.60.41.209';
 
 // Api
@@ -36,6 +44,15 @@ app.post("/api/create/user", async (req, res) => {
   }
 });
 
+app.delete("api/delete/user",async (req,res)=>{
+  try {
+    const user = req.body;
+    const exsitingUser = await User.findOneAndDelete({userEmail: user.userEmail});
+    
+  } catch (error) {
+    res.status(500).send(`Error deleting user: Error ${error}`);
+  }
+})
 
 // to get all users 
 app.get("/api/allUsers", async (req, res) => {

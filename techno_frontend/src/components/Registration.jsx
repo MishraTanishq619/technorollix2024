@@ -4,7 +4,7 @@ import InputBox from "./InputBox";
 
 function Registration() {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("rjshrey");
   const [phone, setPhone] = useState(0);
   const [university, setUniversity] = useState("");
   const [gender, setGender] = useState("");
@@ -13,6 +13,29 @@ function Registration() {
   const [pincode, setPincode] = useState(0);
   const [pic, setPic] = useState("");
   const [isUserOPJUStudent, setisUserOPJUStudent] = useState(false);
+
+  const [userData, setUserData] = useState({
+    "userEmail": "",
+    "userName": "",
+    "userPic": "",
+    "userPhoneNumber": 7918022314,
+    "userUniversity": "OPJU",
+    "isUserOPJUStudent": true,
+    "userAddress": {
+        "district": "Raigarh",
+        "state": "CG",
+        "pincode": 496109
+    },
+    "userGender": "male"
+});
+
+const handleChange = (event) => {
+  const { name, value } = event.target;
+  setUserData((prevUserData) => ({
+    ...prevUserData,
+    [name]: value,
+  }));
+};
 
   return (
     <div className="absolute text-white pl-96">
@@ -26,42 +49,32 @@ function Registration() {
         >
           <div id="input-holder-a" className="col-span-1 ">
             <InputBox
-              onChange={() => {
+              onChange={(e) => {
                 setName(e.target.value);
               }}
               className=""
               label="NAME"
             />
             <InputBox
-              onChange={() => {
+              onChange={(e) => {
                 setEmail(e.target.value);
               }}
               className=""
               label="E-MAIL"
             />
             <InputBox
-              onChange={() => {
+              onChange={(e) => {
                 setPhone(e.target.value);
               }}
               className=""
               label="PHONE"
             />
+            
             <InputBox
-              onChange={() => {
+              onChange={(e) => {
                 setUniversity(e.target.value);
-                const targetValue = e.target.value;
-                const university = targetValue.toLowerCase();
-                const finalUniversity = university.trim();
-                if (
-                  finalUniversity == "opju" ||
-                  "opjindaluniversity" ||
-                  "omprakashjindaluniversity"
-                ) {
-                  setisUserOPJUStudent(true);
-                }
               }}
-              className=""
-              label="UNIVERSITY"
+              label="University"
             />
           </div>
           <div id="input-holder-b" className="col-span-1">
@@ -95,8 +108,10 @@ function Registration() {
           <button
             className="m-3 bg-orange-600 ml-96 mb-8 rounded-md text-3xl px-6 py-3"
             onClick={() => {
+              console.log("daba");
+              console.log(email);
               try {
-                fetch("http://10.60.46.76:5252/api/create/user", {
+                fetch("http://10.60.46.70:5252/api/create/user", {
                   method: "POST",
                   body: JSON.stringify({
                     userEmail: email,
@@ -134,6 +149,10 @@ function Registration() {
                 console.log(error);
               }
             }}
+          // onClick={async ()=>{
+          //   console.log("daba");
+          //   await fetch("http://localhost:4000/api/allUsers")
+          // }}
           >
             NEXT
           </button>

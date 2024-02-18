@@ -1,6 +1,11 @@
 "use client";
 import React from "react";
 import { CiMenuFries } from "react-icons/ci";
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+// import {  } from '@react-oauth/google';
+
+
+
 function Header() {
   return (
     <>
@@ -37,6 +42,16 @@ function Header() {
         >
           CONTACT
         </a>
+        {/* <GoogleOAuthProvider clientId="<your_client_id>">
+          <GoogleLogin
+            onSuccess={credentialResponse => {
+              console.log(credentialResponse);
+            }}
+            onError={() => {
+              console.log('Login Failed');
+            }}
+          />;
+        </GoogleOAuthProvider>; */}
         <div className="flex items-center justify-end pr-6 col-span-1 transition-transform transform hover:scale-105">
           <CiMenuFries />
         </div>
