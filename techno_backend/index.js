@@ -102,9 +102,10 @@ app.get("/api/allEvents", async (req, res) => {
 
 
 // Team Registration
-app.post("/api/team-registration/event", async (req, res) => {
+app.post("/api/team-registration/event:email", async (req, res) => {
   try {
-    const { eventId, leader, additionalDetails } = req.body;
+    const leader = req.params.email;
+    const { eventId, additionalDetails } = req.body;
     if (eventId.length !== additionalDetails.length) {
       return res.status(400).send("eventId and additionalDetails array length should be the same");
     }
