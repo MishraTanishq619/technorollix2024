@@ -22,6 +22,22 @@ app.use(express.json());
 const PORT = process.env.PORT || 4000;
 const IP = '10.60.41.209';
 
+
+
+//Impression
+let visitCount = 0;
+
+// Middleware to increment the visit count on each request to the home page
+app.use('/', (req, res, next) => {
+  visitCount++;
+  next();
+});
+
+// Endpoint to get the current visit count
+app.get('/api/visitCount', (req, res) => {
+  res.json({ visitCount });
+});
+
 // Api
 
 app.get("/", (req, res) => {
@@ -219,8 +235,9 @@ app.post("/api/register/participant", async (req, res) => {
 app.get("/api/allParticipants", async (req, res) => {
   try {
     const participants = await Participants.find();
-    const totalParticipant = await Participants.countDocuments();
-    res.json({ totalParticipant, participants })
+    // const totalParticipant = await Participants.countDocuments();
+    // res.json({ totalParticipant, participants })
+    res.json(participants )
   } catch (error) {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
@@ -236,6 +253,9 @@ app.get("/api/participant/:email", async (req, res) => {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
 });
+
+
+
 
 
 // Invitation
