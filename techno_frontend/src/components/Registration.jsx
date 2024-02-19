@@ -114,8 +114,9 @@ function Registration() {
                   }),
                   headers: {
                     "Content-type": "application/json",
-                    user_email: email,
+                    // user_email: email,
                   },
+                  
                 })
                   .then(async (res) => {
                     if (!res.ok) {

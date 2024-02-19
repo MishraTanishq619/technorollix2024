@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react';
 
-function EventsPage() {
+function EventsRegistrationPage() {
     const [events, setEvents] = useState([]);
     const [selectedEvents, setSelectedEvents] = useState([]);
     const [additionalDetails, setAdditionalDetails] = useState([]);
@@ -84,11 +84,14 @@ function EventsPage() {
                         console.log(selectedEvents);
                         console.log(additionalDetails);
                         try {
-                            fetch("http://localhost:4000/api/team-registration/event", {
+                            fetch("http://localhost:4000/api/team-registration/event",{
+                                method: 'GET',
+                                headers: {user_email}
+                            },{
                                 method: "POST",
                                 body: JSON.stringify({
                                     eventId: selectedEvents,
-                                    leader: email,
+                                    leader: leader,
                                     additionalDetails: additionalDetails
                                 }),
                                 headers: {
@@ -119,4 +122,4 @@ function EventsPage() {
     );
 }
 
-export default EventsPage;
+export default EventsRegistrationPage;
