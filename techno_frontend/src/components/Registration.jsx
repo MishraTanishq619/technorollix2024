@@ -3,16 +3,16 @@ import React, { useState } from "react";
 import InputBox from "./InputBox";
 
 function Registration() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState(0);
-  const [university, setUniversity] = useState("");
-  const [gender, setGender] = useState("");
-  const [district, setDistrict] = useState("");
-  const [state, setState] = useState("");
-  const [pincode, setPincode] = useState(0);
-  const [pic, setPic] = useState("");
-  const [isUserOPJUStudent, setisUserOPJUStudent] = useState(false);
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [phone, setPhone] = useState(0);
+	const [university, setUniversity] = useState("");
+	const [gender, setGender] = useState("");
+	const [district, setDistrict] = useState("");
+	const [state, setState] = useState("");
+	const [pincode, setPincode] = useState(0);
+	const [pic, setPic] = useState("");
+	const [isUserOPJUStudent, setisUserOPJUStudent] = useState(false);
 
   return (
     <div className="absolute text-white pl-96">
@@ -114,9 +114,8 @@ function Registration() {
                   }),
                   headers: {
                     "Content-type": "application/json",
-                    // user_email: email,
+                    user_email: email,
                   },
-                  
                 })
                   .then(async (res) => {
                     if (!res.ok) {
@@ -125,26 +124,27 @@ function Registration() {
                     // alert("ho gya bhenco");
                     const json = await res.json();
 
-                    // Process the response JSON here
-                  })
-                  .catch((error) => {
-                    console.log("Error during fetch:", error);
-                    // Handle the error appropriately (e.g., show a message to the user)
-                  });
-                ``;
-              } catch (error) {
-                console.log(error);
-              }
-            }}
-          >
-				<a href="/legacy">NEXT</a>
-
-            
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+										// Process the response JSON here
+									})
+									.catch((error) => {
+										console.log(
+											"Error during fetch:",
+											error
+										);
+										// Handle the error appropriately (e.g., show a message to the user)
+									});
+								``;
+							} catch (error) {
+								console.log(error);
+							}
+						}}
+					>
+						<a href="/legacy">NEXT</a>
+					</button>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default Registration;
