@@ -26,28 +26,28 @@ function Registration() {
         >
           <div id="input-holder-a" className="col-span-1 ">
             <InputBox
-              onChange={() => {
+              onChange={(e) => {
                 setName(e.target.value);
               }}
               className=""
               label="NAME"
             />
             <InputBox
-              onChange={() => {
+              onChange={(e) => {
                 setEmail(e.target.value);
               }}
               className=""
               label="E-MAIL"
             />
             <InputBox
-              onChange={() => {
+              onChange={(e) => {
                 setPhone(e.target.value);
               }}
               className=""
               label="PHONE"
             />
             <InputBox
-              onChange={() => {
+              onChange={(e) => {
                 setUniversity(e.target.value);
                 const targetValue = e.target.value;
                 const university = targetValue.toLowerCase();
@@ -96,7 +96,7 @@ function Registration() {
             className="m-3 bg-orange-600 ml-96 mb-8 rounded-md text-3xl px-6 py-3"
             onClick={() => {
               try {
-                fetch("http://10.60.46.76:5252/api/create/user", {
+                fetch("http://localhost:4000/api/create/user", {
                   method: "POST",
                   body: JSON.stringify({
                     userEmail: email,
@@ -136,7 +136,9 @@ function Registration() {
               }
             }}
           >
-            NEXT
+				<a href="/legacy">NEXT</a>
+
+            
           </button>
         </div>
       </div>
