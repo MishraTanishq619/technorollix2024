@@ -35,7 +35,8 @@ app.use("/", (req, res, next) => {
 
 // Endpoint to get the current visit count
 app.get("/api/visitCount", (req, res) => {
-  res.json({ visitCount });
+  visitCount= visitCount;
+  res.json({visitCount} );
 });
 
 // Api

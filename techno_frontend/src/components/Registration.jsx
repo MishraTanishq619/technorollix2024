@@ -15,7 +15,7 @@ function Registration() {
 	const [isUserOPJUStudent, setisUserOPJUStudent] = useState(false);
 
   return (
-    <div className="absolute text-white pl-96">
+    <div className="absolute text-white pt-56">
       <div className="flex items-start ">
         <p className="text-4xl px-3 py-6">REGISTRATION</p>
       </div>

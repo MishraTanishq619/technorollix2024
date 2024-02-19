@@ -6,12 +6,13 @@ function EventCard({
 	description = "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
 	members = 4,
 	entryFee = 400,
-}) {
+},onClick) {
 	return (
 		<>
 			<div
 				id="event-holder"
 				className="bg-gray-800 text-white h-72 w-[21%]  rounded-md grid grid-rows-12 transition-transform transform hover:scale-105"
+				onClick={onClick}
 			>
 				<div
 					id="event-image"
