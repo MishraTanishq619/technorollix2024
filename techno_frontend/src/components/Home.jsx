@@ -17,18 +17,31 @@ function Home() {
 		  })
 		  .catch(error => console.error('Error fetching visit count:', error));
 
-		  fetch('http://localhost:4000/api/allParticipants')
-			.then(response => response.json())
-			.then(data => {
-				// Assuming the response data is an array of participants
-				// Calculate the total number of participants
-				const totalParticipants = data.length;
-				console.log(totalParticipants);
-				setParticipantCount(totalParticipants);
-			})
-			.catch(error => {
-				console.error('Error fetching participant data:', error);
-			});
+		//   fetch('http://localhost:4000/api/allParticipants')
+		// 	.then(response => response.json())
+		// 	.then(data => {
+		// 		// Assuming the response data is an array of participants
+		// 		// Calculate the total number of participants
+		// 		const totalParticipants = data.length;
+		// 		console.log(totalParticipants);
+		// 		setParticipantCount(totalParticipants);
+		// 	})
+		// 	.catch(error => {
+		// 		console.error('Error fetching participant data:', error);
+		// 	});
+		
+		//   fetch('http://localhost:4000/api/allParticipants')
+		// 	.then(response => response.json())
+		// 	.then(data => {
+		// 		// Assuming the response data is an array of participants
+		// 		// Calculate the total number of participants
+		// 		const totalParticipants = data.length;
+		// 		console.log(totalParticipants);
+		// 		setParticipantCount(totalParticipants);
+		// 	})
+		// 	.catch(error => {
+		// 		console.error('Error fetching participant data:', error);
+		// 	});
 	  }, []);
 
 

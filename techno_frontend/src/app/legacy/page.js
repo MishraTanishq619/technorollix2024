@@ -5,7 +5,7 @@ import EventsRegistrationPage from "./components/eventRegistrationCard";
 const page = () => {
 	
 	return <div>Legacy page
-		<div><EventsRegistrationPage /></div>
+		{/* <div><EventsRegistrationPage /></div> */}
 	</div>;
 };
 

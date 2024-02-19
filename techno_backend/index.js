@@ -29,7 +29,7 @@ let visitCount = 0;
 
 // Middleware to increment the visit count on each request to the home page
 app.use("/", (req, res, next) => {
-  visitCount++;
+  ++visitCount;
   next();
 });
 
