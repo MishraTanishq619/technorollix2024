@@ -50,9 +50,9 @@ const Event = mongoose.model('Event', eventSchema);
 // Define Team Registration Schema
 // POST, GET
 const teamRegistrationSchema = new mongoose.Schema({
-  eventId: String,
+  eventId: { type: String, required: true},
   teamId: { type: String, required: true, unique: true },
-  leader: String,
+  leader: { type: String, required: true},
   additionalDetails: String,
 });
 const RegisteredTeam = mongoose.model('RegisteredTeam', teamRegistrationSchema);

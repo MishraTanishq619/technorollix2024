@@ -141,15 +141,15 @@ app.get("/api/allEvents", async (req, res) => {
 app.post("/api/team-registration/event", async (req, res) => {
   try {
     // const leader = req.params.email;
-    const leader = req.headers.user_email;
-    const { eventId, additionalDetails } = req.body;
+    // const leader = req.headers.user_email;
+    const { eventId,leader, additionalDetails } = req.body;
     if (eventId.length !== additionalDetails.length) {
       return res
         .status(400)
         .send("eventId and additionalDetails array length should be the same");
     }
 
-    const user = await User.findOne({ userEmail: leader });
+    const user = await User.find({ userEmail: leader });
     if (!user) {
       return res
         .status(404)
@@ -161,7 +161,7 @@ app.post("/api/team-registration/event", async (req, res) => {
     for (let i = 0; i < eventId.length; i++) {
       const event = await Event.findOne({ eventId: eventId[i] });
       if (!event) {
-        return res.status(404).send(`Event is not registered: Email: ${event}`);
+        return res.status(408).send(`Event is not registered: Email: ${event}`);
       }
       const teamId = generateTeamId(event.eventName, leader);
       const team = await RegisteredTeam.findOne({ teamId: teamId });

@@ -7,9 +7,15 @@ function EventsRegistrationPage() {
     const [events, setEvents] = useState([]);
     const [selectedEvents, setSelectedEvents] = useState([]);
     const [additionalDetails, setAdditionalDetails] = useState([]);
+    const [leaderEmail, setLeaderEmail] = useState();
 	const searchParams = useSearchParams();
 	// console.log(searchParams.get("emailRef"));
 	const emailRef = searchParams.get("emailRef"); 
+    useEffect(() => {
+        // This code will run only once when the component mounts
+        // You can call setState here
+        setLeaderEmail(emailRef);
+      }, []);
     // Function to handle event card click
     const handleEventCardClick = (eventId) => {
         // Check if the event is already selected
@@ -87,16 +93,17 @@ function EventsRegistrationPage() {
                 <button
                     className="mt-1 bg-orange-600 ml-96 mb-8 rounded-md text-3xl px-6 py-3"
                     onClick={() => {
-                        console.log("daba");
-                        console.log(selectedEvents);
-                        console.log(additionalDetails);
-                        console.log(emailRef);
+                        // setLeaderEmail(emailRef)
+                        // console.log("daba");
+                        // console.log(selectedEvents);
+                        // console.log(additionalDetails);
+                        // console.log(leaderEmail);
                         try {
                             fetch("http://localhost:4000/api/team-registration/event",{
                                 method: "POST",
                                 body: JSON.stringify({
                                     eventId: selectedEvents,
-                                    leader: emailRef,
+                                    leader: leaderEmail,
                                     additionalDetails: additionalDetails
                                 }),
                                 headers: {
