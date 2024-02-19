@@ -49,6 +49,7 @@ function Home() {
 			<div className="flex items-center justify-center mb-4">
 				<Countdown />
 			</div>
+			<p className="text-[26px] m-1 ">20<sup>th</sup> March to 22<sup>nd</sup> March</p>
 			<p className="text-[26px] m-1 ">REGISTRATIONS : {participantCount}</p>
 			<p className="text-[26px] m-1 mb-16">IMPRESSIONS : {visitCount}</p>
 			<button className="bg-orange-500 text-3xl px-8 py-4 rounded-md transition-transform transform hover:scale-105">

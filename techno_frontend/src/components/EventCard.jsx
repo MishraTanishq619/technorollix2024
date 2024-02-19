@@ -5,8 +5,8 @@ function EventCard({
 	title = "title",
 	description = "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
 	members = 4,
-	entryFee = 400,
-},onClick) {
+	entryFee = 400,onClick
+}) {
 	return (
 		<>
 			<div
