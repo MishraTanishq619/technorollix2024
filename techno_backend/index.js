@@ -3,12 +3,12 @@ const bodyParser = require("body-parser");
 const app = express();
 const mailer = require("./mailer");
 const cors = require("cors");
-const corsOptions = {
-  origin: "http://localhost:3000", // Allow requests from this origin
-  methods: ["GET", "POST"], // Allow only GET and POST requests
-  allowedHeaders: ["Content-Type"], // Allow only specific headers
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: "http://localhost:3000", // Allow requests from this origin
+//   methods: ["GET", "POST"], // Allow only GET and POST requests
+//   allowedHeaders: ["Content-Type"], // Allow only specific headers
+// };
+app.use(cors());
 
 const {
   User,

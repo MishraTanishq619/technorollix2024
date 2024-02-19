@@ -115,6 +115,7 @@ function EventsRegistrationPage() {
                                         throw new Error(`HTTP error! Status: ${res.status}`);
                                     }
                                     // alert("ho gya bhenco");
+                                    window.location.href = `/`;
                                     const json = await res.json();
 
                                     // Process the response JSON here

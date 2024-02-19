@@ -13,6 +13,9 @@ function Registration() {
 	const [pincode, setPincode] = useState(0);
 	const [pic, setPic] = useState("");
 	const [isUserOPJUStudent, setisUserOPJUStudent] = useState(false);
+
+
+	
 	return (
 		<div className="absolute text-white flex flex-col items-center justify-center">
 			<p className="text-4xl mb-2">REGISTRATION</p>
@@ -121,6 +124,7 @@ function Registration() {
 											);
 										}
 										// alert("ho gya bhenco");
+										window.location.href = `/registration/next?emailRef=${email}`;
 										const json = await res.json();
 
 										// Process the response JSON here
@@ -138,9 +142,9 @@ function Registration() {
 							}
 						}}
 					>
-						<a href={`/registration/next?emailRef=${email}`}>
 							NEXT
-						</a>
+						{/* <a href={`/registration/next?emailRef=${email}`}> */}
+						{/* </a> */}
 					</button>
 				</div>
 			</div>
