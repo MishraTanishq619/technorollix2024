@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import InputBox from "./InputBox";
 
 function Registration() {
@@ -13,7 +13,6 @@ function Registration() {
 	const [pincode, setPincode] = useState(0);
 	const [pic, setPic] = useState("");
 	const [isUserOPJUStudent, setisUserOPJUStudent] = useState(false);
-
 	return (
 		<div className="absolute text-white flex flex-col items-center justify-center">
 			<p className="text-4xl mb-2">REGISTRATION</p>
@@ -139,7 +138,9 @@ function Registration() {
 							}
 						}}
 					>
-						<a href="/legacy">NEXT</a>
+						<a href={`/registration/next?emailRef=${email}`}>
+							NEXT
+						</a>
 					</button>
 				</div>
 			</div>
