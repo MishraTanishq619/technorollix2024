@@ -1,24 +1,19 @@
 "use client";
 import React from "react";
 import { CiMenuFries } from "react-icons/ci";
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+// import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 // import {  } from '@react-oauth/google';
 
-
-
 function Header() {
-	return (
-		<>
-			<div
-				id="div-conatiner"
-				className=" bg-[#000] bg-opacity-40 grid grid-cols-8 text-2xl fixed z-10 top-0 w-full left-0 pt-2 text-white"
-			>
-				<a
-					href="/"
-					className="transition-transform transform hover:scale-105"
-				>
-					<img src="/logo.png " className="col-span-2 pb-4"></img>
-				</a>
+  return (
+    <>
+      <div
+        id="div-conatiner"
+        className=" bg-[#000] bg-opacity-40 grid grid-cols-8 text-2xl fixed z-10 top-0 w-full left-0 pt-2 text-white"
+      >
+        <a href="/" className="transition-transform transform hover:scale-105">
+          <img src="/logo.png " className="col-span-2 pb-4"></img>
+        </a>
 
         <span id="space" className="col-span-1 "></span>
         <a

@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import InputBox from "./InputBox";
-import Link from "next/link";
+
 function Registration() {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("rjshrey");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState(0);
   const [university, setUniversity] = useState("");
   const [gender, setGender] = useState("");
@@ -13,7 +13,6 @@ function Registration() {
   const [pincode, setPincode] = useState(0);
   const [pic, setPic] = useState("");
   const [isUserOPJUStudent, setisUserOPJUStudent] = useState(false);
-
 
   return (
     <div className="absolute text-white pl-96">
@@ -27,32 +26,42 @@ function Registration() {
         >
           <div id="input-holder-a" className="col-span-1 ">
             <InputBox
-              onChange={(e) => {
+              onChange={() => {
                 setName(e.target.value);
               }}
               className=""
               label="NAME"
             />
             <InputBox
-              onChange={(e) => {
+              onChange={() => {
                 setEmail(e.target.value);
               }}
               className=""
               label="E-MAIL"
             />
             <InputBox
-              onChange={(e) => {
+              onChange={() => {
                 setPhone(e.target.value);
               }}
               className=""
               label="PHONE"
             />
-            
             <InputBox
-              onChange={(e) => {
+              onChange={() => {
                 setUniversity(e.target.value);
+                const targetValue = e.target.value;
+                const university = targetValue.toLowerCase();
+                const finalUniversity = university.trim();
+                if (
+                  finalUniversity == "opju" ||
+                  "opjindaluniversity" ||
+                  "omprakashjindaluniversity"
+                ) {
+                  setisUserOPJUStudent(true);
+                }
               }}
-              label="University"
+              className=""
+              label="UNIVERSITY"
             />
           </div>
           <div id="input-holder-b" className="col-span-1">
@@ -86,10 +95,8 @@ function Registration() {
           <button
             className="m-3 bg-orange-600 ml-96 mb-8 rounded-md text-3xl px-6 py-3"
             onClick={() => {
-              console.log("daba");
-              console.log(email);
               try {
-                fetch("http://10.60.46.70:5252/api/create/user", {
+                fetch("http://10.60.46.76:5252/api/create/user", {
                   method: "POST",
                   body: JSON.stringify({
                     userEmail: email,
@@ -107,6 +114,7 @@ function Registration() {
                   }),
                   headers: {
                     "Content-type": "application/json",
+                    user_email: email,
                   },
                 })
                   .then(async (res) => {
@@ -127,13 +135,8 @@ function Registration() {
                 console.log(error);
               }
             }}
-          // onClick={async ()=>{
-          //   console.log("daba");
-          //   await fetch("http://localhost:4000/api/allUsers")
-          // }}
           >
             NEXT
-            {/* <Link href={`/legacy?email=${email}`}>NEXT</Link> */}
           </button>
         </div>
       </div>
