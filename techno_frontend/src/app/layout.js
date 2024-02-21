@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 export const metadata = {
@@ -12,8 +11,8 @@ export default function RootLayout({ children }) {
 	return (
 		<GoogleOAuthProvider clientId="836755220699-ojv84oup2nfa7li643q0jssqiftnk6o5.apps.googleusercontent.com">
 			<html lang="en">
-				<body className="w-full h-screen pt-16 bg-cover bg-fixed bg-no-repeat bg-center bg-[url('/mainbg.jpg')]  flex flex-wrap gap-0 items-center overflow-y-scroll">
-					<Header />
+				<body className="w-full h-full mt-16 bg-black  flex flex-wrap gap-0 items-center overflow-y-scroll">
+				{/* <body className="w-full h-screen pt-16 bg-cover bg-fixed bg-no-repeat bg-center bg-[url('/mainbg.jpg')]  flex flex-wrap gap-0 items-center overflow-y-scroll"> */}
 					{children}
 				</body>
 			</html>

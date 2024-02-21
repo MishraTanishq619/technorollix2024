@@ -5,6 +5,10 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
+import Button from "./ui/movingBorderButton";
+import {Boxes} from "./ui/boxes";
+import CardHoverEffectDemo from "./cardTrackhover";
+
 
 function Home() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +59,8 @@ function Home() {
 
 	return (
 
-		<div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full">
+		<div className="flex flex-col items-center  text-white  justify-center h-full w-full overflow-x-hidden overflow-y-scroll">
+			<Boxes/>
 			<img
 				src="tehnoLogo_prev_ui.png"
 				alt="Logo"
@@ -89,7 +94,8 @@ function Home() {
 					console.log('Login Failed');
 				}}
 			/> */}
-			<button className="bg-orange-500 text-3xl px-6 py-2 rounded-md transition-transform transform hover:scale-105" onClick={handleNormalButtonClick}>Register</button>
+			{/* <button className="bg-orange-500 text-3xl px-6 py-2 rounded-md transition-transform transform hover:scale-105" onClick={handleNormalButtonClick}>Register</button> */}
+			<Button className=" px-6 py-2 rounded-md transition-transform transform hover:scale-105" onClick={handleNormalButtonClick}><p className="text-2xl">Register</p></Button>
 			{isOpen && (
 				<div className="overlay" onClick={handleClosePopup}>
 					<GoogleLogin
