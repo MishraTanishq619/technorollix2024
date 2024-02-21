@@ -1,37 +1,33 @@
 import React from "react";
 
 function ContactCard({
-  imageLink = "logo.png",
-  name = "Dwayne Patel",
-  branch = "branch",
-  email = "email@gmail.com",
-  phone = "9876786564",
+	imageLink = "logo.png",
+	name = "Dwayne Patel",
+	branch = "branch",
+	email = "email@gmail.com",
+	phone = "9876786564",
 }) {
-  return (
-    <>
-      <div className="bg-red-300">
-        <div id="contact-container" className="flex-row  bg-red-600 ">
-          <div id="contact-pic">
-            <img src={imageLink}></img>
-          </div>
-          <div id="name" className="bg-yellow-300">
-            {name}
-          </div>
-          <div id="branch" className="bg-green-300">
-            {branch}
-          </div>
-        </div>
-        <div id="additional-dets" className="flex-row">
-          <div id="email" className="bg-orange-400">
-            {email}
-          </div>
-          <div id="phone" className="bg-pink-400">
-            {phone}
-          </div>
-        </div>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className="bg-slate-500 w-72 text-center p-2 rounded-lg">
+				<img src={imageLink} className="w-full p-8 h-[14rem]"></img>
+				<div id="name" className="text-4xl font-medium">
+					{name}
+				</div>
+				<div id="branch" className="text-3xl font-medium">
+					{branch}
+				</div>
+				<div id="additional-dets" className="">
+					<div id="email" className="text-3xl font-medium">
+						{email}
+					</div>
+					<div id="phone" className="text-3xl font-medium">
+						{phone}
+					</div>
+				</div>
+			</div>
+		</>
+	);
 }
 
 export default ContactCard;

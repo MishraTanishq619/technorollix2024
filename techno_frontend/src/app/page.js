@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const page = () => {
 	return (
-		<main >
+		<main className="h-full w-full">
 			<Home />
 		</main>
 	);
