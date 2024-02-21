@@ -32,7 +32,7 @@ function Registration() {
 		setName(recName);
 		// console.log(recEmail);
 		// console.log(recName);
-		console.log(recPicture);
+		console.log(pic);
 		// console.log(secondParts);
 	}, []);
 
@@ -160,6 +160,7 @@ function Registration() {
 											);
 										}
 										// alert("ho gya bhenco");
+										// console.log(res);
 										window.location.href = `/registration/next?emailRef=${email}`;
 										const json = await res.json();
 

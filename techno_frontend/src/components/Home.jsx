@@ -3,7 +3,7 @@ import React from "react";
 import Countdown from "./Countdown";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import {GoogleLogin , useGoogleLogin } from '@react-oauth/google';
+import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 
 function Home() {
@@ -62,24 +62,27 @@ function Home() {
 			<p className="text-[26px] m-0 ">REGISTRATIONS : {participantCount}</p>
 			<p className="text-[26px] m-0 mb-16">IMPRESSIONS : {visitCount}</p>
 			{/* <button className="bg-orange-500 text-3xl px-8 py-4 rounded-md transition-transform transform hover:scale-105" onClick={() => login()}> */}
-				<GoogleLogin
-					onSuccess={credentialResponse => {
-						const userResponse = jwtDecode(credentialResponse.credential)
-						console.log(userResponse);
-						console.log(userResponse.email);
-						console.log(userResponse.name);
-						console.log(userResponse.picture);
+			<GoogleLogin
+				onSuccess={async credentialResponse => {
+					const userResponse = jwtDecode(credentialResponse.credential)
+					const result = await fetch(`http://localhost:4000/api/user/${userResponse.email}`);
+					console.log(result);
+					if (result.status === 409) {
+						window.location.href = `/registration/next?emailRef=${userResponse.email}`;
+					} else if(result.status === 404){
 						window.location.href = `/registration?urlRef=${userResponse.picture}/email?=${userResponse.email}/name?=${userResponse.name}`;
+					}
 
-					}}
-					onError={() => {
-						console.log('Login Failed');
-					}}
-				/>
-				{/* Register */}
+				}}
+				onError={() => {
+					console.log('Login Failed');
+				}}
+			/>
+			{/* Register */}
 			{/* </button> */}
 		</div>
 	);
 }
+
 
 export default Home;

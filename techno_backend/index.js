@@ -49,13 +49,15 @@ app.get("/", (req, res) => {
 
 app.post("/api/create/user", async (req, res) => {
   try {
-    // const user = req.body;
-    // const exsitingUser = await User.find({userEmail: user.userEmail});
-    // if (exsitingUser) {
-    //   res.status(409).json(`User already Exist ${exsitingUser}`)
-    // }
+    const user = req.body;
+    const isExsitingUser = await User.findOne({userEmail: user.userEmail});
+    if (isExsitingUser) {
+      const exsitingUser = await User.findOneAndUpdate({userEmail: user.userEmail},user);
+      return res.status(205).json(`Updated details ${user}`); 
+    // return res.status(409).json(`User already Exist ${exsitingUser}`)
+    }
     const newUser = await User.create(req.body);
-    res.status(201).json(newUser);
+    res.status(201).json(newUser); 
   } catch (error) {
     res.status(500).send(`Error creating user: Error ${error}`);
   }
@@ -91,7 +93,7 @@ app.get("/api/user/:email", async (req, res) => {
     if (!user) {
       return res.status(404).send(`User not found: email: ${userEmail}`);
     }
-    res.json(user);
+    return res.status(409).json(user);
   } catch (error) {
     res.status(500).send(`Error fetching user details: ${error}`);
   }
