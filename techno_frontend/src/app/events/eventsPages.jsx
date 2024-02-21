@@ -1,6 +1,8 @@
 "use client"
 import { useState, useEffect } from 'react';
 import EventCard from '@/components/EventCard';
+import ThreeDCardDemo from '@/components/threeDCard';
+
 
 function EventsViewPage() {
     const [events, setEvents] = useState([]);
@@ -68,7 +70,8 @@ function EventsViewPage() {
                         />
                     )}
                 </div> */}
-                <EventCard prize={event.priceMoney} title={event.eventName} description={event.eventDescription} members={event.teamSize} entryFee={event.entryFee} onClick={() => handleEventCardClick(event.eventId)}/>
+                {/* <EventCard prize={event.priceMoney} title={event.eventName} description={event.eventDescription} members={event.teamSize} entryFee={event.entryFee} onClick={() => handleEventCardClick(event.eventId)}/> */}
+                <ThreeDCardDemo prize={event.priceMoney} title={event.eventName} description={event.eventDescription} members={event.teamSize} entryFee={event.entryFee} onClick={() => handleEventCardClick(event.eventId)}/>
             </>
                 
             ))}

@@ -5,13 +5,14 @@ const next = require('next');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-
+const PORT = 5252;
+// const IP = '0.0.0.0';
 app.prepare().then(() => {
   createServer((req, res) => {
     const parsedUrl = parse(req.url, true);
     handle(req, res, parsedUrl);
-  }).listen(5354, (err) => {
+  }).listen(PORT, (err) => {
     if (err) throw err;
-    console.log('> Ready on http://localhost:5354');
+    console.log(`> Ready on http://localhost:${PORT}`);
   });
 });

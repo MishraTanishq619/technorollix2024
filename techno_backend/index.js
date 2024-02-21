@@ -92,8 +92,8 @@ app.get("/api/user/:email", async (req, res) => {
     const user = await User.findOne({ userEmail: userEmail });
     if (!user) {
       return res.status(404).send(`User not found: email: ${userEmail}`);
-    }
-    return res.status(409).json(user);
+    }else{
+    return res.status(409).json(user);}
   } catch (error) {
     res.status(500).send(`Error fetching user details: ${error}`);
   }

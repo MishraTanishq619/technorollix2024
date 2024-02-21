@@ -42,7 +42,7 @@ function Countdown() {
   }, []);
 
   return (
-    <div className="flex text-3xlxl  w-auto h-24 rounded-md  mb-7  ">
+    <div className="flex text-3xlxl  w-auto h-24 rounded-md  mb-4  ">
       <span className="bg-gray-500 p-4 m-2 rounded-md flex items-center text-6xl">
         {day1}
       </span>

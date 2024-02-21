@@ -7,6 +7,17 @@ import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 
 function Home() {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const handleNormalButtonClick = () => {
+		setIsOpen(true);
+	};
+
+	const handleClosePopup = (event) => {
+		if (event.target.classList.contains('overlay')) {
+			setIsOpen(false);
+		}
+	};
 	// const login = useGoogleLogin({
 	// 	onSuccess:credentialResponse => {
 	// 		UserResponse = jwtDecode(credentialResponse)
@@ -60,16 +71,16 @@ function Home() {
 			</div>
 			<p className="text-[26px] m-0 ">20<sup>th</sup> March to 22<sup>nd</sup> March</p>
 			<p className="text-[26px] m-0 ">REGISTRATIONS : {participantCount}</p>
-			<p className="text-[26px] m-0 mb-16">IMPRESSIONS : {visitCount}</p>
+			<p className="text-[26px] mb-2 ">IMPRESSIONS : {visitCount}</p>
 			{/* <button className="bg-orange-500 text-3xl px-8 py-4 rounded-md transition-transform transform hover:scale-105" onClick={() => login()}> */}
-			<GoogleLogin
+			{/* <GoogleLogin
 				onSuccess={async credentialResponse => {
 					const userResponse = jwtDecode(credentialResponse.credential)
 					const result = await fetch(`http://localhost:4000/api/user/${userResponse.email}`);
 					console.log(result);
 					if (result.status === 409) {
 						window.location.href = `/registration/next?emailRef=${userResponse.email}`;
-					} else if(result.status === 404){
+					} else if (result.status === 404) {
 						window.location.href = `/registration?urlRef=${userResponse.picture}/email?=${userResponse.email}/name?=${userResponse.name}`;
 					}
 
@@ -77,7 +88,27 @@ function Home() {
 				onError={() => {
 					console.log('Login Failed');
 				}}
-			/>
+			/> */}
+			<button className="bg-orange-500 text-3xl px-6 py-2 rounded-md transition-transform transform hover:scale-105" onClick={handleNormalButtonClick}>Register</button>
+			{isOpen && (
+				<div className="overlay" onClick={handleClosePopup}>
+					<GoogleLogin
+						onSuccess={async credentialResponse => {
+							const userResponse = jwtDecode(credentialResponse.credential)
+							const result = await fetch(`http://localhost:4000/api/user/${userResponse.email}`);
+							console.log(result);
+							if (result.status === 409) {
+								window.location.href = `/registration/next?emailRef=${userResponse.email}`;
+							} else if (result.status === 404) {
+								window.location.href = `/registration?urlRef=${userResponse.picture}/email?=${userResponse.email}/name?=${userResponse.name}`;
+							}
+						}}
+						onError={() => {
+							console.log('Login Failed');
+						}}
+					/>
+				</div>
+			)}
 			{/* Register */}
 			{/* </button> */}
 		</div>
