@@ -1,6 +1,6 @@
 import React from "react";
 // import EventsRegistrationPage from "./components/eventRegistrationCard";
-import EventsRegistrationPage from "./components/eventRegistrationCard";
+import EventsRegistrationPage from "../registration/next/eventRegistrationCard";
 
 const page = () => {
 	

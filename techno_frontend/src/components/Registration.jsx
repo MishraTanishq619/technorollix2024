@@ -1,6 +1,7 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import InputBox from "./InputBox";
+import { useRouter, useSearchParams } from "next/navigation";
 
 function Registration() {
 	const [name, setName] = useState("");
@@ -13,11 +14,31 @@ function Registration() {
 	const [pincode, setPincode] = useState(0);
 	const [pic, setPic] = useState("");
 	const [isUserOPJUStudent, setisUserOPJUStudent] = useState(false);
+	const searchParams = useSearchParams();
+	const urlRef = searchParams.get("urlRef");
+	// const nameRef = searchParams.get("nameRef");
+	useEffect(() => {
+		const parts = urlRef.split("/email?=");
+
+		const recPicture = parts[0];
+		const secondParts = parts[1];
+		const emailAndName = secondParts.split("/name?=");
+		const recEmail = emailAndName[0];
+		const recName = emailAndName[1];
+		// This code will run only once when the component mounts
+		// You can call setState here
+		setPic(recPicture);
+		setEmail(recEmail);
+		setName(recName);
+		// console.log(recEmail);
+		// console.log(recName);
+		console.log(recPicture);
+		// console.log(secondParts);
+	}, []);
 
 
-	
 	return (
-		<div className="absolute text-white flex flex-col items-center justify-center">
+		<div className="absolute text-white flex flex-col items-center justify-center ">
 			<p className="text-4xl mb-2">REGISTRATION</p>
 			<div className="border border-gray-3000 px-4">
 				<div
@@ -25,20 +46,35 @@ function Registration() {
 					className="grid grid-cols-2 gap-2  row-span-4"
 				>
 					<div id="input-holder-a" className="col-span-1 ">
-						<InputBox
-							onChange={(e) => {
-								setName(e.target.value);
-							}}
-							className=""
-							label="NAME"
-						/>
-						<InputBox
-							onChange={(e) => {
-								setEmail(e.target.value);
-							}}
-							className=""
-							label="E-MAIL"
-						/>
+						<div className="flex flex-col my-8 mx-2">
+							<div className="rounded-full h-40 w-40 overflow-hidden">
+								<img src={pic} alt="Your Image" className="object-cover h-full w-full" />
+							</div>
+							<div className="flex items-start">
+								<p className="ml-2 text-2xl">Name</p>
+							</div>
+							<input
+								type="text"
+								className="rounded-sm p-2 m-2 flex items-start w-96 text-black"
+								// onChange={onChange}
+								// type="email"
+								value={name}
+								readOnly
+							/>
+						</div>
+						<div className="flex flex-col my-8 mx-2">
+							<div className="flex items-start">
+								<p className="ml-2 text-2xl">Email</p>
+							</div>
+							<input
+								type="email"
+								className="rounded-sm p-2 m-2 flex items-start w-96 text-black"
+								// onChange={onChange}
+								// type="email"
+								value={email}
+								readOnly
+							/>
+						</div>
 						<InputBox
 							onChange={(e) => {
 								setPhone(e.target.value);
@@ -54,8 +90,8 @@ function Registration() {
 								const finalUniversity = university.trim();
 								if (
 									finalUniversity == "opju" ||
-									"opjindaluniversity" ||
-									"omprakashjindaluniversity"
+									"op jindal university" ||
+									"om prakash jindal university"
 								) {
 									setisUserOPJUStudent(true);
 								}
@@ -142,7 +178,7 @@ function Registration() {
 							}
 						}}
 					>
-							NEXT
+						NEXT
 						{/* <a href={`/registration/next?emailRef=${email}`}> */}
 						{/* </a> */}
 					</button>

@@ -56,7 +56,9 @@ function EventsRegistrationPage() {
     }, []);
 
     return (
-        <div className="flex flex-wrap gap-4 items-center justify-evenly  border-2 w-2/3 h-full p-5  ">
+        <div>
+			<p className="text-4xl text-white font-bold">EventsCheckbox</p>
+        <div className="flex flex-wrap items-center justify-evenly  border-2 w-2/3 h-full p-5  ">
             {events.map((event, index) => (
                 // <div
                 //     key={event.eventId}
@@ -81,7 +83,7 @@ function EventsRegistrationPage() {
 
             ))}
             {/* Display selected event IDs and additional details */}
-            <div >
+            {/* <div >
                 <h2>Selected Events</h2>
                 <ul>
                     {selectedEvents.map((eventId, index) => (
@@ -90,8 +92,11 @@ function EventsRegistrationPage() {
                         </li>
                     ))}
                 </ul>
-                <button
-                    className="mt-1 bg-orange-600 ml-96 mb-8 rounded-md text-3xl px-6 py-3"
+                
+            </div> */}
+            </div>
+            <button
+                    className="bg-orange-600 ml-56 rounded-md text-3xl px-6 py-3 items-center justify-center mt-10"
                     onClick={() => {
                         // setLeaderEmail(emailRef)
                         // console.log("daba");
@@ -130,7 +135,6 @@ function EventsRegistrationPage() {
                         }
                     }}
                 >Submit</button>
-            </div>
         </div>
     );
 }

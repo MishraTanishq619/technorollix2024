@@ -1,9 +1,11 @@
 import React from "react";
 import Home from "@/components/Home";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
 
 const page = () => {
 	return (
-		<div className="w-full h-screen bg-cover  bg-center bg-[url('/mainbg.jpg')]">
+		<div >
 			<Home />
 		</div>
 	);

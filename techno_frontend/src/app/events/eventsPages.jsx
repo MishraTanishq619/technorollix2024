@@ -46,7 +46,8 @@ function EventsViewPage() {
     }, []);
 
     return (
-        <div className="w-full h-screen py-24  flex flex-wrap gap-10 items-center justify-evenly">
+        <div className="w-full h-screen flex flex-wrap items-start justify-evenly">
+            
             {events.map((event, index) => (<>
             {/* <div
                     key={event.eventId}

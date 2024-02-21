@@ -1,8 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata = {
 	title: "Technorollix_2024",
@@ -11,11 +12,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
+<GoogleOAuthProvider clientId="836755220699-ojv84oup2nfa7li643q0jssqiftnk6o5.apps.googleusercontent.com">
 		<html lang="en">
-			<body className={inter.className}>
+			<body className="w-full h-screen py-16 bg-cover bg-fixed bg-no-repeat bg-center bg-[url('/mainbg.jpg')]  flex flex-wrap gap-0 items-center justify-evenly overflow-y-scroll">
 				<Header />
 				{children}
 			</body>
-		</html>
+		</html></GoogleOAuthProvider>
 	);
 }

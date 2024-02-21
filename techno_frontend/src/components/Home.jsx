@@ -3,22 +3,31 @@ import React from "react";
 import Countdown from "./Countdown";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import {GoogleLogin , useGoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 function Home() {
+	// const login = useGoogleLogin({
+	// 	onSuccess:credentialResponse => {
+	// 		UserResponse = jwtDecode(credentialResponse)
+	// 		console.log(UserResponse);
+	// 	  },
+	// 	flow: 'auth-code',
+	// });
 	const [participantCount, setParticipantCount] = useState(0);
 	const [visitCount, setVisitCount] = useState(0);
 
 	useEffect(() => {
 		// Fetch visit count from the API
 		fetch('http://localhost:4000/api/visitCount')
-		  .then(response => response.json())
-		  .then(data => {
-			console.log(data)
-			setVisitCount(data.visitCount);
-		  })
-		  .catch(error => console.error('Error fetching visit count:', error));
+			.then(response => response.json())
+			.then(data => {
+				console.log(data)
+				setVisitCount(data.visitCount);
+			})
+			.catch(error => console.error('Error fetching visit count:', error));
 
-		  fetch('http://localhost:4000/api/allParticipants')
+		fetch('http://localhost:4000/api/allParticipants')
 			.then(response => response.json())
 			.then(data => {
 				// Assuming the response data is an array of participants
@@ -30,7 +39,7 @@ function Home() {
 			.catch(error => {
 				console.error('Error fetching participant data:', error);
 			});
-	  }, []);
+	}, []);
 
 
 	return (
@@ -46,15 +55,29 @@ function Home() {
 			{/* <p className="text-[19px] mb-24 flex ">
 				A National Level Cultural Fest 2024
 			</p> */}
-			<div className="flex items-center justify-center mb-4">
+			<div className="flex items-center justify-center mb-0">
 				<Countdown />
 			</div>
-			<p className="text-[26px] m-1 ">20<sup>th</sup> March to 22<sup>nd</sup> March</p>
-			<p className="text-[26px] m-1 ">REGISTRATIONS : {participantCount}</p>
-			<p className="text-[26px] m-1 mb-16">IMPRESSIONS : {visitCount}</p>
-			<button className="bg-orange-500 text-3xl px-8 py-4 rounded-md transition-transform transform hover:scale-105">
-				<a href="/registration">Register</a>
-			</button>
+			<p className="text-[26px] m-0 ">20<sup>th</sup> March to 22<sup>nd</sup> March</p>
+			<p className="text-[26px] m-0 ">REGISTRATIONS : {participantCount}</p>
+			<p className="text-[26px] m-0 mb-16">IMPRESSIONS : {visitCount}</p>
+			{/* <button className="bg-orange-500 text-3xl px-8 py-4 rounded-md transition-transform transform hover:scale-105" onClick={() => login()}> */}
+				<GoogleLogin
+					onSuccess={credentialResponse => {
+						const userResponse = jwtDecode(credentialResponse.credential)
+						console.log(userResponse);
+						console.log(userResponse.email);
+						console.log(userResponse.name);
+						console.log(userResponse.picture);
+						window.location.href = `/registration?urlRef=${userResponse.picture}/email?=${userResponse.email}/name?=${userResponse.name}`;
+
+					}}
+					onError={() => {
+						console.log('Login Failed');
+					}}
+				/>
+				{/* Register */}
+			{/* </button> */}
 		</div>
 	);
 }

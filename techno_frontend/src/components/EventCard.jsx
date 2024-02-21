@@ -18,7 +18,7 @@ function EventCard({
 					id="event-image"
 					className="bg-gray-700 row-span-6 flex justify-end "
 				>
-					<img src="logo.png" alt="img" />
+					<img src="https://lh3.googleusercontent.com/a/ACg8ocJCurJUJ11ehDYcie3j5sn_ApjEBbCJREu0wT2yKp5IjQw=s96-c" alt={title} />
 
 					<p className="absolute pr-2 pt-2">PRIZE POOL : {prize}</p>
 				</div>

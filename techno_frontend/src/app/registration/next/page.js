@@ -1,19 +1,19 @@
 // import EventCard from "@/components/EventCard";
 // import EventsRegistrationPage from "./components/eventRegistrationCard";
-import EventsRegistrationPage from "@/app/legacy/components/eventRegistrationCard";
+import EventsRegistrationPage from "@/app/registration/next/eventRegistrationCard";
+import { Suspense } from 'react';
 
 import React from "react";
 
 function page() {
-	// const searchParams = useSearchParams();
-	// // console.log(searchParams.get("emailRef"));
-	// const emailRef = searchParams.get("emailRef"); // required email.
 	return (
-		<div className="w-full h-screen py-24 bg-cover  bg-center bg-[url('/mainbg.jpg')] flex flex-col items-center justify-center">
-			<p className="text-4xl text-white font-bold">EventsCheckbox</p>
-			<div className=" ">
-				<EventsRegistrationPage/>
-			</div>
+		<div className="w-full h-screen items-center justify-evenly ml-56 mt-12">
+			{/* <div className=" "> */}
+				{/* <EventsRegistrationPage/> */}
+				<Suspense fallback={<div>Loading...</div>}>
+					<EventsRegistrationPage />
+				</Suspense>
+			{/* </div> */}
 		</div>
 	);
 }
