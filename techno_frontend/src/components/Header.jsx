@@ -14,7 +14,7 @@ const WebLook = () => {
 		<>
 			<div
 				id="div-conatiner"
-				className=" bg-[#000] bg-opacity-40 flex justify-between  text-2xl fixed z-10 top-0 w-full left-0 pt-2 text-white"
+				className=" bg-blue bg-opacity-100 flex justify-between  text-2xl fixed z-10 top-0 w-full left-0 pt-2 text-white -33"
 			>
 				<div className="flex justify-around w-[35%]">
 					<a
