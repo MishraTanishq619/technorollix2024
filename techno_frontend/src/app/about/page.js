@@ -7,68 +7,68 @@ const page = () => {
 	return (
 		<TracingBeam>
 			<Header />
-		<div className="pt-10 w-full flex flex-col items-center gap-10">
-			<AboutCard
-				imageLink="logo.png"
-				paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
-				heading="Headuoig"
-				arrangement={1}
-			/>
-			<AboutCard
-				imageLink="logo.png"
-				paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
-				heading="Headuoig"
-				arrangement={0}
-			/>
-			<AboutCard
-				imageLink="logo.png"
-				paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
-				heading="Headuoig"
-				arrangement={1}
-			/>
-			<AboutCard
-				imageLink="logo.png"
-				paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
-				heading="Headuoig"
-				arrangement={0}
-			/>
-			<AboutCard
-				imageLink="logo.png"
-				paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
-				heading="Headuoig"
-				arrangement={1}
-			/>
-			<AboutCard
-				imageLink="logo.png"
-				paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
-				heading="Headuoig"
-				arrangement={0}
-			/>
-			<AboutCard
-				imageLink="logo.png"
-				paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
-				heading="Headuoig"
-				arrangement={1}
-			/>
-			<AboutCard
-				imageLink="logo.png"
-				paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
-				heading="Headuoig"
-				arrangement={0}
-			/>
-			<AboutCard
-				imageLink="logo.png"
-				paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
-				heading="Headuoig"
-				arrangement={1}
-			/>
-			<AboutCard
-				imageLink="logo.png"
-				paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
-				heading="Headuoig"
-				arrangement={0}
-			/>
-		</div>
+			<div className="pt-10 w-full flex flex-col items-center gap-10">
+				<AboutCard
+					imageLink="logo.png"
+					paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
+					heading="Headuoig"
+					arrangement={1}
+				/>
+				<AboutCard
+					imageLink="logo.png"
+					paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
+					heading="Headuoig"
+					arrangement={0}
+				/>
+				<AboutCard
+					imageLink="logo.png"
+					paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
+					heading="Headuoig"
+					arrangement={1}
+				/>
+				<AboutCard
+					imageLink="logo.png"
+					paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
+					heading="Headuoig"
+					arrangement={0}
+				/>
+				<AboutCard
+					imageLink="logo.png"
+					paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
+					heading="Headuoig"
+					arrangement={1}
+				/>
+				<AboutCard
+					imageLink="logo.png"
+					paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
+					heading="Headuoig"
+					arrangement={0}
+				/>
+				<AboutCard
+					imageLink="logo.png"
+					paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
+					heading="Headuoig"
+					arrangement={1}
+				/>
+				<AboutCard
+					imageLink="logo.png"
+					paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
+					heading="Headuoig"
+					arrangement={0}
+				/>
+				<AboutCard
+					imageLink="logo.png"
+					paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
+					heading="Headuoig"
+					arrangement={1}
+				/>
+				<AboutCard
+					imageLink="logo.png"
+					paragraph="loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds"
+					heading="Headuoig"
+					arrangement={0}
+				/>
+			</div>
 		</TracingBeam>
 	);
 };
