@@ -9,7 +9,7 @@ function Header() {
 		<>
 			<div
 				id="div-conatiner"
-				className=" bg-blue bg-opacity-100 flex justify-between  text-2xl fixed z-10 top-0 w-full left-0 pt-2 text-white -33"
+				className=" bg-blue bg-opacity-100 flex justify-between  text-2xl fixed top-0 w-full left-0 pt-2 text-white -33 z-10"
 			>
 				<div className="flex justify-around w-[35%]">
 					<a

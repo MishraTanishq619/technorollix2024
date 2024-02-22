@@ -19,7 +19,7 @@ export default function TypewriterEffectSmoothDemo() {
     },
     {
       text: "2024",
-      className: "text-blue-500 dark:text-blue-500",
+      className: "text-blue dark:text-blue-500",
     },
   ];
   return (

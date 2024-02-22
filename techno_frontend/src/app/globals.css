@@ -18,7 +18,9 @@
     width: 0px;
     color: transparent;
   }
-  
+  .rounded-full {
+    border-radius: 50%;
+  }
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #f8000000;

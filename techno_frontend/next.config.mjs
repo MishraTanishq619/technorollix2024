@@ -4,7 +4,7 @@ const nextConfig = {
 		missingSuspenseWithCSRBailout: false,
 	},
 	images: {
-		domains: ['lh3.googleusercontent.com','images.unsplash.com',"aceternity.com"],
+		domains: ['lh3.googleusercontent.com','images.unsplash.com',"aceternity.com","www.google.com"],
 	  },
 };
 

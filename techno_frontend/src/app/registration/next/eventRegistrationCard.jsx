@@ -1,136 +1,123 @@
 "use client"
-import EventCard from '@/components/EventCard';
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from "next/navigation";
-import ThreeDCardDemo from '@/components/threeDCard';
-import {EventSelector} from '@/components/ui/eventSelectioncard';
+import { useSearchParams } from "next/navigation";
+
 function EventsRegistrationPage() {
     const [events, setEvents] = useState([]);
     const [selectedEvents, setSelectedEvents] = useState([]);
     const [additionalDetails, setAdditionalDetails] = useState([]);
-    const [leaderEmail, setLeaderEmail] = useState();
-	const searchParams = useSearchParams();
-	// console.log(searchParams.get("emailRef"));
-	const emailRef = searchParams.get("emailRef"); 
+    const [leaderEmail, setLeaderEmail] = useState('');
+    const [teammateEmails, setTeammateEmails] = useState([]);
+
+    const searchParams = useSearchParams();
+    const emailRef = searchParams.get("emailRef");
+
     useEffect(() => {
-        // This code will run only once when the component mounts
-        // You can call setState here
         setLeaderEmail(emailRef);
-      }, []);
-    // Function to handle event card click
-    const handleEventCardClick = (eventId) => {
-        // Check if the event is already selected
-        const selectedIndex = selectedEvents.indexOf(eventId);
-        const isEventSelected = selectedIndex !== -1;
-
-        if (isEventSelected) {
-            // If already selected, remove from selectedEvents array
-            const updatedSelectedEvents = [...selectedEvents];
-            updatedSelectedEvents.splice(selectedIndex, 1);
-            setSelectedEvents(updatedSelectedEvents);
-
-            // Remove additional details for the unselected event
-            const updatedAdditionalDetails = [...additionalDetails];
-            updatedAdditionalDetails.splice(selectedIndex, 1);
-            setAdditionalDetails(updatedAdditionalDetails);
-        } else {
-            // If not selected, add to selectedEvents array
-            setSelectedEvents([...selectedEvents, eventId]);
-            // Add empty additional detail placeholder
-            setAdditionalDetails([...additionalDetails, '']);
-        }
-    };
-
-    // Function to handle additional details input change
-    const handleAdditionalDetailsChange = (index, value) => {
-        const updatedAdditionalDetails = [...additionalDetails];
-        updatedAdditionalDetails[index] = value;
-        setAdditionalDetails(updatedAdditionalDetails);
-    };
+    }, []);
 
     useEffect(() => {
-        // Fetch event data from the API endpoint
         fetch('http://localhost:4000/api/allEvents')
             .then(response => response.json())
             .then(data => setEvents(data))
             .catch(error => console.error('Error fetching events:', error));
     }, []);
 
+    const handleEventCardClick = (eventId) => {
+        const selectedIndex = selectedEvents.indexOf(eventId);
+        const isEventSelected = selectedIndex !== -1;
+
+        if (isEventSelected) {
+            const updatedSelectedEvents = [...selectedEvents];
+            updatedSelectedEvents.splice(selectedIndex, 1);
+            setSelectedEvents(updatedSelectedEvents);
+
+            const updatedAdditionalDetails = [...additionalDetails];
+            updatedAdditionalDetails.splice(selectedIndex, 1);
+            setAdditionalDetails(updatedAdditionalDetails);
+        } else {
+            setSelectedEvents([...selectedEvents, eventId]);
+            setAdditionalDetails([...additionalDetails, '']);
+        }
+    };
+
+    const handleAdditionalDetailsChange = (index, value) => {
+        const updatedAdditionalDetails = [...additionalDetails];
+        updatedAdditionalDetails[index] = value;
+        setAdditionalDetails(updatedAdditionalDetails);
+    };
+
     return (
         <div>
-			<p className="text-4xl text-white font-bold">EventsCheckbox</p>
-        <div className="flex flex-wrap items-center justify-evenly  border-2 w-2/3 h-full p-5  ">
-            {events.map((event, index) => (
+            <p className="text-4xl text-white font-bold">EventsCheckbox</p>
+            <div className="flex flex-wrap items-center justify-evenly border-2 w-2/3 h-full p-5">
+                {events.map((event, index) => (
+                    <div key={event.eventId}>
+                        <div
+                            className={`bg-black p-4 rounded-lg border-4 border-blue-500 ${selectedEvents.includes(event.eventId) ? 'bg-grey-500' : ''}`}
+                            onClick={() => handleEventCardClick(event.eventId)}
+                        >
+                            <h2 className="text-lg font-bold text-white">{event.eventName}</h2>
+                            <p className="text-lg font-bold text-white">Team Size: {event.teamSize}</p>
+                            <p className="text-lg font-bold text-white">Price: {event.priceMoney}</p>
+                            <p className="text-lg font-bold text-white">Entry Fee: {event.entryFee}</p>
+                            {selectedEvents.includes(event.eventId) && (
+                                <input
+                                    type="text"
+                                    placeholder="Additional Details"
+                                    value={additionalDetails[selectedEvents.indexOf(event.eventId)] || ''}
+                                    onChange={(e) => handleAdditionalDetailsChange(selectedEvents.indexOf(event.eventId), e.target.value)}
+                                    onClick={(e) => e.stopPropagation()}
+                                />
+                            )}
+                        </div>
+
+                    </div>
+                ))}
                 <div>
-                    {/* <EventCard prize={event.priceMoney} title={event.eventName} description={event.eventDescription} members={event.teamSize} entryFee={event.entryFee} onClick={() => handleEventCardClick(event.eventId)}/> */}
-                    <ThreeDCardDemo prize={event.priceMoney} title={event.eventName} description={event.eventDescription} members={event.teamSize} entryFee={event.entryFee} onClick={() => handleEventCardClick(event.eventId)}/>
-                    {selectedEvents.includes(event.eventId) && (
-                        <input
-                            type="text"
-                            placeholder="Additional Details"
-                            value={additionalDetails[selectedEvents.indexOf(event.eventId)] || ''}
-                            onChange={(e) => handleAdditionalDetailsChange(selectedEvents.indexOf(event.eventId), e.target.value)}
-                            onClick={(e) => e.stopPropagation()} // Stop event propagation
-                        />
-                    )}
+                    <h2 className="text-white">Selected Events</h2>
+                    <ul>
+                        {selectedEvents.map((eventId, index) => (
+                            <li key={eventId} className="text-white">
+                                Event ID: {eventId}, Additional Details: {additionalDetails[index]}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-
-            ))}
-                    {/* <EventSelector items={events} /> */}
-
-            {/* Display selected event IDs and additional details */}
-            <div >
-                <h2 className="text-white">Selected Events</h2>
-                <ul>
-                    {selectedEvents.map((eventId, index) => (
-                        <li key={eventId} className="text-white">
-                            Event ID: {eventId}, Additional Details: {additionalDetails[index]}
-                        </li>
-                    ))}
-                </ul>
-                
-            </div>
             </div>
             <button
-                    className="bg-orange-600 ml-56 rounded-md text-3xl px-6 py-3 items-center justify-center mt-10"
-                    onClick={() => {
-                        // setLeaderEmail(emailRef)
-                        // console.log("daba");
-                        // console.log(selectedEvents);
-                        // console.log(additionalDetails);
-                        // console.log(leaderEmail);
-                        try {
-                            fetch("http://localhost:4000/api/team-registration/event",{
-                                method: "POST",
-                                body: JSON.stringify({
-                                    eventId: selectedEvents,
-                                    leader: leaderEmail,
-                                    additionalDetails: additionalDetails
-                                }),
-                                headers: {
-                                    "Content-type": "application/json",
-                                },
+                className="bg-orange-600 ml-56 rounded-md text-3xl px-6 py-3 items-center justify-center mt-10"
+                onClick={() => {
+                    try {
+                        fetch("http://localhost:4000/api/team-registration/event", {
+                            method: "POST",
+                            body: JSON.stringify({
+                                eventId: selectedEvents,
+                                leader: leaderEmail,
+                                additionalDetails: additionalDetails,
+                                teammates: teammateEmails.filter(email => email.trim() !== ''),
+                            }),
+                            headers: {
+                                "Content-type": "application/json",
+                            },
+                        })
+                            .then(async (res) => {
+                                if (!res.ok) {
+                                    throw new Error(`HTTP error! Status: ${res.status}`);
+                                }
+                                window.location.href = `/`;
+                                const json = await res.json();
                             })
-                                .then(async (res) => {
-                                    if (!res.ok) {
-                                        throw new Error(`HTTP error! Status: ${res.status}`);
-                                    }
-                                    // alert("ho gya bhenco");
-                                    window.location.href = `/`;
-                                    const json = await res.json();
-
-                                    // Process the response JSON here
-                                })
-                                .catch((error) => {
-                                    console.log("Error during fetch:", error);
-                                    // Handle the error appropriately (e.g., show a message to the user)
-                                });
-                            ``;
-                        } catch (error) {
-                            console.log(error);
-                        }
-                    }}
-                >Submit</button>
+                            .catch((error) => {
+                                console.log("Error during fetch:", error);
+                            });
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }}
+            >
+                Submit
+            </button>
         </div>
     );
 }

@@ -10,6 +10,7 @@ import LampContainer from "./ui/lamp";
 import { motion } from "framer-motion";
 import TypewriterEffectSmoothDemo from "./typeWriterDemo";
 import HeroParallaxDemo from "./heroParalloxEvents";
+import { BackgroundBeams } from "./ui/background-beams";
 
 
 function Home() {
@@ -63,7 +64,6 @@ function Home() {
 
 		<div className="flex flex-col items-center  text-white  justify-center h-full w-full overflow-x-hidden overflow-y-scroll">
 			{/* <Boxes /> */}
-
 			<LampContainer>
 				<motion.h1
 					initial={{ opacity: 0.5, y: 100 }}
@@ -85,9 +85,9 @@ function Home() {
 					{/* <div className="flex items-center justify-center mb-0">
 						<Countdown />
 					</div> */}
+			<Button className=" px-6 py-2 rounded-md transition-transform transform hover:scale-105" onClick={handleNormalButtonClick}><p className="text-2xl">Register</p></Button>
 				</motion.h1>
 			</LampContainer>
-			<Button className=" px-6 py-2 rounded-md transition-transform transform hover:scale-105" onClick={handleNormalButtonClick}><p className="text-2xl">Register</p></Button>
 			{isOpen && (
 				<div className="overlay" onClick={handleClosePopup}>
 					<GoogleLogin

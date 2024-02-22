@@ -132,7 +132,7 @@ export const BackgroundBeams = ({className} ) => {
                 duration: Math.random() * 10 + 10,
                 ease: "easeInOut",
                 repeat: Infinity,
-                delay: Math.random() * 10,
+                delay: 0,
               }}
             >
               <stop stopColor="#18CCFC" stopOpacity="0"></stop>

@@ -353,6 +353,7 @@ app.post("/api/create/team-invite", async (req, res) => {
       inviterEmail,
       inviteeEmail,
     });
+    console.log(invitation);
     const sendMail = await mailer(invitation.inviteeEmail, teamId);
     res.status(201).json(invitation);
   } catch (error) {

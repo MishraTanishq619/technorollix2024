@@ -150,59 +150,7 @@ function Registration() {
 					</div>
 				</div>
 				<div className="btn-cotainer  row-span-2  flex justify-center items-center ">
-					{/* <button
-						className=" bg-orange-600 m-2 mb-4  rounded-md text-3xl px-6 py-3"
-						onClick={() => {
-							try {
-								fetch("http://localhost:4000/api/create/user", {
-									method: "POST",
-									body: JSON.stringify({
-										userEmail: email,
-										userName: name,
-										userPic: pic,
-										userPhoneNumber: phone,
-										userUniversity: university,
-										isUserOPJUStudent: isUserOPJUStudent,
-										userAddress: {
-											district: district,
-											state: state,
-											pincode: pincode,
-										},
-										userGender: gender,
-									}),
-									headers: {
-										"Content-type": "application/json",
-										user_email: email,
-									},
-								})
-									.then(async (res) => {
-										if (!res.ok) {
-											throw new Error(
-												`HTTP error! Status: ${res.status}`
-											);
-										}
-										// alert("ho gya bhenco");
-										// console.log(res);
-										window.location.href = `/registration/next?emailRef=${email}`;
-										const json = await res.json();
-
-										// Process the response JSON here
-									})
-									.catch((error) => {
-										console.log(
-											"Error during fetch:",
-											error
-										);
-										// Handle the error appropriately (e.g., show a message to the user)
-									});
-								``;
-							} catch (error) {
-								console.log(error);
-							}
-						}}
-					>
-						NEXT
-					</button> */}
+					
 					<div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full">
 						<button className="bg-orange-500 text-3xl px-6 py-2 rounded-md transition-transform transform hover:scale-105" onClick={handleNormalButtonClick}>Register</button>
 						{isOpen && (
