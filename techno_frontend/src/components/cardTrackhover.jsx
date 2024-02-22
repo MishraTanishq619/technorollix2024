@@ -9,19 +9,19 @@ export default function CardHoverEffectDemo() {
 }
 export const projects = [
   {
-    title: "Stripe",
+    title: "Shobhit",
     description:
       "A technology company that builds economic infrastructure for the internet.",
     link: "https://stripe.com",
   },
   {
-    title: "Netflix",
+    title: "Rounit",
     description:
       "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
     link: "https://netflix.com",
   },
   {
-    title: "Google",
+    title: "Tanishq",
     description:
       "A multinational technology company that specializes in Internet-related services and products.",
     link: "https://google.com",
