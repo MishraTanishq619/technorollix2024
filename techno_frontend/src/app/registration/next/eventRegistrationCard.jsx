@@ -2,7 +2,8 @@
 import EventCard from '@/components/EventCard';
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from "next/navigation";
-
+import ThreeDCardDemo from '@/components/threeDCard';
+import {EventSelector} from '@/components/ui/eventSelectioncard';
 function EventsRegistrationPage() {
     const [events, setEvents] = useState([]);
     const [selectedEvents, setSelectedEvents] = useState([]);
@@ -60,40 +61,35 @@ function EventsRegistrationPage() {
 			<p className="text-4xl text-white font-bold">EventsCheckbox</p>
         <div className="flex flex-wrap items-center justify-evenly  border-2 w-2/3 h-full p-5  ">
             {events.map((event, index) => (
-                // <div
-                //     key={event.eventId}
-                //     className={`bg-${selectedEvents.includes(event.eventId) ? 'red' : 'gray'}-200 p-4 rounded-lg`}
-                //     onClick={() => handleEventCardClick(event.eventId)}
-                // >
-                //     <h2 className="text-lg font-bold">{event.eventName}</h2>
-                //     <p>Team Size: {event.teamSize}</p>
-                //     <p>Price: {event.priceMoney}</p>
-                //     <p>Entry Fee: {event.entryFee}</p>
-                //     {selectedEvents.includes(event.eventId) && (
-                //         <input
-                //             type="text"
-                //             placeholder="Additional Details"
-                //             value={additionalDetails[selectedEvents.indexOf(event.eventId)] || ''}
-                //             onChange={(e) => handleAdditionalDetailsChange(selectedEvents.indexOf(event.eventId), e.target.value)}
-                //             onClick={(e) => e.stopPropagation()} // Stop event propagation
-                //         />
-                //     )}
-                // </div>
-                <EventCard prize={event.priceMoney} title={event.eventName} description={event.eventDescription} members={event.teamSize} entryFee={event.entryFee} onClick={() => handleEventCardClick(event.eventId)}/>
+                <div>
+                    {/* <EventCard prize={event.priceMoney} title={event.eventName} description={event.eventDescription} members={event.teamSize} entryFee={event.entryFee} onClick={() => handleEventCardClick(event.eventId)}/> */}
+                    <ThreeDCardDemo prize={event.priceMoney} title={event.eventName} description={event.eventDescription} members={event.teamSize} entryFee={event.entryFee} onClick={() => handleEventCardClick(event.eventId)}/>
+                    {selectedEvents.includes(event.eventId) && (
+                        <input
+                            type="text"
+                            placeholder="Additional Details"
+                            value={additionalDetails[selectedEvents.indexOf(event.eventId)] || ''}
+                            onChange={(e) => handleAdditionalDetailsChange(selectedEvents.indexOf(event.eventId), e.target.value)}
+                            onClick={(e) => e.stopPropagation()} // Stop event propagation
+                        />
+                    )}
+                </div>
 
             ))}
+                    {/* <EventSelector items={events} /> */}
+
             {/* Display selected event IDs and additional details */}
-            {/* <div >
-                <h2>Selected Events</h2>
+            <div >
+                <h2 className="text-white">Selected Events</h2>
                 <ul>
                     {selectedEvents.map((eventId, index) => (
-                        <li key={eventId}>
+                        <li key={eventId} className="text-white">
                             Event ID: {eventId}, Additional Details: {additionalDetails[index]}
                         </li>
                     ))}
                 </ul>
                 
-            </div> */}
+            </div>
             </div>
             <button
                     className="bg-orange-600 ml-56 rounded-md text-3xl px-6 py-3 items-center justify-center mt-10"

@@ -14,7 +14,6 @@ const {
   User,
   Event,
   RegisteredTeam,
-  // TeamMembers,
   Participants,
   Invitation,
 } = require("./db");
@@ -22,7 +21,7 @@ const {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 const PORT = process.env.PORT || 4000;
-const IP = "10.60.41.209";
+// const IP = "10.60.41.209";
 
 //Impression
 let visitCount = 0;
@@ -42,6 +41,7 @@ app.get("/api/visitCount", (req, res) => {
 // Api
 
 app.get("/", (req, res) => {
+  console.log("hiiiii");
   res.json({
     msg: "hi there",
   });

@@ -9,7 +9,7 @@ function Header() {
     <>
       <div
         id="div-conatiner"
-        className=" bg-[#000] bg-opacity-40 grid grid-cols-8 text-2xl fixed z-10 top-0 w-full left-0 pt-2 text-white"
+        className=" bg-blue bg-opacity-100 grid grid-cols-8 text-2xl fixed z-10 top-0 w-full left-0 pt-2 text-white -33"
       >
         <a href="/" className="transition-transform transform hover:scale-105">
           <img src="/logo.png " className="col-span-2 pb-4"></img>
@@ -42,6 +42,7 @@ function Header() {
         </a>
         <div className="flex items-center justify-end pr-6 col-span-1 transition-transform transform hover:scale-105">
           <CiMenuFries />
+          
         </div>
       </div>
     </>

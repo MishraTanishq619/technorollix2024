@@ -32,7 +32,7 @@ export const TypewriterEffect = ({
         }
       );
     }
-  }, [isInView]);
+  }, []);
 
   const renderWords = () => {
     return (
