@@ -28,7 +28,6 @@ export default function LampContainer({ children, className }) {
   return (
     <div className=
       " h-screen w-full">
-      {/* <Boxes/> */}
       <BackgroundBeams/>
     <div
       className={cn(

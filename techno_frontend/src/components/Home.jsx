@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import TypewriterEffectSmoothDemo from "./typeWriterDemo";
 import HeroParallaxDemo from "./heroParalloxEvents";
 
+
 function Home() {
     const [isOpen, setIsOpen] = useState(false);
 
