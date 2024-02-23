@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import Countdown from "./Countdown";
-import { useState, useEffect } from 'react';
-import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
+import { useState, useEffect } from "react";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import Button from "./ui/movingBorderButton";
 import { Boxes } from "./ui/boxes";
@@ -10,7 +10,6 @@ import LampContainer from "./ui/lamp";
 import { motion } from "framer-motion";
 import TypewriterEffectSmoothDemo from "./typeWriterDemo";
 import HeroParallaxDemo from "./heroParalloxEvents";
-
 
 function Home() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +19,7 @@ function Home() {
 	};
 
 	const handleClosePopup = (event) => {
-		if (event.target.classList.contains('overlay')) {
+		if (event.target.classList.contains("overlay")) {
 			setIsOpen(false);
 		}
 	};
@@ -36,31 +35,31 @@ function Home() {
 
 	useEffect(() => {
 		// Fetch visit count from the API
-		fetch('http://localhost:4000/api/visitCount')
-			.then(response => response.json())
-			.then(data => {
-				console.log(data)
+		fetch("http://localhost:4000/api/visitCount")
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
 				setVisitCount(data.visitCount);
 			})
-			.catch(error => console.error('Error fetching visit count:', error));
+			.catch((error) =>
+				console.error("Error fetching visit count:", error)
+			);
 
-		fetch('http://localhost:4000/api/allParticipants')
-			.then(response => response.json())
-			.then(data => {
+		fetch("http://localhost:4000/api/allParticipants")
+			.then((response) => response.json())
+			.then((data) => {
 				// Assuming the response data is an array of participants
 				// Calculate the total number of participants
 				const totalParticipants = data.length;
 				console.log(totalParticipants);
 				setParticipantCount(totalParticipants);
 			})
-			.catch(error => {
-				console.error('Error fetching participant data:', error);
+			.catch((error) => {
+				console.error("Error fetching participant data:", error);
 			});
 	}, []);
 
-
 	return (
-
 		<div className="flex flex-col items-center  text-white  justify-center h-full w-full overflow-x-hidden overflow-y-scroll">
 			{/* <Boxes /> */}
 
@@ -80,20 +79,31 @@ function Home() {
 						alt="Logo"
 						className="h-[12%]"
 					/>
-					<div className="flex justify-center"><TypewriterEffectSmoothDemo /></div>
+					<div className="flex justify-center">
+						<TypewriterEffectSmoothDemo />
+					</div>
 
-					{/* <div className="flex items-center justify-center mb-0">
+					<div className="flex items-center justify-center mb-0">
 						<Countdown />
-					</div> */}
+					</div>
 				</motion.h1>
 			</LampContainer>
-			<Button className=" px-6 py-2 rounded-md transition-transform transform hover:scale-105" onClick={handleNormalButtonClick}><p className="text-2xl">Register</p></Button>
+			<Button
+				className=" px-6 py-2 rounded-md transition-transform transform hover:scale-105"
+				onClick={handleNormalButtonClick}
+			>
+				<p className="text-2xl">Register</p>
+			</Button>
 			{isOpen && (
 				<div className="overlay" onClick={handleClosePopup}>
 					<GoogleLogin
-						onSuccess={async credentialResponse => {
-							const userResponse = jwtDecode(credentialResponse.credential)
-							const result = await fetch(`http://localhost:4000/api/user/${userResponse.email}`);
+						onSuccess={async (credentialResponse) => {
+							const userResponse = jwtDecode(
+								credentialResponse.credential
+							);
+							const result = await fetch(
+								`http://localhost:4000/api/user/${userResponse.email}`
+							);
 							console.log(result);
 							if (result.status === 409) {
 								window.location.href = `/registration/next?emailRef=${userResponse.email}`;
@@ -102,7 +112,7 @@ function Home() {
 							}
 						}}
 						onError={() => {
-							console.log('Login Failed');
+							console.log("Login Failed");
 						}}
 					/>
 				</div>
@@ -111,6 +121,5 @@ function Home() {
 		</div>
 	);
 }
-
 
 export default Home;
