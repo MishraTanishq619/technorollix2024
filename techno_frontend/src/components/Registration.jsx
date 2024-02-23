@@ -106,7 +106,8 @@ function Registration() {
     // isNumber(numArr);
     // if (isNumber) {
     if (length == 10) {
-      alert("sahi hai");
+      // alert("sahi hai");
+      handleNormalButtonClick();
     } else {
       alert("invalid phone number");
       // }
@@ -114,9 +115,9 @@ function Registration() {
   };
 
   return (
-    <div className="absolute text-white flex flex-col items-center justify-center ">
+    <div className="absolute text-white bg-white-300 flex flex-col items-center justify-center ">
       <p className="text-4xl mb-2">REGISTRATION</p>
-      <div className="border border-gray-3000 px-4 flex-col flex-wrap">
+      <div className="border border-blue-3000 px-4 flex-col flex-wrap">
         <div className="flex justify-center items-center rounded-full ">
           <img src={pic} alt="Your Image" className=" rounded-full" />
         </div>
@@ -223,7 +224,7 @@ function Registration() {
 						className=" bg-orange-600 m-2 mb-4  rounded-md text-3xl px-6 py-3"
 						onClick={() => {
 							try {
-								fetch("http://localhost:4000/api/create/user", {
+								fetch("http://technorollix.opju.ac.in:4000/api/create/user", {
 									method: "POST",
 									body: JSON.stringify({
 										userEmail: email,
@@ -275,7 +276,7 @@ function Registration() {
           <div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full">
             <button
               className="bg-orange-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform transform hover:scale-105"
-              onClick={(handleNormalButtonClick, phoneValidation)}
+              onClick={(phoneValidation)}
             >
               Register
             </button>
@@ -303,7 +304,7 @@ function Registration() {
                     className=" bg-orange-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
                     onClick={() => {
                       try {
-                        fetch("http://localhost:4000/api/create/user", {
+                        fetch("http://10.60.200.201:4000/api/create/user", {
                           method: "POST",
                           body: JSON.stringify({
                             userEmail: email,

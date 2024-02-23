@@ -6,7 +6,7 @@ import { CiMenuFries } from "react-icons/ci";
 
 function Header() {
 	// console.log(globalThis.innerWidth);
-	return <>{globalThis.innerWidth > 780 ? <WebLook /> : <MobLook />}</>;
+	return <>{globalThis.innerWidth < 780 ?<MobLook /> : <WebLook /> }</>;
 }
 
 const WebLook = () => {
@@ -14,14 +14,14 @@ const WebLook = () => {
 		<>
 			<div
 				id="div-conatiner"
-				className=" bg-[#000] bg-opacity-40 flex justify-between  text-2xl fixed z-10 top-0 w-full left-0 pt-2 text-white"
+				className=" bg-[#000] bg-opacity-40 h-[4rem] flex justify-between  text-2xl fixed z-10 top-0 w-full left-0 pt-1 text-white"
 			>
 				<div className="flex justify-around w-[35%]">
 					<a
 						href="/"
 						className="transition-transform transform hover:scale-105"
 					>
-						<img src="/logo.png " className=" pb-4"></img>
+						<img src="/logo.png " className=" pb-4 h-[5rem]"></img>
 					</a>
 				</div>
 

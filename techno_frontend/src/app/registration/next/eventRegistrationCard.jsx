@@ -17,7 +17,7 @@ function EventsRegistrationPage() {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:4000/api/allEvents')
+        fetch('http://technorollix.opju.ac.in:4000/api/allEvents')
             .then(response => response.json())
             .then(data => setEvents(data))
             .catch(error => console.error('Error fetching events:', error));
@@ -89,7 +89,7 @@ function EventsRegistrationPage() {
                 className="bg-orange-600 ml-56 rounded-md text-3xl px-6 py-3 items-center justify-center mt-10"
                 onClick={() => {
                     try {
-                        fetch("http://localhost:4000/api/team-registration/event", {
+                        fetch("http://technorollix.opju.ac.in:4000/api/team-registration/event", {
                             method: "POST",
                             body: JSON.stringify({
                                 eventId: selectedEvents,

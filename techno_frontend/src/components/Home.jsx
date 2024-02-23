@@ -26,19 +26,20 @@ function Home() {
     const [visitCount, setVisitCount] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:4000/api/visitCount')
+        fetch('http://10.60.200.201:4000/api/visitCount')
             .then(response => response.json())
             .then(data => setVisitCount(data.visitCount))
             .catch(error => console.error('Error fetching visit count:', error));
 
-        fetch('http://localhost:4000/api/allParticipants')
+        fetch('http://10.60.200.201:4000/api/allParticipants')
             .then(response => response.json())
             .then(data => setParticipantCount(data.length))
             .catch(error => console.error('Error fetching participant data:', error));
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center bg-cover bg-fixed bg-no-repeat bg-center bg-[url('/star-wars-fight.png')] h-full w-full overflow-x-hidden overflow-y-scroll">
+        <div className="flex flex-col items-center justify-center  h-full w-full overflow-x-hidden overflow-y-scroll">
+            
             <LampContainer>
                 <motion.h1
                     initial={{ opacity: 0.5, y: 450 }}
@@ -68,7 +69,7 @@ function Home() {
                     <GoogleLogin
                         onSuccess={async credentialResponse => {
                             const userResponse = jwtDecode(credentialResponse.credential)
-                            const result = await fetch(`http://localhost:4000/api/user/${userResponse.email}`);
+                            const result = await fetch(`http://10.60.200.201:4000/api/user/${userResponse.email}`);
                             console.log(result);
                             if (result.status === 409) {
                                 window.location.href = `/registration/next?emailRef=${userResponse.email}`;
