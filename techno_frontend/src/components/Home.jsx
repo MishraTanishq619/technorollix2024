@@ -39,7 +39,7 @@ function Home() {
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center h-full w-full overflow-x-hidden overflow-y-scroll">
+        <div className="flex flex-col items-center justify-center bg-cover bg-fixed bg-no-repeat bg-center bg-[url('/star-wars-fight.png')] h-full w-full overflow-x-hidden overflow-y-scroll">
             <LampContainer>
                 <motion.h1
                     initial={{ opacity: 0.5, y: 450 }}
