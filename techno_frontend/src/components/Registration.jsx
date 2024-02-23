@@ -77,6 +77,41 @@ function Registration() {
       setIsOpen(false);
     }
   };
+  // const isNumber = (numArr) => {
+  //   // let flag = true;
+  //   for (let i = 0; i < numArr.length; i++) {
+  //     if (
+  //       numArr[i] != "0" ||
+  //       "1" ||
+  //       "2" ||
+  //       "3" ||
+  //       "4" ||
+  //       "5" ||
+  //       "6" ||
+  //       "7" ||
+  //       "8" ||
+  //       "9"
+  //     ) {
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  // };
+
+  const phoneValidation = () => {
+    // console.log(typeof phone);
+    const data = phone;
+    const numArr = data.toString();
+    const length = numArr.length;
+    // isNumber(numArr);
+    // if (isNumber) {
+    if (length == 10) {
+      alert("sahi hai");
+    } else {
+      alert("invalid phone number");
+      // }
+    }
+  };
 
   return (
     <div className="absolute text-white flex flex-col items-center justify-center ">
@@ -98,7 +133,7 @@ function Registration() {
             />
             <div className="flex flex-col my-8 mx-2">
               <div className="flex items-start">
-                <p className="ml-2 text-sm xl:text-2xl">Email</p>
+                <p className="ml-2 text-sm xl:text-2xl">EMAIL </p>
               </div>
               <input
                 type="email"
@@ -111,6 +146,7 @@ function Registration() {
             </div>
             <InputBox
               onChange={(e) => {
+                // isNumber(e.target.value);
                 setPhone(e.target.value);
               }}
               className=""
@@ -239,7 +275,7 @@ function Registration() {
           <div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full">
             <button
               className="bg-orange-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform transform hover:scale-105"
-              onClick={handleNormalButtonClick}
+              onClick={(handleNormalButtonClick, phoneValidation)}
             >
               Register
             </button>
