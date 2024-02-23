@@ -50,9 +50,9 @@ const WebLook = () => {
 					>
 						CONTACT
 					</a>
-					{/* <div className="flex items-center justify-end pr-6  transition-transform transform hover:scale-105">
+					<div className="flex items-center justify-end pr-6  transition-transform transform hover:scale-105">
 						<CiMenuFries />
-					</div> */}
+					</div>
 				</div>
 			</div>
 		</>

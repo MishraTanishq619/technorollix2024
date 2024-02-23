@@ -26,16 +26,18 @@ export function LampDemo() {
 
 export default function LampContainer({ children, className }) {
   return (
+    <div className=
+      " h-screen w-full">
+      {/* <Boxes/> */}
+      <BackgroundBeams/>
     <div
       className={cn(
-        "relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-transparent w-full rounded-md z-0",
+        "relative flex h-full max-[600px]:h-2/3 flex-col items-center justify-center overflow-hidden bg-transparent w-full rounded-md z-0",
         className
       )}
     >
         
-			<BackgroundBeams/>
-        <Boxes/>
-      <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0 ">
+      <div className="relative flex w-full flex-1 scale-y-25 items-center justify-center isolate z-0 ">
         <motion.div
           initial={{ opacity: 0.5, width: "15rem" }}
           whileInView={{ opacity: 1, width: "60rem" }}
@@ -68,12 +70,12 @@ export default function LampContainer({ children, className }) {
           <div className="absolute top-50 w-40 h-[100%] right-0 bg-slate-950  bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
           <div className="absolute top-50 w-[100%] right-0 bg-slate-950 h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
         </motion.div>
-        <div className="absolute top-1/2 h-48 w-full translate-y-12 scale-x-150 bg-slate-950 blur-2xl"></div>
-        <div className="absolute top-1/2 z-50 h-48 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
+        <div className="absolute  h-48 w-full translate-y-12 scale-x-150 bg-slate-950 blur-2xl"></div>
+        <div className="absolute  z-50 h-48 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
         <div className="absolute inset-auto z-50 h-36 w-[28rem] -translate-y-1/2 rounded-full bg-cyan-500 opacity-50 blur-3xl"></div>
         <motion.div
-          initial={{ width: "25rem" }}
-          whileInView={{ width: "46rem" }}
+          initial={{ width: "15rem" }}
+          whileInView={{ width: "65rem" }}
           transition={{
             delay: 0.3,
             duration: 0.8,
@@ -82,8 +84,8 @@ export default function LampContainer({ children, className }) {
           className="absolute inset-auto z-30 h-36 w-64 -translate-y-[6rem] rounded-full bg-cyan-400 blur-2xl"
         ></motion.div>
         <motion.div
-          initial={{ width: "25rem" }}
-          whileInView={{ width: "46rem" }}
+          initial={{ width: "15rem" }}
+          whileInView={{ width: "65rem" }}
           transition={{
             delay: 0.3,
             duration: 0.8,
@@ -98,6 +100,7 @@ export default function LampContainer({ children, className }) {
       <div className="relative z-50 flex -translate-y-80 flex-col items-center px-5">
         {children}
       </div>
+    </div>
     </div>
   );
 }

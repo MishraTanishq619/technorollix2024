@@ -76,7 +76,7 @@ function Countdown() {
 			<span className="bg-gray-500 p-4 m-2 rounded-md flex items-center text-[min(3vw,2rem)] max-md:m-[2px] max-md:p-3 max-md:text-xl">
 				{second1}
 			</span>
-			<span className="bg-gray-500 p-4 m-2 rounded-md flex items-center text-[min(3vw,2rem)] max-md:m-[2px] max-md:p-3 max-md:text-xl">
+			<span className="bg-gray-500 text-white p-4 m-2 rounded-md flex items-center text-[min(3vw,2rem)] max-md:m-[2px] max-md:p-3 max-md:text-xl">
 				{second2}
 			</span>
 		</div>
