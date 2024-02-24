@@ -4,7 +4,7 @@ const ComponentFunc = async (eventId, emailRef) => {
 	let response = "ahwbdhwafwa";
 	console.log(eventId, emailRef);
 	response = await fetch(
-		"http://10.60.41.209:4000/api/event/invite/status/byInviter/eventId",
+		"http://technorollix.opju.ac.in:4000/api/event/invite/status/byInviter/eventId",
 		{
 			method: "POST",
 			body: JSON.stringify({

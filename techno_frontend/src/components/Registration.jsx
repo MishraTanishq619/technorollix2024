@@ -310,7 +310,7 @@ function Registration() {
                     className=" bg-orange-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
                     onClick={() => {
                       try {
-                        fetch("http://10.60.41.209:4000/api/create/user", {
+                        fetch("http://technorollix.opju.ac.in:4000/api/create/user", {
                           method: "POST",
                           body: JSON.stringify({
                             userEmail: email,

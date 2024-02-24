@@ -22,7 +22,7 @@ const {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 const PORT = process.env.PORT || 4000;
-// const IP = "10.60.41.209";
+
 
 //Impression
 let visitCount = 0;

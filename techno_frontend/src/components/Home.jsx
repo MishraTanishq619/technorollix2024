@@ -29,14 +29,14 @@ function Home() {
 	const [visitCount, setVisitCount] = useState(0);
 
 	useEffect(() => {
-		fetch("http://10.60.41.209:4000/api/visitCount")
+		fetch("http://technorollix.opju.ac.in:4000/api/visitCount")
 			.then((response) => response.json())
 			.then((data) => setVisitCount(data.visitCount))
 			.catch((error) =>
 				console.error("Error fetching visit count:", error)
 			);
 
-		fetch("http://10.60.41.209:4000/api/allParticipants")
+		fetch("http://technorollix.opju.ac.in:4000/api/allParticipants")
 			.then((response) => response.json())
 			.then((data) => setParticipantCount(data.length))
 			.catch((error) =>
@@ -85,7 +85,7 @@ function Home() {
 								credentialResponse.credential
 							);
 							const result = await fetch(
-								`http://10.60.41.209:4000/api/user/${userResponse.email}`
+								`http://technorollix.opju.ac.in:4000/api/user/${userResponse.email}`
 							);
 							console.log(result);
 							if (result.status === 409) {
