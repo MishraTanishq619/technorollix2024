@@ -35,7 +35,7 @@ const page = () => {
 	// setMyEvents(reqEvents);
 
 	const validInputEmailHandler = async (email, teamId) => {
-		console.log(email, teamId);
+		// console.log(email, teamId);
 
 		// to get team id
 		let response = await fetch(
@@ -54,11 +54,11 @@ const page = () => {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
+				// console.log(data);
 				return data;
 			})
 			.catch((error) => console.error("Error fetching TeamId:", error));
-		console.log("response: ", response);
+		// console.log("response: ", response);
 	};
 
 	const invalidInputEmailHandler = () => {
@@ -133,6 +133,7 @@ const page = () => {
 													reqTeamsArray[index]
 											  )
 											: invalidInputEmailHandler();
+										window.location.reload();
 									}}
 								>
 									<span className="relative">Invite</span>
