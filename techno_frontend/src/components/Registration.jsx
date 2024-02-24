@@ -2,6 +2,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import InputBox from "./InputBox";
 import { useRouter, useSearchParams } from "next/navigation";
+import Button from "./ui/movingBorderButton";
+
+import localFont from 'next/font/local'
+const subwayFont = localFont({src: '../app/fonts/subway.ttf'})
 
 function Registration() {
   const [name, setName] = useState("");
@@ -274,12 +278,12 @@ function Registration() {
 						NEXT
 					</button> */}
           <div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full">
-            <button
-              className="bg-orange-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform transform hover:scale-105"
+            <Button
+              className={` text-3xl px-6 rounded-md transition-transform transform hover:scale-105 ${subwayFont.className}`}
               onClick={(phoneValidation)}
             >
-              Register
-            </button>
+              <p className="text-2xl">Register</p>
+            </Button>
             {isOpen && (
               <div className="overlay" onClick={handleClosePopup}>
                 <div className="bg-white shadow-md rounded-lg p-6">

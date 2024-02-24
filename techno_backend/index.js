@@ -34,8 +34,8 @@ app.use("/", (req, res, next) => {
 
 // Endpoint to get the current visit count
 app.get("/api/visitCount", (req, res) => {
-  visitCount= visitCount;
-  res.json({visitCount} );
+  visitCount = visitCount;
+  res.json({ visitCount });
 });
 
 // Api
@@ -50,14 +50,14 @@ app.get("/", (req, res) => {
 app.post("/api/create/user", async (req, res) => {
   try {
     const user = req.body;
-    const isExsitingUser = await User.findOne({userEmail: user.userEmail});
+    const isExsitingUser = await User.findOne({ userEmail: user.userEmail });
     if (isExsitingUser) {
-      const exsitingUser = await User.findOneAndUpdate({userEmail: user.userEmail},user);
-      return res.status(205).json(`Updated details ${user}`); 
-    // return res.status(409).json(`User already Exist ${exsitingUser}`)
+      const exsitingUser = await User.findOneAndUpdate({ userEmail: user.userEmail }, user);
+      return res.status(205).json(`Updated details ${user}`);
+      // return res.status(409).json(`User already Exist ${exsitingUser}`)
     }
     const newUser = await User.create(req.body);
-    res.status(201).json(newUser); 
+    res.status(201).json(newUser);
   } catch (error) {
     res.status(500).send(`Error creating user: Error ${error}`);
   }
@@ -93,8 +93,9 @@ app.get("/api/user/:email", async (req, res) => {
     const user = await User.findOne({ userEmail: userEmail });
     if (!user) {
       return res.status(404).send(`User not found: email: ${userEmail}`);
-    }else{
-    return res.status(409).json(user);}
+    } else {
+      return res.status(409).json(user);
+    }
   } catch (error) {
     res.status(500).send(`Error fetching user details: ${error}`);
   }
@@ -128,10 +129,10 @@ app.post("/api/create/event", async (req, res) => {
   }
 });
 
-app.delete("/api/delete/event:eventId",async(req,res)=>{
+app.delete("/api/delete/event:eventId", async (req, res) => {
   try {
     const eventId = res.params.eventId
-    const reqEvent = await Event.findOneAndDelete({eventId: eventId})
+    const reqEvent = await Event.findOneAndDelete({ eventId: eventId })
     res.status(200).send(`Event deleted event ID = ${eventId}`)
   } catch (error) {
     res.status(500).send(`error deleting event=> error = ${error}`)
@@ -155,7 +156,7 @@ app.post("/api/team-registration/event", async (req, res) => {
   try {
     // const leader = req.params.email;
     // const leader = req.headers.user_email;
-    const { eventId,leader, additionalDetails } = req.body;
+    const { eventId, leader, additionalDetails } = req.body;
     if (eventId.length !== additionalDetails.length) {
       return res
         .status(400)
@@ -214,10 +215,10 @@ app.post("/api/team-registration/event", async (req, res) => {
     res.status(500).send(`Error regitring team=> error: ${error}`);
   }
 });
-app.delete("/api/delete/team:teamId",async(req,res)=>{
+app.delete("/api/delete/team:teamId", async (req, res) => {
   try {
     const teamId = res.params.teamId
-    const reqEvent = await RegisteredTeam.findOneAndDelete({teamId: teamId})
+    const reqEvent = await RegisteredTeam.findOneAndDelete({ teamId: teamId })
     res.status(200).send(`Team deleted teaam ID = ${teamId}`)
   } catch (error) {
     res.status(500).send(`error deleting team=> error = ${error}`)
@@ -280,10 +281,10 @@ app.post("/api/register/participant", async (req, res) => {
       );
   }
 });
-app.delete("/api/delete/participants:participantId",async(req,res)=>{
+app.delete("/api/delete/participants:participantId", async (req, res) => {
   try {
     const participantId = res.params.participantId
-    const reqEvent = await Participants.findOneAndDelete({participantEmail: participantId})
+    const reqEvent = await Participants.findOneAndDelete({ participantEmail: participantId })
     res.status(200).send(`Participant deleted participant ID = ${eventId}`)
   } catch (error) {
     res.status(500).send(`error deleting participant=> error = ${error}`)
@@ -325,7 +326,7 @@ app.get("/api/participant/eventId/:email", async (req, res) => {
     participants.forEach(element => {
       eventIdArray.push(element.eventId)
     });;
-    res.json(eventIdArray );
+    res.json(eventIdArray);
   } catch (error) {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
@@ -367,6 +368,9 @@ app.post("/api/create/team-invite", async (req, res) => {
         error: `Error1 Inviting user ${inviteeEmail} with team ${teamId} by leader ${inviterEmail} \nerror: ${error}`,
       });
     }
+    const totalInvitation = await Invitation.countDocuments({
+      inviterEmail: inviterEmail, teamId: teamId,status: {$ne: "rejected"}
+    });
     const isInvited = await Invitation.findOne({
       teamId: { $eq: teamId },
       inviterEmail: { $eq: inviterEmail },
@@ -403,17 +407,21 @@ app.post("/api/create/team-invite", async (req, res) => {
           `User: ${inviteeEmail} has joined different team for ${team.eventId}`
         );
     }
-    const invitationId = generateInvitationId(teamId,inviteeEmail)
-    const invitation = await Invitation.create({
-      invitationId: invitationId,
-      eventId: team.eventId,
-      teamId: teamId,
-      inviterEmail: inviterEmail,
-      inviteeEmail: inviteeEmail,
-    });
-    console.log(invitation);
-    const sendMail = await mailer(invitation.inviteeEmail, teamId);
-    res.status(201).json(invitation);
+
+    if (totalInvitation < event.teamSize-1) {
+
+      const invitationId = generateInvitationId(teamId, inviteeEmail)
+      const invitation = await Invitation.create({
+        invitationId: invitationId,
+        eventId: team.eventId,
+        teamId: teamId,
+        inviterEmail: inviterEmail,
+        inviteeEmail: inviteeEmail,
+      });
+      console.log(invitation);
+      const sendMail = await mailer(invitation.inviteeEmail, teamId);
+      res.status(201).json(invitation);
+    } else { return res.status(409).send(`Error3 Limit cross`); }
   } catch (error) {
     res
       .status(500)
@@ -433,7 +441,7 @@ app.put("/api/update/team-invite", async (req, res) => {
 
     const invitation = await RegisteredTeam.findOne({ teamId: teamId });
     // If accepted, decline other invitations for the same event
-    if (acceptedInvite) {
+    if (response === "accept") {
       await Invitation.updateMany(
         {
           eventId: invitation.eventId,
@@ -452,7 +460,7 @@ app.put("/api/update/team-invite", async (req, res) => {
         registered,
       });
     } else {
-      return res.status(404).send("Invitation not found");
+      return res.status(404).send("rejected");
     }
   } catch (error) {
     res
@@ -466,7 +474,7 @@ app.put("/api/update/team-invite", async (req, res) => {
 app.get("/api/event/invitations/email/:email", async (req, res) => {
   const request = req.params.email;
   try {
-    const invitation = await Invitation.find({ inviteeEmail: request ,status: 'pending'});
+    const invitation = await Invitation.find({ inviteeEmail: request, status: 'pending' });
     const totalInvitation = await Invitation.countDocuments({
       inviteeEmail: request, status: 'pending'
     });
@@ -500,7 +508,19 @@ app.get("/api/event/invite/status/:email", async (req, res) => {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
 });
-
+app.get("/api/event/invite/status/teamId", async (req, res) => {
+  const {inviterEmail,teamId} = req.params.email;
+  try {
+    const invitation = await Invitation.find({ inviterEmail: request });
+    const totalInvitation = await Invitation.countDocuments({
+      inviterEmail: request,
+    });
+    res.json({ totalInvitation, invitation });
+  } catch (error) {
+    res.status(500).send(`Error fetching participants : ${error}`);
+  }
+});
+// inviterEmail: inviterEmail, teamId: teamId,status: {$ne: "rejected"}
 app.get("/api/event/allInvites", async (req, res) => {
   try {
     const invitation = await Invitation.find();
@@ -541,7 +561,7 @@ function generateTeamId(EventName, leader) {
   return `team-${fooId}`;
 }
 
-function generateInvitationId(teamId,invitiiEmail) {
+function generateInvitationId(teamId, invitiiEmail) {
   // const EventNameChars = eventId;
   // const leaderChars = EventId.substring(0, 7);
 
@@ -552,7 +572,7 @@ function generateInvitationId(teamId,invitiiEmail) {
 
   return fooId;
 }
-app.delete("/api/delete/event/purakhatam",async(req,res)=>{
+app.delete("/api/delete/event/purakhatam", async (req, res) => {
   try {
     // const eventId = res.params.eventId
     const reqEvent = await Event.deleteMany()
@@ -561,7 +581,7 @@ app.delete("/api/delete/event/purakhatam",async(req,res)=>{
     res.status(500).send(`error deleting event=> error = ${error}`)
   }
 })
-app.delete("/api/delete/team/purakhatam",async(req,res)=>{
+app.delete("/api/delete/team/purakhatam", async (req, res) => {
   try {
     // const eventId = res.params.eventId
     const reqEvent = await RegisteredTeam.deleteMany()
@@ -570,7 +590,7 @@ app.delete("/api/delete/team/purakhatam",async(req,res)=>{
     res.status(500).send(`error deleting event=> error = ${error}`)
   }
 })
-app.delete("/api/delete/user/purakhatam",async(req,res)=>{
+app.delete("/api/delete/user/purakhatam", async (req, res) => {
   try {
     // const eventId = res.params.eventId
     const reqEvent = await User.deleteMany()
@@ -579,7 +599,7 @@ app.delete("/api/delete/user/purakhatam",async(req,res)=>{
     res.status(500).send(`error deleting event=> error = ${error}`)
   }
 })
-app.delete("/api/delete/invitation/purakhatam",async(req,res)=>{
+app.delete("/api/delete/invitation/purakhatam", async (req, res) => {
   try {
     // const eventId = res.params.eventId
     const reqEvent = await Invitation.deleteMany()
@@ -588,7 +608,7 @@ app.delete("/api/delete/invitation/purakhatam",async(req,res)=>{
     res.status(500).send(`error deleting event=> error = ${error}`)
   }
 })
-app.delete("/api/delete/participants/purakhatam",async(req,res)=>{
+app.delete("/api/delete/participants/purakhatam", async (req, res) => {
   try {
     // const eventId = res.params.eventId
     const reqEvent = await Participants.deleteMany()

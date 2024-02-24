@@ -9,6 +9,9 @@ import { motion } from "framer-motion";
 import TypewriterEffectSmoothDemo from "./typeWriterDemo";
 import HeroParallaxDemo from "./heroParalloxEvents";
 
+import localFont from 'next/font/local'
+const myFont = localFont({src: '../app/fonts/subway.ttf'})
+
 function Home() {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -43,7 +46,7 @@ function Home() {
             <LampContainer>
                 <motion.h1
                     initial={{ opacity: 0.5, y: 450 }}
-                    whileInView={{ opacity: 1, y: 200 }}
+                    whileInView={{ opacity: 1, y: 250 }}
                     transition={{
                         delay: 0.3,
                         duration: 0.8,
@@ -61,7 +64,7 @@ function Home() {
                     <div className="flex items-center justify-center mb-0">
                         <Countdown />
                     </div>
-                    <Button className="px-6 py-2 rounded-md transition-transform transform hover:scale-105" onClick={handleNormalButtonClick}><p className="text-2xl">Register</p></Button>
+                    <Button className={`px-6 py-2 rounded-md transition-transform transform hover:scale-105 ${myFont.className}`} onClick={handleNormalButtonClick}><p className="text-2xl">Register</p></Button>
                 </motion.h1>
             </LampContainer>
             {isOpen && (

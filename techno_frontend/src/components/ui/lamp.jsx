@@ -25,7 +25,7 @@ export function LampDemo() {
 export default function LampContainer({ children, className }) {
   return (
     <div className="h-screen w-full relative overflow-hidden">
-      <BackgroundBeams />
+      {/* <BackgroundBeams /> */}
       <div
         className={cn(
           "relative flex h-full max-[600px]:h-2/3 flex-col items-center justify-center overflow-hidden bg-transparent w-full rounded-md z-0",

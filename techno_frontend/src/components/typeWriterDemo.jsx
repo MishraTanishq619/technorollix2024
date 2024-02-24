@@ -2,7 +2,7 @@
 import { TypewriterEffectSmooth } from "./ui/typeWriter";
 
 import localFont from 'next/font/local'
-const subwayFont = localFont({src: '../app/fonts/digitalDream.ttf'})
+const subwayFont = localFont({src: '../app/fonts/subway.ttf'})
 export default function TypewriterEffectSmoothDemo() {
   const words = [
     {

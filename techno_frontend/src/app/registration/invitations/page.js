@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
 import React from "react";
-import ReceivedInvitations from './eventRegistrationCard';
+import ReceivedInvitations from './invitationsReceived';
 
 function page() {
 	return (

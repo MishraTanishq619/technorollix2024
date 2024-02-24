@@ -1,4 +1,4 @@
-import AboutCard from "@/components/AboutCard";
+import AboutCard from "@/app/about/AboutCard";
 import { TracingBeam } from "@/components/ui/tracingBeam";
 import React from "react";
 import Header from "@/components/Header";

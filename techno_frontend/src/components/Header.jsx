@@ -38,7 +38,7 @@ const WebLook = () => {
 					>
 						LEGACY
 					</a>
-					<a
+					<a 
 						href="/events"
 						className="flex items-center justify-end  transition-transform transform hover:scale-105"
 					>
