@@ -363,24 +363,21 @@ app.get("/api/allParticipants", async (req, res) => {
   }
 });
 app.get("/api/participant/eventId/:email", async (req, res) => {
-  const leader = req.params.email;
+  const participantEmail = req.params.email;
   try {
     const participants = await Participants.find({
-      participantEmail: leader,
+      participantEmail: participantEmail,
     });
     let eventIdArray = [];
-    let teamIdArray = [];
     participants.forEach(element => {
       eventIdArray.push(element.eventId)
-    });
-    participants.forEach(element => {
-      teamIdArray.push(element.teamId)
-    });
-    res.json({eventIdArray, teamIdArray});
+    });;
+    res.json(eventIdArray);
   } catch (error) {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
 });
+
 app.get("/api/participant/:email", async (req, res) => {
   const participantEmail = req.params.email;
   try {
