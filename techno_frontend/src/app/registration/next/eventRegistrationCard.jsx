@@ -161,7 +161,7 @@ function EventsRegistrationPage() {
 										`HTTP error! Status: ${res.status}`
 									);
 								}
-								window.location.href = `/`;
+								window.location.href = `/registration/next/myteam?emailRef=${emailRef}`;
 								const json = await res.json();
 							})
 							.catch((error) => {
@@ -172,7 +172,7 @@ function EventsRegistrationPage() {
 					}
 				}}
 			>
-				<a href="next/success">Submit</a>
+				Submit
 			</button>
 		</div>
 	);
