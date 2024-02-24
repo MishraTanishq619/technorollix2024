@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const mailer = require("./mailer");
+const registeredEventMailer = require("./registeredMailer");
 const cors = require("cors");
 // const corsOptions = {
 //   origin: "http://localhost:3000", // Allow requests from this origin
@@ -153,7 +154,7 @@ app.get("/api/allEvents", async (req, res) => {
 app.get("/api/byEventId/:eventId", async (req, res) => {
   const eventId = req.params.eventId
   try {
-    const events = await Event.find({eventId: eventId});
+    const events = await Event.find({ eventId: eventId });
     // const numberOfEvents = await Event.countDocuments();
     // res.json({ numberOfEvents, events });
     res.json(events);
@@ -161,7 +162,17 @@ app.get("/api/byEventId/:eventId", async (req, res) => {
     res.status(500).send(`Error fetching event details: ${error}`);
   }
 });
+app.get("/api/byArrayEventId", async (req, res) => {
+  const {eventIdArr} = req.body
+  try {
 
+    const events = Event.find();
+    let reqEvents = (await events).filter((e) => eventIdArr.includes(e.eventId));
+    res.json(reqEvents);
+  } catch (error) {
+    res.status(500).send(`Error fetching event details: ${error}`);
+  }
+});
 // Team Registration
 app.post("/api/team-registration/event", async (req, res) => {
   try {
@@ -183,6 +194,7 @@ app.post("/api/team-registration/event", async (req, res) => {
     // const isParticipated = await Participants.find({eventId:{$eq : reqEvent}, teamId:{$eq : reqTeam}, participantEmail: {$eq : reqUser}});
 
     const registrations = [];
+    const registeredEventId = []; 
     for (let i = 0; i < eventId.length; i++) {
       const event = await Event.findOne({ eventId: eventId[i] });
       if (!event) {
@@ -211,11 +223,16 @@ app.post("/api/team-registration/event", async (req, res) => {
       if (participant) {
         continue;
       }
+      registeredEventId.push(event.eventId);
       await Participants.create({
         eventId: event.eventId,
         teamId: teamId,
         participantEmail: leader,
       });
+    }
+    if (registrations.length>0) {
+      
+      await registeredEventMailer(leader, registeredEventId);
     }
     const createdRegistrations = await RegisteredTeam.insertMany(registrations);
     res.status(201).json({
@@ -245,7 +262,40 @@ app.get("/api/allTeams", async (req, res) => {
     res.status(500).send(`Error fetching registered team details : ${error}`);
   }
 });
-
+app.post("/api/registeredTeam/leader/teamId", async (req, res) => {
+  const {leader,eventId} = req.body;
+  try {
+    const participants = await RegisteredTeam.findOne({
+      eventId: eventId, leader: leader
+    });
+    if (participants) {
+      
+      return res.status(409).json(participants);
+    }
+    return res.status(409).json(participants);
+  } catch (error) {
+    res.status(500).send(`Error fetching participants : ${error}`);
+  }
+});
+app.get("/api/registeredTeam/eventId/:email", async (req, res) => {
+  const leader = req.params.email;
+  try {
+    const participants = await RegisteredTeam.find({
+      leader: leader,
+    });
+    let eventIdArray = [];
+    let teamIdArray = [];
+    participants.forEach(element => {
+      eventIdArray.push(element.eventId)
+    });
+    participants.forEach(element => {
+      teamIdArray.push(element.teamId)
+    });
+    res.json({eventIdArray, teamIdArray});
+  } catch (error) {
+    res.status(500).send(`Error fetching participants : ${error}`);
+  }
+});
 // Participants
 app.post("/api/register/participant", async (req, res) => {
   // const {reqEvent, reqTeam, reqUser} = req.body;
@@ -327,21 +377,7 @@ app.get("/api/participant/:email", async (req, res) => {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
 });
-app.get("/api/participant/eventId/:email", async (req, res) => {
-  const participantEmail = req.params.email;
-  try {
-    const participants = await Participants.find({
-      participantEmail: participantEmail,
-    });
-    let eventIdArray = [];
-    participants.forEach(element => {
-      eventIdArray.push(element.eventId)
-    });
-    res.json(eventIdArray);
-  } catch (error) {
-    res.status(500).send(`Error fetching participants : ${error}`);
-  }
-});
+
 //Team-members
 app.get("/api/participant/teamMembers/:teamId", async (req, res) => {
   const teamId = req.params.teamId;
@@ -380,7 +416,7 @@ app.post("/api/create/team-invite", async (req, res) => {
       });
     }
     const totalInvitation = await Invitation.countDocuments({
-      inviterEmail: inviterEmail, teamId: teamId
+      inviterEmail: inviterEmail, teamId: teamId, status: { $ne: "rejected" },
     });
     const isInvited = await Invitation.findOne({
       teamId: { $eq: teamId },
@@ -419,7 +455,7 @@ app.post("/api/create/team-invite", async (req, res) => {
         );
     }
 
-    if (totalInvitation < event.teamSize-1) {
+    if (totalInvitation < event.teamSize - 1) {
 
       const invitationId = generateInvitationId(teamId, inviteeEmail)
       const invitation = await Invitation.create({
@@ -519,18 +555,32 @@ app.get("/api/event/invite/status/:email", async (req, res) => {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
 });
-app.get("/api/event/invite/status/byInviter/teamId", async (req, res) => {
-  const {inviterEmail,teamId} = req.body;
+app.post("/api/event/invite/status/byInviter/teamId", async (req, res) => {
+  const { inviterEmail, teamId } = req.body;
   try {
-    const invitation = await Invitation.find({ inviterEmail: inviterEmail,teamId: teamId });
+    const invitation = await Invitation.find({ inviterEmail: inviterEmail, teamId: teamId });
     const totalInvitation = await Invitation.countDocuments({
-      inviterEmail: inviterEmail,
+      inviterEmail: inviterEmail, teamId: teamId 
     });
     res.json({ totalInvitation, invitation });
   } catch (error) {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
 });
+//Post inplace of get 
+app.post("/api/event/invite/status/byInviter/eventId", async (req, res) => {
+  const { inviterEmail, eventId } = req.body;
+  try {
+    const invitation = await Invitation.find({ inviterEmail: inviterEmail, eventId: eventId });
+    const totalInvitation = await Invitation.countDocuments({
+      inviterEmail: inviterEmail, eventId: eventId 
+    });
+    res.json({ totalInvitation, invitation });
+  } catch (error) {
+    res.status(500).send(`Error fetching participants : ${error}`);
+  }
+});
+
 // inviterEmail: inviterEmail, teamId: teamId,status: {$ne: "rejected"}
 app.get("/api/event/allInvites", async (req, res) => {
   try {
@@ -628,7 +678,20 @@ app.delete("/api/delete/participants/purakhatam", async (req, res) => {
     res.status(500).send(`error deleting event=> error = ${error}`)
   }
 })
-
+app.delete("/api/delete/invitation/bySender/invitationId", async (req,res)=>{
+  const {invitationId} = req.body;
+  try {
+    const invitation = await Invitation.findOne({invitationId: invitationId, status:{$ne :"accepted"}})
+    if (invitation) {
+      await Invitation.findOneAndDelete({invitationId: invitationId})
+      return res.status(201).json(`Invitation successfully deleted`)
+    }else{
+      return res.status(404).json(`Invitation not find`)
+    }
+  } catch (error) {
+    res.status(500).send(`Error deleting invitation : ${error}`);
+  }
+})
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

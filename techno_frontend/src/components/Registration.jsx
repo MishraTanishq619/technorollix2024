@@ -24,6 +24,10 @@ function Registration() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedGender, setSelectedGender] = useState(null);
 
+	const isValidEmail = (email) => {
+		const domain = "@opju.ac.in";
+		return email.endsWith(domain);
+	};
 	// const nameRef = searchParams.get("nameRef");
 	useEffect(() => {
 		const parts = urlRef.split("/email?=");
@@ -34,15 +38,15 @@ function Registration() {
 		const recName = emailAndName[1];
 		// This code will run only once when the component mounts
 		// You can call setState here
-		if (isValidEmail(recEmail)) {
-			setisUserOPJUStudent(true);
-		}
 		setEmail(recEmail);
 		setName(recName);
 		setPic(recPicture);
 		// console.log(recEmail);
 		// console.log(recName);
 		console.log(recPicture);
+		if (isValidEmail(recEmail)) {
+			setisUserOPJUStudent(true);
+		}
 		// console.log(secondParts);
 	}, []);
 
@@ -50,10 +54,6 @@ function Registration() {
 		setSelectedGender(event.target.value);
 	};
 
-	const isValidEmail = (email) => {
-		const domain = "@opju.ac.in";
-		return email.endsWith(domain);
-	};
 	const handleNormalButtonClick = () => {
 		if (isValidEmail(email)) {
 		}
@@ -279,89 +279,68 @@ function Registration() {
 					>
 						NEXT
 					</button> */}
-					<div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full">
-						<button
-							className="bg-orange-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform transform hover:scale-105"
-							onClick={phoneValidation}
-						>
-							Register
-						</button>
-						{isOpen && (
-							<div className="overlay" onClick={handleClosePopup}>
-								<div className="bg-white shadow-md rounded-lg p-6">
-									<div className="flex items-center justify-center">
-										<img
-											className="w-24 h-24 rounded-full object-cover"
-											src={pic}
-											alt="User Avatar"
-										/>
-									</div>
-									<div className="mt-4">
-										<p className="text-lg font-semibold">
-											Name: {name}
-										</p>
-										<p className="text-gray-500">
-											Email: {email}
-										</p>
-										<p className="text-gray-500">
-											Phone no.: {phone}
-										</p>
-										<p className="text-gray-500">
-											University: {university}
-										</p>
-										<p className="text-gray-500">
-											Gender: {selectedGender}
-										</p>
-										<p className="text-gray-500">
-											Address: {district}, {state},{" "}
-											{pincode}
-										</p>
-									</div>
-									<button
-										className=" bg-orange-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
-										onClick={() => {
-											try {
-												fetch(
-													"http://10.60.41.209:4000/api/create/user",
-													{
-														method: "POST",
-														body: JSON.stringify({
-															userEmail: email,
-															userName: name,
-															userPic: pic,
-															userPhoneNumber:
-																phone,
-															userUniversity:
-																university,
-															isUserOPJUStudent:
-																isUserOPJUStudent,
-															userAddress: {
-																district:
-																	district,
-																state: state,
-																pincode:
-																	pincode,
-															},
-															userGender: gender,
-														}),
-														headers: {
-															"Content-type":
-																"application/json",
-															user_email: email,
-														},
-													}
-												)
-													.then(async (res) => {
-														if (!res.ok) {
-															throw new Error(
-																`HTTP error! Status: ${res.status}`
-															);
-														}
-														// alert("ho gya bhenco");
-														// console.log(res);
-														window.location.href = `/registration/invitations?emailRef=${email}`;
-														const json =
-															await res.json();
+          <div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full">
+            <button
+              className="bg-orange-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform transform hover:scale-105"
+              onClick={(phoneValidation)}
+            >
+              Register
+            </button>
+            {isOpen && (
+              <div className="overlay" onClick={handleClosePopup}>
+                <div className="bg-white shadow-md rounded-lg p-6">
+                  <div className="flex items-center justify-center">
+                    <img
+                      className="w-24 h-24 rounded-full object-cover"
+                      src={pic}
+                      alt="User Avatar"
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <p className="text-lg font-semibold">Name: {name}</p>
+                    <p className="text-gray-500">Email: {email}</p>
+                    <p className="text-gray-500">Phone no.: {phone}</p>
+                    <p className="text-gray-500">University: {university}</p>
+                    <p className="text-gray-500">Gender: {selectedGender}</p>
+                    <p className="text-gray-500">
+                      Address: {district}, {state}, {pincode}
+                    </p>
+                  </div>
+                  <button
+                    className=" bg-orange-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
+                    onClick={() => {
+                      try {
+                        fetch("http://10.60.41.209:4000/api/create/user", {
+                          method: "POST",
+                          body: JSON.stringify({
+                            userEmail: email,
+                            userName: name,
+                            userPic: pic,
+                            userPhoneNumber: phone,
+                            userUniversity: university,
+                            isUserOPJUStudent: isUserOPJUStudent,
+                            userAddress: {
+                              district: district,
+                              state: state,
+                              pincode: pincode,
+                            },
+                            userGender: gender,
+                          }),
+                          headers: {
+                            "Content-type": "application/json",
+                            user_email: email,
+                          },
+                        })
+                          .then(async (res) => {
+                            if (!res.ok) {
+                              throw new Error(
+                                `HTTP error! Status: ${res.status}`
+                              );
+                            }
+                            // alert("ho gya bhenco");
+                            // console.log(res);
+                            window.location.href = `/registration/next?emailRef=${email}`;
+                            const json = await res.json();
 
 														// Process the response JSON here
 													})
