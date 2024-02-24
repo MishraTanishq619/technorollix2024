@@ -150,6 +150,17 @@ app.get("/api/allEvents", async (req, res) => {
     res.status(500).send(`Error fetching event details: ${error}`);
   }
 });
+app.get("/api/byEventId/:eventId", async (req, res) => {
+  const eventId = req.params.eventId
+  try {
+    const events = await Event.find({eventId: eventId});
+    // const numberOfEvents = await Event.countDocuments();
+    // res.json({ numberOfEvents, events });
+    res.json(events);
+  } catch (error) {
+    res.status(500).send(`Error fetching event details: ${error}`);
+  }
+});
 
 // Team Registration
 app.post("/api/team-registration/event", async (req, res) => {
@@ -325,7 +336,7 @@ app.get("/api/participant/eventId/:email", async (req, res) => {
     let eventIdArray = [];
     participants.forEach(element => {
       eventIdArray.push(element.eventId)
-    });;
+    });
     res.json(eventIdArray);
   } catch (error) {
     res.status(500).send(`Error fetching participants : ${error}`);
@@ -369,7 +380,7 @@ app.post("/api/create/team-invite", async (req, res) => {
       });
     }
     const totalInvitation = await Invitation.countDocuments({
-      inviterEmail: inviterEmail, teamId: teamId,status: {$ne: "rejected"}
+      inviterEmail: inviterEmail, teamId: teamId
     });
     const isInvited = await Invitation.findOne({
       teamId: { $eq: teamId },
@@ -508,12 +519,12 @@ app.get("/api/event/invite/status/:email", async (req, res) => {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
 });
-app.get("/api/event/invite/status/teamId", async (req, res) => {
-  const {inviterEmail,teamId} = req.params.email;
+app.get("/api/event/invite/status/byInviter/teamId", async (req, res) => {
+  const {inviterEmail,teamId} = req.body;
   try {
-    const invitation = await Invitation.find({ inviterEmail: request });
+    const invitation = await Invitation.find({ inviterEmail: inviterEmail,teamId: teamId });
     const totalInvitation = await Invitation.countDocuments({
-      inviterEmail: request,
+      inviterEmail: inviterEmail,
     });
     res.json({ totalInvitation, invitation });
   } catch (error) {
