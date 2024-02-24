@@ -69,6 +69,7 @@ app.delete("api/delete/user", async (req, res) => {
     const exsitingUser = await User.findOneAndDelete({
       userEmail: user.userEmail,
     });
+    return res.status(200).send("user deleted succesfully")
   } catch (error) {
     res.status(500).send(`Error deleting user: Error ${error}`);
   }
@@ -127,6 +128,15 @@ app.post("/api/create/event", async (req, res) => {
   }
 });
 
+app.delete("/api/delete/event:eventId",async(req,res)=>{
+  try {
+    const eventId = res.params.eventId
+    const reqEvent = await Event.findOneAndDelete({eventId: eventId})
+    res.status(200).send(`Event deleted event ID = ${eventId}`)
+  } catch (error) {
+    res.status(500).send(`error deleting event=> error = ${error}`)
+  }
+})
 // to get all events
 app.get("/api/allEvents", async (req, res) => {
   try {
@@ -203,6 +213,15 @@ app.post("/api/team-registration/event", async (req, res) => {
     res.status(500).send(`Error regitring team=> error: ${error}`);
   }
 });
+app.delete("/api/delete/team:teamId",async(req,res)=>{
+  try {
+    const teamId = res.params.teamId
+    const reqEvent = await RegisteredTeam.findOneAndDelete({teamId: teamId})
+    res.status(200).send(`Team deleted teaam ID = ${teamId}`)
+  } catch (error) {
+    res.status(500).send(`error deleting team=> error = ${error}`)
+  }
+})
 
 app.get("/api/allTeams", async (req, res) => {
   try {
@@ -260,6 +279,15 @@ app.post("/api/register/participant", async (req, res) => {
       );
   }
 });
+app.delete("/api/delete/participants:participantId",async(req,res)=>{
+  try {
+    const participantId = res.params.participantId
+    const reqEvent = await Participants.findOneAndDelete({participantEmail: participantId})
+    res.status(200).send(`Participant deleted participant ID = ${eventId}`)
+  } catch (error) {
+    res.status(500).send(`error deleting participant=> error = ${error}`)
+  }
+})
 
 app.get("/api/allParticipants", async (req, res) => {
   try {
