@@ -330,6 +330,18 @@ app.get("/api/participant/eventId/:email", async (req, res) => {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
 });
+//Team-members
+app.get("/api/participant/teamMembers/:teamId", async (req, res) => {
+  const teamId = req.params.teamId;
+  try {
+    const participants = await Participants.find({
+      teamId: teamId,
+    });
+    res.json(participants);
+  } catch (error) {
+    res.status(500).send(`Error fetching participants : ${error}`);
+  }
+});
 
 // Invitation
 app.post("/api/create/team-invite", async (req, res) => {
@@ -411,11 +423,11 @@ app.post("/api/create/team-invite", async (req, res) => {
   }
 });
 
-app.put("/api/update/team-invite=:invitationId", async (req, res) => {
-  const invitationId = req.params.invitationId;
+app.put("/api/update/team-invite", async (req, res) => {
+  const { teamId, inviterEmail, inviteeEmail, response } = req.body;
   try {
     const acceptedInvite = await Invitation.findOneAndUpdate(
-      { invitationId, status: "pending" },
+      { teamId, inviteeEmail, status: "pending" },
       { status: response === "accept" ? "accepted" : "rejected" }
     );
 
@@ -451,19 +463,19 @@ app.put("/api/update/team-invite=:invitationId", async (req, res) => {
   }
 });
 
-app.get("/api/event/invitations/:email", async (req, res) => {
+app.get("/api/event/invitations/email/:email", async (req, res) => {
   const request = req.params.email;
   try {
-    const invitation = await Invitation.find({ inviteeEmail: request });
+    const invitation = await Invitation.find({ inviteeEmail: request ,status: 'pending'});
     const totalInvitation = await Invitation.countDocuments({
-      inviteeEmail: request,
+      inviteeEmail: request, status: 'pending'
     });
     res.json({ totalInvitation, invitation });
   } catch (error) {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
 });
-app.get("/api/event/invitations/:invitationId", async (req, res) => {
+app.get("/api/event/invitations/inviteId/:invitationId", async (req, res) => {
   const request = req.params.invitationId;
   try {
     const invitation = await Invitation.find({ invitationId: request });
