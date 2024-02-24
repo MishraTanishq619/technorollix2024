@@ -137,6 +137,7 @@ app.delete("/api/delete/event:eventId",async(req,res)=>{
     res.status(500).send(`error deleting event=> error = ${error}`)
   }
 })
+
 // to get all events
 app.get("/api/allEvents", async (req, res) => {
   try {
@@ -375,11 +376,13 @@ app.post("/api/create/team-invite", async (req, res) => {
           `User: ${inviteeEmail} has joined different team for ${team.eventId}`
         );
     }
+    const invitationId = generateInvitationId(teamId,inviteeEmail)
     const invitation = await Invitation.create({
+      invitationId: invitationId,
       eventId: team.eventId,
-      teamId,
-      inviterEmail,
-      inviteeEmail,
+      teamId: teamId,
+      inviterEmail: inviterEmail,
+      inviteeEmail: inviteeEmail,
     });
     console.log(invitation);
     const sendMail = await mailer(invitation.inviteeEmail, teamId);
@@ -393,11 +396,11 @@ app.post("/api/create/team-invite", async (req, res) => {
   }
 });
 
-app.put("/api/update/team-invite", async (req, res) => {
-  const { teamId, inviterEmail, inviteeEmail, response } = req.body;
+app.put("/api/update/team-invite=:invitationId", async (req, res) => {
+  const invitationId = req.params.invitationId;
   try {
     const acceptedInvite = await Invitation.findOneAndUpdate(
-      { teamId, inviteeEmail, status: "pending" },
+      { invitationId, status: "pending" },
       { status: response === "accept" ? "accepted" : "rejected" }
     );
 
@@ -445,6 +448,18 @@ app.get("/api/event/invitations/:email", async (req, res) => {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
 });
+app.get("/api/event/invitations/:invitationId", async (req, res) => {
+  const request = req.params.invitationId;
+  try {
+    const invitation = await Invitation.find({ invitationId: request });
+    const totalInvitation = await Invitation.countDocuments({
+      invitationId: request,
+    });
+    res.json(invitation);
+  } catch (error) {
+    res.status(500).send(`Error fetching participants : ${error}`);
+  }
+});
 
 app.get("/api/event/invite/status/:email", async (req, res) => {
   const request = req.params.email;
@@ -470,26 +485,25 @@ app.get("/api/event/allInvites", async (req, res) => {
 });
 
 function generateEventId(fooName, type) {
-  const first5Chars = fooName.substring(0, 5);
-
+  const first5Chars = fooName;
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
   const currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, "0");
-  const currentDay = currentDate.getDate().toString().padStart(2, "0");
-  const currentHour = currentDate.getHours().toString().padStart(2, "0");
-  const currentMinute = currentDate.getMinutes().toString().padStart(2, "0");
-  const currentSecond = currentDate.getSeconds().toString().padStart(2, "0");
+  // const currentDay = currentDate.getDate().toString().padStart(2, "0");
+  // const currentHour = currentDate.getHours().toString().padStart(2, "0");
+  // const currentMinute = currentDate.getMinutes().toString().padStart(2, "0");
+  // const currentSecond = currentDate.getSeconds().toString().padStart(2, "0");
 
   // Use type in the ID if needed
   const typeId = type ? `${type}-` : "";
 
-  const fooId = `${first5Chars}-${currentYear}${currentMonth}${currentDay}-${currentHour}${currentMinute}${currentSecond}`;
+  const fooId = `${first5Chars}-${currentYear}${currentMonth}`;
 
   return `${typeId}${fooId}`;
 }
 
 function generateTeamId(EventName, leader) {
-  const EventNameChars = EventName.substring(0, 7);
+  const EventNameChars = EventName;
   // const leaderChars = EventId.substring(0, 7);
 
   // Use type in the ID if needed
@@ -500,17 +514,62 @@ function generateTeamId(EventName, leader) {
   return `team-${fooId}`;
 }
 
-function generateInvitationId(EventName, leader) {
-  const EventNameChars = EventName.substring(0, 7);
+function generateInvitationId(teamId,invitiiEmail) {
+  // const EventNameChars = eventId;
   // const leaderChars = EventId.substring(0, 7);
 
   // Use type in the ID if needed
   // const typeId = type ? `${type}-` : '';
 
-  const fooId = `team-invite-${EventNameChars}-${leader}`;
+  const fooId = `invite-${teamId}-${invitiiEmail}`;
 
   return fooId;
 }
+app.delete("/api/delete/event/purakhatam",async(req,res)=>{
+  try {
+    // const eventId = res.params.eventId
+    const reqEvent = await Event.deleteMany()
+    res.status(200).send(`Event deleted all `)
+  } catch (error) {
+    res.status(500).send(`error deleting event=> error = ${error}`)
+  }
+})
+app.delete("/api/delete/team/purakhatam",async(req,res)=>{
+  try {
+    // const eventId = res.params.eventId
+    const reqEvent = await RegisteredTeam.deleteMany()
+    res.status(200).send(`Teams deleted all `)
+  } catch (error) {
+    res.status(500).send(`error deleting event=> error = ${error}`)
+  }
+})
+app.delete("/api/delete/user/purakhatam",async(req,res)=>{
+  try {
+    // const eventId = res.params.eventId
+    const reqEvent = await User.deleteMany()
+    res.status(200).send(`User deleted all `)
+  } catch (error) {
+    res.status(500).send(`error deleting event=> error = ${error}`)
+  }
+})
+app.delete("/api/delete/invitation/purakhatam",async(req,res)=>{
+  try {
+    // const eventId = res.params.eventId
+    const reqEvent = await Invitation.deleteMany()
+    res.status(200).send(`Invitation deleted all `)
+  } catch (error) {
+    res.status(500).send(`error deleting event=> error = ${error}`)
+  }
+})
+app.delete("/api/delete/participants/purakhatam",async(req,res)=>{
+  try {
+    // const eventId = res.params.eventId
+    const reqEvent = await Participants.deleteMany()
+    res.status(200).send(`Participants deleted all `)
+  } catch (error) {
+    res.status(500).send(`error deleting event=> error = ${error}`)
+  }
+})
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import localFont from 'next/font/local'
+const digitalFont = localFont({src: '../app/fonts/digital.ttf'})
 function Countdown() {
   const [day1, setDay1] = useState(0);
   const [hour1, setHour1] = useState(0);
@@ -59,8 +61,8 @@ function Countdown() {
   }, []);
 
   return (
-    <div className="flex text-3xl  w-auto h-24 rounded-md  mb-4 max-md:h-16 max-md:p-1  text-white">
-      <span className="glass-morphism neon-text p-4 m-2 rounded-md flex items-center max-md:m-[2px] max-md:p-3 max-md:text-xl">
+    <div className={`flex text-3xl  w-auto h-24 rounded-md  mb-4 max-md:h-16 max-md:p-1  text-white ${digitalFont.className}`}>
+      <span className={`glass-morphism neon-text p-4 m-2 rounded-md flex items-center max-md:m-[2px] max-md:p-3 max-md:text-xl`}>
         {day1}
       </span>
       <span className="glass-morphism neon-text p-4 m-2 rounded-md flex items-center max-md:m-[2px] max-md:p-3 max-md:text-xl">

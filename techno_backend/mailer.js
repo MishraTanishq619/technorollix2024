@@ -26,7 +26,7 @@ async function makeMessage(recieversList, teamId) {
 
 		const message = {
 
-			from: '"NodeMailer-Sender" <mishratanishq619@gmail.com>', // sender address
+			from: '"TechnoRollix 2k24" <technorollix@opju.ac.in>', // sender address
 
 			to: recieversList, // list of receivers
 

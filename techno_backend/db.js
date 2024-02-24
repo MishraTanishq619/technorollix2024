@@ -35,7 +35,7 @@ const User = mongoose.model('User', userSchema);
 // Define Event Schema
 // GET
 const eventSchema = new mongoose.Schema({
-  eventId: String,
+  eventId: { type: String, required: true, unique: true },
   eventName: String,
   eventDescription: String,
   eventpic: String,
@@ -84,6 +84,7 @@ const Participants = mongoose.model('Participants', participantsSchema);
 // Define Invitation Schema
 // POST, GET, PUT, DELETE
 const invitationSchema = new mongoose.Schema({
+  invitationId: { type: String, required: true, unique: true },
   eventId: String,
   teamId: String,
   inviterEmail: String,
