@@ -108,7 +108,7 @@ function EventsRegistrationPage() {
         onClick={() => {
           try {
             fetch(
-              "http://technorollix.opju.ac.in:4000/api/team-registration/event",
+              "http://10.60.41.209:4000/api/team-registration/event",
               {
                 method: "POST",
                 body: JSON.stringify({
