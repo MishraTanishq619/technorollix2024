@@ -315,6 +315,21 @@ app.get("/api/participant/:email", async (req, res) => {
     res.status(500).send(`Error fetching participants : ${error}`);
   }
 });
+app.get("/api/participant/eventId/:email", async (req, res) => {
+  const participantEmail = req.params.email;
+  try {
+    const participants = await Participants.find({
+      participantEmail: participantEmail,
+    });
+    let eventIdArray = [];
+    participants.forEach(element => {
+      eventIdArray.push(element.eventId)
+    });;
+    res.json(eventIdArray );
+  } catch (error) {
+    res.status(500).send(`Error fetching participants : ${error}`);
+  }
+});
 
 // Invitation
 app.post("/api/create/team-invite", async (req, res) => {
