@@ -18,6 +18,7 @@ const {
   Participants,
   Invitation,
 } = require("./db");
+const otpEmail = require("./otpMailer");
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -93,7 +94,7 @@ app.get("/api/user/:email", async (req, res) => {
   try {
     const user = await User.findOne({ userEmail: userEmail });
     if (!user) {
-      return res.status(404).send(`User not found: email: ${userEmail}`);
+      return res.status(404).json(`User not found: email: ${userEmail}`);
     } else {
       return res.status(409).json(user);
     }
@@ -648,6 +649,12 @@ function generateInvitationId(teamId, invitiiEmail) {
 
   return fooId;
 }
+
+app.post("/api/email/verify/otp",async (req,res)=>{
+  const {user, number} = req.body;
+  console.log(`called user= ${user} \n otp= ${number}`);
+  otpEmail(user, number)
+})
 app.delete("/api/delete/event/purakhatam", async (req, res) => {
   try {
     // const eventId = res.params.eventId

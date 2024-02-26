@@ -30,20 +30,21 @@ function Registration() {
 	};
 	// const nameRef = searchParams.get("nameRef");
 	useEffect(() => {
-		const parts = urlRef.split("/email?=");
-		const recPicture = parts[0];
-		const secondParts = parts[1];
-		const emailAndName = secondParts.split("/name?=");
-		const recEmail = emailAndName[0];
-		const recName = emailAndName[1];
+		// const parts = urlRef.split("/email?=");
+		// const recPicture = parts[0];
+		// const secondParts = parts[1];
+		// const emailAndName = secondParts.split("/name?=");
+		const recEmail = urlRef;
+		// const recEmail = emailAndName[0];
+		// const recName = emailAndName[1];
 		// This code will run only once when the component mounts
 		// You can call setState here
 		setEmail(recEmail);
-		setName(recName);
-		setPic(recPicture);
+		// setName(recName);
+		// setPic(recPicture);
 		// console.log(recEmail);
 		// console.log(recName);
-		console.log(recPicture);
+		// console.log(recPicture);
 		if (isValidEmail(recEmail)) {
 			setisUserOPJUStudent(true);
 		}
@@ -122,9 +123,9 @@ function Registration() {
 		<div className="absolute text-white bg-white-300 flex flex-col items-center justify-center ">
 			<p className="text-4xl mb-2">REGISTRATION</p>
 			<div className="border border-blue-3000 px-4 flex-col flex-wrap">
-				<div className="flex justify-center items-center rounded-full ">
+				{/* <div className="flex justify-center items-center rounded-full ">
 					<img src={pic} alt="Your Image" className=" rounded-full" />
-				</div>
+				</div> */}
 				<div id="input-holders" className="flex flex-wrap">
 					<div id="input-holder-a" className="flex-col justify-start">
 						{/* <div className="rounded-full h-40 w-40 overflow-hidden flex flex-col  mx-2"></div> */}
@@ -226,59 +227,7 @@ function Registration() {
 					</div>
 				</div>
 				<div className="btn-cotainer  row-span-2  flex justify-center items-center ">
-					{/* <button
-						className=" bg-orange-600 m-2 mb-4  rounded-md text-3xl px-6 py-3"
-						onClick={() => {
-							try {
-								fetch("http://technorollix.opju.ac.in:4000/api/create/user", {
-									method: "POST",
-									body: JSON.stringify({
-										userEmail: email,
-										userName: name,
-										userPic: pic,
-										userPhoneNumber: phone,
-										userUniversity: university,
-										isUserOPJUStudent: isUserOPJUStudent,
-										userAddress: {
-											district: district,
-											state: state,
-											pincode: pincode,
-										},
-										userGender: gender,
-									}),
-									headers: {
-										"Content-type": "application/json",
-										user_email: email,
-									},
-								})
-									.then(async (res) => {
-										if (!res.ok) {
-											throw new Error(
-												`HTTP error! Status: ${res.status}`
-											);
-										}
-										// alert("ho gya bhenco");
-										// console.log(res);
-										window.location.href = `/registration/next?emailRef=${email}`;
-										const json = await res.json();
-
-										// Process the response JSON here
-									})
-									.catch((error) => {
-										console.log(
-											"Error during fetch:",
-											error
-										);
-										// Handle the error appropriately (e.g., show a message to the user)
-									});
-								``;
-							} catch (error) {
-								console.log(error);
-							}
-						}}
-					>
-						NEXT
-					</button> */}
+					
           <div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full">
             <button
               className="bg-orange-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform transform hover:scale-105"
@@ -310,7 +259,7 @@ function Registration() {
                     className=" bg-orange-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
                     onClick={() => {
                       try {
-                        fetch("http://technorollix.opju.ac.in:4000/api/create/user", {
+                        fetch("http://10.60.41.209:4000/api/create/user", {
                           method: "POST",
                           body: JSON.stringify({
                             userEmail: email,
@@ -339,7 +288,7 @@ function Registration() {
                             }
                             // alert("ho gya bhenco");
                             // console.log(res);
-                            window.location.href = `/registration/next?emailRef=${email}`;
+                            window.location.href = `/registration/invitations?emailRef=${email}`;
                             const json = await res.json();
 
 														// Process the response JSON here
