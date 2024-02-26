@@ -127,3 +127,67 @@
 .navbar-links li a:hover {
 	color: #ff3f34;
 }
+
+
+.registration-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  
+  .registration-title {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+  }
+  
+  .form-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  
+  .input-boxes {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 1rem;
+	width: 100%;
+  }
+  
+  .gender-selection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 1rem;
+  }
+  
+  .gender-selection p {
+	font-size: 1rem;
+  }
+  
+  .gender-selection div {
+	display: flex;
+	gap: 1rem;
+  }
+  
+  .register-button {
+	margin-top: 1rem;
+  }
+  
+  .overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .modal {
+	background-color: white;
+	padding: 2rem;
+	border-radius: 0.5rem;
+  }
+  

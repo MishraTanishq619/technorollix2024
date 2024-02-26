@@ -655,6 +655,15 @@ app.post("/api/email/verify/otp",async (req,res)=>{
   console.log(`called user= ${user} \n otp= ${number}`);
   otpEmail(user, number)
 })
+app.delete("/api/delete/event/ekKhatam:eventId", async (req, res) => {
+  try {
+    const eventId = res.params.eventId
+    const reqEvent = await Event.deleteMany({eventId:eventId})
+    res.status(200).send(`Event deleted all ${reqEvent}`)
+  } catch (error) {
+    res.status(500).send(`error deleting event=> error = ${error}`)
+  }
+})
 app.delete("/api/delete/event/purakhatam", async (req, res) => {
   try {
     // const eventId = res.params.eventId

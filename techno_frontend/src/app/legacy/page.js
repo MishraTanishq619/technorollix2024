@@ -3,6 +3,8 @@ import React from "react";
 import EventsRegistrationPage from "../registration/next/eventRegistrationCard";
 import LegacyCardsContainer from "@/components/LegacyCardsContainer";
 import Header from "@/components/Header";
+import {LayoutGridDemo} from "@/components/galleryContents";
+
 
 const page = () => {
 	return (
@@ -13,6 +15,10 @@ const page = () => {
 				Legacy
 			</p>
 			<LegacyCardsContainer />
+			<div>
+
+			{/* <LayoutGridDemo/> */}
+			</div>
 		{/* </div> */}
 		</main>
 	);

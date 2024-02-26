@@ -47,6 +47,8 @@ const Event = mongoose.model('Event', eventSchema);
 
 
 
+
+
 // Define Team Registration Schema
 // POST, GET
 const teamRegistrationSchema = new mongoose.Schema({

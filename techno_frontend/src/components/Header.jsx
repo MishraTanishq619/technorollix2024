@@ -14,12 +14,12 @@ const WebLook = () => {
 		<>
 			<div
 				id="div-conatiner"
-				className=" bg-[#000] bg-opacity-40 h-[4rem] flex justify-between  text-2xl fixed z-10 top-0 w-full left-0 pt-1 text-white"
+				className=" bg-[#000] bg-opacity-70 h-[4rem] flex justify-between  text-2xl fixed z-10 top-0 w-full left-0 pt-1 text-white"
 			>
 				<div className="flex justify-around w-[35%]">
 					<a
 						href="/"
-						className="transition-transform transform hover:scale-105"
+						className="transition-transform transform hover:scale-105 "
 					>
 						<img src="/logo.png " className=" pb-4 h-[5rem]"></img>
 					</a>
@@ -50,9 +50,9 @@ const WebLook = () => {
 					>
 						CONTACT
 					</a>
-					<div className="flex items-center justify-end pr-6  transition-transform transform hover:scale-105">
+					{/* <div className="flex items-center justify-end pr-6  transition-transform transform hover:scale-105">
 						<CiMenuFries />
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</>
@@ -85,9 +85,9 @@ const MobLook = () => {
 				<div className="flex justify-around ">
 					<a
 						href="/"
-						className="transition-transform transform hover:scale-105"
+						className="transition-transform transform hover:scale-105 w-40"
 					>
-						<img src="/logo.png " className=" pb-4"></img>
+						<img src="/logo.png " className=" my-4"></img>
 					</a>
 				</div>
 

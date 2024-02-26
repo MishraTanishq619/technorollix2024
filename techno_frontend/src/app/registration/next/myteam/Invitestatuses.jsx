@@ -36,16 +36,19 @@ const Invitestatuses = ({ eventId, emailRef }) => {
 	}, []);
 
 	return (
-		<ul className="text-yellow-400">
-			{console.log("Here", inviteesArray)}
-			{inviteesArray?.map((i, k) => {
-				return (
-					<li key={k}>
-						{i.inviteeEmail} : {i.status}
-					</li>
-				);
-			})}
-		</ul>
+		<div>
+			<ul className="text-yellow-400">
+				{console.log("Here", inviteesArray)}
+				{inviteesArray?.map((i, k) => {
+					return (
+						<li key={k}>
+							{i.inviteeEmail} : {i.status}
+						</li>
+					);
+				})}
+			</ul>
+			
+		</div>
 	);
 };
 

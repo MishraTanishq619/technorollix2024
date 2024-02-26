@@ -5,11 +5,11 @@ import { useSearchParams } from "next/navigation";
 function EventsRegistrationPage() {
 	const [events, setEvents] = useState([]);
 	const [registeredEvents, setregisteredEvents] = useState([]);
-
 	const [selectedEvents, setSelectedEvents] = useState([]);
 	const [additionalDetails, setAdditionalDetails] = useState([]);
 	const [leaderEmail, setLeaderEmail] = useState("");
 	const [teammateEmails, setTeammateEmails] = useState([]);
+	const [entryFee, setEntryFee] = useState([]);
 
 	const searchParams = useSearchParams();
 	const emailRef = searchParams.get("emailRef");
@@ -59,79 +59,85 @@ function EventsRegistrationPage() {
 	return (
 		<div>
 			<p className="text-4xl text-white font-bold">EventsCheckbox</p>
-			<div className="flex flex-wrap items-center justify-evenly border-2 w-2/3 h-full p-5">
+			<div className="flex flex-wrap items-center  justify-evenly border-2 w-2/3 h-full p-5">
 				{events.map((event, index) => (
 					<div key={event.eventId}>
 						<div
-							className={`bg-black p-4 rounded-lg border-4 border-blue-500 ${
-								selectedEvents.includes(event.eventId)
-									? "bg-grey-500"
-									: ""
-							} ${
-								registeredEvents.includes(event.eventId)
-									? "border-green-700"
-									: ""
-							}`}
+							className={`bg-black p-4 rounded-lg mx-4 my-2 ${registeredEvents.includes(event.eventId)
+								? "border-green-700 bg-black border-4"
+								: ""
+								}${selectedEvents.includes(event.eventId)
+									? "bg-grey-500 min-h-40 min-w-80"
+									: "glass-morphism min-h-50 min-w-80"
+								} `}
 							onClick={
 								registeredEvents.includes(event.eventId)
 									? null
 									: () => handleEventCardClick(event.eventId)
 							}
 						>
-							<h2
-								className={`text-red-600
+							<div className="flex flex-wrap">
+								<div className="mx-3">
+									<img src="/mainbg.jpg" alt="" className="max-w-40" />
+								</div>
+								<div className="min-w-40">
+									<h2
+										className={`text-red-600
 								${registeredEvents.includes(event.eventId) ? "" : "hidden"} 
 							`}
-							>
-								Already Registered
-							</h2>
-							<h2 className="text-lg font-bold text-white">
-								{event.eventName}
-							</h2>
-							<p className="text-lg font-bold text-white">
-								Team Size: {event.teamSize}
-							</p>
-							<p className="text-lg font-bold text-white">
-								Price: {event.priceMoney}
-							</p>
-							<p className="text-lg font-bold text-white">
+									>
+										Already Registered
+									</h2>
+									<h2 className="text-lg font-bold text-white">
+										{event.eventName}
+									</h2>
+									<p className="text-12px font-bold text-white">
+										{event.eventDescription}
+									</p>
+									<p className="text-lg font-bold text-white">
+										Team Size: {event.teamSize}
+									</p>
+									<p className="text-lg font-bold text-white">
+										Price: {event.priceMoney}
+									</p>
+									{/* <p className="text-lg font-bold text-white">
 								Entry Fee: {event.entryFee}
-							</p>
-							{selectedEvents.includes(event.eventId) && (
-								<input
-									type="text"
-									placeholder="Additional Details"
-									value={
-										additionalDetails[
+							</p> */}
+								</div>
+							</div>
+								{selectedEvents.includes(event.eventId) && (
+							<div className="border-2 rounded-md border-blue-400">
+
+									<input
+										type="text"
+										placeholder="Additional Details (optional)"
+										style={{ border: "none", outline: "none", boxShadow: "none" }}
+										className="bg-black px-5 py-1 rounded-md text-white w-80"
+										value={
+											additionalDetails[
 											selectedEvents.indexOf(
 												event.eventId
 											)
-										] || ""
-									}
-									onChange={(e) =>
-										handleAdditionalDetailsChange(
-											selectedEvents.indexOf(
-												event.eventId
-											),
-											e.target.value
-										)
-									}
-									onClick={(e) => e.stopPropagation()}
-								/>
-							)}
+											] || ""
+										}
+										onChange={(e) =>
+											handleAdditionalDetailsChange(
+												selectedEvents.indexOf(
+													event.eventId
+												),
+												e.target.value
+											)
+										}
+										onClick={(e) => e.stopPropagation()}
+									/>
+							</div>
+								)}
 						</div>
 					</div>
 				))}
 				<div>
-					<h2 className="text-white">Selected Events</h2>
-					<ul>
-						{selectedEvents.map((eventId, index) => (
-							<li key={eventId} className="text-white">
-								Event ID: {eventId}, Additional Details:{" "}
-								{additionalDetails[index]}
-							</li>
-						))}
-					</ul>
+					<h2 className="text-white">Total price</h2>
+					<p></p>
 				</div>
 			</div>
 			<button

@@ -20,7 +20,7 @@ function Home() {
 	const [isValidEmail, setIsValidEmail] = useState(false);
 	const [showVerification, setShowVerification] = useState(false);
 	const [generateClicked, setgenerateClicked] = useState(false);
-
+	const [retryTimer, setRetryTimer] = useState(300);
 
 	const handleNormalButtonClick = () => {
 		setIsOpen(true);
@@ -59,6 +59,17 @@ function Home() {
 
 	const generateNumber = async () => {
 		setgenerateClicked(true)
+		setRetryTimer(30);
+
+		// Start the retry countdown
+		const countdownInterval = setInterval(() => {
+			setRetryTimer((prevTimer) => prevTimer - 1);
+		}, 1000);
+
+		// After 30 seconds, stop the countdown and show the retry button
+		setTimeout(() => {
+			clearInterval(countdownInterval);
+		}, 30000);
 		console.log("called");
 		if (isValidEmail) {
 			console.log("entered");
@@ -117,7 +128,6 @@ function Home() {
 			console.log("Invalid verification code");
 		}
 	};
-
 	const validateEmail = (email) => {
 		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (regex.test(email)) {
@@ -130,7 +140,7 @@ function Home() {
 	};
 
 	return (
-		<div className="flex flex-col items-center justify-center  h-full w-full overflow-x-hidden overflow-y-scroll">
+		<div className={`flex flex-col items-center justify-center ${isOpen ? "glass-morphism" : ""} h-full w-full overflow-x-hidden overflow-y-scroll`}>
 			<LampContainer>
 				<motion.h1
 					initial={{ opacity: 0.5, y: 450 }}
@@ -184,36 +194,55 @@ function Home() {
 				// 		}}
 				// 	/>
 				// </div>
-				<div className="overlay flex flex-col items-center justify-center h-full w-full overflow-x-hidden overflow-y-scroll">
-					<div>
-						<input
-							type="text"
-							placeholder="Enter your email"
-							value={email}
-							onChange={handleEmailChange}
-							className="border border-gray-300 rounded-md px-3 py-1"
-						/>
-						{!isValidEmail && generateClicked && <p className="text-red-500">Invalid email</p>}
-					</div>
-					<div>
-						{!showVerification ? (
-							<button onClick={generateNumber} className="btn text-white">
-								Generate
-							</button>
-						) : (
-							<div>
+				<div onClick={handleClosePopup} className="overlay flex flex-col items-center justify-center h-full w-full overflow-x-hidden overflow-y-scroll">
+					<div className="bg-black shadow-md rounded-lg p-6 max-w-80 px-10">
+						<div className="flex items-center flex-wrap justify-center">
+							<div className="border border-gray-300 flex-no-wrap rounded-md px-3 py-1 w-60">
 								<input
-									type="text"
-									placeholder="Enter verification code"
-									value={verificationCode}
-									onChange={(e) => setVerificationCode(e.target.value)}
-									className="border border-gray-300 rounded-md px-3 py-1"
+									type="email"
+									placeholder="Enter your email"
+									value={email}
+									onChange={handleEmailChange}
+									style={{ border: "none", outline: "none", boxShadow: "none" }}
+									className={`bg-black border-none text-white w-${!showVerification? 50 :40}`}
 								/>
-								<button onClick={verifyCode} className="btn text-white">
-									Verify
-								</button>
+								{/* <button onClick={generateNumber} className="btn text-white  bg-orange-400 ml-4  rounded-md text-1xl px-3 py-1 justify-end"> */}
+								{!showVerification ? <button onClick={generateNumber} className="text-blue-500 justify-end ">
+									otp</button> : (
+									retryTimer > 0 ? (
+										<button disabled className="text-blue-500 justify-end">
+											{retryTimer}...
+										</button>
+									) : (
+										<button onClick={generateNumber} className="text-blue-500 justify-end">
+											Retry
+										</button>
+									)
+								)
+								}
 							</div>
-						)}
+								{!isValidEmail && generateClicked && <p className="text-red-500 relative right-20 ml-8">Invalid email</p>}
+							<div>
+								{!showVerification ? (
+									<div></div>
+								) : (
+									<div className="mt-4 border border-gray-300 rounded-md px-3 w-60 py-1">
+										<input
+											type="text"
+											placeholder="Enter verification code"
+											value={verificationCode}
+											onChange={(e) => setVerificationCode(e.target.value)}
+											style={{ border: "none", outline: "none", boxShadow: "none" }}
+											className="bg-black border-none text-white w-40"
+										/>
+										<button onClick={verifyCode} className="text-blue-500 justify-end">
+											Verify
+										</button>
+									</div>
+
+								)}
+							</div>
+						</div>
 					</div>
 				</div>
 			)}

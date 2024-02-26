@@ -82,26 +82,6 @@ function Registration() {
 			setIsOpen(false);
 		}
 	};
-	// const isNumber = (numArr) => {
-	//   // let flag = true;
-	//   for (let i = 0; i < numArr.length; i++) {
-	//     if (
-	//       numArr[i] != "0" ||
-	//       "1" ||
-	//       "2" ||
-	//       "3" ||
-	//       "4" ||
-	//       "5" ||
-	//       "6" ||
-	//       "7" ||
-	//       "8" ||
-	//       "9"
-	//     ) {
-	//       return false;
-	//     }
-	//   }
-	//   return true;
-	// };
 
 	const phoneValidation = () => {
 		// console.log(typeof phone);
@@ -120,15 +100,11 @@ function Registration() {
 	};
 
 	return (
-		<div className="absolute text-white bg-white-300 flex flex-col items-center justify-center ">
+		<div className="absolute text-white bg-white-300 flex w-screen flex-col items-center justify-center ">
 			<p className="text-4xl mb-2">REGISTRATION</p>
-			<div className="border border-blue-3000 px-4 flex-col flex-wrap">
-				{/* <div className="flex justify-center items-center rounded-full ">
-					<img src={pic} alt="Your Image" className=" rounded-full" />
-				</div> */}
+			<div className="border border-blue-3000 px-0 flex-col flex-wrap">
 				<div id="input-holders" className="flex flex-wrap">
 					<div id="input-holder-a" className="flex-col justify-start">
-						{/* <div className="rounded-full h-40 w-40 overflow-hidden flex flex-col  mx-2"></div> */}
 						<InputBox
 							onChange={(e) => {
 								setName(e.target.value);
@@ -137,7 +113,7 @@ function Registration() {
 							label="Name"
 							value={name}
 						/>
-						<div className="flex flex-col my-8 mx-2">
+						<div className="flex flex-col my-0 mx-0">
 							<div className="flex items-start">
 								<p className="ml-2 text-sm xl:text-2xl">
 									EMAIL{" "}
@@ -145,7 +121,7 @@ function Registration() {
 							</div>
 							<input
 								type="email"
-								className="rounded-sm p-2 m-2 flex items-start w-96 text-black"
+								className="rounded-sm p-2 m-2 flex items-start w-76 text-black"
 								// onChange={onChange}
 								// type="email"
 								value={email}
@@ -168,7 +144,7 @@ function Registration() {
 							label="UNIVERSITY"
 						/>
 					</div>
-					<div id="input-holder-b" className="flex-col xl:pt-1 ">
+					<div id="input-holder-b" className="flex-col xl:pt-0 ">
 						<InputBox
 							onChange={(e) => {
 								setDistrict(e.target.value);
@@ -230,33 +206,33 @@ function Registration() {
 					
           <div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full">
             <button
-              className="bg-orange-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform transform hover:scale-105"
+              className="bg-red-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform transform hover:scale-105"
               onClick={(phoneValidation)}
             >
               Register
             </button>
             {isOpen && (
               <div className="overlay" onClick={handleClosePopup}>
-                <div className="bg-white shadow-md rounded-lg p-6">
-                  <div className="flex items-center justify-center">
+                <div className="bg-black shadow-md rounded-lg p-6">
+                  {/* <div className="flex items-center justify-center">
                     <img
                       className="w-24 h-24 rounded-full object-cover"
                       src={pic}
                       alt="User Avatar"
                     />
-                  </div>
-                  <div className="mt-4">
+                  </div> */}
+                  <div className="">
                     <p className="text-lg font-semibold">Name: {name}</p>
-                    <p className="text-gray-500">Email: {email}</p>
-                    <p className="text-gray-500">Phone no.: {phone}</p>
-                    <p className="text-gray-500">University: {university}</p>
-                    <p className="text-gray-500">Gender: {selectedGender}</p>
-                    <p className="text-gray-500">
+                    <p className="text-white">Email: {email}</p>
+                    <p className="text-white">Phone no.: {phone}</p>
+                    <p className="text-white">University: {university}</p>
+                    <p className="text-white">Gender: {selectedGender}</p>
+                    <p className="text-white">
                       Address: {district}, {state}, {pincode}
                     </p>
                   </div>
                   <button
-                    className=" bg-orange-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
+                    className=" bg-red-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
                     onClick={() => {
                       try {
                         fetch("http://10.60.41.209:4000/api/create/user", {
