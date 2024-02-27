@@ -141,26 +141,22 @@ function Home() {
 
 	return (
 		<div
-			className={`flex flex-col items-center justify-center ${
+			className={`mt-10 flex flex-col items-center justify-center ${
 				isOpen ? "glass-morphism" : ""
 			} h-full w-full overflow-x-hidden overflow-y-scroll`}
 		>
 			<LampContainer>
 				<motion.h1
-					initial={{ opacity: 0.5, y: 450 }}
-					whileInView={{ opacity: 1, y: 250 }}
+					initial={{ opacity: 0.5, y: -500 }}
+					whileInView={{ opacity: 1, y: 400 }}
 					transition={{
 						delay: 0.3,
-						duration: 0.8,
+						duration: 1.5,
 						ease: "easeInOut",
 					}}
 					className="relative  bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
 				>
-					<img
-						src="techno.png"
-						alt="Logo"
-						className="h-[60%] w-[80%] -mb-[10rem]"
-					/>
+					<img src="techno.PNG" alt="Logo" className="h-[42%]" />
 					<div className="flex justify-center">
 						<TypewriterEffectSmoothDemo />
 					</div>
