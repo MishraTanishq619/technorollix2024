@@ -36,14 +36,14 @@ function Home() {
 	const [visitCount, setVisitCount] = useState(0);
 
 	useEffect(() => {
-		fetch("http://localhost:4000/api/visitCount")
+		fetch("http://technorollix.opju.ac.in:4000/api/visitCount")
 			.then((response) => response.json())
 			.then((data) => setVisitCount(data.visitCount))
 			.catch((error) =>
 				console.error("Error fetching visit count:", error)
 			);
 
-		fetch("http://localhost:4000/api/allParticipants")
+		fetch("http://technorollix.opju.ac.in:4000/api/allParticipants")
 			.then((response) => response.json())
 			.then((data) => setParticipantCount(data.length))
 			.catch((error) =>
@@ -78,7 +78,7 @@ function Home() {
 			setGeneratedNumber(number);
 			// try {
 			let otpdata = await fetch(
-				"http://localhost:4000/api/email/verify/otp",
+				"http://technorollix.opju.ac.in:4000/api/email/verify/otp",
 				{
 					method: "POST",
 					body: JSON.stringify({
@@ -107,7 +107,7 @@ function Home() {
 			// window.location.href("/registration")
 			try {
 				const response = await fetch(
-					`http://localhost:4000/api/user/${email}`
+					`http://technorollix.opju.ac.in:4000/api/user/${email}`
 				);
 
 				if (response.status === 409) {
@@ -157,9 +157,9 @@ function Home() {
 					className="relative  bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
 				>
 					<img
-						src="tehnoLogo_prev_ui.png"
+						src="techno.png"
 						alt="Logo"
-						className="h-[42%]"
+						className="h-[60%] w-[80%] -mb-[10rem]"
 					/>
 					<div className="flex justify-center">
 						<TypewriterEffectSmoothDemo />
@@ -184,7 +184,7 @@ function Home() {
 				// 				credentialResponse.credential
 				// 			);
 				// 			const result = await fetch(
-				// 				`http://localhost:4000/api/user/${userResponse.email}`
+				// 				`http://technorollix.opju.ac.in:4000/api/user/${userResponse.email}`
 				// 			);
 				// 			console.log(result);
 				// 			if (result.status === 409) {

@@ -14,7 +14,7 @@ function ReceivedInvitations() {
 	}, []);
 
 	useEffect(() => {
-		fetch("http://10.60.41.209:4000/api/allEvents")
+		fetch("http://technorollix.opju.ac.in:4000/api/allEvents")
 			.then((response) => response.json())
 			.then((data) => setInvitations(data))
 			.catch((error) => console.error("Error fetching events:", error));
@@ -50,7 +50,7 @@ function ReceivedInvitations() {
         onClick={() => {
           try {
             fetch(
-              "http://10.60.41.209:4000/api/team-registration/event",
+              "http://technorollix.opju.ac.in:4000/api/team-registration/event",
               {
                 method: "POST",
                 body: JSON.stringify({

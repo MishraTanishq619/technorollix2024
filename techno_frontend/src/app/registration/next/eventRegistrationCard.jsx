@@ -19,12 +19,14 @@ function EventsRegistrationPage() {
 	}, []);
 
 	useEffect(() => {
-		fetch("http://10.60.41.209:4000/api/allEvents")
+		fetch("http://technorollix.opju.ac.in:4000/api/allEvents")
 			.then((response) => response.json())
 			.then((data) => setEvents(data))
 			.catch((error) => console.error("Error fetching events:", error));
 
-		fetch(`http://10.60.41.209:4000/api/participant/eventId/${emailRef}`)
+		fetch(
+			`http://technorollix.opju.ac.in:4000/api/participant/eventId/${emailRef}`
+		)
 			.then((response) => response.json())
 			.then((data) => setregisteredEvents(data))
 			.catch((error) =>
@@ -63,13 +65,15 @@ function EventsRegistrationPage() {
 				{events.map((event, index) => (
 					<div key={event.eventId}>
 						<div
-							className={`bg-black p-4 rounded-lg mx-4 my-2 ${registeredEvents.includes(event.eventId)
-								? "border-green-700 bg-black border-4"
-								: ""
-								}${selectedEvents.includes(event.eventId)
+							className={`bg-black p-4 rounded-lg mx-4 my-2 ${
+								registeredEvents.includes(event.eventId)
+									? "border-green-700 bg-black border-4"
+									: ""
+							}${
+								selectedEvents.includes(event.eventId)
 									? "bg-grey-500 min-h-40 max-w-80"
 									: "glass-morphism min-h-40 max-w-80"
-								} `}
+							} `}
 							onClick={
 								registeredEvents.includes(event.eventId)
 									? null
@@ -78,7 +82,11 @@ function EventsRegistrationPage() {
 						>
 							<div className="flex flex-wrap">
 								<div className="mx-3">
-									<img src="/mainbg.jpg" alt="" className="max-w-40" />
+									<img
+										src="/mainbg.jpg"
+										alt=""
+										className="max-w-40"
+									/>
 								</div>
 								<div className="min-w-40">
 									<h2
@@ -105,19 +113,22 @@ function EventsRegistrationPage() {
 							</p> */}
 								</div>
 							</div>
-								{selectedEvents.includes(event.eventId) && (
-							<div className="border-2 rounded-md border-blue-400">
-
+							{selectedEvents.includes(event.eventId) && (
+								<div className="border-2 rounded-md border-blue-400">
 									<input
 										type="text"
 										placeholder="Additional Details (optional)"
-										style={{ border: "none", outline: "none", boxShadow: "none" }}
+										style={{
+											border: "none",
+											outline: "none",
+											boxShadow: "none",
+										}}
 										className="bg-black px-5 py-1 rounded-md text-white w-80"
 										value={
 											additionalDetails[
-											selectedEvents.indexOf(
-												event.eventId
-											)
+												selectedEvents.indexOf(
+													event.eventId
+												)
 											] || ""
 										}
 										onChange={(e) =>
@@ -130,8 +141,8 @@ function EventsRegistrationPage() {
 										}
 										onClick={(e) => e.stopPropagation()}
 									/>
-							</div>
-								)}
+								</div>
+							)}
 						</div>
 					</div>
 				))}
@@ -145,7 +156,7 @@ function EventsRegistrationPage() {
 				onClick={() => {
 					try {
 						fetch(
-							"http://10.60.41.209:4000/api/team-registration/event",
+							"http://technorollix.opju.ac.in:4000/api/team-registration/event",
 							{
 								method: "POST",
 								body: JSON.stringify({

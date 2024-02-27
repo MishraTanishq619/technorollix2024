@@ -14,12 +14,14 @@ const page = () => {
 
 	let reqEvents = [];
 	useEffect(() => {
-		fetch("http://10.60.41.209:4000/api/allEvents")
+		fetch("http://technorollix.opju.ac.in:4000/api/allEvents")
 			.then((response) => response.json())
 			.then((data) => setEvents(data))
 			.catch((error) => console.error("Error fetching events:", error));
 
-		fetch(`http://10.60.41.209:4000/api/registeredTeam/eventId/${emailRef}`)
+		fetch(
+			`http://technorollix.opju.ac.in:4000/api/registeredTeam/eventId/${emailRef}`
+		)
 			.then((response) => response.json())
 			.then((data) => {
 				setregisteredEvents(data.eventIdArray);
@@ -39,7 +41,7 @@ const page = () => {
 
 		// to get team id
 		let response = await fetch(
-			"http://10.60.41.209:4000/api/create/team-invite",
+			"http://technorollix.opju.ac.in:4000/api/create/team-invite",
 			{
 				method: "POST",
 				body: JSON.stringify({
@@ -142,13 +144,15 @@ const page = () => {
 						</div>
 					))}
 				</div>
-			<button
-				className="bg-blue-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform item-center justify-center transform hover:scale-105"
-				onClick={()=>{window.location.href = "/"}}
+				<button
+					className="bg-blue-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform item-center justify-center transform hover:scale-105"
+					onClick={() => {
+						window.location.href = "/";
+					}}
 				>
-				Home
-			</button>
-				</div>
+					Home
+				</button>
+			</div>
 		</div>
 	);
 };
@@ -159,7 +163,7 @@ export default page;
 // 	useEffect(() => {
 // 		let response = "ahwbdhwafwa";
 // 		response = fetch(
-// 			"http://10.60.41.209:4000/api/event/invite/status/byInviter/eventId",
+// 			"http://technorollix.opju.ac.in:4000/api/event/invite/status/byInviter/eventId",
 // 			{
 // 				method: "POST",
 // 				body: JSON.stringify({

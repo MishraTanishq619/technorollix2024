@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { CiMenuFries } from "react-icons/ci";
+import { CiMenuBurger, CiMenuFries } from "react-icons/ci";
 // import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 // import {  } from '@react-oauth/google';
 
@@ -38,7 +38,7 @@ const WebLook = () => {
 					>
 						LEGACY
 					</a>
-					<a 
+					<a
 						href="/events"
 						className="flex items-center justify-end  transition-transform transform hover:scale-105"
 					>
@@ -50,9 +50,45 @@ const WebLook = () => {
 					>
 						CONTACT
 					</a>
-					{/* <div className="flex items-center justify-end pr-6  transition-transform transform hover:scale-105">
-						<CiMenuFries />
-					</div> */}
+
+					<ul className="navbar-links">
+						<li
+							className="navbar-dropdown flex items-center justify-center"
+							// onClick={DropdownState ? dropRev : drop}
+							// onDoubleClick={dropRev}
+						>
+							<div className="flex items-center justify-end pr-6  transition-transform transform hover:scale-105">
+								<CiMenuBurger />
+								{/* <CiMenuFries /> */}
+							</div>
+							<div id="dropdown" className="dropdown ">
+								<a
+									href="/schedule"
+									className="flex items-center justify-start  transition-transform transform hover:scale-105"
+								>
+									SCHEDULE
+								</a>
+								<a
+									href="/accomodation"
+									className="flex items-center justify-start  transition-transform transform hover:scale-105"
+								>
+									ACCOMODATION
+								</a>
+								<a
+									href="/studentambassador"
+									className="flex items-center justify-start  transition-transform transform hover:scale-105"
+								>
+									STUDENT AMBASSADOR
+								</a>
+								<a
+									href="/sponsers"
+									className="flex items-center justify-start  transition-transform transform hover:scale-105"
+								>
+									SPONSOR
+								</a>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</>
@@ -97,7 +133,7 @@ const MobLook = () => {
 							<li
 								className="navbar-dropdown"
 								onClick={DropdownState ? dropRev : drop}
-								onDoubleClick={dropRev}
+								// onDoubleClick={dropRev}
 							>
 								<div className="flex items-center justify-end pr-6  transition-transform transform hover:scale-105">
 									<CiMenuFries />
@@ -126,6 +162,30 @@ const MobLook = () => {
 										className="flex items-center justify-start  transition-transform transform hover:scale-105"
 									>
 										CONTACT
+									</a>
+									<a
+										href="/schedule"
+										className="flex items-center justify-start  transition-transform transform hover:scale-105"
+									>
+										SCHEDULE
+									</a>
+									<a
+										href="/accomodation"
+										className="flex items-center justify-start  transition-transform transform hover:scale-105"
+									>
+										ACCOMODATION
+									</a>
+									<a
+										href="/studentambassador"
+										className="flex items-center justify-start  transition-transform transform hover:scale-105"
+									>
+										STUDENT AMBASSADOR
+									</a>
+									<a
+										href="/sponsers"
+										className="flex items-center justify-start  transition-transform transform hover:scale-105"
+									>
+										SPONSOR
 									</a>
 								</div>
 							</li>
