@@ -36,14 +36,14 @@ function Home() {
 	const [visitCount, setVisitCount] = useState(0);
 
 	useEffect(() => {
-		fetch("http://10.60.41.209:4000/api/visitCount")
+		fetch("http://localhost:4000/api/visitCount")
 			.then((response) => response.json())
 			.then((data) => setVisitCount(data.visitCount))
 			.catch((error) =>
 				console.error("Error fetching visit count:", error)
 			);
 
-		fetch("http://10.60.41.209:4000/api/allParticipants")
+		fetch("http://localhost:4000/api/allParticipants")
 			.then((response) => response.json())
 			.then((data) => setParticipantCount(data.length))
 			.catch((error) =>
@@ -58,7 +58,7 @@ function Home() {
 	};
 
 	const generateNumber = async () => {
-		setgenerateClicked(true)
+		setgenerateClicked(true);
 		setRetryTimer(30);
 
 		// Start the retry countdown
@@ -72,12 +72,14 @@ function Home() {
 		}, 30000);
 		console.log("called");
 		if (isValidEmail) {
-			// console.log("entered");
+			console.log("entered");
 			const number = Math.floor(10000 + Math.random() * 90000);
 			// console.log(number);
 			setGeneratedNumber(number);
-			try {
-				fetch("http://technorollix.opju.ac.in:4000/api/email/verify/otp", {
+			// try {
+			let otpdata = await fetch(
+				"http://localhost:4000/api/email/verify/otp",
+				{
 					method: "POST",
 					body: JSON.stringify({
 						user: email,
@@ -87,13 +89,14 @@ function Home() {
 						"Content-type": "application/json",
 						// user_email: email,
 					},
-				}).catch((error) => {
-					console.log("Error during fetch:", error);
-				});
-				``;
-			} catch (error) {
-				console.log(error);
-			}
+				}
+			).catch((error) => {
+				console.log("Error during fetch:", error);
+			});
+			console.log(`otpdata ${otpdata}`);
+			// } catch (error) {
+			// 	console.log(error);
+			// }
 			setShowVerification(true);
 		}
 		console.log("exit");
@@ -104,7 +107,7 @@ function Home() {
 			// window.location.href("/registration")
 			try {
 				const response = await fetch(
-					`http://10.60.41.209:4000/api/user/${email}`
+					`http://localhost:4000/api/user/${email}`
 				);
 
 				if (response.status === 409) {
@@ -137,7 +140,11 @@ function Home() {
 	};
 
 	return (
-		<div className={`flex flex-col items-center justify-center ${isOpen ? "glass-morphism" : ""} h-full w-full overflow-x-hidden overflow-y-scroll`}>
+		<div
+			className={`flex flex-col items-center justify-center ${
+				isOpen ? "glass-morphism" : ""
+			} h-full w-full overflow-x-hidden overflow-y-scroll`}
+		>
 			<LampContainer>
 				<motion.h1
 					initial={{ opacity: 0.5, y: 450 }}
@@ -177,7 +184,7 @@ function Home() {
 				// 				credentialResponse.credential
 				// 			);
 				// 			const result = await fetch(
-				// 				`http://10.60.41.209:4000/api/user/${userResponse.email}`
+				// 				`http://localhost:4000/api/user/${userResponse.email}`
 				// 			);
 				// 			console.log(result);
 				// 			if (result.status === 409) {
@@ -191,7 +198,10 @@ function Home() {
 				// 		}}
 				// 	/>
 				// </div>
-				<div onClick={handleClosePopup} className="overlay flex flex-col items-center justify-center h-full w-full overflow-x-hidden overflow-y-scroll">
+				<div
+					onClick={handleClosePopup}
+					className="overlay flex flex-col items-center justify-center h-full w-full overflow-x-hidden overflow-y-scroll"
+				>
 					<div className="bg-black shadow-md rounded-lg p-6 max-w-80 px-10">
 						<div className="flex items-center flex-wrap justify-center">
 							<div className="border border-gray-300 flex-no-wrap rounded-md px-3 py-1 w-60">
@@ -200,25 +210,44 @@ function Home() {
 									placeholder="Enter your email"
 									value={email}
 									onChange={handleEmailChange}
-									style={{ border: "none", outline: "none", boxShadow: "none" }}
-									className={`bg-black border-none text-white w-${!showVerification? 50 :40}`}
+									style={{
+										border: "none",
+										outline: "none",
+										boxShadow: "none",
+									}}
+									className={`bg-black border-none text-white w-${
+										!showVerification ? 50 : 40
+									}`}
 								/>
 								{/* <button onClick={generateNumber} className="btn text-white  bg-orange-400 ml-4  rounded-md text-1xl px-3 py-1 justify-end"> */}
-								{!showVerification ? <button onClick={generateNumber} className="text-blue-500 justify-end ">
-									otp</button> : (
-									retryTimer > 0 ? (
-										<button disabled className="text-blue-500 justify-end">
-											{retryTimer}...
-										</button>
-									) : (
-										<button onClick={generateNumber} className="text-blue-500 justify-end">
-											Retry
-										</button>
-									)
-								)
-								}
+								{!showVerification ? (
+									<button
+										onClick={generateNumber}
+										className="text-blue-500 justify-end "
+									>
+										otp
+									</button>
+								) : retryTimer > 0 ? (
+									<button
+										disabled
+										className="text-blue-500 justify-end"
+									>
+										{retryTimer}...
+									</button>
+								) : (
+									<button
+										onClick={generateNumber}
+										className="text-blue-500 justify-end"
+									>
+										Retry
+									</button>
+								)}
 							</div>
-								{!isValidEmail && generateClicked && <p className="text-red-500 relative right-20 ml-8">Invalid email</p>}
+							{!isValidEmail && generateClicked && (
+								<p className="text-red-500 relative right-20 ml-8">
+									Invalid email
+								</p>
+							)}
 							<div>
 								{!showVerification ? (
 									<div></div>
@@ -228,15 +257,25 @@ function Home() {
 											type="text"
 											placeholder="Enter verification code"
 											value={verificationCode}
-											onChange={(e) => setVerificationCode(e.target.value)}
-											style={{ border: "none", outline: "none", boxShadow: "none" }}
+											onChange={(e) =>
+												setVerificationCode(
+													e.target.value
+												)
+											}
+											style={{
+												border: "none",
+												outline: "none",
+												boxShadow: "none",
+											}}
 											className="bg-black border-none text-white w-40"
 										/>
-										<button onClick={verifyCode} className="text-blue-500 justify-end">
+										<button
+											onClick={verifyCode}
+											className="text-blue-500 justify-end"
+										>
 											Verify
 										</button>
 									</div>
-
 								)}
 							</div>
 						</div>
