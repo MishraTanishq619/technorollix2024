@@ -80,9 +80,29 @@
 		color: #ff004d; /* Neon Red Color */
 		font-family: "Your-LED-Font", sans-serif; /* Replace with your LED font */
 	}
-	.neon-text {
+
+	.neon-text-red {
 		color: white;
 		text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red; /* Adjust the shadow size as needed */
+	}
+	.text-neon-green {
+		color: #17f710; /* Neon Red Color */
+		font-family: "Your-LED-Font", sans-serif; /* Replace with your LED font */
+	}
+
+	.neon-text-green {
+		color: white;
+		text-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green; /* Adjust the shadow size as needed */
+	}
+
+	.text-neon-blue {
+		color: #1100ff; /* Neon Red Color */
+		font-family: "Your-LED-Font", sans-serif; /* Replace with your LED font */
+	}
+
+	.neon-text-blue {
+		color: white;
+		text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue; /* Adjust the shadow size as needed */
 	}
 }
 /*  */

@@ -10,29 +10,26 @@ const transporter = nodemailer.createTransport({
 	service: "gmail",
 	auth: {
 		// from google smtp ,
-		user: "mishratanishq619@gmail.com",
-		pass: "uxlj ddyl obvi afec ", // from app passkeys
+		user: "techfest@opju.ac.in",
+		pass: "iocq rcpd axpi flir", // from app passkeys
 	},
 });
 
-
 async function makeOtpMessage(user, otpNumber) {
 	try {
-  
-	  const message = {
-		from: '"TechnoRollix 2k24" <technorollix@opju.ac.in>',
-		to: user,
-		subject: `Confirmation `,
-		html: `<b>Your otp is ${otpNumber}</b> </br><a href="https://codeforit.in">Visit us</a><h3>Thank you</h3>`,
-	  };
-  
-	  return message;
+		const message = {
+			from: '"TechnoRollix 2k24" <technorollix@opju.ac.in>',
+			to: user,
+			subject: `Confirmation `,
+			html: `<b>Your otp is ${otpNumber}</b> </br><a href="https://codeforit.in">Visit us</a><h3>Thank you</h3>`,
+		};
+
+		return message;
 	} catch (error) {
-	  console.error("Error in makeEventMessage:", error);
-	  return "error";
+		console.error("Error in makeEventMessage:", error);
+		return "error";
 	}
-  }
-  
+}
 
 // async..await is not allowed in global scope, must use a wrapper
 async function otpEmail(user, otpNumber) {
