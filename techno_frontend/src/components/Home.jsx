@@ -9,8 +9,8 @@ import { motion } from "framer-motion";
 import TypewriterEffectSmoothDemo from "./typeWriterDemo";
 import HeroParallaxDemo from "./heroParalloxEvents";
 
-import localFont from 'next/font/local'
-const myFont = localFont({ src: '../app/fonts/subway.ttf' })
+import localFont from "next/font/local";
+const myFont = localFont({ src: "../app/fonts/subway.ttf" });
 
 function Home() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +20,6 @@ function Home() {
 	const [isValidEmail, setIsValidEmail] = useState(false);
 	const [showVerification, setShowVerification] = useState(false);
 	const [generateClicked, setgenerateClicked] = useState(false);
-
 
 	const handleNormalButtonClick = () => {
 		setIsOpen(true);
@@ -36,14 +35,14 @@ function Home() {
 	const [visitCount, setVisitCount] = useState(0);
 
 	useEffect(() => {
-		fetch("http://10.60.41.209:4000/api/visitCount")
+		fetch("http://technorollix.opju.ac.in:4000/api/visitCount")
 			.then((response) => response.json())
 			.then((data) => setVisitCount(data.visitCount))
 			.catch((error) =>
 				console.error("Error fetching visit count:", error)
 			);
 
-		fetch("http://10.60.41.209:4000/api/allParticipants")
+		fetch("http://technorollix.opju.ac.in:4000/api/allParticipants")
 			.then((response) => response.json())
 			.then((data) => setParticipantCount(data.length))
 			.catch((error) =>
@@ -53,12 +52,12 @@ function Home() {
 
 	const handleEmailChange = (e) => {
 		setEmail(e.target.value);
-		setgenerateClicked(false)
+		setgenerateClicked(false);
 		validateEmail(email);
 	};
 
 	const generateNumber = async () => {
-		setgenerateClicked(true)
+		setgenerateClicked(true);
 		console.log("called");
 		if (isValidEmail) {
 			console.log("entered");
@@ -70,17 +69,14 @@ function Home() {
 					method: "POST",
 					body: JSON.stringify({
 						user: email,
-						number: number
+						number: number,
 					}),
 					headers: {
 						"Content-type": "application/json",
 						// user_email: email,
 					},
 				}).catch((error) => {
-					console.log(
-						"Error during fetch:",
-						error
-					);
+					console.log("Error during fetch:", error);
 				});
 				``;
 			} catch (error) {
@@ -88,7 +84,7 @@ function Home() {
 			}
 			setShowVerification(true);
 		}
-		console.log(("exit"));
+		console.log("exit");
 	};
 
 	const verifyCode = async () => {
@@ -96,7 +92,7 @@ function Home() {
 			// window.location.href("/registration")
 			try {
 				const response = await fetch(
-					`http://10.60.41.209:4000/api/user/${email}`
+					`http://technorollix.opju.ac.in:4000/api/user/${email}`
 				);
 
 				if (response.status === 409) {
@@ -121,7 +117,7 @@ function Home() {
 	const validateEmail = (email) => {
 		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (regex.test(email)) {
-			setIsValidEmail(true)
+			setIsValidEmail(true);
 			console.log("set");
 		}
 		console.log(regex.test(email));
@@ -170,7 +166,7 @@ function Home() {
 				// 				credentialResponse.credential
 				// 			);
 				// 			const result = await fetch(
-				// 				`http://10.60.41.209:4000/api/user/${userResponse.email}`
+				// 				`http://technorollix.opju.ac.in:4000/api/user/${userResponse.email}`
 				// 			);
 				// 			console.log(result);
 				// 			if (result.status === 409) {
@@ -193,11 +189,16 @@ function Home() {
 							onChange={handleEmailChange}
 							className="border border-gray-300 rounded-md px-3 py-1"
 						/>
-						{!isValidEmail && generateClicked && <p className="text-red-500">Invalid email</p>}
+						{!isValidEmail && generateClicked && (
+							<p className="text-red-500">Invalid email</p>
+						)}
 					</div>
 					<div>
 						{!showVerification ? (
-							<button onClick={generateNumber} className="btn text-white">
+							<button
+								onClick={generateNumber}
+								className="btn text-white"
+							>
 								Generate
 							</button>
 						) : (
@@ -206,10 +207,15 @@ function Home() {
 									type="text"
 									placeholder="Enter verification code"
 									value={verificationCode}
-									onChange={(e) => setVerificationCode(e.target.value)}
+									onChange={(e) =>
+										setVerificationCode(e.target.value)
+									}
 									className="border border-gray-300 rounded-md px-3 py-1"
 								/>
-								<button onClick={verifyCode} className="btn text-white">
+								<button
+									onClick={verifyCode}
+									className="btn text-white"
+								>
 									Verify
 								</button>
 							</div>

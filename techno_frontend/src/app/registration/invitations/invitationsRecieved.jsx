@@ -17,7 +17,7 @@ function ReceivedInvitations() {
 
 	useEffect(() => {
 		fetch(
-			`http://10.60.41.209:4000/api/event/invitations/email/${emailRef}` // shreyrajput54@gmail.com
+			`http://technorollix.opju.ac.in:4000/api/event/invitations/email/${emailRef}` // shreyrajput54@gmail.com
 		)
 			.then((response) => response.json())
 			.then((data) => {
@@ -77,7 +77,7 @@ function ReceivedInvitations() {
 										// 	response: "accept",
 										// });
 										fetch(
-											"http://10.60.41.209:4000/api/update/team-invite",
+											"http://technorollix.opju.ac.in:4000/api/update/team-invite",
 											{
 												method: "PUT",
 												body: JSON.stringify({
@@ -106,7 +106,7 @@ function ReceivedInvitations() {
 								onClick={() => {
 									try {
 										fetch(
-											"http://10.60.41.209:4000/api/update/team-invite",
+											"http://technorollix.opju.ac.in:4000/api/update/team-invite",
 											{
 												method: "PUT",
 												body: JSON.stringify({
