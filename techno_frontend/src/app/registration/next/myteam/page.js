@@ -14,14 +14,12 @@ const page = () => {
 
 	let reqEvents = [];
 	useEffect(() => {
-		fetch("http://technorollix.opju.ac.in:4000/api/allEvents")
+		fetch("http://10.60.41.209:4000/api/allEvents")
 			.then((response) => response.json())
 			.then((data) => setEvents(data))
 			.catch((error) => console.error("Error fetching events:", error));
 
-		fetch(
-			`http://technorollix.opju.ac.in:4000/api/registeredTeam/eventId/${emailRef}`
-		)
+		fetch(`http://10.60.41.209:4000/api/registeredTeam/eventId/${emailRef}`)
 			.then((response) => response.json())
 			.then((data) => {
 				setregisteredEvents(data.eventIdArray);
@@ -41,7 +39,7 @@ const page = () => {
 
 		// to get team id
 		let response = await fetch(
-			"http://technorollix.opju.ac.in:4000/api/create/team-invite",
+			"http://10.60.41.209:4000/api/create/team-invite",
 			{
 				method: "POST",
 				body: JSON.stringify({
@@ -161,7 +159,7 @@ export default page;
 // 	useEffect(() => {
 // 		let response = "ahwbdhwafwa";
 // 		response = fetch(
-// 			"http://technorollix.opju.ac.in:4000/api/event/invite/status/byInviter/eventId",
+// 			"http://10.60.41.209:4000/api/event/invite/status/byInviter/eventId",
 // 			{
 // 				method: "POST",
 // 				body: JSON.stringify({

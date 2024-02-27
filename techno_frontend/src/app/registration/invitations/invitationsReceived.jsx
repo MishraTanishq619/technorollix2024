@@ -14,7 +14,7 @@ function ReceivedInvitations() {
 	}, []);
 
 	useEffect(() => {
-		fetch("http://technorollix.opju.ac.in:4000/api/allEvents")
+		fetch("http://10.60.41.209:4000/api/allEvents")
 			.then((response) => response.json())
 			.then((data) => setInvitations(data))
 			.catch((error) => console.error("Error fetching events:", error));
