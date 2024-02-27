@@ -8,7 +8,7 @@ import {LayoutGridDemo} from "@/components/galleryContents";
 
 const page = () => {
 	return (
-		<main>
+		<main className="w-full">
 			<Header />
 			{/* <div className="pt-8 "> */}
 			<p className="fixed  text-center text-8xl text-slate-100 font-mono font-bold w-full h-full">
