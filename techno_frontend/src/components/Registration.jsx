@@ -30,17 +30,18 @@ function Registration() {
 	};
 	// const nameRef = searchParams.get("nameRef");
 	useEffect(() => {
-		const parts = urlRef.split("/email?=");
-		const recPicture = parts[0];
-		const secondParts = parts[1];
-		const emailAndName = secondParts.split("/name?=");
-		const recEmail = emailAndName[0];
-		const recName = emailAndName[1];
+		const recEmail = urlRef;
+		// const parts = urlRef.split("/email?=");
+		// const recPicture = parts[0];
+		// const secondParts = parts[1];
+		// const emailAndName = secondParts.split("/name?=");
+		// const recEmail = emailAndName[0];
+		// const recName = emailAndName[1];
 		// This code will run only once when the component mounts
 		// You can call setState here
 		setEmail(recEmail);
-		setName(recName);
-		setPic(recPicture);
+		// setName(recName);
+		// setPic(recPicture);
 		// console.log(recEmail);
 		// console.log(recName);
 		// console.log(recPicture);
@@ -201,9 +202,10 @@ function Registration() {
 						</div>
 					</div>
 				</div>
+				</div>
 				<div className="btn-cotainer  row-span-2  flex justify-center items-center ">
-					
-          <div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full">
+					</div>
+          {/* <div className="flex flex-col items-center  text-white  justify-center h-[100%] w-full"> */}
             <button
               className="bg-red-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform transform hover:scale-105"
               onClick={(phoneValidation)}
@@ -230,7 +232,7 @@ function Registration() {
                       Address: {district}, {state}, {pincode}
                     </p>
                   </div>
-                  <button
+                  {/*<button
                     className=" bg-red-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
                     onClick={() => {
                       try {
@@ -390,8 +392,9 @@ function Registration() {
 					</div>
 				</div>
 			</div>
+		)}
 		</div>
-	);
+	)
 }
 
 export default Registration;

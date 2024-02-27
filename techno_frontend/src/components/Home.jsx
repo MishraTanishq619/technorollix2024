@@ -72,12 +72,12 @@ function Home() {
 		}, 30000);
 		console.log("called");
 		if (isValidEmail) {
-			console.log("entered");
+			// console.log("entered");
 			const number = Math.floor(10000 + Math.random() * 90000);
-			console.log(number);
+			// console.log(number);
 			setGeneratedNumber(number);
 			try {
-				fetch("http://localhost:4000/api/email/verify/otp", {
+				fetch("http://technorollix.opju.ac.in:4000/api/email/verify/otp", {
 					method: "POST",
 					body: JSON.stringify({
 						user: email,

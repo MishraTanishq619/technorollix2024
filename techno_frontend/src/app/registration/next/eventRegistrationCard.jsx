@@ -69,8 +69,8 @@ function EventsRegistrationPage() {
 								? "border-green-700 bg-black border-4"
 								: ""
 								}${selectedEvents.includes(event.eventId)
-									? "bg-grey-500 min-h-40 min-w-80"
-									: "glass-morphism min-h-50 min-w-80"
+									? "bg-grey-500 min-h-40 max-w-80"
+									: "glass-morphism min-h-40 max-w-80"
 								} `}
 							onClick={
 								registeredEvents.includes(event.eventId)
