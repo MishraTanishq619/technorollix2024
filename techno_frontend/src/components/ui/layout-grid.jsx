@@ -9,8 +9,13 @@ export const LayoutGrid = ({ cards }) => {
 	const [lastSelected, setLastSelected] = useState(null);
 
 	const handleClick = (card) => {
-		setLastSelected(selected);
-		setSelected(card);
+		if (selected === card) {
+			setLastSelected(selected);
+			setSelected(null);
+		} else {
+			setLastSelected(selected);
+			setSelected(card);
+		}
 	};
 
 	const handleOutsideClick = () => {
