@@ -144,15 +144,13 @@ const page = () => {
 						</div>
 					))}
 				</div>
-				<button
-					className="bg-blue-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform item-center justify-center transform hover:scale-105"
-					onClick={() => {
-						window.location.href = "/";
-					}}
+			<button
+				className="bg-blue-500 text-3xl px-6 py-2 mb-4 rounded-md transition-transform item-center justify-center transform hover:scale-105"
+				onClick={()=>{window.location.href = "/"}}
 				>
-					Home
-				</button>
-			</div>
+				Home
+			</button>
+				</div>
 		</div>
 	);
 };

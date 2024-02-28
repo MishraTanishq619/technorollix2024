@@ -19,22 +19,16 @@ export const LayoutGrid = ({ cards }) => {
 	};
 
 	return (
-		<div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-4   mx-auto gap-4 ">
+		<div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3  max-w-7xl mx-auto gap-4 ">
 			{cards.map((card, i) => (
 				<div key={i} className={cn(card.className, "")}>
 					<motion.div
-						// draggable={true}
-						whileHover={{ scale: 0.9 }}
-						transition={{
-							type: "spring",
-							stiffness: 700,
-						}}
 						onClick={() => handleClick(card)}
 						className={cn(
 							card.className,
 							"relative overflow-hidden",
 							selected?.id === card.id
-								? "rounded-lg cursor-pointer absolute inset-0 h-[120%] w-full   m-auto z-50 flex justify-center items-center flex-wrap flex-col"
+								? "rounded-lg cursor-pointer absolute inset-0 h-1/2 w-full md:w-1/2 m-auto z-50 flex justify-center items-center flex-wrap flex-col"
 								: lastSelected?.id === card.id
 								? "z-40 bg-white rounded-xl h-full w-full"
 								: "bg-white rounded-xl h-full w-full"
@@ -80,7 +74,7 @@ const BlurImage = ({ card }) => {
 const SelectedCard = ({ selected }) => {
 	return (
 		<div className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]">
-			<motion.div
+			{/* <motion.div
 				initial={{
 					opacity: 0,
 				}}
@@ -105,7 +99,7 @@ const SelectedCard = ({ selected }) => {
 				className="relative px-8 pb-4 z-[70]"
 			>
 				{selected?.content}
-			</motion.div>
+			</motion.div> */}
 		</div>
 	);
 };
