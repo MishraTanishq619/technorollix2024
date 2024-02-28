@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -8,7 +9,7 @@ function ThreeDhelmet() {
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
@@ -26,24 +27,14 @@ function ThreeDhelmet() {
     scene.add(ambientLight);
 
     // Add red light from top right
-    const redLight = new THREE.DirectionalLight(0xff0000, 1); // Red light with high intensity
-    redLight.position.set(1, 1, 1); // Position at top right
+    const redLight = new THREE.DirectionalLight(0xff0000, 1);
+    redLight.position.set(1, 1, 1);
     scene.add(redLight);
 
     // Add blue light from top left
-    const blueLight = new THREE.DirectionalLight(0x0000ff, 1); // Blue light with high intensity
-    blueLight.position.set(-1, 1, 1); // Position at top left
+    const blueLight = new THREE.DirectionalLight(0xffffff, 1);
+    blueLight.position.set(-1, 1, 1);
     scene.add(blueLight);
-
-    // Add red light on the left for background
-    const redLightBackground = new THREE.DirectionalLight(0xff0000, 0.5); // Red light with lower intensity for background
-    redLightBackground.position.set(-1, 0, 0); // Position on the left
-    scene.add(redLightBackground);
-
-    // Add blue light on the right for background
-    const blueLightBackground = new THREE.DirectionalLight(0x0000ff, 0.5); // Blue light with lower intensity for background
-    blueLightBackground.position.set(1, 0, 0); // Position on the right
-    scene.add(blueLightBackground);
 
     // Load the model
     const gltfLoader = new GLTFLoader();
@@ -52,7 +43,7 @@ function ThreeDhelmet() {
       const loadedModel = gltfScene.scene;
 
       // Set scale factor to make the model smaller
-      const scaleFactor = 4;
+      const scaleFactor = 3;
       loadedModel.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
       // Position the model at the bottom
@@ -80,7 +71,7 @@ function ThreeDhelmet() {
     animate();
 
     // Camera setup
-    camera.position.set(0, 0, 33); // Adjust camera position as needed
+    camera.position.set(0, 0, 33);
 
     // Resize handling
     const handleResize = () => {

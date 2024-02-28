@@ -687,8 +687,8 @@ app.post("/api/email/verify/otp", async (req, res) => {
 	console.log("first");
 	try {
 		const { user, number } = req.body;
-		console.log(`called user= ${user} \n otp= ${number}`);
-		otpEmail(user, number);
+		// console.log(`called user= ${user} \n otp= ${number}`);
+		// otpEmail(user, number);
 		res.status(201).json(`success`);
 	} catch (error) {
 		console.log(error);

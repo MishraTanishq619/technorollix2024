@@ -149,7 +149,7 @@ function Home() {
     >
       <LampContainer>
         <motion.h1
-          initial={{ opacity: 0.5, y: -500 }}
+          initial={{ opacity: 0.5, y: 0 }}
           whileInView={{ opacity: 1, y: 400 }}
           transition={{
             delay: 0.3,
@@ -158,7 +158,7 @@ function Home() {
           }}
           className="relative  bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
         >
-          <img src="techno.PNG" alt="Logo" className="h-[42%]" />
+          <img src="techno.PNG" alt="Logo" className="h-[46%] max-[800px]:h-auto max-[800px]:w-80vw mx-auto" />
 
           <div className="flex justify-center">
             <TypewriterEffectSmoothDemo />
@@ -168,10 +168,10 @@ function Home() {
             <Countdown />
           </div>
           <Button
-            className="px-6 py-2 rounded-md transition-transform transform hover:scale-105"
+            className={`px-6 py-2 rounded-md transition-transform transform hover:scale-105 `}
             onClick={handleNormalButtonClick}
           >
-            <p className="text-2xl">Register</p>
+            <p className={`${myFont.className} text-2xl neon-text-blue-light`}>Register</p>
           </Button>
         </motion.h1>
       </LampContainer>
