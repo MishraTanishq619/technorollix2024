@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import localFont from "next/font/local";
 const digitalFont = localFont({ src: "../app/fonts/digital.ttf" });
+
 function Countdown() {
 	const [day1, setDay1] = useState(0);
 	const [hour1, setHour1] = useState(0);

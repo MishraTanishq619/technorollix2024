@@ -23,6 +23,12 @@ export const LayoutGrid = ({ cards }) => {
 			{cards.map((card, i) => (
 				<div key={i} className={cn(card.className, "")}>
 					<motion.div
+						// draggable={true}
+						whileHover={{ scale: 0.9 }}
+						transition={{
+							type: "spring",
+							stiffness: 700,
+						}}
 						onClick={() => handleClick(card)}
 						className={cn(
 							card.className,

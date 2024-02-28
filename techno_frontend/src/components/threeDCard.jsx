@@ -30,7 +30,7 @@ export default function ThreeDCardDemo({
 
 	return (
 		<div data-aos="flip-right" onClick={onClick} role="button" tabIndex="0">
-			<CardContainer className="inter-var w-96 m-10">
+			<CardContainer className="inter-var w-96 m-3">
 				<CardBody className="relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-[#e97c7c5d] border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-full rounded-xl p-6 border">
 					<CardItem
 						translateZ="60"
