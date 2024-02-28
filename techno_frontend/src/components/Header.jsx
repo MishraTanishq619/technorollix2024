@@ -32,7 +32,7 @@ const WebLook = () => {
 			</div>
 			<div
 				id="div-conatiner"
-				className={`${digitalFont.className} absolute bg-opacity-100 h-[4rem] bg-black flex justify-between  text-2xl fixed z-10 top-0 w-1/2 right-0 pt-1 text-neon-red text-white`}
+				className={`${digitalFont.className} absolute h-[4rem] flex justify-between  text-2xl fixed z-10 top-0 w-1/2 right-0 pt-1 text-neon-red text-white`}
 			>
 				<div className="flex justify-around neon-text-red w-[100%]">
 					<a

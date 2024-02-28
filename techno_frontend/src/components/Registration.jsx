@@ -100,20 +100,20 @@ function Registration() {
   };
 
   return (
-    <div className="absolute text-white bg-white-300 flex w-screen flex-col items-center justify-center ">
+    <div className="text-white bg-white-300 flex w-full flex-col items-center justify-center ">
       <p className="text-4xl mb-2">REGISTRATION</p>
-      <div className="border border-blue-3000 px-0 flex-col flex-wrap">
-        <div id="input-holders" className="flex flex-wrap">
-          <div id="input-holder-a" className="flex-col justify-start">
+      <div className="border m-10 border-blue-3000 px-3 md:px-10 flex-col flex-wrap">
+        <div id="input-holders" className="flex my-5 items-center justify-center flex-wrap">
+          <div id="input-holder-a" className="flex flex-col m-3 gap-3 ">
             <InputBox
               onChange={(e) => {
                 setName(e.target.value);
               }}
-              className=""
-              label="Name"
+              // className="m-10"
+              label="NAME"
               value={name}
             />
-            <div className="flex flex-col my-0 mx-0">
+            <div className="flex flex-col my-4">
               <div className="flex items-start">
                 <p className="ml-2 text-sm xl:text-2xl">EMAIL </p>
               </div>
@@ -131,7 +131,7 @@ function Registration() {
                 // isNumber(e.target.value);
                 setPhone(e.target.value);
               }}
-              className=""
+              className="my-4"
               label="PHONE"
             />
             <InputBox
@@ -141,8 +141,10 @@ function Registration() {
               className=""
               label="UNIVERSITY"
             />
-          </div>
-          <div id="input-holder-b" className="flex-col xl:pt-0 ">
+            
+            </div>
+          <div id="input-holder-b" className="flex flex-col m-3 gap-4 ">
+
             <InputBox
               onChange={(e) => {
                 setDistrict(e.target.value);

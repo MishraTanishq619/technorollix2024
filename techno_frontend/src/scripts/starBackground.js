@@ -11,7 +11,7 @@ const StarBackground = () => {
       var _scope = this;
 
       this.stars = [];
-      this.vel = args.vel || 0.4;
+      this.vel = args.vel || 0.1;
       this.radius = args.radius || 1;
       this.alpha = 0.5;
       this.starsCounter = args.stars || 300;
@@ -71,24 +71,26 @@ const StarBackground = () => {
           }
         }
         this.update = function() {
-          this.vel.x *= 1.05;
-          this.vel.y *= 1.05;
+          this.vel.x *= 1.02; // Adjust the velocity increment factor
+          this.vel.y *= 1.02; // Adjust the velocity increment factor
           this.lineWidth += 0.035;
           this.x0 = this.x;
           this.y0 = this.y;
-          this.x += this.vel.x;
-          this.y += this.vel.y;
+          this.x += this.vel.x * 0.1; // Adjust the speed by multiplying by a smaller factor
+          this.y += this.vel.y * 0.1; // Adjust the speed by multiplying by a smaller factor
           this.draw();
           if (this.isDead()) this.init();
-        }
-        this.draw = function() {
-          context.beginPath();
-          context.moveTo(this.x0, this.y0);
-          context.lineTo(this.x, this.y);
-          context.lineWidth = this.lineWidth;
-          context.strokeStyle = "red"; // Set stroke color to red
-          context.stroke();
-        }
+      }
+      
+      this.draw = function() {
+        context.beginPath();
+        context.moveTo(this.x0, this.y0);
+        context.lineTo(this.x, this.y);
+        context.lineWidth = this.lineWidth * 0.8; // Adjust the width by multiplying by a smaller factor
+        context.strokeStyle = "white";
+        context.stroke();
+    }
+    
         this.isDead = function() {
           return (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height);
         }
