@@ -57,6 +57,7 @@ function Home() {
 
   const generateNumber = async () => {
     setgenerateClicked(true);
+	setShowVerification(true);
     setRetryTimer(30);
 
     // Start the retry countdown
@@ -95,7 +96,6 @@ function Home() {
       // } catch (error) {
       // 	console.log(error);
       // }
-      setShowVerification(true);
     }
     console.log('exit');
   };
@@ -132,6 +132,10 @@ function Home() {
       setIsValidEmail(true);
       console.log('set');
     }
+	if (!regex.test(email)) {
+		setIsValidEmail(false);
+		console.log('not set');
+	  }
     console.log(regex.test(email));
 
     // return regex.test(email);
