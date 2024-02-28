@@ -38,17 +38,21 @@ function ReceivedInvitations() {
   }, []);
 
   return (
-    <div>
+    <div className="w-full flex flex-col items-center mx-4 gap-5">
       {/* {console.log(invitations.invitation)} */}
       <p className="text-4xl text-white font-bold">Invitations</p>
-      <div className="flex flex-wrap items-center justify-evenly border-2 w-2/3 h-full p-5">
+      <div className="flex flex-col items-center justify-center gap-5  md:w-[63rem]  h-full p-5">
         <p className="text-white text-2xl">
-          You have total {invitations.totalInvitation} pending invitations.
+          Pending Invitations: {invitations ? invitations.totalInvitation : '0'}
         </p>
         {invitations.invitation?.map((i, index) => (
-          <div
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            transition={{
+              type: 'tween',
+            }}
             key={i.eventId}
-            className={`bg-black p-4 rounded-lg border-4 border-blue-500 flex gap-10`}
+            className={`bg-black bg-opacity-50 p-4 mx-4 rounded-lg border-4 w-full border-red-500 flex justify-between gap-10`}
           >
             <div>
               <h2 className="text-lg font-bold text-white">Team: {i.teamId}</h2>
@@ -62,7 +66,7 @@ function ReceivedInvitations() {
             </div>
             <div className="flex flex-col justify-around gap-4">
               <button
-                className="btn overflow-hidden relative w-40 bg-green-700 text-white py-3 px-2 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-green-600 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-orange-200 hover:before:animate-ping transition-all duration-300"
+                className="btn overflow-hidden relative w-25 md:w-40 bg-white text-red-600 py-3 px-2 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-red-400 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-red-500 hover:before:animate-ping transition-all duration-300"
                 onClick={() => {
                   try {
                     // console.log({
@@ -114,19 +118,149 @@ function ReceivedInvitations() {
                 <span className="relative">Decline</span>
               </button>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-      <button
+      {/* <button
         className="m-4 btn overflow-hidden relative w-64 bg-blue-500 text-white py-4 px-4 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-full before:bg-blue-400 before:left-0 before:top-0 before:-translate-y-full hover:before:translate-y-0 before:transition-transform"
         onClick={() => {
           window.location.href = `/registration/next?emailRef=${leaderEmail}`;
         }}
       >
         Next
-      </button>
+      </button> */}
+      <Button2
+        onClick={() => {
+          window.location.href = `/registration/next?emailRef=${leaderEmail}`;
+        }}
+        className={'text-8xl'}
+      >
+        Next
+      </Button2>
     </div>
   );
 }
 
 export default ReceivedInvitations;
+
+//
+
+import React from 'react';
+import {
+  motion,
+  useAnimationFrame,
+  useMotionTemplate,
+  useMotionValue,
+  useTransform,
+} from 'framer-motion';
+import { useRef } from 'react';
+import { cn } from '@/utils/cn';
+
+function Button2({
+  borderRadius = '1.75rem',
+  children,
+  as: Component = 'button',
+  containerClassName,
+  borderClassName,
+  duration,
+  className,
+  onClick,
+  ...otherProps
+}) {
+  return (
+    <Component
+      className={cn(
+        'bg-transparent relative text-xl  h-16 w-40 p-[1px] overflow-hidden ',
+        containerClassName
+      )}
+      style={{
+        borderRadius: borderRadius,
+      }}
+      {...otherProps}
+    >
+      <div
+        className="absolute inset-0"
+        style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
+      >
+        <MovingBorder duration={duration} rx="30%" ry="30%">
+          <div
+            className={cn(
+              'h-20 w-20 opacity-[0.8] bg-[radial-gradient(var(--red-600)_40%,transparent_60%)]',
+              borderClassName
+            )}
+          />
+        </MovingBorder>
+      </div>
+
+      <div
+        className={cn(
+          'relative bg-transparent border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-xl antialiased',
+          className
+        )}
+        style={{
+          borderRadius: `calc(${borderRadius} * 0.96)`,
+        }}
+        onClick={onClick}
+      >
+        {children}
+      </div>
+    </Component>
+  );
+}
+
+const MovingBorder = ({ children, duration = 2000, rx, ry, ...otherProps }) => {
+  const pathRef = useRef(null);
+  const progress = useMotionValue(0);
+
+  useAnimationFrame((time) => {
+    const length = pathRef.current?.getTotalLength();
+    if (length) {
+      const pxPerMillisecond = length / duration;
+      progress.set((time * pxPerMillisecond) % length);
+    }
+  });
+
+  const x = useTransform(
+    progress,
+    (val) => pathRef.current?.getPointAtLength(val).x
+  );
+  const y = useTransform(
+    progress,
+    (val) => pathRef.current?.getPointAtLength(val).y
+  );
+
+  const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
+
+  return (
+    <>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        className="absolute h-full w-full"
+        width="100%"
+        height="100%"
+        {...otherProps}
+      >
+        <rect
+          fill="none"
+          width="100%"
+          height="100%"
+          rx={rx}
+          ry={ry}
+          ref={pathRef}
+        />
+      </svg>
+      <motion.div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          display: 'inline-block',
+          transform,
+        }}
+      >
+        {children}
+      </motion.div>
+    </>
+  );
+};
