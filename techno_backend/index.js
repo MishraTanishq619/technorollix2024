@@ -107,6 +107,20 @@ app.get("/api/user/:email", async (req, res) => {
 	}
 });
 
+app.get("/api/user/universityVerification/:email", async (req, res) => {
+	const userEmail = req.params.email;
+	try {
+		const user = await User.findOne({ userEmail: userEmail });
+		if (!user) {
+			return res.status(404).json(`User not found: email: ${userEmail}`);
+		} 
+		const bool = user.isUserOPJUStudent
+			return res.status(201).json(bool);
+	} catch (error) {
+		res.status(500).send(`Error fetching user details: ${error}`);
+	}
+});
+
 // EVENTS
 app.post("/api/create/event", async (req, res) => {
 	try {
@@ -687,8 +701,8 @@ app.post("/api/email/verify/otp", async (req, res) => {
 	console.log("first");
 	try {
 		const { user, number } = req.body;
-		// console.log(`called user= ${user} \n otp= ${number}`);
-		// otpEmail(user, number);
+		otpEmail(user, number);
+		console.log(`called user= ${user} \n otp= ${number}`);
 		res.status(201).json(`success`);
 	} catch (error) {
 		console.log(error);

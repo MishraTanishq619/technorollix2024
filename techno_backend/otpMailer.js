@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 	auth: {
 		// from google smtp ,
 		user: "techfest@opju.ac.in",
-		pass: "iocq rcpd axpi flir", // from app passkeys
+		pass: "goyw scee bzxo dflo", // from app passkeys
 	},
 });
 

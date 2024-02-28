@@ -17,14 +17,14 @@ function AboutCard({
 
 		<div
 			id="about"
-			className={`flex w-[80%] flex-wrap  h-auto border-2 border-slate-200 p-2 ${"flex-row-reverse"
+			className={`flex w-[80%] flex-wrap  h-auto border-2 border-neon-red inset-0 shadow-inner-red p-2 ${"flex-row-reverse"
 				}`}
 		>
 			<div
 				id="about-pic"
 				className="w-full px-4 h-1/3 py-4 md:py-10 flex justify-center items-center "
 			>
-				<img src={imageLink} className="h-full w-full"></img>
+				<img src={imageLink} className="h-60 w-full"></img>
 			</div>
 			<div
 				id="about-text"

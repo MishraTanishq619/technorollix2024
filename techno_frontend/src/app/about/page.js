@@ -5,8 +5,9 @@ import Header from "@/components/Header";
 
 const page = () => {
 	return (
-		<TracingBeam>
+		<>
 			<Header />
+		<TracingBeam>
 			<div className="pt-10 w-full flex flex-col items-center gap-10">
 			<AboutCard
 					imageLink="opju-bg.jpg"
@@ -19,6 +20,18 @@ const page = () => {
 					 2023, aims at giving a spine-tingling ride to inspiring minds and bringing together dynamic, innovative and enterprising students 
 					 of various colleges (students of B Tech., B.Com, B.Sc., BBA) from all over India on a common platform to participate in different 
 					 competitive events along with OPJU students, dedicated to experiencing the fun in technology, Management and science."
+					arrangement={1}
+				/>
+				<AboutCard
+					imageLink="mainbg.jpg"
+					heading="Meet the team"
+					paragraph="
+					Elevating Startups, Empowering Dreams: Bridging the gap between vision and 
+					technology, we are your strategic ally in the digital realm. Our mission is to propel startups and 
+					small businesses into the digital forefront, crafting seamless websites and apps at minimal 
+					costs. Beyond technical expertise, we oAer comprehensive support – from business plans to 
+					consultancy – fostering growth and success. Collaborate with us, transform your ideas into 
+					thriving ventures. "
 					arrangement={1}
 				/>
 				<AboutCard
@@ -35,6 +48,7 @@ const page = () => {
 			</div>
 
 		</TracingBeam>
+		</>
 	);
 };
 
