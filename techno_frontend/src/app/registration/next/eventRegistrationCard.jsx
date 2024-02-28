@@ -10,6 +10,7 @@ function EventsRegistrationPage() {
   const [leaderEmail, setLeaderEmail] = useState('');
   const [teammateEmails, setTeammateEmails] = useState([]);
   const [entryFee, setEntryFee] = useState([]);
+  const [IsOpjuStudent, setIsOpjuStudent] = useState(false);
 
   const searchParams = useSearchParams();
   const emailRef = searchParams.get('emailRef');
@@ -27,6 +28,14 @@ function EventsRegistrationPage() {
     fetch(`http://10.60.41.209:4000/api/participant/eventId/${emailRef}`)
       .then((response) => response.json())
       .then((data) => setregisteredEvents(data))
+      .catch((error) =>
+        console.error('Error fetching registeredEvents:', error)
+      );
+    fetch(
+      `http://10.60.41.209:4000/api/user/universityVerification/mishratanishq619@gmail.com`
+    )
+      .then((response) => response.json())
+      .then((data) => setIsOpjuStudent(data))
       .catch((error) =>
         console.error('Error fetching registeredEvents:', error)
       );
@@ -57,20 +66,23 @@ function EventsRegistrationPage() {
   };
 
   return (
-    <div>
+    <div className="w-full flex flex-col items-center my-4 gap-5">
       <p className="text-4xl text-white font-bold">EventsCheckbox</p>
-      <div className="flex flex-wrap items-center  justify-evenly border-2 w-2/3 h-full p-5">
+      <div className="flex flex-wrap items-center  justify-evenly  w-[96%] h-full py-10 rounded-xl bg-[#ffffff33]">
         {events.map((event, index) => (
-          <div key={event.eventId}>
+          <div
+            key={event.eventId}
+            className="transform    transition  hover:scale-110"
+          >
             <div
-              className={`bg-black p-4 rounded-lg mx-4 my-2 ${
+              className={`bg-black p-4 rounded-lg mx-4 my-2   ${
                 registeredEvents.includes(event.eventId)
-                  ? 'border-green-700 bg-black border-4'
+                  ? 'border-red-600 bg-black border-4 '
                   : ''
               }${
                 selectedEvents.includes(event.eventId)
-                  ? 'bg-grey-500 min-h-40 max-w-80'
-                  : 'glass-morphism min-h-40 max-w-80'
+                  ? 'bg-[#ff0000aa] min-h-40 max-w-80 '
+                  : 'bg-[#000000] min-h-40 max-w-80'
               } `}
               onClick={
                 registeredEvents.includes(event.eventId)
@@ -100,7 +112,7 @@ function EventsRegistrationPage() {
                     Team Size: {event.teamSize}
                   </p>
                   <p className="text-lg font-bold text-white">
-                    Price: {event.priceMoney}
+                    Prize: {event.priceMoney}
                   </p>
                   {/* <p className="text-lg font-bold text-white">
 								Entry Fee: {event.entryFee}
@@ -117,7 +129,7 @@ function EventsRegistrationPage() {
                       outline: 'none',
                       boxShadow: 'none',
                     }}
-                    className="bg-black px-5 py-1 rounded-md text-white w-80"
+                    className="bg-black w-full px-5 py-1 rounded-md text-white "
                     value={
                       additionalDetails[
                         selectedEvents.indexOf(event.eventId)
@@ -137,12 +149,17 @@ function EventsRegistrationPage() {
           </div>
         ))}
         <div>
-          <h2 className="text-white">Total price</h2>
+          {/* <h2 className="text-white">
+            Total price:
+            {selectedEvents.length === 0
+              ? '0'
+              : CalculateFee(selectedEvents, registeredEvents)}
+          </h2> */}
           <p></p>
         </div>
       </div>
       <button
-        className="bg-orange-600 ml-56 rounded-md text-3xl px-6 py-3 items-center justify-center mt-10"
+        className="bg-orange-600  rounded-md text-3xl px-6 py-3 items-center justify-center mt-10"
         onClick={() => {
           try {
             fetch('http://10.60.41.209:4000/api/team-registration/event', {
@@ -179,5 +196,22 @@ function EventsRegistrationPage() {
     </div>
   );
 }
-
 export default EventsRegistrationPage;
+
+const CalculateFee = (selectedEvents, registeredEvents) => {
+  let fee = registeredEvents.length;
+  // console.log(registeredEvents.length);
+  // console.log(selectedEvents);
+  if (selectedEvents.length <= 3) {
+    fee = 200;
+  } else if (selectedEvents.length <= 5) {
+    fee = 300;
+  } else if (selectedEvents.length <= 7) {
+    fee = 500;
+  } else {
+    fee = 1000;
+  }
+  return fee;
+};
+
+// "/api/user/universityVarification/:email"

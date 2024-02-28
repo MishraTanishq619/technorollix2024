@@ -1,12 +1,12 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { BackgroundBeams } from '@/components/ui/background-beams';
 import StarBackground from "@/scripts/starBackground";
 
 export const metadata = {
-  title: "Technorollix_2024",
-  description: "by CodeForIt team.",
+  title: 'Technorollix_2024',
+  description: 'by CodeForIt team.',
 };
 
 export default function RootLayout({ children }) {
@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
           <StarBackground/>
           {/* <body className="w-full h-screen pt-16 bg-cover bg-fixed bg-no-repeat bg-center bg-[url('/star-war-blue-bg.png')]  flex flex-wrap gap-0 items-center overflow-y-scroll"> */}
           {children}
-      {/* <BackgroundBeams/> */}
+          {/* <BackgroundBeams/> */}
         </body>
       </html>
     </GoogleOAuthProvider>
