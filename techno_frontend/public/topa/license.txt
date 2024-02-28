@@ -1,0 +1,11 @@
+Model Information:
+* title:	Darth Vader Helmet
+* source:	https://sketchfab.com/3d-models/darth-vader-helmet-7c49aaf5121643189a4ac40fdfd0a35b
+* author:	JJTale (https://sketchfab.com/JJTale)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Darth Vader Helmet" (https://sketchfab.com/3d-models/darth-vader-helmet-7c49aaf5121643189a4ac40fdfd0a35b) by JJTale (https://sketchfab.com/JJTale) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
