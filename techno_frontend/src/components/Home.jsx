@@ -10,7 +10,7 @@ import TypewriterEffectSmoothDemo from "./typeWriterDemo";
 import HeroParallaxDemo from "./heroParalloxEvents";
 
 import localFont from "next/font/local";
-const myFont = localFont({ src: "../app/fonts/subway.ttf" });
+const myFont = localFont({ src: "../app/fonts/rog.ttf" });
 
 function Home() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -156,7 +156,16 @@ function Home() {
 					}}
 					className="relative  bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
 				>
+<<<<<<< HEAD
 					<img src="techno.PNG" alt="Logo" className="h-[42%]" />
+=======
+					{/* <img
+						src="tehnoLogo_prev_ui.png"
+						alt="Logo"
+						className="h-[42%]"
+					/> */}
+					<h1 className={`${myFont.className} text-5rem text-white`}>TECHNOROLLIX</h1>
+>>>>>>> 78c2c4d (rog font)
 					<div className="flex justify-center">
 						<TypewriterEffectSmoothDemo />
 					</div>
