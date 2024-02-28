@@ -201,9 +201,17 @@ function Home() {
           onClick={handleClosePopup}
           className="overlay flex flex-col items-center justify-center h-full w-full overflow-x-hidden overflow-y-scroll"
         >
-          <div className="bg-[#ffffff66] shadow-md rounded-lg p-6 -mt-[8rem] px-10">
-            <div className="flex items-center bg-[#ffffffbb] flex-wrap justify-center">
-              <div className="border border-gray-300 flex flex-no-wrap rounded-md px-1 py-1 ">
+          <div className="bg-[#ffffff66] text-white shadow-md rounded-lg p-6 -mt-[8rem] px-10">
+            <div
+              className={`flex items-center bg-[#000000bb] flex-wrap ${
+                !showVerification ? '' : 'flex-col'
+              } justify-center`}
+            >
+              <div
+                className={` flex ${
+                  !showVerification ? ' flex-no-wrap' : ''
+                } rounded-md px-1 py-1 justify-between `}
+              >
                 <input
                   type="email"
                   placeholder="Enter your email"
@@ -214,44 +222,48 @@ function Home() {
                     outline: 'none',
                     boxShadow: 'none',
                   }}
-                  className={`bg-transparent border-2 text-black w-${
-                    !showVerification ? 50 : 40
+                  className={`bg-transparent border-2 px-2 py-2 text-white w-${
+                    !showVerification ? 50 : 50
                   }`}
                 />
                 {/* <button onClick={generateNumber} className="btn text-white  bg-orange-400 ml-4  rounded-md text-1xl px-3 py-1 justify-end"> */}
                 {!showVerification ? (
                   <button
                     onClick={generateNumber}
-                    className="text-white  bg-red-600 p-1 text-sm  "
+                    className="text-white  bg-red-600 p-1 px-3 text-sm  "
                   >
                     Get OTP
                   </button>
                 ) : retryTimer > 0 ? (
-                  <button disabled className="text-blue-500 justify-end">
+                  <button
+                    disabled
+                    className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                  >
                     {retryTimer}...
                   </button>
                 ) : (
                   <button
                     onClick={generateNumber}
-                    className="text-blue-500 justify-end"
+                    className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                   >
                     Retry
                   </button>
                 )}
+                {!isValidEmail && generateClicked && (
+                  <p className="text-red-500 border border-red-500 p-2 font-bold right-20 ml-4">
+                    Invalid Email
+                  </p>
+                )}
               </div>
-              {!isValidEmail && generateClicked && (
-                <p className="text-red-500 relative right-20 ml-8">
-                  Invalid email
-                </p>
-              )}
+
               <div>
                 {!showVerification ? (
                   <div></div>
                 ) : (
-                  <div className="mt-4 border border-gray-300 rounded-md px-3 w-60 py-1">
+                  <div className="mt-4  flex   rounded-md w-full  px-3  py-1">
                     <input
                       type="text"
-                      placeholder="Enter verification code"
+                      placeholder="Enter OTP"
                       value={verificationCode}
                       onChange={(e) => setVerificationCode(e.target.value)}
                       style={{
@@ -259,11 +271,11 @@ function Home() {
                         outline: 'none',
                         boxShadow: 'none',
                       }}
-                      className="bg-black border-none text-white w-40"
+                      className="bg-transparent border-2 px-2 py-2 text-white w-32"
                     />
                     <button
                       onClick={verifyCode}
-                      className="text-blue-500 justify-end"
+                      className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                     >
                       Verify
                     </button>
