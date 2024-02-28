@@ -52,15 +52,23 @@ function ThreeDhelmet() {
       const loadedModel = gltfScene.scene;
 
       // Set scale factor to make the model smaller
-      const scaleFactor = 4.5;
+      const scaleFactor = 4;
       loadedModel.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
       // Position the model at the bottom
       const bbox = new THREE.Box3().setFromObject(loadedModel);
       const modelHeight = bbox.max.y - bbox.min.y;
-      loadedModel.position.y = -modelHeight/2 +8 ; // Align model's bottom with the ground
+      loadedModel.position.y = -modelHeight / 2 + 8; // Align model's bottom with the ground
 
       scene.add(loadedModel);
+
+      // Auto-rotate model
+      const rotateSpeed = 0.01;
+      const axis = new THREE.Vector3(0, 1, 0);
+      const rotateModel = () => {
+        loadedModel.rotateOnAxis(axis, rotateSpeed);
+      };
+      setInterval(rotateModel, 1000 / 60); // 60 frames per second
     });
 
     // Animation loop
