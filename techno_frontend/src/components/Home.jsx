@@ -57,7 +57,9 @@ function Home() {
 
   const generateNumber = async () => {
     setgenerateClicked(true);
-	setShowVerification(true);
+    if (isValidEmail) {
+      setShowVerification(true);
+    }
     setRetryTimer(30);
 
     // Start the retry countdown
@@ -132,10 +134,10 @@ function Home() {
       setIsValidEmail(true);
       console.log('set');
     }
-	if (!regex.test(email)) {
-		setIsValidEmail(false);
-		console.log('not set');
-	  }
+    if (!regex.test(email)) {
+      setIsValidEmail(false);
+      console.log('not set');
+    }
     console.log(regex.test(email));
 
     // return regex.test(email);
@@ -158,7 +160,11 @@ function Home() {
           }}
           className="relative  bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
         >
-          <img src="techno.PNG" alt="Logo" className="h-[46%] max-[800px]:h-auto max-[800px]:w-80vw mx-auto" />
+          <img
+            src="techno.PNG"
+            alt="Logo"
+            className="h-[46%] max-[800px]:h-auto max-[800px]:w-80vw mx-auto"
+          />
 
           <div className="flex justify-center">
             <TypewriterEffectSmoothDemo />
@@ -171,7 +177,9 @@ function Home() {
             className={`px-6 py-2 rounded-md transition-transform transform hover:scale-105 `}
             onClick={handleNormalButtonClick}
           >
-            <p className={`${myFont.className} text-2xl neon-text-blue-light`}>Register</p>
+            <p className={`${myFont.className} text-2xl neon-text-blue-light`}>
+              Register
+            </p>
           </Button>
         </motion.h1>
       </LampContainer>
