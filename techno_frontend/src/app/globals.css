@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 /* styles.css */
+@import url("https://fonts.cdnfonts.com/css/rog-lyonstype");
+
+#bgVideo {
+	position: fixed;
+	/* z-index: 999; */
+	left: 0;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.hvr-underline-from-center {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	position: relative;
+	overflow: hidden;
+}
+.hvr-underline-from-center:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	left: 51%;
+	right: 51%;
+	bottom: 0;
+	background: #2098d1;
+	height: 4px;
+	-webkit-transition-property: left, right;
+	transition-property: left, right;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+}
+.hvr-underline-from-center:hover:before,
+.hvr-underline-from-center:focus:before,
+.hvr-underline-from-center:active:before {
+	left: 0;
+	right: 0;
+}
 /* Width */
 
 ::-webkit-scrollbar {
@@ -69,9 +112,29 @@
 		color: #ff004d; /* Neon Red Color */
 		font-family: "Your-LED-Font", sans-serif; /* Replace with your LED font */
 	}
-	.neon-text {
+
+	.neon-text-red {
 		color: white;
 		text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red; /* Adjust the shadow size as needed */
+	}
+	.text-neon-green {
+		color: #17f710; /* Neon Red Color */
+		font-family: "Your-LED-Font", sans-serif; /* Replace with your LED font */
+	}
+
+	.neon-text-green {
+		color: white;
+		text-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green; /* Adjust the shadow size as needed */
+	}
+
+	.text-neon-blue {
+		color: #1100ff; /* Neon Red Color */
+		font-family: "Your-LED-Font", sans-serif; /* Replace with your LED font */
+	}
+
+	.neon-text-blue {
+		color: white;
+		text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue; /* Adjust the shadow size as needed */
 	}
 }
 /*  */
@@ -106,9 +169,10 @@
 	padding: 20px 0;
 	top: 160%;
 	transform: translateY(50px);
-	left: -200px;
+	left: -100px;
+	/* right: 0; */
 	width: 250px;
-	background-color: #1a191999;
+	background-color: #241111dd;
 	color: white;
 	box-shadow: 0px 10px 10px 3px rgba(0, 0, 0, 0.3);
 	border-bottom-left-radius: 3px;
@@ -116,6 +180,17 @@
 	z-index: 111;
 	transition: 0.4s all;
 }
+@media (min-width: 768px) {
+	.navbar-links li.navbar-dropdown .dropdown {
+		top: 100%;
+		transform: translateY(50px);
+		left: -200px;
+		width: 250px;
+		background-color: #241111dd;
+		color: white;
+	}
+}
+
 .navbar-links li.navbar-dropdown .dropdown a {
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -128,52 +203,51 @@
 	color: #ff3f34;
 }
 
-
 .registration-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-  }
-  
-  .registration-title {
+}
+
+.registration-title {
 	font-size: 2rem;
 	margin-bottom: 1rem;
-  }
-  
-  .form-container {
+}
+
+.form-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-  }
-  
-  .input-boxes {
+}
+
+.input-boxes {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	gap: 1rem;
 	width: 100%;
-  }
-  
-  .gender-selection {
+}
+
+.gender-selection {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-top: 1rem;
-  }
-  
-  .gender-selection p {
+}
+
+.gender-selection p {
 	font-size: 1rem;
-  }
-  
-  .gender-selection div {
+}
+
+.gender-selection div {
 	display: flex;
 	gap: 1rem;
-  }
-  
-  .register-button {
+}
+
+.register-button {
 	margin-top: 1rem;
-  }
-  
-  .overlay {
+}
+
+.overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -183,11 +257,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  }
-  
-  .modal {
+}
+
+.modal {
 	background-color: white;
 	padding: 2rem;
 	border-radius: 0.5rem;
-  }
-  
+}
