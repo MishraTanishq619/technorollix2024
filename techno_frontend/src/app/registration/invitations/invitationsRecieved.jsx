@@ -54,13 +54,13 @@ function ReceivedInvitations() {
             key={i.eventId}
             className={`bg-black bg-opacity-50 p-4 mx-4 rounded-lg border-4 w-full border-red-500 flex max-md:flex-col justify-between gap-10`}
           >
-            <div>
-              <h2 className="text-lg font-bold text-white">Team: {i.teamId}</h2>
+            <div className="">
+              {/* <h2 className="text-lg font-bold text-white">Team: {i.teamId}</h2> */}
               <h2 className="text-lg font-bold text-white">
-                Event: {i.eventId}
+                Event: {getEvent(i.eventId)}
               </h2>
               <p className="text-lg font-bold text-white">
-                Inviter: {i.inviterEmail}
+                Inviter: {getInviter(i.inviterEmail)}
               </p>
               <p className="text-lg font-bold text-white">Status: {i.status}</p>
             </div>
@@ -142,7 +142,40 @@ function ReceivedInvitations() {
 }
 
 export default ReceivedInvitations;
+//
+// /api/user / name / ${ email }
 
+const getInviter = async (email) => {
+  // console.log('entered');
+  let data = fetch(`http://10.60.41.209:4000/api/user/name/${email}`)
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log(data);
+      return data;
+    })
+    .catch((error) => {
+      console.error('Error fetching events:', error);
+      // return null;
+    });
+  return data;
+};
+
+const getEvent = async (eventId) => {
+  // console.log('entered');
+  let data = fetch(
+    `http://10.60.41.209:4000/api/eventName/byEventId/${eventId}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log(data);
+      return data;
+    })
+    .catch((error) => {
+      console.error('Error fetching events:', error);
+      // return null;
+    });
+  return data;
+};
 //
 
 import React from 'react';
