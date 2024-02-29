@@ -36,11 +36,20 @@ const Invitestatuses = ({ eventId, emailRef }) => {
   }, []);
 
   return (
-    <ul className="text-yellow-400">
+    <ul className="text-white">
       {/* {console.log("Here", inviteesArray)} */}
       {inviteesArray?.map((i, k) => {
         return (
-          <li key={k}>
+          <li
+            key={k}
+            className={`${
+              i.status == 'pending'
+                ? 'text-yellow-400'
+                : i.status == 'rejected'
+                ? 'text-red-500'
+                : 'text-green-500'
+            }`}
+          >
             {i.inviteeEmail} : {i.status}
           </li>
         );

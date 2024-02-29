@@ -75,7 +75,7 @@ const page = () => {
       {/* {console.log(reqEvents)} */}
       <div
         id="alert-1"
-        className="hidden absolute z-[99]   items-center p-4 mb-4 text-red-600 rounded-lg bg-blue-50 dark:bg-red-800 dark:text-white"
+        className="hidden fixed z-[99]   items-center p-4 mb-4 text-red-600 rounded-lg bg-blue-50 dark:bg-red-800 dark:text-white"
         role="alert"
       >
         <svg
@@ -118,20 +118,22 @@ const page = () => {
       </div>
       {/*  */}
       <div className="w-[90%]">
-        <p className="text-4xl text-white flex font-bold  my-4">
-          <p className="w-[100%] text-center md:ml-[10%]">Team Construction </p>
+        <div className="text-3xl xsm:text-4xl text-white flex font-bold  my-4">
+          <div className="w-[100%] text-center md:ml-[10%]">
+            Team Construction{' '}
+          </div>
 
           <button
-            className="bg-red-500 text-3xl px-6 py-2 mb-4  rounded-md transition-transform item-center justify-center transform hover:scale-105"
+            className="bg-red-500 text-xl md:text-3xl px-6 py-2 mb-4  rounded-md transition-transform item-center justify-center transform hover:scale-105"
             onClick={() => {
               window.location.href = '/';
             }}
           >
-            Home
+            Exit
           </button>
-        </p>
+        </div>
         <div className="flex flex-col items-center gap-10  w-full  ">
-          <p className="text-white text-2xl w-full py-4 text-left">
+          <p className="text-white text-xl xsm:text-2xl w-full py-4 text-left">
             Different Events and Your Team:
           </p>
           {reqEvents?.map((i, index) => (
@@ -141,9 +143,9 @@ const page = () => {
                 type: 'tween',
               }}
               key={i.eventId}
-              className={`bg-black bg-opacity-50 p-4 px-10 mx-4 rounded-lg border-4 w-[22rem] md:w-full border-red-500 flex  justify-between md:items-center flex-col md:flex-row   gap-10`}
+              className={`bg-black bg-opacity-50 p-4 px-10 mx-4 rounded-lg border-4 w-[95vw] xsm:w-[22rem] md:w-full border-red-500 flex  justify-between md:items-center flex-col md:flex-row   gap-10`}
             >
-              <div className=" py-3 md:py-5  text-left   text-white  text-nowrap">
+              <div className=" py-3 md:py-5  text-left   text-white  text-wrap">
                 <h2 className="text-lg font-bold m-2 ">
                   Event Name: {i.eventName}
                 </h2>
@@ -170,7 +172,7 @@ const page = () => {
                     name="inputEmail"
                     id={`inputEmail${index}`}
                     placeholder="Email of partner"
-                    className="p-2 rounded-sm"
+                    className="p-2 w- rounded-sm  w-[9rem] xsm:w-[18rem] md:w-auto"
                   />
                   <p id={`status${index}`} className="mt-3 mx-2"></p>
                 </div>

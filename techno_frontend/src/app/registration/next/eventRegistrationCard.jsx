@@ -91,10 +91,10 @@ function EventsRegistrationPage() {
               }
             >
               <div className="flex flex-wrap">
-                <div className="mx-3">
-                  <img src="/mainbg.jpg" alt="" className="max-w-40" />
+                <div className="mx-3 w-full my-2">
+                  <img src="/mainbg.jpg" alt="" className="object-cover " />
                 </div>
-                <div className="min-w-40">
+                <div className="min-w-40 w-full my-2 flex flex-col gap-3">
                   <h2
                     className={`text-red-600
 								${registeredEvents.includes(event.eventId) ? '' : 'hidden'} 
@@ -108,12 +108,11 @@ function EventsRegistrationPage() {
                   <p className="text-12px font-bold text-white">
                     {event.eventDescription}
                   </p>
-                  <p className="text-lg font-bold text-white">
-                    Team Size: {event.teamSize}
-                  </p>
-                  <p className="text-lg font-bold text-white">
-                    Prize: {event.priceMoney}
-                  </p>
+                  <div className="flex justify-between text-lg font-bold text-white w-full">
+                    {/* djdsufhsu */}
+                    <p className="">TeamSize: {event.teamSize}</p>
+                    <p className="">Prize: {event.priceMoney}</p>
+                  </div>
                   {/* <p className="text-lg font-bold text-white">
 								Entry Fee: {event.entryFee}
 							</p> */}
@@ -159,7 +158,7 @@ function EventsRegistrationPage() {
         </div>
       </div>
       <button
-        className="bg-orange-600  rounded-md text-3xl px-6 py-3 items-center justify-center mt-10"
+        className="bg-orange-600  rounded-md text-3xl px-6 py-3 items-center justify-center my-10"
         onClick={() => {
           try {
             fetch('http://10.60.41.209:4000/api/team-registration/event', {
