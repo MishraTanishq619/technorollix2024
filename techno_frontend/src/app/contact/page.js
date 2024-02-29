@@ -15,14 +15,14 @@ const page = () => {
 		<div className="w-full py-10  mx-auto flex flex-wrap justify-evenly gap-2 md:gap-4 ls:gap-4">
 			<Header />
 			<CardHoverEffectDemo />
-			{/* <div className={`grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 justify-center`}> */}
+			<div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center`}>
 			<AnimatedTooltipPreview1/>
 			<AnimatedTooltipPreview2/>
 			<AnimatedTooltipPreview3/>
 			<AnimatedTooltipPreview4/>
 			<AnimatedTooltipPreview5/>
 			<AnimatedTooltipPreview6/>
-			{/* </div> */}
+			</div>
 		</div>
 	);
 };

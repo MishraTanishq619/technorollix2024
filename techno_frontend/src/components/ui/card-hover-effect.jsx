@@ -11,7 +11,7 @@ export const HoverEffect = ({
 
   return (
     <div
-      className={`px-20 py-10 w-full flex flex-wrap gap-10${className}`}
+      className={`px-20 max-[1200px]:px-5 py-10 w-full flex flex-wrap gap-10${className}`}
     >
       {items.map((item, idx) => (
         <Link
