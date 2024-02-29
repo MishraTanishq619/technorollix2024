@@ -13,7 +13,7 @@ export default function ThreeDCardDemo({
   prize = 999,
   title = 'title',
   description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-  image="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  image = 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   members = 4,
   entryFee = 400,
   onClick,
@@ -23,8 +23,8 @@ export default function ThreeDCardDemo({
   useEffect(() => {
     Aos.init({
       offset: 500,
-      delay: 100,
-      duration: 800,
+      delay: 10,
+      duration: 300,
       once: false,
       mirror: true,
       // anchorPlacement: "top",
@@ -34,8 +34,8 @@ export default function ThreeDCardDemo({
   }, []);
 
   return (
-    <div data-aos="flip-right" onClick={onClick} role="button" tabIndex="0">
-      <CardContainer className="inter-var w-96 m-3">
+    <div data-aos="flip-left" onClick={onClick} role="button" tabIndex="0">
+      <CardContainer className="inter-var border-2 border-red-700 w-96 m-3">
         <CardBody className="relative group/card hover:shadow-2xl hover:shadow-red-500 transition duration-100 hover:scale-110 shadow-2xl bg-[#0f09095d] border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-full rounded-xl p-6 border">
           <CardItem
             translateZ="60"
