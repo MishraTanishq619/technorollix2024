@@ -4,52 +4,52 @@ import { AnimatedTooltip } from "@/components/ui/animatedToolTip";
 const people = [
   {
     id: 1,
-    name: "",
+    name: "Mohit Sharma",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/mohitSharma.png",
   },
   {
     id: 2,
-    name: "",
+    name: "Prutha Chipde",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/pruthaChipde.png",
   },
   {
     id: 3,
-    name: "",
+    name: "Shruti Kumari",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/shrutiKumari.png",
   },
   {
     id: 4,
-    name: "",
+    name: "Saurav Kumar",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/sauravKumar.png",
   },
   {
     id: 5,
-    name: "",
+    name: "Monisha Mukherjee",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/monishaMukherjee.png",
   },
   {
     id: 6,
-    name: "",
+    name: "Pranjal Acharya",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/pranjalAcharya.png",
   },
   {
     id: 7,
-    name: "",
+    name: "Manas Rathore",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/manasRathore.png",
   },
   {
     id: 8,
@@ -60,7 +60,7 @@ const people = [
   },
 ];
 
-export default function AnimatedTooltipPreview3() {
+export default function AnimatedTooltipPreview5() {
   return (
     <div className="flex flex-row items-center justify-center mb-10 w-[90%]">
       <AnimatedTooltip items={people} />

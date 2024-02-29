@@ -16,7 +16,7 @@ const WebLook = () => {
 		<>
 			<div
 				id="div-conatiner"
-				className={`${digitalFont.className} absolute bg-opacity-70 h-[4rem] flex justify-between  text-2xl fixed z-100 top-0 w-auto left-0 pt-1 text-neon-red text-white`}
+				className={`${digitalFont.className} bg-opacity-70 h-[4rem] flex justify-between  text-2xl fixed z-100 top-0 w-auto left-0 pt-1 text-neon-red text-white`}
 			>
 				<div className="flex justify-around w-[100%]">
 					<a
@@ -32,7 +32,7 @@ const WebLook = () => {
 			</div>
 			<div
 				id="div-conatiner"
-				className={`${digitalFont.className} absolute h-[4rem] flex justify-between  text-2xl fixed z-10 top-0 w-1/2 right-0 pt-1 text-neon-red text-white`}
+				className={`${digitalFont.className} h-[4rem] flex justify-between  text-2xl fixed z-10 top-0 w-1/2 right-0 pt-1 text-neon-red text-white`}
 			>
 				<div className="flex justify-around neon-text-red w-[100%]">
 					<a
@@ -125,26 +125,26 @@ const MobLook = () => {
 		<>
 			<div
 				id="div-conatiner"
-				className=" bg-[#000] h-24 bg-opacity-40 flex justify-around  text-2xl fixed z-10 top-0 w-full left-0 pt-2 text-white"
+				className=" bg-[#000] h-18 bg-opacity-40 flex justify-around  text-2xl fixed z-40 top-0 w-full left-0 pt-2 text-white"
 			>
 				<div className="flex justify-around ">
 					<a
 						href="/"
 						className="transition-transform transform hover:scale-110 w-40"
 					>
-						<img src="/logo.png " className=" my-4"></img>
+						<img src="/logo.png " className=" my-1 justify-start"></img>
 					</a>
 				</div>
 
 				<div className="flex justify-around ">
-					<div className="flex items-center justify-end  pr-6  transition-transform transform hover:scale-110">
+					<div className="flex items-center justify-end    transition-transform transform hover:scale-110">
 						<ul className="navbar-links">
 							<li
 								className="navbar-dropdown"
 								onClick={DropdownState ? dropRev : drop}
 								// onDoubleClick={dropRev}
 							>
-								<div className="flex items-center justify-end  pr-6  transition-transform transform hover:scale-110">
+								<div className="flex items-center justify-end  mt-5 transition-transform transform hover:scale-110">
 									<CiMenuFries />
 								</div>
 								<div id="dropdown" className="dropdown">

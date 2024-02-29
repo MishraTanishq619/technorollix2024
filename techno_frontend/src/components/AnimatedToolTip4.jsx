@@ -4,63 +4,63 @@ import { AnimatedTooltip } from "@/components/ui/animatedToolTip";
 const people = [
   {
     id: 1,
-    name: "",
+    name: "Avinash Singh",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/avinashSingh.png",
   },
   {
     id: 2,
-    name: "",
+    name: "Priyam Sharma",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/priyamSharma.png",
   },
   {
     id: 3,
-    name: "",
+    name: "Vasudha Patel",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/vasudhaPatel.png",
   },
   {
     id: 4,
-    name: "",
+    name: "Shashishekhar Prajapati",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/shashishekharPrajapati.png",
   },
   {
     id: 5,
-    name: "",
+    name: "Naresh Kumar Mourya",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/nareshKumarMourya.png",
   },
   {
     id: 6,
-    name: "",
+    name: "Saurav Kumar",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/sauravKumar2.png",
   },
   {
     id: 7,
-    name: "",
+    name: "Priti Kushwaha",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/.png",
+      "/contacts/studentCoConveners/pritiKushwaha.png",
   },
   {
     id: 8,
-    name: "",
+    name: "Pranati Paira",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentCoConveners/.png",
+      "/contacts/studentCoConveners/pranatiPaira.png",
   },
 ];
 
-export default function AnimatedTooltipPreview3() {
+export default function AnimatedTooltipPreview4() {
   return (
     <div className="flex flex-row items-center justify-center mb-10 w-[90%]">
       <AnimatedTooltip items={people} />

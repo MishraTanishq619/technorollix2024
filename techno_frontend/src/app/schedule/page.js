@@ -2,7 +2,7 @@ import ContactCard from "@/components/ContactCard";
 import CardHoverEffectDemo from "@/components/cardTrackhover";
 import React from "react";
 import Header from "@/components/Header";
-import AnimatedTooltipPreview from "@/components/AnimatedToolTip";
+import AnimatedTooltipPreview from "@/components/AnimatedToolTip6";
 import "@/app/schedule/jasghdhsaa.css";
 import ScheduleTimelineCards from "@/components/ScheduleTimelineCards";
 
