@@ -103,7 +103,10 @@ function Registration() {
     <div className="text-white bg-white-300 flex w-full flex-col items-center justify-center ">
       <p className="text-4xl mb-2">REGISTRATION</p>
       <div className="border m-10 border-blue-3000 px-3 md:px-10 flex-col flex-wrap">
-        <div id="input-holders" className="flex my-5 items-center justify-center flex-wrap">
+        <div
+          id="input-holders"
+          className="flex my-5 items-center justify-center flex-wrap"
+        >
           <div id="input-holder-a" className="flex flex-col m-3 gap-3 ">
             <InputBox
               onChange={(e) => {
@@ -141,10 +144,8 @@ function Registration() {
               className=""
               label="UNIVERSITY"
             />
-            
-            </div>
+          </div>
           <div id="input-holder-b" className="flex flex-col m-3 gap-4 ">
-
             <InputBox
               onChange={(e) => {
                 setDistrict(e.target.value);
@@ -235,7 +236,7 @@ function Registration() {
                     className=" bg-red-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
                     onClick={() => {
                       try {
-                        fetch("http://10.60.41.209:4000/api/create/user", {
+                        fetch("http://technorollix.opju.ac.in:4000/api/create/user", {
                           method: "POST",
                           body: JSON.stringify({
                             userEmail: email,
@@ -315,27 +316,30 @@ function Registration() {
                       className=" bg-orange-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
                       onClick={() => {
                         try {
-                          fetch('http://10.60.41.209:4000/api/create/user', {
-                            method: 'POST',
-                            body: JSON.stringify({
-                              userEmail: email,
-                              userName: name,
-                              userPic: pic,
-                              userPhoneNumber: phone,
-                              userUniversity: university,
-                              isUserOPJUStudent: isUserOPJUStudent,
-                              userAddress: {
-                                district: district,
-                                state: state,
-                                pincode: pincode,
+                          fetch(
+                            'http://technorollix.opju.ac.in:4000/api/create/user',
+                            {
+                              method: 'POST',
+                              body: JSON.stringify({
+                                userEmail: email,
+                                userName: name,
+                                userPic: pic,
+                                userPhoneNumber: phone,
+                                userUniversity: university,
+                                isUserOPJUStudent: isUserOPJUStudent,
+                                userAddress: {
+                                  district: district,
+                                  state: state,
+                                  pincode: pincode,
+                                },
+                                userGender: gender,
+                              }),
+                              headers: {
+                                'Content-type': 'application/json',
+                                user_email: email,
                               },
-                              userGender: gender,
-                            }),
-                            headers: {
-                              'Content-type': 'application/json',
-                              user_email: email,
-                            },
-                          })
+                            }
+                          )
                             .then(async (res) => {
                               if (!res.ok) {
                                 throw new Error(

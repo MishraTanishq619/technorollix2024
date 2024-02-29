@@ -35,12 +35,12 @@ function Home() {
   const [visitCount, setVisitCount] = useState(0);
 
   useEffect(() => {
-    fetch('http://10.60.41.209:4000/api/visitCount')
+    fetch('http://technorollix.opju.ac.in:4000/api/visitCount')
       .then((response) => response.json())
       .then((data) => setVisitCount(data.visitCount))
       .catch((error) => console.error('Error fetching visit count:', error));
 
-    fetch('http://10.60.41.209:4000/api/allParticipants')
+    fetch('http://technorollix.opju.ac.in:4000/api/allParticipants')
       .then((response) => response.json())
       .then((data) => setParticipantCount(data.length))
       .catch((error) =>
@@ -78,7 +78,7 @@ function Home() {
       setGeneratedNumber(number);
       // try {
       let otpdata = await fetch(
-        'http://10.60.41.209:4000/api/email/verify/otp',
+        'http://technorollix.opju.ac.in:4000/api/email/verify/otp',
         {
           method: 'POST',
           body: JSON.stringify({
@@ -106,7 +106,7 @@ function Home() {
       // window.location.href("/registration")
       try {
         const response = await fetch(
-          `http://10.60.41.209:4000/api/user/${email}`
+          `http://technorollix.opju.ac.in:4000/api/user/${email}`
         );
 
         if (response.status === 409) {
@@ -197,7 +197,7 @@ function Home() {
       {/* <LampContainer> */}
       <motion.div
         initial={{ opacity: 0.5, y: -400 }}
-        whileInView={{ opacity: 1, y: window.innerWidth<800?-20:100 }}
+        whileInView={{ opacity: 1, y: window.innerWidth < 800 ? -20 : 100 }}
         transition={{
           delay: 0.3,
           duration: 1.5,
@@ -236,7 +236,7 @@ function Home() {
         // 				credentialResponse.credential
         // 			);
         // 			const result = await fetch(
-        // 				`http://10.60.41.209:4000/api/user/${userResponse.email}`
+        // 				`http://technorollix.opju.ac.in:4000/api/user/${userResponse.email}`
         // 			);
         // 			console.log(result);
         // 			if (result.status === 409) {
@@ -352,7 +352,7 @@ function Home() {
         </div>
       )}
       {/* <HeroParallaxDemo /> */}
-      <div className="fixed right-2 bottom-2 text-white text-2xl flex items-center tracking-widest">
+      <div className="fixed right-2 bottom-2 text-white text-lg sm:text-2xl flex items-center tracking-widest">
         Made with{' '}
         <span>
           <img src="heartIcon.png" alt="I" className="h-7 w-6 m-2" />{' '}

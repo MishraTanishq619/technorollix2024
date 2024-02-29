@@ -4,8 +4,8 @@ const SplashScreen = () => {
   let x = 50;
   return (
     <div className="w-full h-screen  transform transition-opacity">
-      <div class="loader-div">
-        <span class={`loader rotate-[${x * 5}deg]`}>
+      <div className="loader-div">
+        <span className={`loader rotate-[${x * 5}deg]`}>
           <span
             style={{ animation: 'loading-dotsA 0.8s infinite ' }}
             className={`rotate-[${x * 5}deg]`}

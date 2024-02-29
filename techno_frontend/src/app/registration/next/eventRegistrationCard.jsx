@@ -20,19 +20,21 @@ function EventsRegistrationPage() {
   }, []);
 
   useEffect(() => {
-    fetch('http://10.60.41.209:4000/api/allEvents')
+    fetch('http://technorollix.opju.ac.in:4000/api/allEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));
 
-    fetch(`http://10.60.41.209:4000/api/participant/eventId/${emailRef}`)
+    fetch(
+      `http://technorollix.opju.ac.in:4000/api/participant/eventId/${emailRef}`
+    )
       .then((response) => response.json())
       .then((data) => setregisteredEvents(data))
       .catch((error) =>
         console.error('Error fetching registeredEvents:', error)
       );
     fetch(
-      `http://10.60.41.209:4000/api/user/universityVerification/mishratanishq619@gmail.com`
+      `http://technorollix.opju.ac.in:4000/api/user/universityVerification/mishratanishq619@gmail.com`
     )
       .then((response) => response.json())
       .then((data) => setIsOpjuStudent(data))
@@ -161,20 +163,23 @@ function EventsRegistrationPage() {
         className="bg-orange-600  rounded-md text-3xl px-6 py-3 items-center justify-center my-10"
         onClick={() => {
           try {
-            fetch('http://10.60.41.209:4000/api/team-registration/event', {
-              method: 'POST',
-              body: JSON.stringify({
-                eventId: selectedEvents,
-                leader: leaderEmail,
-                additionalDetails: additionalDetails,
-                teammates: teammateEmails.filter(
-                  (email) => email.trim() !== ''
-                ),
-              }),
-              headers: {
-                'Content-type': 'application/json',
-              },
-            })
+            fetch(
+              'http://technorollix.opju.ac.in:4000/api/team-registration/event',
+              {
+                method: 'POST',
+                body: JSON.stringify({
+                  eventId: selectedEvents,
+                  leader: leaderEmail,
+                  additionalDetails: additionalDetails,
+                  teammates: teammateEmails.filter(
+                    (email) => email.trim() !== ''
+                  ),
+                }),
+                headers: {
+                  'Content-type': 'application/json',
+                },
+              }
+            )
               .then(async (res) => {
                 if (!res.ok) {
                   throw new Error(`HTTP error! Status: ${res.status}`);
