@@ -9,6 +9,7 @@ export default function ThreeDCardDemo({
   prize = 999,
   title = 'title',
   description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  image="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   members = 4,
   entryFee = 400,
   onClick,
@@ -47,9 +48,10 @@ export default function ThreeDCardDemo({
           </CardItem>
 
           <CardItem translateZ="100" className="w-1/2 mt-4 text-white">
-            Price: {prize}
+            Prize: {prize}
             <Image
-              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              // src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src={image}
               height="1000"
               width="1000"
               className="h-auto w-full object-cover rounded-xl group-hover/card:shadow-xl"
@@ -68,7 +70,7 @@ export default function ThreeDCardDemo({
               <CardItem
                 translateZ={40}
                 as="button"
-                className="px-4 py-2 rounded-xl bg-[#742a2aaf] text-black text-white text-xs font-bold transition-colors hover:bg-gray-800"
+                className="px-4 py-2 rounded-xl bg-[#742a2aaf]  text-white text-xs font-bold transition-colors hover:bg-gray-800"
               >
                 Register
               </CardItem>
