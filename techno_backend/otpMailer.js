@@ -20,8 +20,19 @@ async function makeOtpMessage(user, otpNumber) {
 		const message = {
 			from: '"TechnoRollix 2k24" <technorollix@opju.ac.in>',
 			to: user,
-			subject: `Confirmation `,
-			html: `<b>Your otp is ${otpNumber}</b> </br><a href="https://codeforit.in">Visit us</a><h3>Thank you</h3>`,
+			subject: `May the Force Be With You: Verify Your Email for Technorollix!`,
+			html: `
+      <p>Dear Jedi Padawan,</p>
+      <p>Greetings from a galaxy far, far away! We hope this message finds you well and ready to embark on an epic journey into the realms of technology and culture.</p>
+      <p>As a distinguished member of the Technorollix community, your presence is crucial in shaping the destiny of our national tech cultural event, unfolding amidst the illustrious halls of OP Jindal University on the planet Raigarh.</p>
+      <p>To ensure that your entry into our galactic gathering is secure and seamless, we require your verification. A single step towards this goal lies in confirming your email address, a pivotal aspect of your journey.</p>
+      <p>Your One-Time Passcode (OTP), akin to a lightsaber in your arsenal, awaits you:</p>
+      <p class="otp-code">${otpNumber}</p>
+      <p>May this code serve as your beacon, guiding you through the verification process and granting you access to the wonders that await at Technorollix.</p>
+      <p>Remember, in this vast universe of technology and innovation, your participation is essential, for together, we shall ignite the sparks of creativity and forge new alliances.</p>
+      <p>May the Force be with you as you undertake this noble quest!</p>
+      <p>With cosmic regards,</p></br>
+	  <h3><a href="http://technorollix.opju.ac.in">The United Army of Technorollix</a></h3>`,
 		};
 
 		return message;

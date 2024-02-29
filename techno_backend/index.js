@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const mailer = require("./mailer");
+const thankMailer = require("./thankMailer");
 const registeredEventMailer = require("./registeredMailer");
 const cors = require("cors");
 // const corsOptions = {
@@ -62,6 +63,7 @@ app.post("/api/create/user", async (req, res) => {
 			return res.status(205).json(`Updated details ${user}`);
 			// return res.status(409).json(`User already Exist ${exsitingUser}`)
 		}
+		thankMailer(user.userEmail);
 		const newUser = await User.create(req.body);
 		res.status(201).json(newUser);
 	} catch (error) {

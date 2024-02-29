@@ -35,8 +35,8 @@ export default function ThreeDCardDemo({
 
   return (
     <div data-aos="flip-left" onClick={onClick} role="button" tabIndex="0">
-      <CardContainer className="inter-var border-2 border-red-700 w-96 m-3">
-        <CardBody className="relative group/card hover:shadow-2xl hover:shadow-red-500 transition duration-100 hover:scale-110 shadow-2xl bg-[#0f09095d] border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-full rounded-xl p-6 border">
+      <CardContainer className=" w-96 m-3">
+        <CardBody className="relative group/card border-2 inter-var rounded-2xl border-red-700 hover:shadow-2xl hover:shadow-red-500 transition duration-100 hover:scale-110 shadow-2xl bg-[#0f09095d]  border-black/[0.1] w-auto sm:w-[30rem] h-full  p-6 ">
           <CardItem
             translateZ="60"
             className={`text-xl font-bold text-neutral-600 text-white ${brankovic.className}`}
