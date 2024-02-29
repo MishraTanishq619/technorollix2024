@@ -11,20 +11,20 @@ export const HoverEffect = ({
 
   return (
     <div
-      className={`grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 py-10 ${className}`}
+      className={`px-20 py-10 w-full flex flex-wrap gap-10${className}`}
     >
       {items.map((item, idx) => (
         <Link
           href={item?.link}
           key={item?.link}
-          className="relative group block p-2 h-full w-full"
+        className="relative group block p-2 h-full "
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 bg-red-500/[0.8] block rounded-3xl"
+                className="absolute inset-0 h-full w-full p-2 bg-neutral-200 bg-red-500/[0.8] block rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -57,7 +57,7 @@ export const Card = ({
 }) => {
   return (
     <div
-      className={`rounded-2xl h-full w-full overflow-hidden p-2 md:p-4 bg-black bg-opacity-20 border border-transparent border-white/[0.2] group-hover:border-slate-700 relative z-20 ${className}`}
+      className={`rounded-2xl h-80 w-60 overflow-hidden p-2 md:p-4 bg-black bg-opacity-20 border border-transparent border-white/[0.2] group-hover:border-slate-700 relative z-20 ${className}`}
     >
       <div className="relative z-50">
         <div className="p-0 md:p-4">{children}</div>
