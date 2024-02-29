@@ -148,9 +148,9 @@ function Home() {
 
   return (
     <div
-      className={`absolute mt-10 flex flex-col items-center justify-center ${
+      className={`absolute mt-20 flex flex-col items-center justify-center ${
         isOpen ? 'glass-morphism' : ''
-      } h-full w-full overflow-x-scroll `}
+      } h-full w-full overflow-x-scroll overflow-y-visible `}
     >
       {/*  */}
       <div
@@ -209,7 +209,7 @@ function Home() {
         <img
           src="techno.PNG"
           alt="Logo"
-          className="h-[46%] max-[800px]:h-auto max-[800px]:w-80vw mx-auto"
+          className="h-[46%] max-[800px]:h-auto max-[800px]:w-80vw mx-auto overflow-visible"
         />
 
         <div className="flex justify-center">
@@ -253,7 +253,7 @@ function Home() {
         // </div>
         <div
           onClick={handleClosePopup}
-          className="overlay flex flex-col items-center justify-center h-full w-full overflow-x-scroll overflow-y-scroll"
+          className="overlay flex flex-col items-center justify-center h-full w-full overflow-x-scroll "
         >
           <div className="bg-[#ffffff66] text-white shadow-md rounded-lg py-6 -mt-[8rem] px-10">
             <div
@@ -346,11 +346,16 @@ function Home() {
                 )}
               </div>
             </div>
-              <div className="text-black mt-4 text-1xl"><p>Note: OPJU students use your Official mail</p></div>
+            <div className="text-black mt-4 text-1xl">
+              <p>Note: OPJU students use your Official mail</p>
+            </div>
           </div>
         </div>
       )}
       {/* <HeroParallaxDemo /> */}
+      <div className="fixed right-2 bottom-2 text-white text-2xl tracking-widest">
+        Made with I by <a href="codeforit.in"></a>codeforit.in
+      </div>
     </div>
   );
 }
