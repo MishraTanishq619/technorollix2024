@@ -8,7 +8,6 @@ import LampContainer from './ui/lamp';
 import { motion } from 'framer-motion';
 import TypewriterEffectSmoothDemo from './typeWriterDemo';
 import HeroParallaxDemo from './heroParalloxEvents';
-
 import localFont from 'next/font/local';
 const myFont = localFont({ src: '../app/fonts/rog.ttf' });
 
@@ -353,8 +352,18 @@ function Home() {
         </div>
       )}
       {/* <HeroParallaxDemo /> */}
-      <div className="fixed right-2 bottom-2 text-white text-2xl tracking-widest">
-        Made with I by <a href="codeforit.in"></a>codeforit.in
+      <div className="fixed right-2 bottom-2 text-white text-2xl flex items-center tracking-widest">
+        Made with{' '}
+        <span>
+          <img src="heartIcon.png" alt="I" className="h-7 w-6 m-2" />{' '}
+        </span>
+        by{' '}
+        <a
+          href="codeforit.in"
+          className="neon-text-blue transform transition hover:scale-110"
+        >
+          CodeForIT
+        </a>
       </div>
     </div>
   );
