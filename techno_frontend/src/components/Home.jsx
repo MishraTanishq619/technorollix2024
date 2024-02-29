@@ -148,14 +148,14 @@ function Home() {
 
   return (
     <div
-      className={`absolute mt-20 flex flex-col items-center justify-center ${
+      className={`absolute mt-0 flex flex-col items-center justify-center ${
         isOpen ? 'glass-morphism' : ''
-      } h-full w-full overflow-x-scroll overflow-y-visible `}
+      } h-full w-full overflow-x-scroll overflow-y-hidden `}
     >
       {/*  */}
       <div
         id="alert-1"
-        className="hidden absolute z-[99]   items-center p-4 mb-4 text-red-600 rounded-lg bg-blue-50 dark:bg-red-800 dark:text-white"
+        className="hidden absolute z-[99] items-center p-4 mt-20 mb-4 text-red-600 rounded-lg bg-blue-50 dark:bg-red-800 dark:text-white"
         role="alert"
       >
         <svg
@@ -198,7 +198,7 @@ function Home() {
       {/* <LampContainer> */}
       <motion.div
         initial={{ opacity: 0.5, y: -400 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: window.innerWidth<800?-20:100 }}
         transition={{
           delay: 0.3,
           duration: 1.5,
