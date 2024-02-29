@@ -38,7 +38,7 @@ function ReceivedInvitations() {
   }, []);
 
   return (
-    <div className="w-full flex flex-col items-center mx-4 gap-5">
+    <div className="w-full flex flex-col items-center mx-4  gap-5">
       {/* {console.log(invitations.invitation)} */}
       <p className="text-4xl text-white font-bold">Invitations</p>
       <div className="flex flex-col items-center justify-center gap-5  md:w-[63rem]  h-full p-5">
@@ -52,7 +52,7 @@ function ReceivedInvitations() {
               type: 'tween',
             }}
             key={i.eventId}
-            className={`bg-black bg-opacity-50 p-4 mx-4 rounded-lg border-4 w-full border-red-500 flex justify-between gap-10`}
+            className={`bg-black bg-opacity-50 p-4 mx-4 rounded-lg border-4 w-full border-red-500 flex max-md:flex-col justify-between gap-10`}
           >
             <div>
               <h2 className="text-lg font-bold text-white">Team: {i.teamId}</h2>
@@ -95,7 +95,7 @@ function ReceivedInvitations() {
                 <span className="relative">Accept</span>
               </button>
               <button
-                className="btn overflow-hidden relative w-40 bg-red-700 text-white py-3 px-2 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-red-500 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-orange-200 hover:before:animate-ping transition-all duration-300"
+                className="btn overflow-hidden relative w-25 md:w-40 bg-red-700 text-white py-3 px-2 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-red-500 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-orange-200 hover:before:animate-ping transition-all duration-300"
                 onClick={() => {
                   try {
                     fetch('http://10.60.41.209:4000/api/update/team-invite', {
@@ -170,7 +170,7 @@ function Button2({
   return (
     <Component
       className={cn(
-        'bg-transparent relative text-xl  h-16 w-40 p-[1px] overflow-hidden ',
+        'bg-transparent relative text-xl  h-16 w-40 mb-12 p-[1px] overflow-hidden ',
         containerClassName
       )}
       style={{
