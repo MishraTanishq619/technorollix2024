@@ -255,7 +255,7 @@ function Home() {
           onClick={handleClosePopup}
           className="overlay flex flex-col items-center justify-center h-full w-full overflow-x-scroll overflow-y-scroll"
         >
-          <div className="bg-[#ffffff66] text-white shadow-md rounded-lg p-6 -mt-[8rem] px-10">
+          <div className="bg-[#ffffff66] text-white shadow-md rounded-lg py-6 -mt-[8rem] px-10">
             <div
               className={`flex items-center bg-[#000000bb] flex-wrap ${
                 !showVerification ? '' : 'flex-col'
@@ -282,7 +282,7 @@ function Home() {
                 {!showVerification ? (
                   <button
                     onClick={generateNumber}
-                    className="text-white  bg-red-600 p-1 px-3 text-sm  "
+                    className="text-white  bg-red-600 py-1 px-3 text-sm"
                   >
                     Get OTP
                   </button>
@@ -346,6 +346,7 @@ function Home() {
                 )}
               </div>
             </div>
+              <div className="text-black mt-4 text-1xl"><p>Note: OPJU students use your Official mail</p></div>
           </div>
         </div>
       )}
