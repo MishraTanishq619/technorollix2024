@@ -11,7 +11,7 @@ const page = () => {
 			{/* <div className="w-full h-screen py-24 bg-cover  bg-center bg-[url('/mainbg.jpg')]  flex flex-wrap gap-10 items-center justify-evenly overflow-scroll"> */}
 			{/* <BackgroundBeams /> */}
 			<EventsDetails
-				imageLink="../opju-bg.jpg"
+				imageLink="../posters/roadiesPoster.png"
 				heading="STARTUP BUSINESS PLAN"
 				theme={<div data-v-bf39338c="" class="detail-rules"><h2 data-v-bf39338c="">THEME</h2> <p data-v-bf39338c="">Unleash your Entrepreneurial Caliber</p></div>}
 				judgeMentalCriteria={<div data-v-bf39338c="" class="detail-rules"><h2 data-v-bf39338c="">JUDGEMENTAL CRITERIA</h2> <p data-v-bf39338c="">Parameters will be set by the Organizing Committee after the experts/start-up founders.</p></div>}

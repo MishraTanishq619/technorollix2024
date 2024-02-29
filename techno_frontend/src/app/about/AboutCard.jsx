@@ -1,10 +1,15 @@
 import { CardBody, CardContainer, CardItem } from '@/components/ui/3d-card';
 import React from 'react';
 
+import localFont from 'next/font/local';
+const brankovic = localFont({ src: '../fonts/brankovic.ttf' });
+const microFont = localFont({ src: '../fonts/microFont.otf' });
+
 function AboutCard({
   imageLink = 'logo.png',
   paragraph = 'loredkjfbhsdjkfh skjdhf hsldkjfhskjdfhsdjfkdh skjdfhjsdfhsdfj kjds',
   heading = 'Headuoig',
+  heading2 = '',
   arrangement = 0,
 }) {
   return (
@@ -18,7 +23,7 @@ function AboutCard({
 
       <CardBody
         id="about"
-        className={`flex w-auto flex-wrap  h-auto border-2 p-3 border-neon-red inset-0 shadow-inner-red  ${'flex-row-reverse'}`}
+        className={`flex w-auto flex-wrap  h-auto border-2 p-3 border-neon-red inset-0 shadow-inner-red ${'flex-row-reverse'}`}
       >
         <CardItem
           translateZ="-60"
@@ -34,9 +39,9 @@ function AboutCard({
         >
           <CardItem
             translateZ="20"
-            className="px-3 py-1 md:py-4 text-2xl md:text-5xl font-bold  "
+            className={` px-3 py-1 md:py-4  font-bold  `}
           >
-            {heading}
+            <p className={`text-5xl md:text-8xl ${brankovic.className}`}>{heading}</p><p className={`text-2xl md:text-5xl ${microFont.className}`}>{heading2}</p>
           </CardItem>
           <CardItem
             translateZ="20"

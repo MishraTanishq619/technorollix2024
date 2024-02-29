@@ -7,7 +7,7 @@ const people = [
     name: "Tanuja Nair",
     designation: "example@opju.ac.in",
     image:
-      "/contacts/studentConveners/tanujaNair.webp",
+      "/contacts/studentConveners/tanujaNair.png",
   },
   {
     id: 2,

@@ -39,20 +39,13 @@ const people = [
   },
   {
     id: 6,
-    name: "Saurav Kumar",
-    designation: "example@opju.ac.in",
-    image:
-      "/contacts/studentCoConveners/sauravKumar2.png",
-  },
-  {
-    id: 7,
     name: "Priti Kushwaha",
     designation: "example@opju.ac.in",
     image:
       "/contacts/studentCoConveners/pritiKushwaha.png",
   },
   {
-    id: 8,
+    id: 7,
     name: "Pranati Paira",
     designation: "example@opju.ac.in",
     image:

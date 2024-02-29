@@ -8,6 +8,9 @@ import { LayoutGridDemo } from "@/components/galleryContents";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import localFont from 'next/font/local';
+const rog = localFont({ src: '../fonts/rog.ttf' });
+
 const page = () => {
 	useEffect(() => {
 		AOS.init({
@@ -17,11 +20,11 @@ const page = () => {
 	}, []);
 	return (
 		<main className="w-full h-screen">
-			<Header />
+			<Header/>
 			{/* <div className="pt-8 "> */}
 			<p
-				style={{ fontFamily: "ROG LyonsType" }}
-				className="absolute  text-center text-8xl text-slate-100 font-mono font-bold w-full h-full my-32"
+				// style={{ fontFamily: "ROG LyonsType" }}
+				className={`absolute  text-center text-8xl text-slate-100  w-full h-full my-32 ${rog.className}`}
 				data-aos="fade-in"
 			>
 				LEGACY

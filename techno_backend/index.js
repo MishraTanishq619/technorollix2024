@@ -120,6 +120,19 @@ app.get("/api/user/universityVerification/:email", async (req, res) => {
 		res.status(500).send(`Error fetching user details: ${error}`);
 	}
 });
+app.get("/api/user/name/:email", async (req, res) => {
+	const userEmail = req.params.email;
+	try {
+		const user = await User.findOne({ userEmail: userEmail });
+		if (!user) {
+			return res.status(404).json(`User not found: email: ${userEmail}`);
+		} 
+		const name = user.userName
+			return res.status(201).json(name);
+	} catch (error) {
+		res.status(500).send(`Error fetching user details: ${error}`);
+	}
+});
 
 // EVENTS
 app.post("/api/create/event", async (req, res) => {
@@ -177,6 +190,17 @@ app.get("/api/byEventId/:eventId", async (req, res) => {
 		// const numberOfEvents = await Event.countDocuments();
 		// res.json({ numberOfEvents, events });
 		res.json(events);
+	} catch (error) {
+		res.status(500).send(`Error fetching event details: ${error}`);
+	}
+});
+app.get("/api/eventName/byEventId/:eventId", async (req, res) => {
+	const eventId = req.params.eventId;
+	try {
+		const events = await Event.findOne({ eventId: eventId });
+		// const numberOfEvents = await Event.countDocuments();
+		// res.json({ numberOfEvents, events });
+		res.json(events.eventName);
 	} catch (error) {
 		res.status(500).send(`Error fetching event details: ${error}`);
 	}

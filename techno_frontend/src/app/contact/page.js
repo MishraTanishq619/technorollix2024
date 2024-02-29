@@ -14,8 +14,8 @@ const page = () => {
 	return (
 		<div className="w-full py-10  flex flex-wrap justify-evenly gap-2 md:gap-4 ls:gap-4">
 			<Header />
-			<CardHoverEffectDemo />
 			<div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center`}>
+			<CardHoverEffectDemo />
 			<AnimatedTooltipPreview1/>
 			<AnimatedTooltipPreview2/>
 			<AnimatedTooltipPreview3/>

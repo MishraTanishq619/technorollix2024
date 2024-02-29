@@ -11,7 +11,8 @@ const page = () => {
 			<div className="pt-10 w-full flex flex-col items-center gap-10">
 			<AboutCard
 					imageLink="opju-bg.jpg"
-					heading="About TechnoRollix - 2k24"
+					heading="About TechnoRollix -"
+					heading2=" 2k24"
 					paragraph="Welcome to Central India's Biggest Technical And Cultural Fest #Technorollix - 2024. This event is organized yearly
 					 by our students and faculty staff. This fest hosts a galaxy of events(Tech-Lab, Ideathon, Lan-Gaming, Startup business plan, 
 					Fashion show, Roadies, Robovation, Talent-Hunt and many more excited events) aimed at boosting the technical and cultural skills
