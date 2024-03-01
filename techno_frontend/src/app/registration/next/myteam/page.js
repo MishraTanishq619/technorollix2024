@@ -167,54 +167,64 @@ const page = () => {
                 id="statuses"
                 className="text-yellow-500 py-3 md:py-5  text-lg "
               >
-                <Invitestatuses emailRef={emailRef} eventId={i.eventId} />
+                <Invitestatuses
+                  emailRef={emailRef}
+                  eventId={i.eventId}
+                  teamId={
+                    reqTeamsArray[
+                      registeredEvents.findIndex((e) => e == i.eventId)
+                    ]
+                  }
+                />
               </div>
-              <div className="flex flex-col items-center justify-around  gap-4">
-                <div>
-                  <input
-                    type="email"
-                    name="inputEmail"
-                    id={`inputEmail${index}`}
-                    placeholder="Email of partner"
-                    className="p-2 w- rounded-sm  w-[9rem] xsm:w-[18rem] md:w-auto"
-                  />
-                  <p id={`status${index}`} className="mt-3 mx-2"></p>
+              {i.teamSize > 1 && (
+                <div className="flex flex-col items-center justify-around  gap-4">
+                  <div>
+                    <input
+                      type="email"
+                      name="inputEmail"
+                      id={`inputEmail${index}`}
+                      placeholder="Email of partner"
+                      className="p-2 w- rounded-sm  w-[9rem] xsm:w-[18rem] md:w-auto"
+                    />
+                    <p id={`status${index}`} className="mt-3 mx-2"></p>
+                  </div>
+
+                  <button
+                    className="btn overflow-hidden relative w-40 bg-red-700 text-white py-3 px-2 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-red-600 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-orange-200 hover:before:animate-ping transition-all duration-300"
+                    onClick={() => {
+                      // validation
+
+                      // creating a schema for strings
+                      const emailSchema = z.string().email({
+                        message: 'Invalid email address',
+                      });
+
+                      let inputEm = emailSchema.safeParse(
+                        document.getElementById(`inputEmail${index}`).value
+                      );
+                      console.log(
+                        reqEvents,
+                        // registeredEvents.findIndex(
+                        //   (e) => e.eventId == reqEvents[index]
+                        // ),
+                        registeredEvents
+                      );
+                      inputEm.success
+                        ? validInputEmailHandler(
+                            inputEm.data,
+
+                            reqTeamsArray[
+                              registeredEvents.findIndex((e) => e == i.eventId)
+                            ]
+                          ) // teamId
+                        : invalidInputEmailHandler(index);
+                    }}
+                  >
+                    <span className="relative">Invite</span>
+                  </button>
                 </div>
-
-                <button
-                  className="btn overflow-hidden relative w-40 bg-red-700 text-white py-3 px-2 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-red-600 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-orange-200 hover:before:animate-ping transition-all duration-300"
-                  onClick={() => {
-                    // validation
-
-                    // creating a schema for strings
-                    const emailSchema = z.string().email({
-                      message: 'Invalid email address',
-                    });
-
-                    let inputEm = emailSchema.safeParse(
-                      document.getElementById(`inputEmail${index}`).value
-                    );
-                    console.log(
-                      reqEvents,
-                      // registeredEvents.findIndex(
-                      //   (e) => e.eventId == reqEvents[index]
-                      // ),
-                      registeredEvents
-                    );
-                    inputEm.success
-                      ? validInputEmailHandler(
-                          inputEm.data,
-
-                          reqTeamsArray[
-                            registeredEvents.findIndex((e) => e == i.eventId)
-                          ]
-                        ) // teamId
-                      : invalidInputEmailHandler(index);
-                  }}
-                >
-                  <span className="relative">Invite</span>
-                </button>
-              </div>
+              )}
             </motion.div>
           ))}
         </div>
