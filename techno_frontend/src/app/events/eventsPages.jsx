@@ -8,7 +8,7 @@ function EventsViewPage() {
 
   useEffect(() => {
     // Fetch event data from the API endpoint
-    fetch('http://technorollix.opju.ac.in:4000/api/allEvents')
+    fetch('http://10.60.41.209:4000/api/allEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));

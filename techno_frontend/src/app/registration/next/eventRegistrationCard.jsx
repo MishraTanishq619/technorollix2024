@@ -20,21 +20,19 @@ function EventsRegistrationPage() {
   }, []);
 
   useEffect(() => {
-    fetch('http://technorollix.opju.ac.in:4000/api/allEvents')
+    fetch('http://10.60.41.209:4000/api/allEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));
 
-    fetch(
-      `http://technorollix.opju.ac.in:4000/api/participant/eventId/${emailRef}`
-    )
+    fetch(`http://10.60.41.209:4000/api/participant/eventId/${emailRef}`)
       .then((response) => response.json())
       .then((data) => setregisteredEvents(data))
       .catch((error) =>
         console.error('Error fetching registeredEvents:', error)
       );
     fetch(
-      `http://technorollix.opju.ac.in:4000/api/user/universityVerification/mishratanishq619@gmail.com`
+      `http://10.60.41.209:4000/api/user/universityVerification/mishratanishq619@gmail.com`
     )
       .then((response) => response.json())
       .then((data) => setIsOpjuStudent(data))
@@ -46,6 +44,7 @@ function EventsRegistrationPage() {
   const handleEventCardClick = (eventId) => {
     const selectedIndex = selectedEvents.indexOf(eventId);
     const isEventSelected = selectedIndex !== -1;
+    // console.log('Clicked ', eventId);
 
     if (isEventSelected) {
       const updatedSelectedEvents = [...selectedEvents];
@@ -77,7 +76,7 @@ function EventsRegistrationPage() {
             className="transform    transition  hover:scale-110"
           >
             <div
-              className={`bg-black p-4 rounded-lg mx-4 my-2   ${
+              className={` p-4 rounded-lg mx-4 my-2   ${
                 registeredEvents.includes(event.eventId)
                   ? 'border-red-600 bg-black border-4 '
                   : ''
@@ -163,23 +162,20 @@ function EventsRegistrationPage() {
         className="bg-orange-600  rounded-md text-3xl px-6 py-3 items-center justify-center my-10"
         onClick={() => {
           try {
-            fetch(
-              'http://technorollix.opju.ac.in:4000/api/team-registration/event',
-              {
-                method: 'POST',
-                body: JSON.stringify({
-                  eventId: selectedEvents,
-                  leader: leaderEmail,
-                  additionalDetails: additionalDetails,
-                  teammates: teammateEmails.filter(
-                    (email) => email.trim() !== ''
-                  ),
-                }),
-                headers: {
-                  'Content-type': 'application/json',
-                },
-              }
-            )
+            fetch('http://10.60.41.209:4000/api/team-registration/event', {
+              method: 'POST',
+              body: JSON.stringify({
+                eventId: selectedEvents,
+                leader: leaderEmail,
+                additionalDetails: additionalDetails,
+                teammates: teammateEmails.filter(
+                  (email) => email.trim() !== ''
+                ),
+              }),
+              headers: {
+                'Content-type': 'application/json',
+              },
+            })
               .then(async (res) => {
                 if (!res.ok) {
                   throw new Error(`HTTP error! Status: ${res.status}`);

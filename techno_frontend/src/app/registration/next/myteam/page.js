@@ -13,16 +13,14 @@ const page = () => {
   const searchParams = useSearchParams();
   const emailRef = searchParams.get('emailRef');
 
-  let reqEvents = [];
+  // let reqEvents = [];
   useEffect(() => {
-    fetch('http://technorollix.opju.ac.in:4000/api/allEvents')
+    fetch('http://10.60.41.209:4000/api/allEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));
 
-    fetch(
-      `http://technorollix.opju.ac.in:4000/api/registeredTeam/eventId/${emailRef}`
-    )
+    fetch(`http://10.60.41.209:4000/api/registeredTeam/eventId/${emailRef}`)
       .then((response) => response.json())
       .then((data) => {
         setregisteredEvents(data.eventIdArray);
@@ -33,16 +31,16 @@ const page = () => {
       );
     // reqEvents;
   }, []);
-  reqEvents = events.filter((e) => registeredEvents.includes(e.eventId));
-
-  // setMyEvents(reqEvents);
+  let reqEvents = events.filter((e) => registeredEvents.includes(e.eventId));
+  // console.log('reqEvents:');
+  // console.log(reqEvents, registeredEvents);
 
   const validInputEmailHandler = async (email, teamId) => {
     // console.log(email, teamId);
 
     // to get team id
     let response = await fetch(
-      'http://technorollix.opju.ac.in:4000/api/create/team-invite',
+      'http://10.60.41.209:4000/api/create/team-invite',
       {
         method: 'POST',
         body: JSON.stringify({
@@ -58,16 +56,20 @@ const page = () => {
       .then((response) => response.json())
       .then((data) => {
         // console.log(data);
-        return data;
+        // return data;
+        window.location.reload();
       })
-      .catch((error) => console.error('Error fetching TeamId:', error));
-    window.location.reload();
+      .catch((error) => {
+        console.error('Error fetching TeamId:', error);
+        alertHandler();
+      });
 
     // console.log("response: ", response);
   };
 
   const invalidInputEmailHandler = (index) => {
     let inputEmail = document.getElementById(`inputEmail${index}`);
+    console.log(inputEmail.value);
 
     // alert(<AlertComponent />);
     alertHandler();
@@ -163,7 +165,7 @@ const page = () => {
               </div>
               <div
                 id="statuses"
-                className="text-yellow-500 py-3 md:py-5 text-lg "
+                className="text-yellow-500 py-3 md:py-5  text-lg "
               >
                 <Invitestatuses emailRef={emailRef} eventId={i.eventId} />
               </div>
@@ -192,12 +194,21 @@ const page = () => {
                     let inputEm = emailSchema.safeParse(
                       document.getElementById(`inputEmail${index}`).value
                     );
-
+                    console.log(
+                      reqEvents,
+                      // registeredEvents.findIndex(
+                      //   (e) => e.eventId == reqEvents[index]
+                      // ),
+                      registeredEvents
+                    );
                     inputEm.success
                       ? validInputEmailHandler(
                           inputEm.data,
-                          reqTeamsArray[index]
-                        )
+
+                          reqTeamsArray[
+                            registeredEvents.findIndex((e) => e == i.eventId)
+                          ]
+                        ) // teamId
                       : invalidInputEmailHandler(index);
                   }}
                 >

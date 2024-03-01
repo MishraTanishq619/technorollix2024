@@ -4,7 +4,7 @@ const ComponentFunc = async (eventId, emailRef) => {
   let response = 'ahwbdhwafwa';
   // console.log(eventId, emailRef);
   response = await fetch(
-    'http://technorollix.opju.ac.in:4000/api/event/invite/status/byInviter/eventId',
+    'http://10.60.41.209:4000/api/event/invite/status/byInviter/eventId',
     {
       method: 'POST',
       body: JSON.stringify({
@@ -28,6 +28,7 @@ const ComponentFunc = async (eventId, emailRef) => {
 
 const Invitestatuses = ({ eventId, emailRef }) => {
   const [inviteesArray, setInviteesArray] = useState([]);
+  let screen = window?.innerWidth;
   useEffect(() => {
     // console.log(eventId, emailRef);
     ComponentFunc(eventId, emailRef).then((response) =>
@@ -50,7 +51,12 @@ const Invitestatuses = ({ eventId, emailRef }) => {
                 : 'text-green-500'
             }`}
           >
-            {i.inviteeEmail} : {i.status}
+            {screen
+              ? screen < 500
+                ? i.inviteeEmail.slice(0, 13) + '...'
+                : i.inviteeEmail
+              : i.inviteeEmail}{' '}
+            : {i.status}
           </li>
         );
       })}
