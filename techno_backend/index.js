@@ -140,6 +140,7 @@ app.get("/api/user/name/:email", async (req, res) => {
 app.post("/api/create/event", async (req, res) => {
 	try {
 		const {
+			mainEventId,
 			eventName,
 			eventDescription,
 			eventpic,
@@ -151,6 +152,7 @@ app.post("/api/create/event", async (req, res) => {
 		const eventId = generateEventId(eventName, "event");
 		const newEvent = await Event.create({
 			eventId: eventId,
+			mainEventId: mainEventId,
 			eventName: eventName,
 			eventDescription: eventDescription,
 			eventpic: eventpic,
@@ -177,9 +179,49 @@ app.delete("/api/delete/event:eventId", async (req, res) => {
 // to get all events
 app.get("/api/allEvents", async (req, res) => {
 	try {
+		const events = await Event.find({ mainEventId: "Technorollix2k24" });
+		res.json(events);
+	} catch (error) {
+		res.status(500).send(`Error fetching event details: ${error}`);
+	}
+});
+app.get("/api/allSubEvents/:eventId", async (req, res) => {
+	const request = req.params.eventId;
+	try {
+		const events = await Event.find({ mainEventId: request });
+		res.json(events);
+	} catch (error) {
+		res.status(500).send(`Error fetching event details: ${error}`);
+	}
+});
+app.post("/api/allSubEvents/eventIdArray/byMainIdArray", async (req, res) => {
+	try {
+		const {mainEventsArray} = req.body;
+		console.log(mainEventsArray);
+		// Validate mainEventsArray
+		if (!Array.isArray(mainEventsArray)) {
+			return res.status(400).json({ error: 'eventId must be an array' });
+		}
+		let response = {};
+
+		// Use for...of loop for sequential execution
+		for (const mainEventId of mainEventsArray) {
+			const subEvents = await Event.find({ mainEventId: mainEventId });
+
+			// Extract subEventIds from subEvents
+			const subEventsId = subEvents.map(element => element.eventId);
+
+			response[mainEventId] = subEvents;
+		}
+		res.json(response);
+	} catch (error) {
+		res.status(500).send(`Error fetching event details: ${error.message}`);
+	}
+});
+
+app.get("/api/allEvents/technorollix", async (req, res) => {
+	try {
 		const events = await Event.find();
-		// const numberOfEvents = await Event.countDocuments();
-		// res.json({ numberOfEvents, events });
 		res.json(events);
 	} catch (error) {
 		res.status(500).send(`Error fetching event details: ${error}`);

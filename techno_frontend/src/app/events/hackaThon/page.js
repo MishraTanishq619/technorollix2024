@@ -10,8 +10,8 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/hackaThon.png"
-				prize={4500}
-				heading="Hackathon – Competetive Coding Competition"
+				prize={15000}
+				heading="Hackathon – Sponsored by CodeForIT"
 				paragraph={<>
 				<p>Develop an AI solution capable of reading expressions in real-time from live video and voice inputs, and provide statistical analysis of the detected expressions.</p> <br/>
 				<h1 className="neon-text-red-light">Problem Statement 1:</h1> <br/>
@@ -21,7 +21,7 @@ const page = () => {
 				</>}
 				subHeading="“Don't worry about the results; focus only on your actions - a lesson from the Bhagavad Gita”"
 				theme={<p>Embracing Diversity: Uniting Through Technology</p>}
-				subEventHeading={<h1 className="neon-text-red-light">Key Components:</h1>}
+				subEventHeading={<p className="neon-text-red-light">Key Components:</p>}
 				subEvents={<>
 					<li><b>Real-time Data Processing:</b>Participants need to develop algorithms capable of processing live video and voice streams in real-time. This involves efficient data handling and processing to ensure minimal latency.</li>
 					<li><b>Expression Recognition:</b>The AI solution should accurately recognize a wide range of facial expressions, including happiness, sadness, anger, surprise, fear, and more. Additionally, it should analyze vocal cues such as tone, pitch, and intensity to infer emotional states.</li>
@@ -76,17 +76,18 @@ const page = () => {
 				</>}
 				judgeMentalCriteria={<>
 					<p className="neon-text-red-lighter">Judgement for 1<sup>st</sup> round will be based on:</p>
+					<ul>
 					<li>Presentation Skills</li>
 					<li>Thinking capability</li>
-					<li>Approach for multiple use cases</li>
+					<li>Approach for multiple use cases</li></ul>
 					<p className="neon-text-red-lighter">Judgement for 2<sup>nd</sup> round will be based on:</p>
-					<li>Working of camera speech recognition</li>
+					<ul><li>Working of camera speech recognition</li>
 					<li>Real-time Processing Efficiency</li>
-					<li>Team work</li>
+					<li>Team work</li></ul>
 					<p className="neon-text-red-lighter">Judgement for 3<sup>rd</sup> round will be based on:</p>
-					<li>Accuracy of model</li>
+					<ul><li>Accuracy of model</li>
 					<li>UI/UX (most important for PS2)</li>
-					<li>Statistical Insights Provided</li>
+					<li>Statistical Insights Provided</li></ul>
 					<p>Note: Participation all team members are necessary for 2<sup>nd</sup> and 3<sup>rd</sup> round</p>
 				</>}
 				eventVenue={<p>TB-09</p>}
@@ -115,7 +116,8 @@ const page = () => {
 							<td>Satendra Kumar</td>
 							<td>+91 9301196473</td>
 						</tr>
-					</tbody></table>}
+					</tbody></table>
+					}
 			/>
 		</main>
 	);

@@ -20,12 +20,13 @@ function EventsDetails({
 	roundsHeading,
 	rounds,
 	judgeMentalCriteria,
+	eventVenueHeading = "EVENT VENUE:",
 	eventVenue,
 	eventManagers,
 	facultyCoordinators,
 }) {
 	return (
-		<><div className="pt-10 w-full flex flex-col items-center gap-10">
+		<><div className="pt-10 mt-10 w-full flex flex-col items-center gap-10">
 			<div
 				id="event"
 				className={`flex w-[80%] flex-wrap  h-auto border-2 border-red-200 p-2 ${"flex-row-reverse"
@@ -78,7 +79,7 @@ function EventsDetails({
 						<div className={`text-3rem ml-5 ${dataFont.className}  text-1xl md:text-1xl font-medium max-w-[85%] `}>{judgeMentalCriteria}</div>
 					</div>
 					<div className="mt-2 md:py-4 text-justify flex flex-wrap">
-						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>EVENT VENUE:</h2>
+						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>{eventVenueHeading}</h2>
 						<div className={`text-3rem ml-5 ${dataFont.className}  text-1xl md:text-2xl font-medium max-w-[85%] `}>{eventVenue}</div>
 					</div>
 					<div className="mt-2 md:py-4 text-justify w-full">

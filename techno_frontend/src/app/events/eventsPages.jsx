@@ -172,17 +172,6 @@ function EventsViewPage() {
 				}
 			/>
 			<ThreeDCardDemo
-				prize={6000}
-				title={"RJ hunt"}
-				description={"Become radio sensation where charisma meets communication"}
-				members={1}
-				image="/posters/rjHunt.png"
-				entryFee={""}
-				onClick={() =>
-					(window.location.href = `/events/rjHunt`)
-				}
-			/>
-			<ThreeDCardDemo
 				prize={5000}
 				title={"Codigo"}
 				description={"Real life programming problem solving"}
@@ -191,6 +180,17 @@ function EventsViewPage() {
 				entryFee={0}
 				onClick={() =>
 					(window.location.href = `/events/codigo`)
+				}
+			/>
+			<ThreeDCardDemo
+				prize={6000}
+				title={"RJ hunt"}
+				description={"Become radio sensation where charisma meets communication"}
+				members={1}
+				image="/posters/rjHunt.png"
+				entryFee={""}
+				onClick={() =>
+					(window.location.href = `/events/rjHunt`)
 				}
 			/>
 			<ThreeDCardDemo

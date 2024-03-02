@@ -35,6 +35,7 @@ const User = mongoose.model('User', userSchema);
 // Define Event Schema
 // GET
 const eventSchema = new mongoose.Schema({
+  mainEventId: {type:String, required: true },
   eventId: { type: String, required: true, unique: true },
   eventName: String,
   eventDescription: String,

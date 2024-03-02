@@ -17,11 +17,7 @@ const transporter = nodemailer.createTransport({
 
 
 async function makeMessage(recieversList) {
-	// const invitationDetails = invitationDets(teamId,recieversList)
-
-	const invitation = await Invitation.findOne({ teamId: teamId, inviteeEmail: recieversList });
-	const event = await Event.findOne({ eventId: invitation.eventId });
-	const user = await User.findOne({ userEmail: invitation.inviterEmail })
+	const user = await User.findOne({ userEmail: recieversList })
 	try {
 
 		const message = {

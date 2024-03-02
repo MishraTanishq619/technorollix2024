@@ -20,12 +20,13 @@ function SubEventsDetails({
 	roundsHeading,
 	rounds,
 	judgeMentalCriteria,
+	eventVenueHeading = "EVENT VENUE:",
 	eventVenue,
 	eventManagers,
 	facultyCoordinators,
 }) {
 	return (
-		<><div className="pt-10 w-full flex flex-col items-center gap-10">
+		<><div className="pt-10 w-full mt-10 flex flex-col items-center gap-10">
 			<div
 				id="event"
 				className={`flex w-[80%] flex-wrap  h-auto border-2 border-red-200 p-2 ${"flex-row-reverse"
@@ -50,36 +51,12 @@ function SubEventsDetails({
 					<div className={`${dataFont.className}  px-3 py-1 md:py-4 text-1rem md:text-4rem font-medium text-justify`}>
 						{paragraph}
 					</div>
-					<div className={`${headingFont.className} neon-text-red-lighter px-3 py-1 md:py-4 text-1rem md:text-4rem font-medium text-justify`}>
+					<div className={`${headingFont.className} neon-text-red-light px-3 py-1 md:py-4 text-1rem md:text-4rem font-medium text-justify`}>
 						{subHeading}
-					</div>
-					<div className="mt-2 md:py-4 text-justify flex flex-wrap">
-						<h2 className={`${headingFont.className}  neon-text-red-lighter text-1xl font-bold md:text-2xl`}>THEME : </h2>
-						<div className={`text-1xl ml-2 md:text-2xl ${dataFont.className}  `}> {theme}</div>
 					</div>
 					<div className="mt-1 md:py-0 text-justify">
 						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>{subEventHeading}</h2>
 						<div className={`text-3rem ml-5 ${dataFont.className}  text-1xs md:text-1xl font-medium max-w-[85%]`}><ul className="list-disc">{subEvents}</ul></div>
-					</div>
-					<div className="mt-1 md:py-0 text-justify">
-						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>{reasonHeading}</h2>
-						<div className={`text-3rem ml-5 ${dataFont.className}  text-1xs md:text-1xl font-medium max-w-[85%]`}><ul className="list-disc">{reason}</ul></div>
-					</div>
-					<div className="mt-2 md:py-4 text-justify">
-						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>{rulesHeading}</h2>
-						<div className={`text-3rem ml-5 ${dataFont.className}  text-1xs md:text-1xl font-medium max-w-[85%]`}><ul className="list-disc">{rules}</ul></div>
-					</div>
-					<div className="md:py-4 text-justify ">
-						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>{roundsHeading}</h2>
-						<div className={`text-3rem ml-5 ${dataFont.className}  text-1xs md:text-1xl font-medium max-w-[85%]`}>{rounds}</div>
-					</div>
-					<div className="mt-2 md:py-4 text-justify">
-						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>JUDGEMENT CRITERIA:</h2>
-						<div className={`text-3rem ml-5 ${dataFont.className}  text-1xl md:text-1xl font-medium max-w-[85%] `}>{judgeMentalCriteria}</div>
-					</div>
-					<div className="mt-2 md:py-4 text-justify flex flex-wrap">
-						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>EVENT VENUE:</h2>
-						<div className={`text-3rem ml-5 ${dataFont.className}  text-1xl md:text-2xl font-medium max-w-[85%] `}>{eventVenue}</div>
 					</div>
 					<div className="mt-2 md:py-4 text-justify w-full">
 								<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>Faculty Coordinators:</h2>
