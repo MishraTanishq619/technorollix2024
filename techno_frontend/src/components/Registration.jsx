@@ -294,21 +294,21 @@ function Registration() {
               </button>
               {isOpen && (
                 <div className="overlay" onClick={handleClosePopup}>
-                  <div className="bg-white shadow-md rounded-lg p-6">
-                    <div className="flex items-center justify-center">
+                  <div className="bg-[#000000] neon-text-red-lighter shadow-md rounded-lg p-6">
+                    {/* <div className="flex items-center justify-center">
                       <img
                         className="w-24 h-24 rounded-full object-cover"
                         src={pic}
                         alt="User Avatar"
                       />
-                    </div>
+                    </div> */}
                     <div className="mt-4">
                       <p className="text-lg font-semibold">Name: {name}</p>
-                      <p className="text-gray-500">Email: {email}</p>
-                      <p className="text-gray-500">Phone no.: {phone}</p>
-                      <p className="text-gray-500">University: {university}</p>
-                      <p className="text-gray-500">Gender: {selectedGender}</p>
-                      <p className="text-gray-500">
+                      <p className="text-white">Email: {email}</p>
+                      <p className="text-white">Phone no.: {phone}</p>
+                      <p className="text-white">University: {university}</p>
+                      <p className="text-white">Gender: {selectedGender}</p>
+                      <p className="text-white">
                         Address: {district}, {state}, {pincode}
                       </p>
                     </div>
@@ -345,7 +345,7 @@ function Registration() {
                               }
                               // alert("ho gya bhenco");
                               // console.log(res);
-                              window.location.href = `/registration/next?emailRef=${email}`;
+                              window.location.href = `/registration/invitations?emailRef=${email}`;
                               const json = await res.json();
 
                               // Process the response JSON here

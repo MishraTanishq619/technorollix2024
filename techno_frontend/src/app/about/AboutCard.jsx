@@ -41,7 +41,16 @@ function AboutCard({
             translateZ="20"
             className={` px-3 py-1 md:py-4  font-bold  `}
           >
-            <p className={`text-5xl md:text-8xl ${brankovic.className}`}>{heading}</p><p className={`text-2xl md:text-5xl ${microFont.className}`}>{heading2}</p>
+            <p
+              className={`text-xl xsm:text-2xl sm:text-4xl md:text-6xl ${brankovic.className}`}
+            >
+              {heading}
+            </p>
+            <p
+              className={`text-2xl xsm:text-2xl sm:text-4xl md:text-6xl ${microFont.className}`}
+            >
+              {heading2}
+            </p>
           </CardItem>
           <CardItem
             translateZ="20"

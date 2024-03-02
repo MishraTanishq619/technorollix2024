@@ -11,6 +11,7 @@ function EventsRegistrationPage() {
   const [teammateEmails, setTeammateEmails] = useState([]);
   const [entryFee, setEntryFee] = useState([]);
   const [IsOpjuStudent, setIsOpjuStudent] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const searchParams = useSearchParams();
   const emailRef = searchParams.get('emailRef');
@@ -20,7 +21,7 @@ function EventsRegistrationPage() {
   }, []);
 
   useEffect(() => {
-    fetch('http://10.60.41.209:4000/api/allEvents')
+    fetch('http://10.60.41.209:4000/api/allMainEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));
@@ -32,7 +33,7 @@ function EventsRegistrationPage() {
         console.error('Error fetching registeredEvents:', error)
       );
     fetch(
-      `http://10.60.41.209:4000/api/user/universityVerification/mishratanishq619@gmail.com`
+      `http://10.60.41.209:4000/api/user/universityVerification/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => setIsOpjuStudent(data))
@@ -40,6 +41,12 @@ function EventsRegistrationPage() {
         console.error('Error fetching registeredEvents:', error)
       );
   }, []);
+
+  const handleClosePopup = (event) => {
+    if (event.target.classList.contains('overlay')) {
+      setIsOpen(false);
+    }
+  };
 
   const handleEventCardClick = (eventId) => {
     const selectedIndex = selectedEvents.indexOf(eventId);
@@ -57,6 +64,13 @@ function EventsRegistrationPage() {
     } else {
       setSelectedEvents([...selectedEvents, eventId]);
       setAdditionalDetails([...additionalDetails, '']);
+    }
+  };
+  const openTab = () => {
+    if (IsOpjuStudent) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
     }
   };
 
@@ -111,7 +125,11 @@ function EventsRegistrationPage() {
                   </p>
                   <div className="flex justify-between text-lg font-bold text-white w-full">
                     {/* djdsufhsu */}
-                    <p className="">TeamSize: {event.teamSize}</p>
+                    <p className="">
+                      {event.teamSize > 0
+                        ? 'TeamSize: ' + event.teamSize
+                        : 'Have Sub-Events'}
+                    </p>
                     <p className="">Prize: {event.priceMoney}</p>
                   </div>
                   {/* <p className="text-lg font-bold text-white">
@@ -160,39 +178,79 @@ function EventsRegistrationPage() {
       </div>
       <button
         className="bg-orange-600  rounded-md text-3xl px-6 py-3 items-center justify-center my-10"
-        onClick={() => {
-          try {
-            fetch('http://10.60.41.209:4000/api/team-registration/event', {
-              method: 'POST',
-              body: JSON.stringify({
-                eventId: selectedEvents,
-                leader: leaderEmail,
-                additionalDetails: additionalDetails,
-                teammates: teammateEmails.filter(
-                  (email) => email.trim() !== ''
-                ),
-              }),
-              headers: {
-                'Content-type': 'application/json',
-              },
-            })
-              .then(async (res) => {
-                if (!res.ok) {
-                  throw new Error(`HTTP error! Status: ${res.status}`);
+        onClick={
+          IsOpjuStudent
+            ? () => {
+                try {
+                  fetch(
+                    'http://10.60.41.209:4000/api/team-registration/event',
+                    {
+                      method: 'POST',
+                      body: JSON.stringify({
+                        eventId: selectedEvents,
+                        leader: leaderEmail,
+                        additionalDetails: additionalDetails,
+                        teammates: teammateEmails.filter(
+                          (email) => email.trim() !== ''
+                        ),
+                      }),
+                      headers: {
+                        'Content-type': 'application/json',
+                      },
+                    }
+                  )
+                    .then(async (res) => {
+                      if (!res.ok) {
+                        throw new Error(`HTTP error! Status: ${res.status}`);
+                      }
+                      window.location.href = `/registration/next/subevents?emailRef=${emailRef}`;
+                      const json = await res.json();
+                    })
+                    .catch((error) => {
+                      console.log('Error during fetch:', error);
+                    });
+                } catch (error) {
+                  console.log(error);
                 }
-                window.location.href = `/registration/next/myteam?emailRef=${emailRef}`;
-                const json = await res.json();
-              })
-              .catch((error) => {
-                console.log('Error during fetch:', error);
-              });
-          } catch (error) {
-            console.log(error);
-          }
-        }}
+              }
+            : () => {
+                if (IsOpjuStudent) {
+                  setIsOpen(false);
+                } else {
+                  setIsOpen(true);
+                }
+              }
+        }
       >
         Submit
       </button>
+      {isOpen && !IsOpjuStudent && (
+        <div className="overlay">
+          <div className="bg-[#000000] neon-text-red-lighter shadow-md rounded-lg p-6">
+            {/* <div className="flex items-center justify-center">
+                      <img
+                        className="w-24 h-24 rounded-full object-cover"
+                        src={pic}
+                        alt="User Avatar"
+                      />
+                    </div> */}
+            <div className="mt-4">
+              <p className="text-lg font-semibold">
+                Registration for non-OPJU students will open on 5<sup>th</sup>
+                March
+              </p>
+            </div>
+            <button
+              className=" bg-orange-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
+              onClick={() => {
+                window.location.href = '/';
+              }}
+            >
+              Okay
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
