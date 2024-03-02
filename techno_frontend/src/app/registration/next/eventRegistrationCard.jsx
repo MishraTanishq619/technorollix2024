@@ -44,6 +44,7 @@ function EventsRegistrationPage() {
   const handleEventCardClick = (eventId) => {
     const selectedIndex = selectedEvents.indexOf(eventId);
     const isEventSelected = selectedIndex !== -1;
+    // console.log('Clicked ', eventId);
 
     if (isEventSelected) {
       const updatedSelectedEvents = [...selectedEvents];
@@ -75,7 +76,7 @@ function EventsRegistrationPage() {
             className="transform    transition  hover:scale-110"
           >
             <div
-              className={`bg-black p-4 rounded-lg mx-4 my-2   ${
+              className={` p-4 rounded-lg mx-4 my-2   ${
                 registeredEvents.includes(event.eventId)
                   ? 'border-red-600 bg-black border-4 '
                   : ''

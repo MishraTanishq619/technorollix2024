@@ -194,7 +194,7 @@ function Home() {
       {/* <LampContainer> */}
       <motion.div
         initial={{ opacity: 0.5, y: -400 }}
-        whileInView={{ opacity: 1, y: window.innerWidth<800?-20:100 }}
+        whileInView={{ opacity: 1, y: window.innerWidth < 800 ? -20 : 100 }}
         transition={{
           delay: 0.3,
           duration: 1.5,
@@ -349,8 +349,18 @@ function Home() {
         </div>
       )}
       {/* <HeroParallaxDemo /> */}
-      <div className="fixed right-2 bottom-2 text-white text-2xl tracking-widest">
-        Made with I by <a href="codeforit.in"></a>codeforit.in
+      <div className="fixed right-2 bottom-2 text-white text-lg sm:text-2xl flex items-center tracking-widest">
+        Made with{' '}
+        <span>
+          <img src="heartIcon.png" alt="I" className="h-7 w-6 m-2" />{' '}
+        </span>
+        by{' '}
+        <a
+          href="codeforit.in"
+          className="neon-text-blue transform transition hover:scale-110"
+        >
+          CodeForIT
+        </a>
       </div>
     </div>
   );

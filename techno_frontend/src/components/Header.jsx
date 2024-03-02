@@ -1,14 +1,14 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { CiMenuBurger, CiMenuFries } from "react-icons/ci";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { CiMenuBurger, CiMenuFries } from 'react-icons/ci';
 // import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 // import {  } from '@react-oauth/google';
 
 import localFont from "next/font/local";
 const digitalFont = localFont({ src: "../app/fonts/rog.ttf" });
 function Header() {
-	// console.log(globalThis.innerWidth);
-	return <>{globalThis.innerWidth < 780 ? <MobLook /> : <WebLook />}</>;
+  // console.log(globalThis.innerWidth);
+  return <>{globalThis.innerWidth < 780 ? <MobLook /> : <WebLook />}</>;
 }
 
 const WebLook = () => {
@@ -60,81 +60,81 @@ const WebLook = () => {
 						CONTACT
 					</a>
 
-					<ul className="navbar-links float-right">
-						<li
-							className="navbar-dropdown flex items-center justify-center "
-							// onClick={DropdownState ? dropRev : drop}
-							// onDoubleClick={dropRev}
-						>
-							<div className="flex items-center justify-end  pr-6  transition-transform transform hover:scale-110">
-								<CiMenuBurger />
-								{/* <CiMenuFries /> */}
-							</div>
-							<div id="dropdown" className="dropdown ">
-								<a
-									href="/schedule"
-									className="flex items-center justify-start   transition-transform transform hover:scale-110"
-								>
-									SCHEDULE
-								</a>
-								<a
-									href="/accomodation"
-									className="flex items-center justify-start   transition-transform transform hover:scale-110"
-								>
-									ACCOMODATION
-								</a>
-								<a
-									href="/studentambassador"
-									className="flex items-center justify-start   transition-transform transform hover:scale-110"
-								>
-									STUDENT AMBASSADOR
-								</a>
-								<a
-									href="/sponsers"
-									className="flex items-center justify-start   transition-transform transform hover:scale-110"
-								>
-									SPONSOR
-								</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</>
-	);
+          <ul className="navbar-links float-right">
+            <li
+              className="navbar-dropdown flex items-center justify-center "
+              // onClick={DropdownState ? dropRev : drop}
+              // onDoubleClick={dropRev}
+            >
+              <div className="flex items-center justify-end  pr-6  transition-transform transform hover:scale-110">
+                <CiMenuBurger />
+                {/* <CiMenuFries /> */}
+              </div>
+              <div id="dropdown" className="dropdown ">
+                <a
+                  href="/schedule"
+                  className="flex items-center justify-start   transition-transform transform hover:scale-110"
+                >
+                  SCHEDULE
+                </a>
+                <a
+                  href="/accomodation"
+                  className="flex items-center justify-start   transition-transform transform hover:scale-110"
+                >
+                  ACCOMODATION
+                </a>
+                <a
+                  href="/studentambassador"
+                  className="flex items-center justify-start   transition-transform transform hover:scale-110"
+                >
+                  STUDENT AMBASSADOR
+                </a>
+                <a
+                  href="/sponsers"
+                  className="flex items-center justify-start   transition-transform transform hover:scale-110"
+                >
+                  SPONSOR
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </>
+  );
 };
 
 const MobLook = () => {
-	const [DropdownState, setDropdownState] = useState(0);
-	const drop = () => {
-		setDropdownState(1);
-		let dropdown = document.getElementById("dropdown");
-		dropdown.style.visibility = "visible";
-		dropdown.style.opacity = 1;
-		dropdown.style.transform = "translateY(0px)";
-	};
+  const [DropdownState, setDropdownState] = useState(0);
+  const drop = () => {
+    setDropdownState(1);
+    let dropdown = document.getElementById('dropdown');
+    dropdown.style.visibility = 'visible';
+    dropdown.style.opacity = 1;
+    dropdown.style.transform = 'translateY(0px)';
+  };
 
-	const dropRev = () => {
-		setDropdownState(0);
-		let dropdown = document.getElementById("dropdown");
-		dropdown.style.visibility = "hidden";
-		dropdown.style.opacity = 0;
-		dropdown.style.transform = "translateY(50px)";
-	};
-	return (
-		<>
-			<div
-				id="div-conatiner"
-				className=" bg-[#000] h-18 bg-opacity-40 flex justify-around  text-2xl fixed z-40 top-0 w-full left-0 pt-2 text-white"
-			>
-				<div className="flex justify-around ">
-					<a
-						href="/"
-						className="transition-transform transform hover:scale-110 w-40"
-					>
-						<img src="/logo.png " className=" my-1 justify-start"></img>
-					</a>
-				</div>
+  const dropRev = () => {
+    setDropdownState(0);
+    let dropdown = document.getElementById('dropdown');
+    dropdown.style.visibility = 'hidden';
+    dropdown.style.opacity = 0;
+    dropdown.style.transform = 'translateY(50px)';
+  };
+  return (
+    <>
+      <div
+        id="div-conatiner"
+        className={`${digitalFont.className} text-neon-red bg-[#000] h-18 bg-opacity-40 flex justify-around  text-xl fixed z-40 top-0 w-full left-0 pt-2 text-white`}
+      >
+        <div className="flex justify-around text-neon-red ">
+          <a
+            href="/"
+            className="transition-transform transform hover:scale-110 w-40"
+          >
+            <img src="/logo.png " className=" my-3 justify-start"></img>
+          </a>
+        </div>
 
 				<div className="flex justify-around ">
 					<div className={`${digitalFont.className} flex items-center justify-end neon-text-red-light   transition-transform transform hover:scale-110`}>

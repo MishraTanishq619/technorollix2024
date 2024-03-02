@@ -1,18 +1,18 @@
-"use client";
-import { useState, useEffect } from "react";
-import EventCard from "@/components/EventCard";
-import ThreeDCardDemo from "@/components/threeDCard";
+'use client';
+import { useState, useEffect } from 'react';
+import EventCard from '@/components/EventCard';
+import ThreeDCardDemo from '@/components/threeDCard';
 
 function EventsViewPage() {
-	const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState([]);
 
-	useEffect(() => {
-		// Fetch event data from the API endpoint
-		fetch("http://10.60.41.209:4000/api/allEvents")
-			.then((response) => response.json())
-			.then((data) => setEvents(data))
-			.catch((error) => console.error("Error fetching events:", error));
-	}, []);
+  useEffect(() => {
+    // Fetch event data from the API endpoint
+    fetch('http://10.60.41.209:4000/api/allEvents')
+      .then((response) => response.json())
+      .then((data) => setEvents(data))
+      .catch((error) => console.error('Error fetching events:', error));
+  }, []);
 
 	return (
 		<div className="w-full h-screen flex flex-wrap items-start justify-evenly">
