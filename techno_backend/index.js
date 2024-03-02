@@ -179,6 +179,14 @@ app.delete("/api/delete/event:eventId", async (req, res) => {
 // to get all events
 app.get("/api/allEvents", async (req, res) => {
 	try {
+		const events = await Event.find({ teamSize: {$ne: 0} });
+		res.json(events);
+	} catch (error) {
+		res.status(500).send(`Error fetching event details: ${error}`);
+	}
+});
+app.get("/api/allMainEvents", async (req, res) => {
+	try {
 		const events = await Event.find({ mainEventId: "Technorollix2k24" });
 		res.json(events);
 	} catch (error) {
@@ -202,7 +210,7 @@ app.post("/api/allSubEvents/eventIdArray/byMainIdArray", async (req, res) => {
 		if (!Array.isArray(mainEventsArray)) {
 			return res.status(400).json({ error: 'eventId must be an array' });
 		}
-		let response = {};
+		let response = [];
 
 		// Use for...of loop for sequential execution
 		for (const mainEventId of mainEventsArray) {
@@ -211,7 +219,7 @@ app.post("/api/allSubEvents/eventIdArray/byMainIdArray", async (req, res) => {
 			// Extract subEventIds from subEvents
 			const subEventsId = subEvents.map(element => element.eventId);
 
-			response[mainEventId] = subEvents;
+			response.push(subEvents);
 		}
 		res.json(response);
 	} catch (error) {
