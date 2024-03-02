@@ -9,7 +9,7 @@ const page = () => {
 		<main className="w-full h-screen">
 			<Header />
 			<EventsDetails
-				imageLink="../posters/treasureHunt.png"
+				imageLink="../posters/ideaThon.png"
 				prize={10000}
 				heading="IDEATHON"
 				paragraph={<><p>An Ideathon is a short, engaging brainstorming event where individuals from different backgrounds
@@ -23,7 +23,7 @@ const page = () => {
 				subHeading="“SPARK CREATIVITY, IGNITING IDEAS”"
 				theme={<p>Harmony in chaos: Finding beauty in complexity</p>}
 				rulesHeading={"Rules of the event:"}
-				rules={<><ul>
+				rules={<>
 					<li>
 						Every participant must reach the designated venue 15 minutes before the event’s commencement.
 					</li>
@@ -33,63 +33,88 @@ const page = () => {
 						presenter’s central theme/idea (maximum 400 words).
 					</li>
 					<li>
-					Participants must have an “Innovative” solution to the existing problems.
+						Participants must have an “Innovative” solution to the existing problems.
 					</li>
 					<li>
-					A participant can participate individually or in a team according to their willingness.
+						A participant can participate individually or in a team according to their willingness.
 					</li>
 					<li>
-					Teams/participants attaining the maximum number of points out of the total will bethe winners.
+						Teams/participants attaining the maximum number of points out of the total will bethe winners.
 					</li>
 					<li>
-						In this game every team has to solve puzzles, clues and riddles.
+						Team must have to complete their presentation within a time limit of 08 minutes.
 					</li>
 					<li>
-						There should be only 5 members in a team.
+						A ‘warning bell’ will ring at 06 minutes during the presentation. It will indicate that
+						the last two minutes remaining for the presenter to complete their presentation.
 					</li>
 					<li>
-						If the number of participating teams will exceed 30, then there will a prequalification round before the final event.
-						(We will notify you by your email)
+						After the ringing of the warning bell, the presenter must focus on summarizing or
+						concluding their presentation.
 					</li>
-				</ul>
+					<li>
+					Two minutes will be given for the Query round.
+					</li>
 				</>}
 				roundsHeading={"Rounds:"}
 				rounds={<>
 					<p>There will be only a single round.</p>
 				</>}
 				judgeMentalCriteria={<>
-					<p>It will be based on time.</p>
+					<p>Every presenter’s idea will be evaluated on five different criteria, mainly:</p>
+					<li>Uniqueness of the idea.</li>
+					<li>Feasibility of the presenter’s idea.</li>
+					<li>Way of presentation.</li>
+					<li>Response to Questionnaire.</li>
+					<li>Scalability of the Idea.</li>
+					<p>Each criterion will contain a maximum of 20 points, with all the criteria summing up to a total of 100 points.</p>
 				</>}
-				eventVenue={<p>OP Jindal University Campus</p>}
+				eventVenue={<p>FB-14 (EE seminar hall) and FB-08</p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>
-							<td>DR. DEEPAK PATEL</td>
+							<td>Dr Swapnasarit Kar</td>
 						</tr>
 						<tr>
-							<td>DR. SAURABH GUPTA</td>
+							<td>Dr Dharmender Singh Saini</td>
 						</tr>
 						<tr>
-							<td>Prof. SHASHIKANT KAUSHALEY</td>
+							<td>Dr Guru Prakash</td>
+						</tr>
+						<tr>
+							<td>Dr Saroj Kumar Chandra</td>
+						</tr>
+						<tr>
+							<td>Dr Sandeep Biswal</td>
+						</tr>
+						<tr>
+							<td>Dr Pranjal Kumar</td>
+						</tr>
+						<tr>
+							<td>Dr Gopal Krishna Rathore</td>
 						</tr>
 					</tbody></table>}
 				eventManagers={<table>
 					<tbody>
 						<tr>
-							<td>Satyendra Vishwakarma</td>
-							<td>+91 7024332255</td>
+							<td>Prakash Kumar Nishad</td>
+							<td>+91 9109016426</td>
 						</tr>
 						<tr>
-							<td>Aditi Sharma</td>
-							<td>+91 9770613233</td>
+							<td>Prakash Ranjan</td>
+							<td>+91 9337909673</td>
 						</tr>
 						<tr>
-							<td>Shruti Shaw</td>
-							<td>+91 9830542702</td>
+							<td>Mani Pushpak Bala</td>
+							<td>+91 8966819205</td>
 						</tr>
 						<tr>
-							<td>Devendra Vishwakarma</td>
-							<td>+91 8269674671</td>
+							<td>Lukesh Kurrey</td>
+							<td>+91 6263706596</td>
+						</tr>
+						<tr>
+							<td>Ritika Sahu</td>
+							<td>+91 6260169681</td>
 						</tr>
 					</tbody></table>}
 			/>

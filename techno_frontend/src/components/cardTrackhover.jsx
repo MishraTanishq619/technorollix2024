@@ -155,15 +155,15 @@ export const WebSiteTeam = [
     link: "",
   },
   {
-    image:"/contacts/webSite/shobhitPatra.png",
+    image:"/contacts/webSite/shobhitPatra.jpg",
     title: "Shobhit Patra",
     phoneNumber: "9334237027",
-    email: "support@codeforit.in",
+    email: "shob.bt22cs79@opju.ac.in",
     role: "Web Front-End Developer",
     link: "",
   },
   {
-    image:"/contacts/webSite/tanishqMishra.png",
+    image:"/contacts/webSite/tanishqMishra.jpeg",
     title: "Tanishq Mishra",
     phoneNumber: "9399788618",
     email: "mishratanishq619@gmail.com",

@@ -4,7 +4,7 @@ import localFont from 'next/font/local';
 const headingFont = localFont({ src: '../fonts/rog.ttf' });
 const digital = localFont({ src: '../fonts/digital.ttf' });
 const dataFont = localFont({ src: '../fonts/rog.ttf' });
-function EventsDetails({
+function SubEventsDetails({
 	imageLink = "",
 	prize = 10000,
 	heading = "",
@@ -50,7 +50,7 @@ function EventsDetails({
 					<div className={`${dataFont.className}  px-3 py-1 md:py-4 text-1rem md:text-4rem font-medium text-justify`}>
 						{paragraph}
 					</div>
-					<div className={`${headingFont.className} neon-text-red-light px-3 py-1 md:py-4 text-1rem md:text-4rem font-medium text-justify`}>
+					<div className={`${headingFont.className} neon-text-red-lighter px-3 py-1 md:py-4 text-1rem md:text-4rem font-medium text-justify`}>
 						{subHeading}
 					</div>
 					<div className="mt-2 md:py-4 text-justify flex flex-wrap">
@@ -104,4 +104,4 @@ function EventsDetails({
 	);
 }
 
-export default EventsDetails;
+export default SubEventsDetails;

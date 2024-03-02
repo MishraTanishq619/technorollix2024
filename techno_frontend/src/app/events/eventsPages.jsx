@@ -4,15 +4,15 @@ import EventCard from '@/components/EventCard';
 import ThreeDCardDemo from '@/components/threeDCard';
 
 function EventsViewPage() {
-  const [events, setEvents] = useState([]);
+	const [events, setEvents] = useState([]);
 
-  useEffect(() => {
-    // Fetch event data from the API endpoint
-    fetch('http://10.60.41.209:4000/api/allEvents')
-      .then((response) => response.json())
-      .then((data) => setEvents(data))
-      .catch((error) => console.error('Error fetching events:', error));
-  }, []);
+	useEffect(() => {
+		// Fetch event data from the API endpoint
+		fetch('http://10.60.41.209:4000/api/allEvents')
+			.then((response) => response.json())
+			.then((data) => setEvents(data))
+			.catch((error) => console.error('Error fetching events:', error));
+	}, []);
 
 	return (
 		<div className="w-full h-screen flex flex-wrap items-start justify-evenly">
@@ -128,25 +128,14 @@ function EventsViewPage() {
 				}
 			/>
 			<ThreeDCardDemo
-				prize={5000}
-				title={"Codigo"}
-				description={"Real life programming problem solving"}
-				members={1}
-				image="/posters/codigo.png"
-				entryFee={0}
-				onClick={() =>
-					(window.location.href = `/events/codigo`)
-				}
-			/>
-			<ThreeDCardDemo
-				prize={8000}
-				title={"Robovation"}
-				description={"Compete to design and make powerful and efficient robots"}
+				prize={7000}
+				title={"Talent hunt"}
+				description={"Showcase you diverse talent across the spectrum"}
 				members={4}
-				image="/posters/roboVation.png"
+				image="/posters/talentHunt.png"
 				entryFee={""}
 				onClick={() =>
-					(window.location.href = `/events/roboVation`)
+					(window.location.href = `/events/talentHunt`)
 				}
 			/>
 			<ThreeDCardDemo
@@ -161,17 +150,6 @@ function EventsViewPage() {
 				}
 			/>
 			<ThreeDCardDemo
-				prize={8000}
-				title={"Yuva sabha"}
-				description={"Empower the voice of dynamic yuva"}
-				members={4}
-				image="/posters/yuvaSabha.png"
-				entryFee={""}
-				onClick={() =>
-					(window.location.href = `/events/yuvaSabha`)
-				}
-			/>
-			<ThreeDCardDemo
 				prize={60}
 				title={"Nukkad natak"}
 				description={"Portray of street theatre and social activism"}
@@ -183,14 +161,47 @@ function EventsViewPage() {
 				}
 			/>
 			<ThreeDCardDemo
-				prize={7000}
-				title={"Talent hunt"}
-				description={"Showcase you diverse talent across the spectrum"}
+				prize={8000}
+				title={"Robovation"}
+				description={"Compete to design and make powerful and efficient robots"}
 				members={4}
-				image="/posters/talentHunt.png"
+				image="/posters/roboVation.png"
 				entryFee={""}
 				onClick={() =>
-					(window.location.href = `/events/talentHunt`)
+					(window.location.href = `/events/roboVation`)
+				}
+			/>
+			<ThreeDCardDemo
+				prize={6000}
+				title={"RJ hunt"}
+				description={"Become radio sensation where charisma meets communication"}
+				members={1}
+				image="/posters/rjHunt.png"
+				entryFee={""}
+				onClick={() =>
+					(window.location.href = `/events/rjHunt`)
+				}
+			/>
+			<ThreeDCardDemo
+				prize={5000}
+				title={"Codigo"}
+				description={"Real life programming problem solving"}
+				members={1}
+				image="/posters/codigo.png"
+				entryFee={0}
+				onClick={() =>
+					(window.location.href = `/events/codigo`)
+				}
+			/>
+			<ThreeDCardDemo
+				prize={8000}
+				title={"Yuva sabha"}
+				description={"Empower the voice of dynamic yuva"}
+				members={4}
+				image="/posters/yuvaSabha.png"
+				entryFee={""}
+				onClick={() =>
+					(window.location.href = `/events/yuvaSabha`)
 				}
 			/>
 			<ThreeDCardDemo
@@ -213,17 +224,6 @@ function EventsViewPage() {
 				entryFee={""}
 				onClick={() =>
 					(window.location.href = `/events/aeroDrone`)
-				}
-			/>
-			<ThreeDCardDemo
-				prize={6000}
-				title={"RJ hunt"}
-				description={"Become radio sensation where charisma meets communication"}
-				members={1}
-				image="/posters/rjHunt.png"
-				entryFee={""}
-				onClick={() =>
-					(window.location.href = `/events/rjHunt`)
 				}
 			/>
 			<ThreeDCardDemo
