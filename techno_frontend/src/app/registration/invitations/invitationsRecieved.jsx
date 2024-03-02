@@ -17,7 +17,7 @@ function ReceivedInvitations() {
 
   useEffect(() => {
     fetch(
-      `http://10.60.41.209:4000/api/event/invitations/email/${emailRef}` // shreyrajput54@gmail.com
+      `http://technorollix.opju.ac.in:4000/api/event/invitations/email/${emailRef}` // shreyrajput54@gmail.com
     )
       .then((response) => response.json())
       .then((data) => {
@@ -75,18 +75,21 @@ function ReceivedInvitations() {
                     // 	inviteeEmail: i.inviteeEmail,
                     // 	response: "accept",
                     // });
-                    fetch('http://10.60.41.209:4000/api/update/team-invite', {
-                      method: 'PUT',
-                      body: JSON.stringify({
-                        teamId: i.teamId,
-                        inviterEmail: i.inviterEmail,
-                        inviteeEmail: i.inviteeEmail,
-                        response: 'accept',
-                      }),
-                      headers: {
-                        'Content-type': 'application/json',
-                      },
-                    }).then(() => window.location.reload());
+                    fetch(
+                      'http://technorollix.opju.ac.in:4000/api/update/team-invite',
+                      {
+                        method: 'PUT',
+                        body: JSON.stringify({
+                          teamId: i.teamId,
+                          inviterEmail: i.inviterEmail,
+                          inviteeEmail: i.inviteeEmail,
+                          response: 'accept',
+                        }),
+                        headers: {
+                          'Content-type': 'application/json',
+                        },
+                      }
+                    ).then(() => window.location.reload());
                   } catch (error) {
                     console.log(error);
                   }
@@ -98,18 +101,21 @@ function ReceivedInvitations() {
                 className="btn overflow-hidden relative w-25 md:w-40 bg-red-700 text-white py-3 px-2 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-red-500 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-orange-200 hover:before:animate-ping transition-all duration-300"
                 onClick={() => {
                   try {
-                    fetch('http://10.60.41.209:4000/api/update/team-invite', {
-                      method: 'PUT',
-                      body: JSON.stringify({
-                        teamId: i.teamId,
-                        inviterEmail: i.inviterEmail,
-                        inviteeEmail: i.inviteeEmail,
-                        response: 'decline',
-                      }),
-                      headers: {
-                        'Content-type': 'application/json',
-                      },
-                    }).then(() => window.location.reload());
+                    fetch(
+                      'http://technorollix.opju.ac.in:4000/api/update/team-invite',
+                      {
+                        method: 'PUT',
+                        body: JSON.stringify({
+                          teamId: i.teamId,
+                          inviterEmail: i.inviterEmail,
+                          inviteeEmail: i.inviteeEmail,
+                          response: 'decline',
+                        }),
+                        headers: {
+                          'Content-type': 'application/json',
+                        },
+                      }
+                    ).then(() => window.location.reload());
                   } catch (error) {
                     console.log(error);
                   }
@@ -147,7 +153,7 @@ export default ReceivedInvitations;
 
 const getInviter = async (email) => {
   // console.log('entered');
-  let data = fetch(`http://10.60.41.209:4000/api/user/name/${email}`)
+  let data = fetch(`http://technorollix.opju.ac.in:4000/api/user/name/${email}`)
     .then((response) => response.json())
     .then((data) => {
       // console.log(data);
@@ -163,7 +169,7 @@ const getInviter = async (email) => {
 const getEvent = async (eventId) => {
   // console.log('entered');
   let data = fetch(
-    `http://10.60.41.209:4000/api/eventName/byEventId/${eventId}`
+    `http://technorollix.opju.ac.in:4000/api/eventName/byEventId/${eventId}`
   )
     .then((response) => response.json())
     .then((data) => {
