@@ -5,7 +5,7 @@ import { CiMenuBurger, CiMenuFries } from "react-icons/ci";
 // import {  } from '@react-oauth/google';
 
 import localFont from "next/font/local";
-const digitalFont = localFont({ src: "../app/fonts/brankovic.ttf" });
+const digitalFont = localFont({ src: "../app/fonts/rog.ttf" });
 function Header() {
 	// console.log(globalThis.innerWidth);
 	return <>{globalThis.innerWidth < 780 ? <MobLook /> : <WebLook />}</>;
@@ -16,7 +16,7 @@ const WebLook = () => {
 		<>
 			<div
 				id="div-conatiner"
-				className={`${digitalFont.className} bg-opacity-70 h-[4rem] flex justify-between  text-2xl fixed z-100 top-0 w-auto left-0 pt-1 text-neon-red text-white`}
+				className={`${digitalFont.className} bg-opacity-70 h-[4rem] flex justify-between  text-2xl fixed z-100 top-0 w-auto left-0 pt-1`}
 			>
 				<div className="flex justify-around w-[100%]">
 					<a
@@ -32,9 +32,9 @@ const WebLook = () => {
 			</div>
 			<div
 				id="div-conatiner"
-				className={`${digitalFont.className} h-[4rem] flex justify-between  text-2xl fixed z-10 top-0 w-1/2 right-0 pt-1 text-neon-red text-white`}
+				className={`${digitalFont.className} h-[4rem] flex justify-between  text-2xl fixed z-10 top-0 w-1/2 right-0 pt-1`}
 			>
-				<div className="flex justify-around neon-text-red w-[100%]">
+				<div className="flex justify-around neon-text-red-light w-[100%]">
 					<a
 						href="/about"
 						className="flex items-center justify-end   transition-transform transform hover:scale-110"
@@ -137,7 +137,7 @@ const MobLook = () => {
 				</div>
 
 				<div className="flex justify-around ">
-					<div className="flex items-center justify-end    transition-transform transform hover:scale-110">
+					<div className={`${digitalFont.className} flex items-center justify-end neon-text-red-light   transition-transform transform hover:scale-110`}>
 						<ul className="navbar-links">
 							<li
 								className="navbar-dropdown"

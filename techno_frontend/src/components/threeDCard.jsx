@@ -6,7 +6,6 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 import localFont from 'next/font/local';
-const brankovic = localFont({ src: '../app/fonts/brankovic.ttf' });
 const microFont = localFont({ src: '../app/fonts/microFont.otf' });
 
 export default function ThreeDCardDemo({
@@ -22,7 +21,7 @@ export default function ThreeDCardDemo({
 }) {
   useEffect(() => {
     Aos.init({
-      offset: 500,
+      offset: 300,
       delay: 10,
       duration: 300,
       once: false,
@@ -39,7 +38,7 @@ export default function ThreeDCardDemo({
         <CardBody className="relative group/card border-2 inter-var rounded-2xl border-red-700 hover:shadow-2xl hover:shadow-red-500 transition duration-100 hover:scale-110 shadow-2xl bg-[#0f09095d]  border-black/[0.1] w-auto sm:w-[30rem] h-full  p-6 ">
           <CardItem
             translateZ="60"
-            className={`text-xl font-bold text-neutral-600 text-white ${brankovic.className}`}
+            className={`text-xl font-bold text-neutral-600 text-white ${microFont.className}`}
           >
             {title}
           </CardItem>

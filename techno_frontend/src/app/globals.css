@@ -134,6 +134,10 @@ body {
 		color: white;
 		text-shadow: 0 0 3px red, 0 0 6px red, 0 0 9px red; /* Adjust the shadow size as needed */
 	}
+	.neon-text-red-lighter {
+		color: white;
+		text-shadow: 0 0 1px red, 0 0 2px red, 0 0 3px red; /* Adjust the shadow size as needed */
+	}
 	.border-neon-red {
 		border-color: white; /* Neon Red Color */
 		box-shadow:  0 0 3px red, 0 0 6px red, 0 0 9px red;/* Replace with your LED font */
@@ -153,6 +157,14 @@ body {
     color: white;
     text-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green; /* Adjust the shadow size as needed */
   }
+  .neon-text-green-light {
+    color: white;
+    text-shadow: 0 0 3px green, 0 0 6px green, 0 0 9px green; /* Adjust the shadow size as needed */
+  }
+  .neon-text-green-lighter {
+    color: white;
+    text-shadow: 0 0 1px green, 0 0 2px green, 0 0 3px green; /* Adjust the shadow size as needed */
+  }
 
   .text-neon-blue {
     color: #1100ff; /* Neon Red Color */
@@ -166,6 +178,10 @@ body {
   .neon-text-blue-light {
     color: white;
     text-shadow: 0 0 3px blue, 0 0 6px blue, 0 0 9px blue; /* Adjust the shadow size as needed */
+  }
+  .neon-text-blue-lighter {
+    color: white;
+    text-shadow: 0 0 1px blue, 0 0 2px blue, 0 0 3px blue; /* Adjust the shadow size as needed */
   }
 }
 /*  */
@@ -300,4 +316,16 @@ canvas {
   width: 100%;
   height: 100%;
   display: block;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
 }

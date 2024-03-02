@@ -115,9 +115,9 @@ app.get("/api/user/universityVerification/:email", async (req, res) => {
 		const user = await User.findOne({ userEmail: userEmail });
 		if (!user) {
 			return res.status(404).json(`User not found: email: ${userEmail}`);
-		} 
+		}
 		const bool = user.isUserOPJUStudent
-			return res.status(201).json(bool);
+		return res.status(201).json(bool);
 	} catch (error) {
 		res.status(500).send(`Error fetching user details: ${error}`);
 	}
@@ -128,9 +128,9 @@ app.get("/api/user/name/:email", async (req, res) => {
 		const user = await User.findOne({ userEmail: userEmail });
 		if (!user) {
 			return res.status(404).json(`User not found: email: ${userEmail}`);
-		} 
+		}
 		const name = user.userName
-			return res.status(201).json(name);
+		return res.status(201).json(name);
 	} catch (error) {
 		res.status(500).send(`Error fetching user details: ${error}`);
 	}
@@ -468,6 +468,9 @@ app.get("/api/participant/teamMembers/:teamId", async (req, res) => {
 // Invitation
 app.post("/api/create/team-invite", async (req, res) => {
 	const { teamId, inviterEmail, inviteeEmail } = req.body;
+	console.log(teamId);
+	console.log(inviterEmail);
+	console.log(inviteeEmail);
 	try {
 		// const event = await Event.findOne({ eventId: eventId });
 		// if (!event) {
@@ -586,6 +589,28 @@ app.put("/api/update/team-invite", async (req, res) => {
 		} else {
 			return res.status(404).send("rejected");
 		}
+	} catch (error) {
+		res.status(500).send(
+			`Error responding user ${inviterEmail} invitation for ${teamId}\nerror: ${error}`
+		);
+	}
+});
+
+
+app.delete("/api/delete/team/invite", async (req, res) => {
+	const { teamId, inviterEmail, inviteeEmail } = req.body;
+	try {
+		console.log("deleting");
+		console.log(teamId);
+		console.log(inviterEmail);
+		console.log(inviteeEmail);
+		await Invitation.findOneAndDelete(
+			{ teamId: teamId, inviteeEmail: inviteeEmail, inviterEmail: inviterEmail }
+		);
+		console.log("deleted");
+		return res.status(200).json({
+			result: `Invitation deleted:`,
+		});
 	} catch (error) {
 		res.status(500).send(
 			`Error responding user ${inviterEmail} invitation for ${teamId}\nerror: ${error}`

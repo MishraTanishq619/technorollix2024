@@ -43,7 +43,7 @@ async function makeEventMessage(leader, eventIdArr) {
 		from: '"TechnoRollix 2k24" <technorollix@opju.ac.in>',
 		to: leader,
 		subject: `Confirmation `,
-		html: `<b>You ${user.userName} have successfully registered in</b>${eventsHtml}<a href="https://codeforit.in">Visit us</a><h3>Thank you</h3>`,
+		html: `<b>You ${user.userName} have successfully registered in</b>${eventsHtml}<a href="http://technorollix.opju.ac.in">Visit us</a><h3>Thank you</h3>`,
 	  };
   
 	  return message;

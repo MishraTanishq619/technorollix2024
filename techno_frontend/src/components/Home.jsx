@@ -1,13 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Countdown from './Countdown';
-import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from 'jwt-decode';
 import Button from './ui/movingBorderButton';
-import LampContainer from './ui/lamp';
 import { motion } from 'framer-motion';
 import TypewriterEffectSmoothDemo from './typeWriterDemo';
-import HeroParallaxDemo from './heroParalloxEvents';
 
 import localFont from 'next/font/local';
 const myFont = localFont({ src: '../app/fonts/rog.ttf' });
