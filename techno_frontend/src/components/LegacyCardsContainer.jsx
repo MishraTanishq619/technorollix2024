@@ -13,7 +13,7 @@ import { LayoutGrid } from '@/components/ui/layout-grid';
 
 export default function LegacyCardsContainer() {
   return (
-    <div className="h-[300%] pt-[22vh] w-full">
+    <div className="h-[300%] pt-[25vh] w-full">
       <LayoutGrid cards={cards} />
     </div>
   );
