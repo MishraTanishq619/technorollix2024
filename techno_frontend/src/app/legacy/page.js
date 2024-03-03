@@ -1,10 +1,10 @@
 'use client';
 import React, { useEffect } from 'react';
 // import EventsRegistrationPage from "./components/eventRegistrationCard";
-import EventsRegistrationPage from '../registration/next/eventRegistrationCard';
+// import EventsRegistrationPage from '../registration/next/eventRegistrationCard';
 import LegacyCardsContainer from '@/components/LegacyCardsContainer';
 import Header from '@/components/Header';
-import { LayoutGridDemo } from '@/components/galleryContents';
+// import { LayoutGridDemo } from '@/components/galleryContents';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
