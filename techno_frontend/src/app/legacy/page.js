@@ -1,9 +1,13 @@
 'use client';
 import React, { useEffect } from 'react';
 // import EventsRegistrationPage from "./components/eventRegistrationCard";
-import EventsRegistrationPage from '../registration/next/eventRegistrationCard';
+// import EventsRegistrationPage from '../registration/next/eventRegistrationCard';
 import LegacyCardsContainer from '@/components/LegacyCardsContainer';
 import Header from '@/components/Header';
+<<<<<<< HEAD
+=======
+// import { LayoutGridDemo } from '@/components/galleryContents';
+>>>>>>> 6c6f64637cb9453a605b44c1f587dfd51b878d54
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

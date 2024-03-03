@@ -1,17 +1,26 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import Header from '@/components/Header';
-import localFont from 'next/dist/compiled/@next/font/dist/local';
+// import localFont from 'next/dist/compiled/@next/font/dist/local';
 import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  CiChat1,
+  CiChat2,
+  CiInstagram,
+  CiLinkedin,
+  CiMail,
+} from 'react-icons/ci';
+// import 'font-awesome/css/font-awesome.min.css';
+// import localFont from 'next/dist/compiled/@next/font/dist/local';
+// const rog = localFont({ src: '../fonts/rog.ttf' });
 
 const page = () => {
-  //   const rog = localFont({ src: '../fonts/rog.ttf' });
-
   return (
     <div className="w-full p-10 flex flex-wrap justify-evenly gap-6">
       <Header />
       <p
-        className={`mb-4 md:mb-10 text-center text-2xl md:text-6xl text-white mt-20 underline  `} // ${rog.className}
+        className={`mb-4 md:mb-10 text-center text-2xl md:text-6xl text-white mt-20 p-10  font-bold shadow-red-400 shadow-2xl neon-text-red   `} // ${rog.className}
       >
         About Campus Ambassador Program:
       </p>
@@ -57,23 +66,23 @@ const CampusAmbassadorProgram = () => {
         </div>
       </div>
       <div className="my-4">
-        <p className="font-bold text-center my-8 md:mt-14 md:ml-10 text-3xl xsm:text-4xl md:text-5xl neon-text-red ">
+        <p className="font-bold text-center my-8 md:mt-14 md:ml-10 text-2xl xsm:text-4xl md:text-5xl neon-text-red ">
           Visual Representation:
         </p>
         <div className="flex flex-col md:flex-row justify-around items-center">
           <div>
             <div>
-              <div className="flex items-center my-4">
+              <div className="flex items-center my-4 gap-3 xsm:gap-0">
                 <button
-                  className="flex flex-col items-center border-red-500 border-2 w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
+                  className="flex flex-col items-center border-red-500 border-2 text-sm w-[5rem] xsm:w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
                   onClick={() => setIcon4Value(0)}
                 >
                   <p> Represent technorollix</p>
                   <img src="4icons/1.png" alt="I" className="w-32 h-32" />
                 </button>
-                <p>------&gt; </p>
+                <p className=" hidden xsm:block">------&gt; </p>
                 <button
-                  className="flex flex-col items-center border-red-500 border-2 w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
+                  className="flex flex-col items-center border-red-500 border-2 text-sm w-[5rem] xsm:w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
                   onClick={() => setIcon4Value(1)}
                 >
                   <p>Promote Technorollix</p>
@@ -86,9 +95,9 @@ const CampusAmbassadorProgram = () => {
               </div>
             </div>
             <div>
-              <div className="flex items-center my-4">
+              <div className="flex items-center my-4 gap-3 xsm:gap-0">
                 <button
-                  className="flex flex-col items-center border-red-500 border-2 w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
+                  className="flex flex-col items-center border-red-500 border-2 text-sm w-[5rem] xsm:w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
                   onClick={() => setIcon4Value(2)}
                 >
                   <p>Innovate and Strategize</p>
@@ -98,9 +107,9 @@ const CampusAmbassadorProgram = () => {
                     className="w-32 h-32"
                   />
                 </button>
-                <p>------&gt; </p>
+                <p className=" hidden xsm:block">------&gt; </p>
                 <button
-                  className="flex flex-col items-center border-red-500 border-2 w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
+                  className="flex flex-col items-center border-red-500 border-2 text-sm w-[5rem] xsm:w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
                   onClick={() => setIcon4Value(3)}
                 >
                   <p>Collaborate and Ideate</p>
@@ -128,11 +137,13 @@ const CampusAmbassadorProgram = () => {
         <p className="font-bold my-4 md:my-8 md:ml-10 text-2xl xsm:text-4xl md:text-6xl neon-text-red">
           Contact us
         </p>
-        <p className="">
+        <p className="text-sm xsm:text-lg md:text-3xl">
           Want to know more about the campus ambassador program?
         </p>
-        <p className="">You can reach out through the links given below:</p>
-        <div className="flex flex-col md:flex-row gap-4 md:gap-12 justify-around items-center p-10 mx-10">
+        <p className="text-sm xsm:text-lg md:text-3xl">
+          You can reach out through the links given below:
+        </p>
+        <div className="flex flex-col md:flex-row gap-4 md:gap-12 justify-around items-center mt-10 p-2 md:p-10 mx-2 md:mx-10">
           <ContactCard
             name={'Vishal Singh'}
             imageUrl={'/contacts/studentCoConveners/vishalSingh.png'}
@@ -142,20 +153,12 @@ const CampusAmbassadorProgram = () => {
             email={'vishalsingh12999@gmail.com'}
           />
           <ContactCard
-            name={'Vishal Singh'}
-            imageUrl={'/contacts/studentCoConveners/vishalSingh.png'}
-            whatsappLink={'https://wa.link/o9ehab'}
-            instagramLink={'https://www.instagram.com/_vis_hal_._/'}
-            linkedinLink={'https://www.linkedin.com/in/vishal-singh-58b365223/'}
-            email={'vishalsingh12999@gmail.com'}
-          />
-          <ContactCard
-            name={'Vishal Singh'}
-            imageUrl={'/contacts/studentCoConveners/vishalSingh.png'}
-            whatsappLink={'https://wa.link/o9ehab'}
-            instagramLink={'https://www.instagram.com/_vis_hal_._/'}
-            linkedinLink={'https://www.linkedin.com/in/vishal-singh-58b365223/'}
-            email={'vishalsingh12999@gmail.com'}
+            name={'Tanuja Nair'}
+            imageUrl={'/contacts/studentConveners/tanujaNair.png'}
+            whatsappLink={'https://wa.me/+916263374001'}
+            instagramLink={'https://www.instagram.com/tanu__1109/'}
+            linkedinLink={'https://www.linkedin.com/in/tanuja-nair-150634201/'}
+            email={'tanujanair11@gmail.com '}
           />
         </div>
       </div>
@@ -188,11 +191,13 @@ const Icon4Data = [
 
 const Icon4Comp = ({ Icon4Value }) => {
   return (
-    <div className="flex flex-col gap-4 border-2 border-red-400 p-10">
+    <div className="flex flex-col gap-4 border-2 border-red-400 p-4 md:p-10">
       <h2 className="text-3xl text-center w-full font-bold">
         {Icon4Data[Icon4Value].heading}
       </h2>
-      <div className="text-xl">{Icon4Data[Icon4Value].paragraph}</div>
+      <div className="text-sm xsm:text-xl">
+        {Icon4Data[Icon4Value].paragraph}
+      </div>
     </div>
   );
 };
@@ -308,23 +313,31 @@ const ContactCard = ({
   email,
 }) => {
   return (
-    <div className="flex flex-col items-center rounded-lg shadow-md p-6 border-2 w-[20rem] hover:scale-105 hover:shadow-2xl hover:shadow-red-500">
-      <img src={imageUrl} alt="Image" className="rounded-lg" />
-      <p className="mt-3 font-semibold text-2xl">{name}</p>
+    <div className="flex flex-col items-center rounded-lg shadow-md border-red-500 p-6 border-2 w-[70vw] xsm:w-auto md:w-[20rem] hover:scale-105 hover:shadow-2xl hover:shadow-red-500">
+      <img src={imageUrl} alt="Image" className="rounded-lg border-red-500" />
+      <p className="mt-3 font-semibold text-2xl w-full text-center">{name}</p>
       <div className="flex  gap-3 flex-wrap justify-center ">
-        <a href={whatsappLink} className="text-blue-500 underline">
-          WhatsApp<i className="fab fa-whatsapp fa-lg"></i>
+        <a
+          href={whatsappLink}
+          className="text-blue-500 underline p-2 hover:scale-125"
+        >
+          <img src="/whatsappIcon.png" alt="Whatsapp" className="w-6" />
         </a>
-        <a href={instagramLink} className="text-blue-500 underline">
-          Instagram<i className="fab fa-instagram fa-lg"></i>
+        <a
+          href={instagramLink}
+          className="text-blue-500 underline p-2 hover:scale-125"
+        >
+          <img src="/instagramIcon.png" alt="Whatsapp" className="w-6" />
         </a>
-        <a href={linkedinLink} className="text-blue-500 underline">
-          LinkedIn<i className="fab fa-linkedin fa-lg"></i>
+        <a
+          href={linkedinLink}
+          className="text-blue-500 underline p-2 hover:scale-125"
+        >
+          <img src="/linkedinIcon.png" alt="Whatsapp" className="w-6" />
         </a>
       </div>
-
-      <p className="mt-2 text-wrap md:text-xl">
-        {email} <i className="far fa-envelope fa-lg"></i>
+      <p className="mt-2 text-wrap text-sm md:text-xl text-slate-200">
+        {email}
       </p>
     </div>
   );
