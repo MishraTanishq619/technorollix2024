@@ -7,57 +7,6 @@ import '@/app/schedule/jasghdhsaa.css';
 import ScheduleTimelineCards from '@/components/ScheduleTimelineCards';
 
 const page = () => {
-  let data = [
-    {
-      id: 1,
-      date: '1-6 May, 2021',
-      heading: 'Registration',
-      paragraph:
-        'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
-    },
-    {
-      id: 2,
-      date: '1-6 May, 2021',
-      heading: 'Registration',
-      paragraph:
-        'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
-    },
-    {
-      id: 3,
-      date: '1-6 May, 2021',
-      heading: 'Registration',
-      paragraph:
-        'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
-    },
-    {
-      id: 4,
-      date: '1-6 May, 2021',
-      heading: 'Registration',
-      paragraph:
-        'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
-    },
-    {
-      id: 5,
-      date: '1-6 May, 2021',
-      heading: 'Registration',
-      paragraph:
-        'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
-    },
-    {
-      id: 6,
-      date: '1-6 May, 2021',
-      heading: 'Registration',
-      paragraph:
-        'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
-    },
-    {
-      id: 7,
-      date: '1-6 May, 2021',
-      heading: 'Registration',
-      paragraph:
-        'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
-    },
-  ];
   return (
     <div className="w-full p-10 ">
       <Header />
@@ -65,7 +14,7 @@ const page = () => {
       <section>
         <div className="bg-transparent text-white py-8">
           <div className="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
-            <div className="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 px-8">
+            <div className="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 p-8 shadow-2xl shadow-red-500">
               <p className="ml-2 text-yellow-300 uppercase tracking-loose">
                 Working Process
               </p>
@@ -120,3 +69,55 @@ const page = () => {
 };
 
 export default page;
+
+const data = [
+  {
+    id: 1,
+    date: '1-6 May, 2021',
+    heading: 'Registration',
+    paragraph:
+      'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
+  },
+  {
+    id: 2,
+    date: '1-6 May, 2021',
+    heading: 'Registration',
+    paragraph:
+      'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
+  },
+  {
+    id: 3,
+    date: '1-6 May, 2021',
+    heading: 'Registration',
+    paragraph:
+      'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
+  },
+  {
+    id: 4,
+    date: '1-6 May, 2021',
+    heading: 'Registration',
+    paragraph:
+      'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
+  },
+  {
+    id: 5,
+    date: '1-6 May, 2021',
+    heading: 'Registration',
+    paragraph:
+      'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
+  },
+  {
+    id: 6,
+    date: '1-6 May, 2021',
+    heading: 'Registration',
+    paragraph:
+      'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
+  },
+  {
+    id: 7,
+    date: '1-6 May, 2021',
+    heading: 'Registration',
+    paragraph:
+      'Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :',
+  },
+];
