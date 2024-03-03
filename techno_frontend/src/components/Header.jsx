@@ -90,7 +90,7 @@ const WebLook = () => {
                   STUDENT AMBASSADOR
                 </a>
                 <a
-                  href="/sponsers"
+                  href="/sponsors"
                   className="flex items-center justify-start   transition-transform transform hover:scale-110"
                 >
                   SPONSOR
@@ -191,7 +191,7 @@ const MobLook = () => {
 										STUDENT AMBASSADOR
 									</a>
 									<a
-										href="/sponsers"
+										href="/sponsors"
 										className="flex items-center justify-start   transition-transform transform hover:scale-110"
 									>
 										SPONSOR

@@ -10,7 +10,7 @@ const page = () => {
 		<TracingBeam>
 			<div className="pt-10 w-full flex flex-col items-center gap-10">
 			<AboutCard
-					imageLink="opju-bg.jpg"
+					imageLink="techno.jpg"
 					heading="About TechnoRollix -"
 					heading2=" 2k24"
 					paragraph="Welcome to Central India's Biggest Technical And Cultural Fest #Technorollix - 2024. This event is organized yearly

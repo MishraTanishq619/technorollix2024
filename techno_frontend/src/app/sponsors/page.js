@@ -1,13 +1,11 @@
 'use client';
 import React, { useEffect } from 'react';
-// import EventsRegistrationPage from "./components/eventRegistrationCard";
-// import EventsRegistrationPage from '../registration/next/eventRegistrationCard';
-import LegacyCardsContainer from '@/components/LegacyCardsContainer';
 import Header from '@/components/Header';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import localFont from 'next/font/local';
+import SponsorCardContainer from '@/components/sponsorCard';
 const rog = localFont({ src: '../fonts/rog.ttf' });
 
 const page = () => {
@@ -27,9 +25,9 @@ const page = () => {
         className={`absolute  text-center text-2xl xsm:text-4xl md:text-6xl text-slate-100  w-full h-full mt-32 ${rog.className}`}
         data-aos="fade-in"
       >
-        LEGACY
+        Sponsors
       </p>
-      <LegacyCardsContainer />
+      < SponsorCardContainer/>
       <div>{/* <LayoutGridDemo/> */}</div>
       {/* </div> */}
     </main>

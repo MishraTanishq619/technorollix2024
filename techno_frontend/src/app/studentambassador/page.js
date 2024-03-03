@@ -3,29 +3,29 @@ import React, { useEffect, useRef, useState } from 'react';
 import Header from '@/components/Header';
 // import localFont from 'next/dist/compiled/@next/font/dist/local';
 import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  CiChat1,
-  CiChat2,
-  CiInstagram,
-  CiLinkedin,
-  CiMail,
-} from 'react-icons/ci';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import {
+//   CiChat1,
+//   CiChat2,
+//   CiInstagram,
+//   CiLinkedin,
+//   CiMail,
+// } from 'react-icons/ci';
 // import 'font-awesome/css/font-awesome.min.css';
-// import localFont from 'next/dist/compiled/@next/font/dist/local';
-// const rog = localFont({ src: '../fonts/rog.ttf' });
+import localFont from 'next/font/local';
+const rog = localFont({ src: '../fonts/rog.ttf' });
 
 const page = () => {
   return (
     <div className="w-full p-10 flex flex-wrap justify-evenly gap-6">
       <Header />
       <p
-        className={`mb-4 md:mb-10 text-center text-2xl md:text-6xl text-white mt-20 p-10  font-bold shadow-red-400 shadow-2xl neon-text-red   `} // ${rog.className}
+        className={`mb-4 md:mb-10 text-center text-2xl md:text-6xl text-white mt-20 p-10  font-bold shadow-red-400 shadow-2xl neon-text-red  ${rog.className} `} // 
       >
         About Campus Ambassador Program:
       </p>
       {/* <p className="text-white bg-red-600">StudentAmbassador</p> */}
-      <CampusAmbassadorProgram />
+      <CampusAmbassadorProgram/>
     </div>
   );
 };
@@ -36,7 +36,7 @@ const CampusAmbassadorProgram = () => {
   const [Icon4Value, setIcon4Value] = useState(2);
 
   return (
-    <div className="bg-white bg-opacity-20 opacity-90 text-white p-4 md:p-10 text-lg md:text-2xl md:-m-4 rounded-lg shadow-md">
+    <div className={`bg-white bg-opacity-20 opacity-90 text-white p-4 md:p-10 text-lg md:text-2xl md:-m-4 rounded-lg shadow-md ${rog.className}`}>
       {/* <h2 className="text-2xl font-bold mb-4">TECHNOROLLIX-2024</h2> */}
       {/* <p className="mb-4">About Campus Ambassador Program:</p> */}
       <div className="border-red-500 border-2 m-4 p-8 shadow-xl shadow-red-400">
@@ -336,7 +336,7 @@ const ContactCard = ({
           <img src="/linkedinIcon.png" alt="Whatsapp" className="w-6" />
         </a>
       </div>
-      <p className="mt-2 text-wrap text-sm md:text-xl text-slate-200">
+      <p className="mt-2 text-wrap text-sm md:text-base text-slate-200">
         {email}
       </p>
     </div>
