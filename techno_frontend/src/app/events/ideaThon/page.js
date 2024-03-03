@@ -10,7 +10,7 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/ideaThon.png"
-				prize={10000}
+				prize={18000}
 				heading="IDEATHON"
 				paragraph={<><p>An Ideathon is a short, engaging brainstorming event where individuals from different backgrounds
 					address some of the most pressing challenges of our time. Individuals and students having different

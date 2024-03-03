@@ -12,7 +12,7 @@ const page = () => {
 			{/* <BackgroundBeams /> */}
 			<EventsDetails
 				imageLink="../posters/techLab.png"
-				prize={30000}
+				prize={45000}
 				heading="TECH LAB"
 				paragraph={<><p>Tech Lab is one of the most prestigious events of Technorollix, which is the
 					biggest tech festival in central India. The event shows the creativity and

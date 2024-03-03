@@ -10,7 +10,7 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/aaghaaz.png"
-				prize={30000}
+				// prize={30000}
 				heading="AGHAAZ -THE ETHNIC FASHION SHOW"
 				paragraph={<><p><b>AGHAAZ - THE FASHION SHOW Hey You!!!</b> Step into a realm where imagination dances with
 					reality, where dreams take shape in fabric and color. “AGHAAZ -THE ETHNIC FASHION SHOW"

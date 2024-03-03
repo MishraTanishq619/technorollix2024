@@ -10,7 +10,7 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/roadies.png"
-				prize={15000}
+				prize={10000}
 				heading="ROADIES- TILL THE LAST BREATHE"
 				paragraph={<><p>ROADIES- TILL THE LAST BREATH Welcome to Roadies, the ultimate test of skill and
 					endurance! Join us at the University for an adrenaline-packed event filled with sports-inspired

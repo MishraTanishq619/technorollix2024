@@ -26,7 +26,7 @@ function SubEventsRegistrationPage() {
   useEffect(() => {
     // getData();
     fetch(
-      `http://technorollix.opju.ac.in:4000/api/participant/eventId/${emailRef}`
+      `http://localhost:4000/api/participant/eventId/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -36,7 +36,7 @@ function SubEventsRegistrationPage() {
       })
       .then((data) => {
         fetch(
-          `http://technorollix.opju.ac.in:4000/api/allSubEvents/eventIdArray/byMainIdArray`,
+          `http://localhost:4000/api/allSubEvents/eventIdArray/byMainIdArray`,
           {
             method: 'POST',
             headers: {
@@ -87,7 +87,7 @@ function SubEventsRegistrationPage() {
   const getRegisteredEvents = async () => {
     console.log('getregistereddata');
     await fetch(
-      `http://technorollix.opju.ac.in:4000/api/participant/eventId/${emailRef}`
+      `http://localhost:4000/api/participant/eventId/${emailRef}`
     )
       .then((response) => response.json())
       .then(async (data) => {
@@ -106,7 +106,7 @@ function SubEventsRegistrationPage() {
     console.log('getmainevents', registeredEvents);
     registeredEvents.forEach(async (e) => {
       console.log('Here', e);
-      await fetch(`http://technorollix.opju.ac.in:4000/api/allSubEvents/${e}`)
+      await fetch(`http://localhost:4000/api/allSubEvents/${e}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.length != 0) setMainEvents(...MainEvents, data);
@@ -183,7 +183,8 @@ function SubEventsRegistrationPage() {
                     <div className="flex flex-wrap">
                       <div className="mx-3 w-full my-2">
                         <img
-                          src="/mainbg.jpg"
+                          // src={`../posters/${eventpic}`}
+                          src={`/posters/subEvents/aaghaaz.png`}
                           alt=""
                           className="object-cover "
                         />
@@ -257,7 +258,7 @@ function SubEventsRegistrationPage() {
         onClick={() => {
           try {
             fetch(
-              'http://technorollix.opju.ac.in:4000/api/team-registration/event',
+              'http://localhost:4000/api/team-registration/event',
               {
                 method: 'POST',
                 body: JSON.stringify({

@@ -12,7 +12,7 @@ const page = () => {
 			{/* <BackgroundBeams /> */}
 			<EventsDetails
 				imageLink="../posters/startUp.png"
-				prize={30000}
+				prize={15000}
 				heading="Startup Business Plan (Start-up Competition)"
 				paragraph={<><p>The purpose of the event is to provide students with practical experience so they may present
 					their Start-up plans in one of two categories—seed or early-stage. Based on the market opportunity and concept validity

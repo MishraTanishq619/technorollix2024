@@ -10,10 +10,10 @@ export default function CardHoverEffectDemo() {
       <HoverEffect items={Mentors} />
       <div className={`neon-text-red-light ml justify-center mx-auto text-2xl md:text-4xl ${rog.className}`}>Convenors</div>
       <HoverEffect items={Convenor} />
-      <div className={`neon-text-red-light ml justify-center mx-auto text-2xl md:text-4xl ${rog.className}`}>CoConvenors</div>
+      <div className={`neon-text-red-light ml justify-center mx-auto text-2xl md:text-4xl ${rog.className}`}>Co-Convenors</div>
       <HoverEffect items={CoConvenor} />
       <div className={`neon-text-red-light ml justify-center mx-auto text-2xl md:text-4xl ${rog.className}`}>Web-site Team</div>
-      <HoverEffect items={WebSiteTeam} className={`neon-text-red-light`} />
+      <HoverEffect items={WebSiteTeam}/>
       <div className={`neon-text-red-light ml justify-center mx-auto text-2xl md:text-4xl ${rog.className}`}>Registration & Reception</div>
       <HoverEffect items={RegistrationReception} />
       <div className={`neon-text-red-light ml justify-center mx-auto text-2xl md:text-4xl ${rog.className}`}>Certificate and Prize</div>
@@ -396,7 +396,7 @@ export const InformationPublicityInvitation = [
     link: "",
   },
   {
-    image: "/contacts/studentConveners/manigupta.png",
+    image: "/contacts/studentConveners/manishGupta.png",
     title: "Manish Gupta",
     phoneNumber: "9131391650",
     role: "Convenor",

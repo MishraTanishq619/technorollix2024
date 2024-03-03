@@ -10,7 +10,7 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/gameFusion.png"
-				prize={15000}
+				// prize={15000}
 				heading="GAME FUSION : THE LAN EVENT"
 				paragraph={<><p>GAME FUSION : The Lan Event is a high-energy gaming extravaganza designed to
 					bring together the gaming community within our college. It's an immersive experience

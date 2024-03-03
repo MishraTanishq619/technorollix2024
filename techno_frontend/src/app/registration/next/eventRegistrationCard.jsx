@@ -21,13 +21,13 @@ function EventsRegistrationPage() {
   }, []);
 
   useEffect(() => {
-    fetch('http://technorollix.opju.ac.in:4000/api/allMainEvents')
+    fetch('http://localhost:4000/api/allMainEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));
 
     fetch(
-      `http://technorollix.opju.ac.in:4000/api/participant/eventId/${emailRef}`
+      `http://localhost:4000/api/participant/eventId/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => setregisteredEvents(data))
@@ -35,7 +35,7 @@ function EventsRegistrationPage() {
         console.error('Error fetching registeredEvents:', error)
       );
     fetch(
-      `http://technorollix.opju.ac.in:4000/api/user/universityVerification/${emailRef}`
+      `http://localhost:4000/api/user/universityVerification/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => setIsOpjuStudent(data))
@@ -109,7 +109,7 @@ function EventsRegistrationPage() {
             >
               <div className="flex flex-wrap">
                 <div className="mx-3 w-full my-2">
-                  <img src="/mainbg.jpg" alt="" className="object-cover " />
+                  <img src={`/posters/${event.eventpic}`} alt="" className="object-cover " />
                 </div>
                 <div className="min-w-40 w-full my-2 flex flex-col gap-3">
                   <h2
@@ -185,7 +185,7 @@ function EventsRegistrationPage() {
             ? () => {
                 try {
                   fetch(
-                    'http://technorollix.opju.ac.in:4000/api/team-registration/event',
+                    'http://localhost:4000/api/team-registration/event',
                     {
                       method: 'POST',
                       body: JSON.stringify({

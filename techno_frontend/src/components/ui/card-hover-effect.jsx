@@ -42,7 +42,7 @@ export const HoverEffect = ({
             <CardImage src={item.image}/>
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.email}</CardDescription>
-            <CardDescription>{item.role}</CardDescription>
+            <CardDescription className={"neon-text-red-lighter"}>{item.role}</CardDescription>
             <CardDescription>{item.phoneNumber}</CardDescription>
           </Card>
         </Link>
@@ -57,7 +57,7 @@ export const Card = ({
 }) => {
   return (
     <div
-      className={`rounded-2xl h-80 w-60 overflow-hidden p-2 md:p-4 bg-black bg-opacity-20 border border-transparent border-white/[0.2] group-hover:border-slate-700 relative z-8 ${className}`}
+      className={`rounded-2xl h-80 w-60 overflow-hidden p-2 md:p-4 bg-black bg-opacity-20 border group-hover:border-slate-700 relative z-8 ${className}`}
     >
       <div className="relative z-5">
         <div className="p-0 md:p-4">{children}</div>

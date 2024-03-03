@@ -10,7 +10,7 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/codigo.png"
-				prize={4500}
+				prize={20000}
 				heading="Codigo – Sponsored by CodeForIT"
 				paragraph={<>
 					<p>“Unlock your coding potential at our university&#39;s premier coding event! Dive into challenges,

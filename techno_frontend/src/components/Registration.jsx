@@ -317,7 +317,7 @@ function Registration() {
                       onClick={() => {
                         try {
                           fetch(
-                            'http://technorollix.opju.ac.in:4000/api/create/user',
+                            'http://localhost:4000/api/create/user',
                             {
                               method: 'POST',
                               body: JSON.stringify({

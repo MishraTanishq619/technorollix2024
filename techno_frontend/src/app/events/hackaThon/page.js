@@ -10,7 +10,7 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/hackaThon.png"
-				prize={15000}
+				prize={30000}
 				heading="Hackathon – Sponsored by CodeForIT"
 				paragraph={<>
 				<p>Develop an AI solution capable of reading expressions in real-time from live video and voice inputs, and provide statistical analysis of the detected expressions.</p> <br/>

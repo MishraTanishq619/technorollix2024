@@ -10,7 +10,7 @@ const page = () => {
 			<Header />
 			<SubEventsDetails
 				imageLink="../posters/kalaKriti.png"
-				prize={55000}
+				prize={23000}
 				heading="KalaKriti"
 				paragraph={<><p>Craft is the vehicle for expressing your vision. Craft is the visible edge
 					of Art. Here we are with &quot; Kalakriti&quot; which is a unique Event driven by

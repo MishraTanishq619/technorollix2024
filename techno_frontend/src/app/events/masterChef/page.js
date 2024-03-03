@@ -10,7 +10,7 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/masterChef.png"
-				prize={30000}
+				prize={7500}
 				heading="MASTERCHEF - LOVE AT FIRST BITE"
 				paragraph={<><p>OPJU brings you an extraordinary platform “MASTERCHEF” to showcase your talents and
 					let the world know your taste.</p></>}

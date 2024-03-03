@@ -9,8 +9,8 @@ const page = () => {
 		<main className="w-full h-screen">
 			<Header />
 			<EventsDetails
-				imageLink="../posters/aaghaaz.png"
-				prize={30000}
+				imageLink="../posters/antaragni.png"
+				prize={20000}
 				heading="ANTARAGNI 2k24"
 				paragraph={<><p><b>Antaragni -</b> Unleash your Creativity spirit. “where passion, creativity and talent shine”. ANTARAGNI is known
 					for its wavelength atmosphere anthogiestic participants and exciting events. showcase your talent. engage in

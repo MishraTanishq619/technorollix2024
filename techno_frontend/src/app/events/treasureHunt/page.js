@@ -10,7 +10,7 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/treasureHunt.png"
-				prize={10000}
+				prize={7000}
 				heading="TREASURE HUNT – “SOMETIMES YOU WIN, SOMETIMES YOU LEARN”"
 				paragraph={<><p>TREASURE HUNT – THE MIND GAME Hey You!!! &quot;Join us on a thrilling adventure
 					as we follow clues, solve puzzles, and overcome challenges to find a hidden
