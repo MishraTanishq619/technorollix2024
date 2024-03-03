@@ -74,20 +74,17 @@ function Home() {
       // console.log(number);
       setGeneratedNumber(number);
       // try {
-      let otpdata = await fetch(
-        'http://localhost:4000/api/email/verify/otp',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            user: email,
-            number: number,
-          }),
-          headers: {
-            'Content-type': 'application/json',
-            // user_email: email,
-          },
-        }
-      ).catch((error) => {
+      let otpdata = await fetch('http://localhost:4000/api/email/verify/otp', {
+        method: 'POST',
+        body: JSON.stringify({
+          user: email,
+          number: number,
+        }),
+        headers: {
+          'Content-type': 'application/json',
+          // user_email: email,
+        },
+      }).catch((error) => {
         console.log('Error during fetch:', error);
       });
       console.log(`otpdata ${otpdata}`);
@@ -102,9 +99,7 @@ function Home() {
     if (verificationCode === generatedNumber.toString()) {
       // window.location.href("/registration")
       try {
-        const response = await fetch(
-          `http://localhost:4000/api/user/${email}`
-        );
+        const response = await fetch(`http://localhost:4000/api/user/${email}`);
 
         if (response.status === 409) {
           window.location.href = `/registration/invitations?emailRef=${email}`;
@@ -146,7 +141,7 @@ function Home() {
     <div
       className={`absolute mt-0 flex flex-col items-center justify-center ${
         isOpen ? 'glass-morphism' : ''
-      } h-full w-full overflow-x-scroll overflow-y-hidden `}
+      } h-full w-full overflow-x-scroll overflow-y-scroll `}
     >
       {/*  */}
       <div
@@ -194,7 +189,7 @@ function Home() {
       {/* <LampContainer> */}
       <motion.div
         initial={{ opacity: 0.5, y: -400 }}
-        whileInView={{ opacity: 1, y: window.innerWidth < 800 ? -20 : 100 }}
+        animate={{ opacity: 1, y: window.innerWidth < 800 ? -20 : 100 }}
         transition={{
           delay: 0.3,
           duration: 1.5,
