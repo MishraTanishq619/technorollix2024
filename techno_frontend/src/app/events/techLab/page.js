@@ -96,7 +96,7 @@ const page = () => {
 					<tbody>
 						<tr>
 							<td>Dr. L R Bhandarkar</td>
-							<td>+91 </td>
+							<td>+91 9109977042</td>
 							{/* <td>example@opju.ac.in</td> */}
 						</tr>
 					</tbody></table>}

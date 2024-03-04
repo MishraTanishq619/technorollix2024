@@ -12,7 +12,7 @@ export default function CardHoverEffectDemo() {
       <HoverEffect items={Convenor} />
       <div className={`neon-text-red-light ml justify-center mx-auto text-2xl md:text-4xl ${rog.className}`}>Co-Convenors</div>
       <HoverEffect items={CoConvenor} />
-      <div className={`neon-text-red-light ml justify-center mx-auto text-2xl md:text-4xl ${rog.className}`}>Web-site Team</div>
+      <div className={`neon-text-red-light ml justify-center mx-auto text-2xl md:text-4xl ${rog.className}`}>Website Team (CodeForIT)</div>
       <HoverEffect items={WebSiteTeam}/>
       <div className={`neon-text-red-light ml justify-center mx-auto text-2xl md:text-4xl ${rog.className}`}>Registration & Reception</div>
       <HoverEffect items={RegistrationReception} />
@@ -171,7 +171,7 @@ export const WebSiteTeam = [
     role: "Web Front-End Developer",
   },
   {
-    image:"/contacts/webSite/ajayPatel.png",
+    image:"/contacts/webSite/ajayPatel.jpg",
     title: "Ajay Patel",
     phoneNumber: "8839171099",
     email: "ajaypatelarts@gmail.com",

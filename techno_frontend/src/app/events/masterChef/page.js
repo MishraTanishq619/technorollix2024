@@ -93,6 +93,10 @@ const page = () => {
 							<td>Pradeep Kumar Mahato</td>
 							<td>+91 9113446682</td>
 						</tr>
+						<tr>
+							<td>Nousin Khatun</td>
+							<td>+91 9039947225</td>
+						</tr>
 					</tbody></table>}
 			/>
 		</main>

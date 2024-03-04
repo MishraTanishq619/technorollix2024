@@ -17,7 +17,7 @@ function ReceivedInvitations() {
 
   useEffect(() => {
     fetch(
-      `http://technorollix.opju.ac.in:4000/api/event/invitations/email/${emailRef}` // shreyrajput54@gmail.com
+      `http://localhost:4000/api/event/invitations/email/${emailRef}` // shreyrajput54@gmail.com
     )
       .then((response) => response.json())
       .then((data) => {
@@ -76,7 +76,7 @@ function ReceivedInvitations() {
                     // 	response: "accept",
                     // });
                     fetch(
-                      'http://technorollix.opju.ac.in:4000/api/update/team-invite',
+                      'http://localhost:4000/api/update/team-invite',
                       {
                         method: 'PUT',
                         body: JSON.stringify({
@@ -102,7 +102,7 @@ function ReceivedInvitations() {
                 onClick={() => {
                   try {
                     fetch(
-                      'http://technorollix.opju.ac.in:4000/api/update/team-invite',
+                      'http://localhost:4000/api/update/team-invite',
                       {
                         method: 'PUT',
                         body: JSON.stringify({
@@ -153,7 +153,7 @@ export default ReceivedInvitations;
 
 const getInviter = async (email) => {
   // console.log('entered');
-  let data = fetch(`http://technorollix.opju.ac.in:4000/api/user/name/${email}`)
+  let data = fetch(`http://localhost:4000/api/user/name/${email}`)
     .then((response) => response.json())
     .then((data) => {
       // console.log(data);
@@ -169,7 +169,7 @@ const getInviter = async (email) => {
 const getEvent = async (eventId) => {
   // console.log('entered');
   let data = fetch(
-    `http://technorollix.opju.ac.in:4000/api/eventName/byEventId/${eventId}`
+    `http://localhost:4000/api/eventName/byEventId/${eventId}`
   )
     .then((response) => response.json())
     .then((data) => {

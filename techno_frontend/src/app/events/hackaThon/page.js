@@ -109,6 +109,14 @@ const page = () => {
 							<td>+91 9340616900</td>
 						</tr>
 						<tr>
+							<td>Nikhil Patel</td>
+							<td>+91 8305216569</td>
+						</tr>
+						<tr>
+							<td>Shreeya Sharma</td>
+							<td>+91 8602470239</td>
+						</tr>
+						<tr>
 							<td>Anand Vishwakarma</td>
 							<td>+91 7011472391</td>
 						</tr>

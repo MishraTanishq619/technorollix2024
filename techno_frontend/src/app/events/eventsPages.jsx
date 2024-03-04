@@ -4,16 +4,6 @@ import EventCard from '@/components/EventCard';
 import ThreeDCardDemo from '@/components/threeDCard';
 
 function EventsViewPage() {
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    // Fetch event data from the API endpoint
-    fetch('http://technorollix.opju.ac.in:4000/api/allEvents')
-      .then((response) => response.json())
-      .then((data) => setEvents(data))
-      .catch((error) => console.error('Error fetching events:', error));
-  }, []);
-
   return (
     <div className="w-full h-screen flex flex-wrap items-start justify-evenly">
       <ThreeDCardDemo
@@ -21,7 +11,7 @@ function EventsViewPage() {
         title={'Tech Lab'}
         description={'Prototype, Model, Technical poster'}
         members={"Have sub-events"}
-        image="/posters/techLab.png"
+        image="/thumbnail/techLab.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/techLab`)}
       />
@@ -30,7 +20,7 @@ function EventsViewPage() {
         title={'Ideathon'}
         description={'Inovative idea presentation'}
         members={3}
-        image="/posters/ideaThon.png"
+        image="/thumbnail/ideaThon.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/ideaThon`)}
       />
@@ -39,7 +29,7 @@ function EventsViewPage() {
         title={'Start Up business plan'}
         description={'Pitch your start up idea'}
         members={4}
-        image="/posters/startUp.png"
+        image="/thumbnail/startUp.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/startUp_event`)}
       />
@@ -48,7 +38,7 @@ function EventsViewPage() {
         title={'Codigo'}
         description={'Real life programming problem solving'}
         members={1}
-        image="/posters/codigo.png"
+        image="/thumbnail/codigo.png"
         entryFee={0}
         onClick={() => (window.location.href = `/events/codigo`)}
       />
@@ -57,7 +47,7 @@ function EventsViewPage() {
         title={'Robovation'}
         description={'Compete to design and make powerful and efficient robots'}
         members={"Have sub-events"}
-        image="/posters/roboVation.png"
+        image="/thumbnail/roboVation.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/roboVation`)}
       />
@@ -66,7 +56,7 @@ function EventsViewPage() {
         title={'Hackathon'}
         description={'Competetive coding challenges mainly DSA'}
         members={"Have sub-events"}
-        image="/posters/hackaThon.png"
+        image="/thumbnail/hackaThon.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/hackaThon`)}
       />
@@ -76,7 +66,7 @@ function EventsViewPage() {
         description={'Explore the magnanimous arts and aesthetics of India'}
         members={"Have sub-events"}
         entryFee={''}
-        image="/posters/kalaKriti.png"
+        image="/thumbnail/kalaKriti.png"
         onClick={() => (window.location.href = `/events/kalaKriti`)}
       />
       <ThreeDCardDemo
@@ -86,7 +76,7 @@ function EventsViewPage() {
           'Showcase your passion for cultural excellence in Antaragni'
         }
         members={"Have sub-events"}
-        image="/posters/antaragni.png"
+        image="/thumbnail/antaragni.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/antaragni`)}
       />
@@ -96,7 +86,7 @@ function EventsViewPage() {
         description={'Fight till the last breathe'}
         members={1}
         entryFee={''}
-        image="/posters/roadies.png"
+        image="/thumbnail/roadies.png"
         onClick={() => (window.location.href = `/events/roadies`)}
       />
       <ThreeDCardDemo
@@ -104,7 +94,7 @@ function EventsViewPage() {
         title={'Aaghaaz'}
         description={'Compete to become face of opju'}
         members={1}
-        image="/posters/aaghaaz.png"
+        image="/thumbnail/aaghaaz.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/aaghaaz`)}
       />
@@ -113,7 +103,7 @@ function EventsViewPage() {
         title={'Yuva sabha'}
         description={'Empower the voice of dynamic yuva'}
         members={4}
-        image="/posters/yuvaSabha.png"
+        image="/thumbnail/yuvaSabha.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/yuvaSabha`)}
       />
@@ -122,7 +112,7 @@ function EventsViewPage() {
         title={'Master chef'}
         description={'Become the next master chef'}
         members={2}
-        image="/posters/masterChef.png"
+        image="/thumbnail/masterChef.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/masterChef`)}
       />
@@ -133,7 +123,7 @@ function EventsViewPage() {
           'Step into arena and compete your opponents in virtual world'
         }
         members={"Have sub-events"}
-        image="/posters/gameFusion.png"
+        image="/thumbnail/gameFusion.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/gameFusion`)}
       />
@@ -144,7 +134,7 @@ function EventsViewPage() {
           'Put your skill to investigate and find out the mystery behind the crime'
         }
         members={4}
-        image="/posters/mockCID.png"
+        image="/thumbnail/mockCID.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/mockCid`)}
       />
@@ -153,7 +143,7 @@ function EventsViewPage() {
         title={'Nukkad natak'}
         description={'Portray of street theatre and social activism'}
         members={12}
-        image="/posters/nukkadNatak.png"
+        image="/thumbnail/nukkadNatak.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/nukkadNatak`)}
       />
@@ -162,7 +152,7 @@ function EventsViewPage() {
         title={'Talent hunt'}
         description={'Showcase you diverse talent across the spectrum'}
         members={"Have sub-events"}
-        image="/posters/talentHunt.png"
+        image="/thumbnail/talentHunt.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/talentHunt`)}
       />
@@ -171,7 +161,7 @@ function EventsViewPage() {
         title={'Brainy escape'}
         description={'Challenge your intellect to solve puzzles'}
         members={"Have sub-events"}
-        image="/posters/brainyEscape.png"
+        image="/thumbnail/brainyEscape.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/brainyEscape`)}
       />
@@ -180,7 +170,7 @@ function EventsViewPage() {
         title={'Aero Drone'}
         description={'Showcase your drone flying skills'}
         members={4}
-        image="/posters/aeroDrone.png"
+        image="/thumbnail/aeroDrone.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/aeroDrone`)}
       />
@@ -191,7 +181,7 @@ function EventsViewPage() {
           'Embark on an adventure, uncover hidden treasures, and let the thrill of the hunt guide you to victory'
         }
         members={5}
-        image="/posters/treasureHunt.png"
+        image="/thumbnail/treasureHunt.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/treasureHunt`)}
       />
@@ -202,7 +192,7 @@ function EventsViewPage() {
           'Become radio sensation where charisma meets communication'
         }
         members={1}
-        image="/posters/rjHunt.png"
+        image="/thumbnail/rjHunt.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/rjHunt`)}
       />

@@ -64,6 +64,25 @@ const AccommodationInfo = () => {
         For Outsider Participants the link to apply for accomodation will be
         provided along with the confirmation mail after registration.
       </p>
+      <p className="text-lg">
+        For any query contact: -
+      </p>
+      <table>
+        <tbody>
+          <tr>
+            <td>Vishal Singh</td>
+            <td>+91 7488041613</td>
+          </tr>
+          <tr>
+            <td>Navneet Tripathy</td>
+            <td>+91 7489462029</td>
+          </tr>
+          <tr>
+            <td>Pranjal Acharya</td>
+            <td>+91 9752299711</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };

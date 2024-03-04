@@ -136,6 +136,17 @@ function Home() {
 
     // return regex.test(email);
   };
+  const handlePaste = (event) => {
+    // Prevent the default paste behavior
+    event.preventDefault();
+    // Get the pasted content from the event
+    const pastedText = event.clipboardData.getData('text');
+    // Update the input value with the pasted content
+    console.log('Pasted text:', pastedText);
+    setEmail(pastedText);
+    setgenerateClicked(false);
+    validateEmail(email);
+  };
 
   return (
     <div
@@ -258,7 +269,7 @@ function Home() {
                 } rounded-md px-1 py-1 justify-between `}
               >
                 <input
-                  type="email"
+                  type="text"
                   placeholder="Enter your email"
                   value={email}
                   onChange={handleEmailChange}
@@ -267,6 +278,7 @@ function Home() {
                     outline: 'none',
                     boxShadow: 'none',
                   }}
+                  onPaste={handlePaste}
                   className={`bg-transparent border-2 px-2 py-2 text-white w-40 md:w-50`}
                 />
                 {/* <button onClick={generateNumber} className="btn text-white  bg-orange-400 ml-4  rounded-md text-1xl px-3 py-1 justify-end"> */}

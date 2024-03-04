@@ -247,11 +247,16 @@ const page = () => {
 				</>}
 				facultyCoordinators={<table>
 					<tbody>
-						{/* <tr>
-							<td>Dr. Kavita Patel</td>
-							<td>+91 9993993019</td>
-							<td>Kavita.patel@opju.ac.in</td>
-						</tr> */}
+						<tr>
+							<td>Dr. Saumya Singh</td>
+							<td>+91 8103698224</td>
+							{/* <td>Kavita.patel@opju.ac.in</td> */}
+						</tr>
+						<tr>
+							<td>Dr. Deepti Sharma</td>
+							{/* <td>+91 8103698224</td> */}
+							{/* <td>Kavita.patel@opju.ac.in</td> */}
+						</tr>
 					</tbody></table>}
 				eventManagers={<table>
 					<tbody>

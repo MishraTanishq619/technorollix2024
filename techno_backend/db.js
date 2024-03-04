@@ -96,6 +96,14 @@ const invitationSchema = new mongoose.Schema({
 });
 const Invitation = mongoose.model('Invitation', invitationSchema);
 
+const paymentReceiptSchema = new mongoose.Schema({
+  userEmail: { type: String, required: true},
+  paymentId: { type: String, required: true},
+  numberOfEvents: { type: Number, required: true},
+  paidEntryFee: { type: Number, required: true},
+});
+const PaymentReceipt = mongoose.model('Receipt', paymentReceiptSchema);
+
 
 module.exports = {
   User,
@@ -104,4 +112,5 @@ module.exports = {
   // TeamMembers,
   Participants,
   Invitation,
+  PaymentReceipt,
 };

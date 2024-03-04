@@ -11,86 +11,89 @@ const page = () => {
 			<EventsDetails
 				imageLink="../posters/yuvaSabha.png"
 				prize={7000}
-				heading="TREASURE HUNT – “SOMETIMES YOU WIN, SOMETIMES YOU LEARN”"
-				paragraph={<><p>TREASURE HUNT – THE MIND GAME Hey You!!! &quot;Join us on a thrilling adventure
-					as we follow clues, solve puzzles, and overcome challenges to find a hidden
-					treasure. It&#39;s all about fun, teamwork, and the excitement of discovery!&quot;</p></>}
-				subHeading="“Ready, treasure hunters? Let&#39;s go!”"
-				theme={<p>Searching the treasure</p>}
-				rulesHeading={"Rules of the event:"}
+				heading="YUVA SABHA 2024"
+				paragraph={<><p>Welcome to Yuva Sabha, a stage where youth voices echo with 
+					passion and conviction. On 20th March, 2024 let’s ignite change 
+					through intellect and discourse. </p></>}
+				// subHeading="“Where Minds Clash and Ideas Illuminate”"
+				theme={<p>“Where Minds Clash and Ideas Illuminate”</p>}
+				rulesHeading={"Points to note:"}
 				rules={<><ul>
 					<li>
-					All teams have to select their team leader with their team’s name.
+					This is a debate competition, participants who are interested must register for this debate competition.
 					</li>
 					<li>
-					Do not misbehave with coordinators.
+					Interesting cash prize and mementos to be given and will be announced soon.
 					</li>
 					<li>
-					Participants can’t take any help from others.
+					No use of any abusive language is allowed.
 					</li>
 					<li>
-					Teams must stay together and not split up.
+					The event trailer is to be launched soon.
 					</li>
 					<li>
-					Participants cannot use their Electronic Devices during games.
+					This event is one of the most participated event in the university. So start making your team (min 2 - max 4).
 					</li>
 					<li>
-					In this game every team has to solve puzzles, clues and riddles.
+					Book your slots as the slots are limited.
 					</li>
 					<li>
-					There should be only 5 members in a team.
+					A guest judge will be announced soon.
 					</li>
 					<li>
-					If the number of participating teams will exceed 30, then there will a prequalification round before the final event.
-					(We will notify you by your email)
+					For any query contact the managers and coordinators (details are given below).
 					</li>
 					<li>
-					Teams may be disqualified if:<ul>
-						<li>Interfering with another team.</li>
-						<li>Damaging the university properties (otherwise you have to pay fine for it).</li>
-						<li>They do not follow the given instructions.</li>
-						<li>All teams must reach before time.</li></ul>
+					There will be a dress code which will be announced soon. 
 					</li>
 					</ul>
 				</>}
-				roundsHeading={"Rounds:"}
+				roundsHeading={"Rules of the event:"}
 				rounds={<>
-				<h3>There will be 3 rounds</h3>
-				<p>Tasks for the round will be declared on the spot.</p>
+				<ul>
+				<li>A limited time will be given to speak for/against the topic which will be followed strictly.</li>
+				<li>Have respectful behaviour, including no interruption, personal attacks or excessive time-keeping.</li>
+				<li>A team will be disqualified for violating any rules such as disregarding etiquettes and getting side-tracked.</li>
+				<li>Preparation time will be given before each round.</li>
+				<li>Reach 30 mins before the event starts.</li>
+				</ul>
+				<h1 className="neon-text-red-light">Rounds: There will be 3 rounds</h1>
+				<ul>
+					<li>1<sup>st</sup> ROUND - Diplomatic enquiry (Quiz) in online mode.</li>
+					<li>2<sup>nd</sup> and 3<sup>rd</sup> ROUND WILL BE DECLARED BEFORE 2-3 DAYS.</li>
+				</ul>
 				</>}
 				judgeMentalCriteria={<>
-					<p>It will be based on time.</p>
+					<p>It will be based on following parameters:</p>
+					<ul>
+						<li>The strength and clarity of the arguments presented by each participant.</li>
+						<li>The use of relevant evidence, examples, and statistics to support arguments.</li>
+						<li>The ability to engage the audience and maintain interest throughout the debate.</li>
+						<li>Following the rules and format of the competition. </li>
+						<li>Overall impact and effectiveness of the participant’s performance in influencing the audience and judges.</li>
+					</ul>
 				</>}
-				eventVenue={<p>OP Jindal University Campus</p>}
+				eventVenue={<p> The event will be at MP Hall, OPJU </p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>
-							<td>DR. DEEPAK PATEL</td>
+							<td>Dr. Biranchi Prasad Panda</td>
+							<td>+91 9438560357</td>
 						</tr>
 						<tr>
-							<td>DR. SAURABH GUPTA</td>
+							<td>Dr. Arindam Patra</td>
+							<td>+91 9131167896</td>
 						</tr>
 						<tr>
-							<td>Prof. SHASHIKANT KAUSHALEY</td>
+							<td>Dr. Ravindra Singh Saluja</td>
+							<td>+91 9007787434</td>
 						</tr>
 					</tbody></table>}
 				eventManagers={<table>
 					<tbody>
 						<tr>
-							<td>Satyendra Vishwakarma</td>
-							<td>+91 7024332255</td>
-						</tr>
-						<tr>
-							<td>Aditi Sharma</td>
-							<td>+91 9770613233</td>
-						</tr>
-						<tr>
-							<td>Shruti Shaw</td>
-							<td>+91 9830542702</td>
-						</tr>
-						<tr>
-							<td>Devendra Vishwakarma</td>
-							<td>+91 8269674671</td>
+							<td>Mr. Jeet B Bhayani </td>
+							<td>+91 8777676808</td>
 						</tr>
 					</tbody></table>}
 			/>

@@ -18,6 +18,7 @@ const {
 	RegisteredTeam,
 	Participants,
 	Invitation,
+	PaymentReceipt,
 } = require("./db");
 const otpEmail = require("./otpMailer");
 // Middleware
@@ -179,7 +180,7 @@ app.delete("/api/delete/event:eventId", async (req, res) => {
 // to get all events
 app.get("/api/allEvents", async (req, res) => {
 	try {
-		const events = await Event.find({ teamSize: {$ne: 0} });
+		const events = await Event.find({ teamSize: { $ne: 0 } });
 		res.json(events);
 	} catch (error) {
 		res.status(500).send(`Error fetching event details: ${error}`);
@@ -204,7 +205,7 @@ app.get("/api/allSubEvents/:eventId", async (req, res) => {
 });
 app.post("/api/allSubEvents/eventIdArray/byMainIdArray", async (req, res) => {
 	try {
-		const {mainEventsArray} = req.body;
+		const { mainEventsArray } = req.body;
 		console.log(mainEventsArray);
 		// Validate mainEventsArray
 		if (!Array.isArray(mainEventsArray)) {
@@ -805,6 +806,38 @@ app.post("/api/email/verify/otp", async (req, res) => {
 		otpEmail(user, number);
 		console.log(`called user= ${user} \n otp= ${number}`);
 		res.status(201).json(`success`);
+	} catch (error) {
+		console.log(error);
+		res.status(500).json(`error hai`);
+	}
+});
+
+app.post("/api/payment/gateway/receipt", async (req, res) => {
+	console.log("enter");
+	try {
+		const { userEmail, paymentId, numberOfEvents, paidEntryFee } = req.body;
+		const isExsitingID = await PaymentReceipt.findOne({
+			paymentId: paymentId
+		});
+		if (isExsitingID) {
+			return res.status(409).json(`Already exist ${isExsitingID}`);
+		}
+		const receipt = await PaymentReceipt.create({ userEmail, paymentId, numberOfEvents, paidEntryFee })
+		res.status(201).json(receipt);
+	} catch (error) {
+		console.log(error);
+		res.status(500).json(`error hai`);
+	}
+});
+
+app.get("/api/payment/gateway/receipt/details", async (req, res) => {
+	console.log("enter");
+	try {
+		const { paymentId} = req.body;
+		const isExsitingID = await PaymentReceipt.findOne({
+			paymentId: paymentId
+		});
+		res.status(201).json(`Data ${isExsitingID}`);
 	} catch (error) {
 		console.log(error);
 		res.status(500).json(`error hai`);
