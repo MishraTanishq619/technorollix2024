@@ -1,12 +1,20 @@
+'use client';
 // import ContactCard from "@/components/ContactCard";
 // import CardHoverEffectDemo from "@/components/cardTrackhover";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 // import AnimatedTooltipPreview from "@/components/AnimatedToolTip6";
 import '@/app/schedule/jasghdhsaa.css';
 import ScheduleTimelineCards from '@/components/ScheduleTimelineCards';
 
 const page = () => {
+  const [WinWidth, setWinWidth] = useState(false);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setWinWidth(window.innerWidth < 500);
+    }
+  }, []);
+
   return (
     <div className="w-full p-10 ">
       <Header />
@@ -34,13 +42,17 @@ const page = () => {
             </div>
             <div className="ml-0 md:ml-12 lg:w-2/3 sticky">
               <div className="container mx-auto w-full h-full">
-                <div className="relative wrap overflow-hidden p-10 h-full">
+                <div className="relative wrap overflow-hidden p-5 md:p-10 h-full">
                   <div
-                    className="border-2-2 border-yellow-555 absolute h-full border BorR"
+                    className={`border-2-2 border-yellow-555 absolute h-full border ${
+                      WinWidth ? 'BorMob' : 'BorR'
+                    }`}
                     // style="right: 50%; border: 2px solid #FFC100; border-radius: 1%;"
                   ></div>
                   <div
-                    className="border-2-2 border-yellow-555 absolute  h-full border BorL"
+                    className={`border-2-2 border-yellow-555 absolute  h-full border ${
+                      WinWidth ? 'BorMob' : 'BorL'
+                    }`}
                     // style="left: 50%; border: 2px solid #FFC100; border-radius: 1%;"
                   ></div>
                   {data.map((i, K) => {
@@ -51,12 +63,13 @@ const page = () => {
                         date={i.date}
                         heading={i.heading}
                         paragraph={i.paragraph}
+                        WinWidthBool={WinWidth}
                       />
                     );
                   })}
                 </div>
                 <img
-                  className="mx-auto -mt-36 md:-mt-36"
+                  className="mx-auto -mt-16 md:-mt-36"
                   src="https://user-images.githubusercontent.com/54521023/116968861-ef21a000-acd2-11eb-95ac-a34b5b490265.png"
                 />
               </div>
