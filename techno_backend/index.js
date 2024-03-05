@@ -167,6 +167,38 @@ app.post("/api/create/event", async (req, res) => {
 	}
 });
 
+app.put("/api/update/event/byEventId", async (req, res) => {
+	try {
+		const {
+			mainEventId,
+			eventId,
+			eventName,
+			eventDescription,
+			eventpic,
+			teamSize,
+			priceMoney,
+			entryFee,
+		} = req.body;
+		const isExsitingEventID = await Event.findOne({eventId: eventId})
+		if (isExsitingEventID) {
+			const newEvent = await Event.findOneAndUpdate({
+				eventId: eventId,
+				mainEventId: mainEventId,
+				eventName: eventName,
+				eventDescription: eventDescription,
+				eventpic: eventpic,
+				teamSize: teamSize,
+				priceMoney: priceMoney,
+				entryFee: entryFee,
+			});
+			return res.status(409).json(`Updated ${isExsitingEventID.eventName}`)
+		} else {
+			return res.status(404).json(`Invalid Event Id`)
+		}
+	} catch (error) {
+		res.status(500).send(`Error creating event=> error: ${error}`);
+	}
+});
 app.delete("/api/delete/event:eventId", async (req, res) => {
 	try {
 		const eventId = res.params.eventId;
