@@ -32,12 +32,12 @@ function Home() {
   const [visitCount, setVisitCount] = useState(0);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/visitCount')
+    fetch('http://technorollix.opju.ac.in:4000/api/visitCount')
       .then((response) => response.json())
       .then((data) => setVisitCount(data.visitCount))
       .catch((error) => console.error('Error fetching visit count:', error));
 
-    fetch('http://localhost:4000/api/allParticipants')
+    fetch('http://technorollix.opju.ac.in:4000/api/allParticipants')
       .then((response) => response.json())
       .then((data) => setParticipantCount(data.length))
       .catch((error) =>
@@ -74,17 +74,20 @@ function Home() {
       // console.log(number);
       setGeneratedNumber(number);
       // try {
-      let otpdata = await fetch('http://localhost:4000/api/email/verify/otp', {
-        method: 'POST',
-        body: JSON.stringify({
-          user: email,
-          number: number,
-        }),
-        headers: {
-          'Content-type': 'application/json',
-          // user_email: email,
-        },
-      }).catch((error) => {
+      let otpdata = await fetch(
+        'http://technorollix.opju.ac.in:4000/api/email/verify/otp',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            user: email,
+            number: number,
+          }),
+          headers: {
+            'Content-type': 'application/json',
+            // user_email: email,
+          },
+        }
+      ).catch((error) => {
         console.log('Error during fetch:', error);
       });
       console.log(`otpdata ${otpdata}`);
@@ -99,7 +102,9 @@ function Home() {
     if (verificationCode === generatedNumber.toString()) {
       // window.location.href("/registration")
       try {
-        const response = await fetch(`http://localhost:4000/api/user/${email}`);
+        const response = await fetch(
+          `http://technorollix.opju.ac.in:4000/api/user/${email}`
+        );
 
         if (response.status === 409) {
           window.location.href = `/registration/invitations?emailRef=${email}`;
@@ -239,7 +244,7 @@ function Home() {
         // 				credentialResponse.credential
         // 			);
         // 			const result = await fetch(
-        // 				`http://localhost:4000/api/user/${userResponse.email}`
+        // 				`http://technorollix.opju.ac.in:4000/api/user/${userResponse.email}`
         // 			);
         // 			console.log(result);
         // 			if (result.status === 409) {

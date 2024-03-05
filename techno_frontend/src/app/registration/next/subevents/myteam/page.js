@@ -15,13 +15,13 @@ const page = () => {
 
   // let reqEvents = [];
   useEffect(() => {
-    fetch('http://localhost:4000/api/allEvents')
+    fetch('http://technorollix.opju.ac.in:3000/api/allEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));
 
     fetch(
-      `http://localhost:4000/api/registeredTeam/eventId/${emailRef}`
+      `http://technorollix.opju.ac.in:3000/api/registeredTeam/eventId/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -42,7 +42,7 @@ const page = () => {
 
     // to get team id
     let response = await fetch(
-      'http://localhost:4000/api/create/team-invite',
+      'http://technorollix.opju.ac.in:3000/api/create/team-invite',
       {
         method: 'POST',
         body: JSON.stringify({

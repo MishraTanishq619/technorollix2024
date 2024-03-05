@@ -25,13 +25,13 @@ function EventsRegistrationPage() {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/allMainEvents')
+    fetch('http://technorollix.opju.ac.in:4000/api/allMainEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));
 
     fetch(
-      `http://localhost:4000/api/participant/eventId/${emailRef}`
+      `http://technorollix.opju.ac.in:4000/api/participant/eventId/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => setregisteredEvents(data))
@@ -39,14 +39,13 @@ function EventsRegistrationPage() {
         console.error('Error fetching registeredEvents:', error)
       );
     fetch(
-      `http://localhost:4000/api/user/universityVerification/${emailRef}`
+      `http://technorollix.opju.ac.in:4000/api/user/universityVerification/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => setIsOpjuStudent(data))
       .catch((error) =>
         console.error('Error fetching registeredEvents:', error)
       );
-
   }, []);
   const handlePaymentIdChange = (e) => {
     setPaymentId(e.target.value);
@@ -62,13 +61,13 @@ function EventsRegistrationPage() {
     // console.log(registeredEvents.length);
     // console.log(selectedEvents);
     if (selectedEvents.length <= 3) {
-      setEntryFee(200)
+      setEntryFee(200);
     } else if (selectedEvents.length <= 5) {
-      setEntryFee(300)
+      setEntryFee(300);
     } else if (selectedEvents.length <= 7) {
-      setEntryFee(500)
+      setEntryFee(500);
     } else {
-      setEntryFee(1000)
+      setEntryFee(1000);
     }
     // return fee;
   };
@@ -110,6 +109,51 @@ function EventsRegistrationPage() {
 
   return (
     <div className="w-full flex flex-col items-center my-4 gap-5">
+      {/*  */}
+      <div
+        id="alert-1"
+        className="hidden fixed z-[9999]   items-center p-4 mb-4 text-red-600 rounded-lg bg-blue-50 dark:bg-red-800 dark:text-white"
+        role="alert"
+      >
+        <svg
+          className="flex-shrink-0 w-4 h-4"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+        </svg>
+        <span className="sr-only">Info</span>
+        <div className="ms-3 text-lg font-medium mx-2">
+          Invalid Transaction Id.
+        </div>
+        <button
+          type="button"
+          className="ms-auto -mx-1.5 -my-1.5 bg-blue-50 border-2 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-red-500 inline-flex items-center justify-center h-6 w-6 dark:bg-red-900 dark:text-white "
+          data-dismiss-target="#alert-1"
+          aria-label="Close"
+          onClick={dismissAlert}
+        >
+          <span className="sr-only">Close</span>
+          <svg
+            className="w-3 h-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+            />
+          </svg>
+        </button>
+      </div>
+      {/*  */}
       <p className="text-4xl text-white font-bold">EventsCheckbox</p>
       <div className="flex flex-wrap items-center  justify-evenly  w-[96%] h-full py-10 rounded-xl bg-[#ffffff33]">
         {events.map((event, index) => (
@@ -118,13 +162,15 @@ function EventsRegistrationPage() {
             className="transform    transition  hover:scale-110"
           >
             <div
-              className={` p-4 rounded-lg mx-4 my-2   ${registeredEvents.includes(event.eventId)
-                ? 'border-red-600 bg-black border-4 '
-                : ''
-                }${selectedEvents.includes(event.eventId)
+              className={` p-4 rounded-lg mx-4 my-2   ${
+                registeredEvents.includes(event.eventId)
+                  ? 'border-red-600 bg-black border-4 '
+                  : ''
+              }${
+                selectedEvents.includes(event.eventId)
                   ? 'bg-[#ff0000aa] min-h-40 max-w-80 '
                   : 'bg-[#000000] min-h-40 max-w-80'
-                } `}
+              } `}
               onClick={
                 registeredEvents.includes(event.eventId)
                   ? null
@@ -133,7 +179,11 @@ function EventsRegistrationPage() {
             >
               <div className="flex flex-wrap">
                 <div className="mx-3 w-full my-2">
-                  <img src={`/thumbnail/${event.eventpic}`} alt="" className="object-cover " />
+                  <img
+                    src={`/thumbnail/${event.eventpic}`}
+                    alt=""
+                    className="object-cover "
+                  />
                 </div>
                 <div className="min-w-40 w-full my-2 flex flex-col gap-3">
                   <h2
@@ -176,7 +226,7 @@ function EventsRegistrationPage() {
                     className="bg-black w-full px-5 py-1 rounded-md text-white "
                     value={
                       additionalDetails[
-                      selectedEvents.indexOf(event.eventId)
+                        selectedEvents.indexOf(event.eventId)
                       ] || ''
                     }
                     onChange={(e) =>
@@ -209,7 +259,7 @@ function EventsRegistrationPage() {
         //     ? () => {
         //       try {
         //         fetch(
-        //           'http://localhost:4000/api/team-registration/event',
+        //           'http://technorollix.opju.ac.in:4000/api/team-registration/event',
         //           {
         //             method: 'POST',
         //             body: JSON.stringify({
@@ -251,7 +301,7 @@ function EventsRegistrationPage() {
         // }
         onClick={() => {
           CalculateFee();
-          setIsOpen(true)
+          setIsOpen(true);
         }}
       >
         Submit
@@ -263,52 +313,64 @@ function EventsRegistrationPage() {
               <p className="text-lg font-semibold">
                 You have selected {selectedEvents.length} events
               </p>
-              {IsOpjuStudent ? <></> : <p className="text-lg font-semibold">
-                Your total entry fee is {entryFee}
-              </p>}
+              {IsOpjuStudent ? (
+                <></>
+              ) : (
+                <p className="text-lg font-semibold">
+                  Your total entry fee is {entryFee}
+                </p>
+              )}
             </div>
-            {notPaid ? <button
-              className=" bg-orange-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
-              onClick={IsOpjuStudent ? () => {
-                try {
-                  fetch(
-                    'http://localhost:4000/api/team-registration/event',
-                    {
-                      method: 'POST',
-                      body: JSON.stringify({
-                        eventId: selectedEvents,
-                        leader: leaderEmail,
-                        additionalDetails: additionalDetails,
-                        teammates: teammateEmails.filter(
-                          (email) => email.trim() !== ''
-                        ),
-                      }),
-                      headers: {
-                        'Content-type': 'application/json',
-                      },
-                    }
-                  )
-                    .then(async (res) => {
-                      if (!res.ok) {
-                        throw new Error(`HTTP error! Status: ${res.status}`);
+            {notPaid ? (
+              <button
+                className=" bg-orange-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
+                onClick={
+                  IsOpjuStudent
+                    ? () => {
+                        try {
+                          fetch(
+                            'http://technorollix.opju.ac.in:4000/api/team-registration/event',
+                            {
+                              method: 'POST',
+                              body: JSON.stringify({
+                                eventId: selectedEvents,
+                                leader: leaderEmail,
+                                additionalDetails: additionalDetails,
+                                teammates: teammateEmails.filter(
+                                  (email) => email.trim() !== ''
+                                ),
+                              }),
+                              headers: {
+                                'Content-type': 'application/json',
+                              },
+                            }
+                          )
+                            .then(async (res) => {
+                              if (!res.ok) {
+                                throw new Error(
+                                  `HTTP error! Status: ${res.status}`
+                                );
+                              }
+                              window.location.href = `/registration/next/subevents?emailRef=${emailRef}`;
+                              const json = await res.json();
+                            })
+                            .catch((error) => {
+                              console.log('Error during fetch:', error);
+                            });
+                        } catch (error) {
+                          console.log(error);
+                        }
                       }
-                      window.location.href = `/registration/next/subevents?emailRef=${emailRef}`;
-                      const json = await res.json();
-                    })
-                    .catch((error) => {
-                      console.log('Error during fetch:', error);
-                    });
-                } catch (error) {
-                  console.log(error);
+                    : () => {
+                        setNotPaid(false);
+                        window.open(url, '_blank', 'noopener,noreferrer');
+                      }
                 }
-              } : () => {
-                setNotPaid(false)
-                window.open(url, '_blank', 'noopener,noreferrer');
-              }}
-            >
-              {/* Okay */}
-              {IsOpjuStudent ? <p>Submit</p> : <p>Pay</p>}
-            </button> :
+              >
+                {/* Okay */}
+                {IsOpjuStudent ? <p>Submit</p> : <p>Pay</p>}
+              </button>
+            ) : (
               <>
                 <input
                   type="email"
@@ -317,47 +379,62 @@ function EventsRegistrationPage() {
                   onChange={handlePaymentIdChange}
                   className={`bg-transparent border-2 px-2 py-2 text-white w-40 md:w-50`}
                 />
-                {isEntered?<p className='neon-red-text-light'>You entered: {paymentId}</p>:<p></p>}
+                {isEntered ? (
+                  <p className="neon-red-text-light">
+                    You entered: {paymentId} <br />
+                    Click Submit Again.
+                  </p>
+                ) : (
+                  <p></p>
+                )}
                 <button
                   className=" bg-orange-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
-                  onClick={isEntered?() => {
-                    try {
-                      fetch(
-                        'http://localhost:4000/api/payment/gateway/receipt',
-                        {
-                          method: 'POST',
-                          body: JSON.stringify({
-                            userEmail: leaderEmail,
-                            paymentId: paymentId,
-                            numberOfEvents: selectedEvents.length,
-                            paidEntryFee: entryFee
-                          }),
-                          headers: {
-                            'Content-type': 'application/json',
-                          },
-                        }
-                      )
-                        .then(async (res) => {
-                          if (!res.ok) {
-                            throw new Error(`HTTP error! Status: ${res.status}`);
+                  onClick={
+                    isEntered
+                      ? () => {
+                          try {
+                            fetch(
+                              'http://technorollix.opju.ac.in:4000/api/payment/gateway/receipt',
+                              {
+                                method: 'POST',
+                                body: JSON.stringify({
+                                  userEmail: leaderEmail,
+                                  paymentId: paymentId,
+                                  numberOfEvents: selectedEvents.length,
+                                  paidEntryFee: entryFee,
+                                }),
+                                headers: {
+                                  'Content-type': 'application/json',
+                                },
+                              }
+                            )
+                              .then(async (res) => {
+                                if (!res.ok) {
+                                  throw new Error(
+                                    `HTTP error! Status: ${res.status}`
+                                  );
+                                }
+                                window.location.href = `/registration/next/subevents?emailRef=${emailRef}`;
+                                const json = await res.json();
+                              })
+                              .catch((error) => {
+                                alertHandler();
+                                console.log('Error during fetch:', error);
+                              });
+                          } catch (error) {
+                            console.log(error);
                           }
-                          window.location.href = `/registration/next/subevents?emailRef=${emailRef}`;
-                          const json = await res.json();
-                        })
-                        .catch((error) => {
-                          console.log('Error during fetch:', error);
-                        });
-                    } catch (error) {
-                      console.log(error);
-                    }
-                  }:()=>{
-                    setIsEntered(true);
-                  }}
+                        }
+                      : () => {
+                          setIsEntered(true);
+                        }
+                  }
                 >
                   {/* Okay */}
                   <p>Submit</p>
                 </button>
-              </>}
+              </>
+            )}
           </div>
         </div>
       )}
@@ -366,6 +443,14 @@ function EventsRegistrationPage() {
 }
 export default EventsRegistrationPage;
 
-
-
 // "/api/user/universityVarification/:email"
+
+function alertHandler() {
+  let alertBox = document.getElementById('alert-1');
+  alertBox.style.display = 'flex';
+}
+
+function dismissAlert() {
+  let alertBox = document.getElementById('alert-1');
+  alertBox.style.display = 'none';
+}
