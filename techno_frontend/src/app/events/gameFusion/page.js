@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import EventsDetails from "../detsEvents";
 import Header from "@/components/Header";
