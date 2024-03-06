@@ -30,9 +30,6 @@ async function makeEventMessage(leader, eventIdArr) {
 			eventsHtml += `
 		<div style="background-color: #333; color: #fff; padding: 20px; margin-bottom: 20px;">
 		<h2 style="font-size: 20px; font-weight: bold;">Event Name: ${event.eventName}</h2>
-		<div style="margin-top: 10px;">
-			<p style="font-size: 16px; font-weight: bold;">Team Size: ${event.teamSize}</p>
-		</div>
 	</div>
 		`;
 		});
@@ -58,7 +55,6 @@ async function makeEventMessage(leader, eventIdArr) {
 	
 		<!-- Visit TechnoRollix website -->
 		<p style="font-size: 20px;">Explore more about TechnoRollix at <a href="http://technorollix.opju.ac.in" style="color: #ffffff;">technorollix.opju.ac.in</a></p>
-	
 		<!-- Thank you message -->
 		<h3 style="font-size: 24px;">Thank you and may the Force be with you!</h3>
 	  </div>`,

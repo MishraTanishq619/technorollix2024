@@ -183,6 +183,8 @@ app.put("/api/update/event/byEventId", async (req, res) => {
 		if (isExsitingEventID) {
 			const newEvent = await Event.findOneAndUpdate({
 				eventId: eventId,
+			}, {
+				eventId: eventId,
 				mainEventId: mainEventId,
 				eventName: eventName,
 				eventDescription: eventDescription,
@@ -459,7 +461,7 @@ app.get("/api/registeredTeam/count/perEvent/:eventId", async (req, res) => {
 		let insiderCount = insiderUser.length;
 		let outsiderCount = outsiderUser.length;
 		let totalCount = insiderUser.length + outsiderUser.length;
-		res.status(201).json({insiderCount, outsiderCount , totalCount});
+		res.status(201).json({ insiderCount, outsiderCount, totalCount });
 	} catch (error) {
 		res.status(500).send(`Error fetching registered teams: ${error}`);
 	}
@@ -583,7 +585,7 @@ app.get("/api/participants/count/perEvent/:eventId", async (req, res) => {
 		let insiderCount = insiderUser.length;
 		let outsiderCount = outsiderUser.length;
 		let totalCount = insiderUser.length + outsiderUser.length;
-		res.status(201).json({insiderCount, outsiderCount , totalCount});
+		res.status(201).json({ insiderCount, outsiderCount, totalCount });
 	} catch (error) {
 		res.status(500).send(`Error fetching registered teams: ${error}`);
 	}

@@ -183,7 +183,7 @@ function EventsRegistrationPage() {
                 <div className="mx-3 w-full my-2">
                   <img
                     src={`/thumbnail/${event.eventpic}`}
-                    alt=""
+                    alt="Image"
                     className="object-cover "
                   />
                 </div>

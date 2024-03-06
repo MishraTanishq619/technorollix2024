@@ -27,7 +27,7 @@ async function makeOtpMessage(user, otpNumber) {
       <p>As a distinguished member of the Technorollix community, your presence is crucial in shaping the destiny of our national tech cultural event, unfolding amidst the illustrious halls of OP Jindal University on the planet Raigarh.</p>
       <p>To ensure that your entry into our galactic gathering is secure and seamless, we require your verification. A single step towards this goal lies in confirming your email address, a pivotal aspect of your journey.</p>
       <p>Your One-Time Passcode (OTP), akin to a lightsaber in your arsenal, awaits you:</p>
-      <p class="otp-code">${otpNumber}</p>
+      <h1 class="otp-code">${otpNumber}</h1>
       <p>May this code serve as your beacon, guiding you through the verification process and granting you access to the wonders that await at Technorollix.</p>
       <p>Remember, in this vast universe of technology and innovation, your participation is essential, for together, we shall ignite the sparks of creativity and forge new alliances.</p>
       <p>May the Force be with you as you undertake this noble quest!</p>

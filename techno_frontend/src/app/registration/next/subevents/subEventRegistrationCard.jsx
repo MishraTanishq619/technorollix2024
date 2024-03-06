@@ -1,9 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Sedgwick_Ave_Display } from 'next/font/google';
-import { resolve } from 'styled-jsx/css';
-
 function SubEventsRegistrationPage() {
   // const [events, setEvents] = useState([]);
   const [registeredEvents, setregisteredEvents] = useState([]);
@@ -11,8 +8,6 @@ function SubEventsRegistrationPage() {
   const [additionalDetails, setAdditionalDetails] = useState([]);
   const [leaderEmail, setLeaderEmail] = useState('');
   const [teammateEmails, setTeammateEmails] = useState([]);
-  const [entryFee, setEntryFee] = useState([]);
-  const [IsOpjuStudent, setIsOpjuStudent] = useState(false);
   const searchParams = useSearchParams();
   const emailRef = searchParams.get('emailRef');
 
@@ -155,7 +150,7 @@ function SubEventsRegistrationPage() {
         {MainEvents?.map((subEvents, i) => {
           return subEvents.map(
             (
-              { eventId, eventDescription, eventName, teamSize, priceMoney },
+              { eventId, eventDescription, eventName, teamSize, priceMoney,eventpic },
               j
             ) => {
               // return <p>shbfhbshfs</p>;
@@ -184,7 +179,7 @@ function SubEventsRegistrationPage() {
                       <div className="mx-3 w-full my-2">
                         <img
                           // src={`../posters/${eventpic}`}
-                          src={`/posters/subEvents/aaghaaz.png`}
+                          src={`/posters/subEvents/${eventpic}.png`}
                           alt=""
                           className="object-cover "
                         />

@@ -36,7 +36,7 @@ async function makeMessage(recieversList, teamId) {
 			//     or
 			html: `<b>This invitation is sent by ${user.userName}</b>
 			<p>He/she wants you to join his team in Technorollix 2k24's event ${event.eventName} hosted by O.P. Jindal University Raigarh, Chhattisgarh</p>
-			<a href="https://codeforit.in">Invitation Link</a>
+			<h1><a href="http://technorollix.opju.ac.in">Invitation Link</a></h1>
 			<h3>Thank you</h3>
 			`, // html body
 
