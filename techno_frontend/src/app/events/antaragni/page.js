@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import EventsDetails from '../detsEvents';
 import Header from '@/components/Header';
 import { BackgroundBeams } from '@/components/ui/background-beams';
