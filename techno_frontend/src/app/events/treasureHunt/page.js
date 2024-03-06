@@ -4,6 +4,39 @@ import Header from "@/components/Header";
 import { BackgroundBeams } from '@/components/ui/background-beams';
 
 const page = () => {
+	
+	const eventId = 'event-Treasure Hunt-202403';
+	const [Teams, setTeams] = useState({});
+	const [Participants, setParticipants] = useState({});
+	useEffect(() => {
+	  fetch(
+		`http://technorollix.opju.ac.in:4000/api/registeredTeam/count/perEvent/${eventId}`
+	  )
+		.then((response) => response.json())
+		.then((data) => {
+		  console.log('teams : ', data);
+		  setTeams(data);
+		  return data;
+		})
+		.catch((error) => {
+		  console.error('Error fetching events:', error);
+		  // return null;
+		});
+  
+	  fetch(
+		`http://technorollix.opju.ac.in:4000/api/participants/count/perEvent/${eventId}`
+	  )
+		.then((response) => response.json())
+		.then((data) => {
+		  console.log('participants :', data);
+		  setParticipants(data);
+		  return data;
+		})
+		.catch((error) => {
+		  console.error('Error fetching events:', error);
+		  // return null;
+		});
+	}, []);
 
 	return (
 		<main className="w-full h-screen">
@@ -17,6 +50,51 @@ const page = () => {
 					treasure. It&#39;s all about fun, teamwork, and the excitement of discovery!&quot;</p></>}
 				subHeading="“Ready, treasure hunters? Let&#39;s go!”"
 				theme={<p>Searching the treasure</p>}
+				registrationCount={
+					<>
+					  <h2 className="neon-text-red-lighter">Registrations</h2>
+					  <table className="-mx-4">
+						<thead>
+						  <tr>
+							<td className="text-[10px] sm:text-[1.4rem] ">Counts</td>
+							<td className="hidden sm:block text-[10px] sm:text-[1.4rem] ">
+							  Total
+							</td>
+							<td className="text-[10px] sm:text-[1.4rem] ">Insider</td>
+							<td className="text-[10px] sm:text-[1.4rem] ">Outsider</td>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr>
+							<td className="text-[10px] sm:text-[1.4rem] ">Teams</td>
+							<td className="hidden sm:block text-[17px] sm:text-[1.4rem]  font-bold  text-center">
+							  {Teams.totalCount}
+							</td>
+							<td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+							  {Teams.insiderCount}
+							</td>
+							<td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+							  {Teams.outsiderCount}
+							</td>
+						  </tr>
+						  <tr>
+							<td className="text-[10px] sm:text-[1.4rem] ">
+							  Participants
+							</td>
+							<td className="hidden sm:block text-[17px] sm:text-[1.4rem] font-bold  text-center">
+							  {Participants.totalCount}
+							</td>
+							<td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+							  {Participants.insiderCount}
+							</td>
+							<td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+							  {Participants.outsiderCount}
+							</td>
+						  </tr>
+						</tbody>
+					  </table>
+					</>
+				  }
 				rulesHeading={"Rules of the event:"}
 				rules={<><ul>
 					<li>
