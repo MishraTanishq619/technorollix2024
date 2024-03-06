@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Countdown from './Countdown';
 import Button from './ui/movingBorderButton';
 import { motion } from 'framer-motion';
@@ -17,6 +17,8 @@ function Home() {
   const [showVerification, setShowVerification] = useState(false);
   const [generateClicked, setgenerateClicked] = useState(false);
   const [retryTimer, setRetryTimer] = useState(300);
+
+  const pasteemail = useRef();
 
   const handleNormalButtonClick = () => {
     setIsOpen(true);
@@ -143,6 +145,8 @@ function Home() {
   };
   const handlePaste = (event) => {
     // Prevent the default paste behavior
+    let pasteemail = document.getElementById('pasteemail');
+    pasteemail.style.display = 'block';
     event.preventDefault();
     // Get the pasted content from the event
     const pastedText = event.clipboardData.getData('text');
@@ -283,7 +287,11 @@ function Home() {
                     outline: 'none',
                     boxShadow: 'none',
                   }}
-                  onPaste={handlePaste}
+                  onPaste={() => {
+                    setTimeout(() => {
+                      handlePaste();
+                    }, 5);
+                  }}
                   className={`bg-transparent border-2 px-2 py-2 text-white w-40 md:w-50`}
                 />
                 {/* <button onClick={generateNumber} className="btn text-white  bg-orange-400 ml-4  rounded-md text-1xl px-3 py-1 justify-end"> */}
@@ -356,6 +364,9 @@ function Home() {
             </div>
             <div className="text-black mt-4 text-1xl">
               <p>Note: OPJU students use your Official mail</p>
+              <p id="pasteemail" className="hidden text-red-700 font-semibold">
+                Note: Copy-Paste Will not Work.
+              </p>
             </div>
           </div>
         </div>
