@@ -210,7 +210,6 @@ function SubEventsRegistrationPage() {
                               ? 'TeamSize: ' + teamSize
                               : 'Have Sub-Events'}
                           </p>
-                          <p className="">Prize: {priceMoney}</p>
                         </div>
                         {/* <p className="text-lg font-bold text-white">
                           Entry Fee: {event.entryFee}

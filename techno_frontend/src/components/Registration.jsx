@@ -236,7 +236,7 @@ function Registration() {
                     className=" bg-red-400 mt-4  rounded-md text-1xl px-3 py-1 justify-end"
                     onClick={() => {
                       try {
-                        fetch("http://technorollix.opju.ac.in:4000/api/create/user", {
+                        fetch("http://localhost:4000/api/create/user", {
                           method: "POST",
                           body: JSON.stringify({
                             userEmail: email,
@@ -317,7 +317,7 @@ function Registration() {
                       onClick={() => {
                         try {
                           fetch(
-                            'http://technorollix.opju.ac.in:4000/api/create/user',
+                            'http://localhost:4000/api/create/user',
                             {
                               method: 'POST',
                               body: JSON.stringify({

@@ -179,7 +179,7 @@ app.put("/api/update/event/byEventId", async (req, res) => {
 			priceMoney,
 			entryFee,
 		} = req.body;
-		const isExsitingEventID = await Event.findOne({eventId: eventId})
+		const isExsitingEventID = await Event.findOne({ eventId: eventId })
 		if (isExsitingEventID) {
 			const newEvent = await Event.findOneAndUpdate({
 				eventId: eventId,
@@ -411,8 +411,9 @@ app.post("/api/registeredTeam/leader/teamId", async (req, res) => {
 		});
 		if (participants) {
 			return res.status(409).json(participants);
+		} else {
+			return res.status(404).json(`participant not found`);
 		}
-		return res.status(409).json(participants);
 	} catch (error) {
 		res.status(500).send(`Error fetching participants : ${error}`);
 	}
@@ -434,6 +435,33 @@ app.get("/api/registeredTeam/eventId/:email", async (req, res) => {
 		res.json({ eventIdArray, teamIdArray });
 	} catch (error) {
 		res.status(500).send(`Error fetching participants : ${error}`);
+	}
+});
+
+app.get("/api/registeredTeam/count/perEvent/:eventId", async (req, res) => {
+	const eventId = req.params.eventId;
+	try {
+		const participants = await RegisteredTeam.find({
+			eventId: eventId
+		});
+		let insiderUser = [];
+		let outsiderUser = [];
+		participants.forEach((element) => {
+			// Extract the email domain from the leader's email address
+			const emailDomain = element.leader.split('@')[1];
+			// Check if the email domain is 'opju.ac.in'
+			if (emailDomain === 'opju.ac.in') {
+				insiderUser.push(element.leader);
+			} else {
+				outsiderUser.push(element.leader);
+			}
+		});
+		let insiderCount = insiderUser.length;
+		let outsiderCount = outsiderUser.length;
+		let totalCount = insiderUser.length + outsiderUser.length;
+		res.status(201).json({insiderCount, outsiderCount , totalCount});
+	} catch (error) {
+		res.status(500).send(`Error fetching registered teams: ${error}`);
 	}
 });
 // Participants
@@ -534,7 +562,32 @@ app.get("/api/participant/:email", async (req, res) => {
 		res.status(500).send(`Error fetching participants : ${error}`);
 	}
 });
-
+app.get("/api/participants/count/perEvent/:eventId", async (req, res) => {
+	const eventId = req.params.eventId;
+	try {
+		const participants = await Participants.find({
+			eventId: eventId
+		});
+		let insiderUser = [];
+		let outsiderUser = [];
+		participants.forEach((element) => {
+			// Extract the email domain from the leader's email address
+			const emailDomain = element.participantEmail.split('@')[1];
+			// Check if the email domain is 'opju.ac.in'
+			if (emailDomain === 'opju.ac.in') {
+				insiderUser.push(element.participantEmail);
+			} else {
+				outsiderUser.push(element.participantEmail);
+			}
+		});
+		let insiderCount = insiderUser.length;
+		let outsiderCount = outsiderUser.length;
+		let totalCount = insiderUser.length + outsiderUser.length;
+		res.status(201).json({insiderCount, outsiderCount , totalCount});
+	} catch (error) {
+		res.status(500).send(`Error fetching registered teams: ${error}`);
+	}
+});
 //Team-members
 app.get("/api/participant/teamMembers/:teamId", async (req, res) => {
 	const teamId = req.params.teamId;
@@ -865,7 +918,7 @@ app.post("/api/payment/gateway/receipt", async (req, res) => {
 app.get("/api/payment/gateway/receipt/details", async (req, res) => {
 	console.log("enter");
 	try {
-		const { paymentId} = req.body;
+		const { paymentId } = req.body;
 		const isExsitingID = await PaymentReceipt.findOne({
 			paymentId: paymentId
 		});

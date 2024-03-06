@@ -155,12 +155,6 @@ const page = () => {
                 <h2 className="text-lg font-bold m-2 ">
                   Event Name: {i.eventName}
                 </h2>
-                <h2 className="text-lg font-bold m-2 ">
-                  Entry Fee: {i.entryFee}
-                </h2>
-                <p className="text-lg font-bold m-2 ">
-                  Prize Money: {i.priceMoney}
-                </p>
                 <p className="text-lg font-bold m-2 ">
                   Team Size: {i.teamSize}
                 </p>

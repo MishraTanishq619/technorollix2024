@@ -60,7 +60,9 @@ function EventsRegistrationPage() {
     // let fee = 0;
     // console.log(registeredEvents.length);
     // console.log(selectedEvents);
-    if (selectedEvents.length <= 3) {
+    if (selectedEvents.length === 0) {
+      setEntryFee(0);
+    } else if (selectedEvents.length <= 3) {
       setEntryFee(200);
     } else if (selectedEvents.length <= 5) {
       setEntryFee(300);
@@ -159,7 +161,7 @@ function EventsRegistrationPage() {
         {events.map((event, index) => (
           <div
             key={event.eventId}
-            className="transform    transition  hover:scale-110"
+            className="transform transition  hover:scale-110"
           >
             <div
               className={` p-4 rounded-lg mx-4 my-2   ${

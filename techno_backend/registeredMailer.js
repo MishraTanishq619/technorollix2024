@@ -31,8 +31,6 @@ async function makeEventMessage(leader, eventIdArr) {
 		<div style="background-color: #333; color: #fff; padding: 20px; margin-bottom: 20px;">
 		<h2 style="font-size: 20px; font-weight: bold;">Event Name: ${event.eventName}</h2>
 		<div style="margin-top: 10px;">
-			<p style="font-size: 16px; font-weight: bold;">Entry Fee: ${event.entryFee}</p>
-			<p style="font-size: 16px; font-weight: bold;">Prize Money: ${event.priceMoney}</p>
 			<p style="font-size: 16px; font-weight: bold;">Team Size: ${event.teamSize}</p>
 		</div>
 	</div>
