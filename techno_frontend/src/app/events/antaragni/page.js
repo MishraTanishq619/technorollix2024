@@ -58,6 +58,51 @@ const page = () => {
         subHeading="WHERE CULTURES UNITE IN VIBRANT CELEBRATIONS"
         theme={<p>BOLLYWOOD</p>}
         rulesHeading={'Rules of the event:'}
+        registrationCount={
+          <>
+            <h2 className="neon-text-red-lighter">Registrations</h2>
+            <table className="-mx-4">
+              <thead>
+                <tr>
+                  <td className="text-[10px] sm:text-[1.4rem] ">Counts</td>
+                  <td className="hidden sm:block text-[10px] sm:text-[1.4rem] ">
+                    Total
+                  </td>
+                  <td className="text-[10px] sm:text-[1.4rem] ">Insider</td>
+                  <td className="text-[10px] sm:text-[1.4rem] ">Outsider</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="text-[10px] sm:text-[1.4rem] ">Teams</td>
+                  <td className="hidden sm:block text-[17px] sm:text-[1.4rem]  font-bold  text-center">
+                    {Teams.totalCount}
+                  </td>
+                  <td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+                    {Teams.insiderCount}
+                  </td>
+                  <td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+                    {Teams.outsiderCount}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="text-[10px] sm:text-[1.4rem] ">
+                    Participants
+                  </td>
+                  <td className="hidden sm:block text-[17px] sm:text-[1.4rem] font-bold  text-center">
+                    {Participants.totalCount}
+                  </td>
+                  <td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+                    {Participants.insiderCount}
+                  </td>
+                  <td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+                    {Participants.outsiderCount}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </>
+        }
         rules={
           <>
             <li>
