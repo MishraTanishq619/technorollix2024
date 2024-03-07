@@ -42,7 +42,7 @@ const page = () => {
     <main className="w-full h-screen">
       <Header />
       <SubEventsDetails
-        imageLink="../posters/kalaKriti.png"
+        imageLink="/posters/kalaKriti.png"
         prize={23000}
         heading="KalaKriti"
         paragraph={
@@ -521,7 +521,7 @@ const page = () => {
                   <li>There will be only one round of competition.</li>
                   <li>
                     The participants have to bring their own
-                    Requirements.Paper/Canvas Will be provided by Organizers.
+                    Requirements. Paper/Canvas Will be provided by Organizers.
                   </li>
                   <li>
                     The participants will be given 2hr for making the Art No
