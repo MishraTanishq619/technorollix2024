@@ -416,7 +416,40 @@ function EventsRegistrationPage() {
                                     `HTTP error! Status: ${res.status}`
                                   );
                                 }
-                                window.location.href = `/registration/next/subevents?emailRef=${emailRef}`;
+                                try {
+                                  fetch(
+                                    'http://technorollix.opju.ac.in:4000/api/team-registration/event',
+                                    {
+                                      method: 'POST',
+                                      body: JSON.stringify({
+                                        eventId: selectedEvents,
+                                        leader: leaderEmail,
+                                        additionalDetails: additionalDetails,
+                                        teammates: teammateEmails.filter(
+                                          (email) => email.trim() !== ''
+                                        ),
+                                      }),
+                                      headers: {
+                                        'Content-type': 'application/json',
+                                      },
+                                    }
+                                  )
+                                    .then(async (res) => {
+                                      if (!res.ok) {
+                                        throw new Error(
+                                          `HTTP error! Status: ${res.status}`
+                                        );
+                                      }
+                                      window.location.href = `/registration/next/subevents?emailRef=${emailRef}`;
+                                      const json = await res.json();
+                                    })
+                                    .catch((error) => {
+                                      console.log('Error during fetch:', error);
+                                    });
+                                } catch (error) {
+                                  console.log(error);
+                                }
+                                // window.location.href = `/registration/next/subevents?emailRef=${emailRef}`;
                                 const json = await res.json();
                               })
                               .catch((error) => {

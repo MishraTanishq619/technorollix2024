@@ -98,8 +98,8 @@ const Invitation = mongoose.model('Invitation', invitationSchema);
 
 const paymentReceiptSchema = new mongoose.Schema({
   userEmail: { type: String, required: true},
-  paymentId: { type: String, required: true, unique: true},
-  numberOfEvents: { type: Number, required: true},
+  paymentId: { type: String, required: true},
+  numberOfEvents: { type: Number},
   paidEntryFee: { type: Number, required: true},
 });
 const PaymentReceipt = mongoose.model('Receipt', paymentReceiptSchema);

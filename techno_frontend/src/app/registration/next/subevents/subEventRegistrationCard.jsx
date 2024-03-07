@@ -179,8 +179,8 @@ function SubEventsRegistrationPage() {
                       <div className="mx-3 w-full my-2">
                         <img
                           // src={`../posters/${eventpic}`}
-                          src={`/posters/subEvents/${eventpic}.png`}
-                          alt=""
+                          src={`/thumbnail/${eventpic}.png`}
+                          alt="aayega"
                           className="object-cover "
                         />
                       </div>

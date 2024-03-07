@@ -903,13 +903,18 @@ app.post("/api/payment/gateway/receipt", async (req, res) => {
 	console.log("enter");
 	try {
 		const { userEmail, paymentId, numberOfEvents, paidEntryFee } = req.body;
+		console.log(`userEmail ${userEmail}`);
+		console.log(`userEmail ${paymentId}`);
+		console.log(`userEmail ${numberOfEvents}`);
+		console.log(`userEmail ${paidEntryFee}`);
+
 		const isExsitingID = await PaymentReceipt.findOne({
 			paymentId: paymentId
 		});
 		if (isExsitingID) {
 			return res.status(409).json(`Already exist ${isExsitingID}`);
 		}
-		const receipt = await PaymentReceipt.create({ userEmail, paymentId, numberOfEvents, paidEntryFee })
+		const receipt = await PaymentReceipt.create({ userEmail: userEmail, paymentId: paymentId,numberOfEvents: numberOfEvents,paidEntryFee: paidEntryFee })
 		res.status(201).json(receipt);
 	} catch (error) {
 		console.log(error);
@@ -930,10 +935,20 @@ app.get("/api/payment/gateway/receipt/details", async (req, res) => {
 		res.status(500).json(`error hai`);
 	}
 });
-app.delete("/api/delete/event/ekKhatam:eventId", async (req, res) => {
+app.get("/api/payment/allreceipt/gateway/details", async (req, res) => {
+	console.log("enter");
 	try {
-		const eventId = res.params.eventId;
-		const reqEvent = await Event.deleteMany({ eventId: eventId });
+		const isExsitingID = await PaymentReceipt.find();
+		res.status(201).json({isExsitingID});
+	} catch (error) {
+		console.log(error);
+		res.status(500).json(`error hai`);
+	}
+});
+app.delete("/api/delete/event/ekKhatam", async (req, res) => {
+	try {
+		const {eventId} = req.body;
+		const reqEvent = await Event.findOneAndDelete({ eventId: eventId });
 		res.status(200).send(`Event deleted all ${reqEvent}`);
 	} catch (error) {
 		res.status(500).send(`error deleting event=> error = ${error}`);
@@ -957,11 +972,30 @@ app.delete("/api/delete/team/purakhatam", async (req, res) => {
 		res.status(500).send(`error deleting event=> error = ${error}`);
 	}
 });
+app.delete("/api/delete/team/ekKhatam", async (req, res) => {
+	try {
+		const {teamId} = req.body;
+		const reqEvent = await RegisteredTeam.findOneAndDelete({ teamId: teamId });
+		res.status(200).send(`Event deleted single team ${teamId}`);
+	} catch (error) {
+		res.status(500).send(`error deleting event=> error = ${error}`);
+	}
+});
 app.delete("/api/delete/user/purakhatam", async (req, res) => {
 	try {
 		// const eventId = res.params.eventId
 		const reqEvent = await User.deleteMany();
 		res.status(200).send(`User deleted all `);
+	} catch (error) {
+		res.status(500).send(`error deleting event=> error = ${error}`);
+	}
+});
+
+app.delete("/api/delete/user/ekKhatam", async (req, res) => {
+	try {
+		const {userEmail} = req.body;
+		const reqEvent = await User.findOneAndDelete({ userEmail: userEmail });
+		res.status(200).send(`Event deleted single user ${userEmail}`);
 	} catch (error) {
 		res.status(500).send(`error deleting event=> error = ${error}`);
 	}
@@ -980,6 +1014,26 @@ app.delete("/api/delete/participants/purakhatam", async (req, res) => {
 		// const eventId = res.params.eventId
 		const reqEvent = await Participants.deleteMany();
 		res.status(200).send(`Participants deleted all `);
+	} catch (error) {
+		res.status(500).send(`error deleting event=> error = ${error}`);
+	}
+});
+
+app.delete("/api/delete/participant/ekKhatam", async (req, res) => {
+	try {
+		const {eventId,teamId,participantEmail} = req.body;
+		const reqEvent = await Participants.findOneAndDelete({ eventId: eventId,teamId:teamId,participantEmail:participantEmail });
+		res.status(200).send(`Event deleted participant ${eventId} ${teamId} ${participantEmail}`);
+	} catch (error) {
+		res.status(500).send(`error deleting event=> error = ${error}`);
+	}
+});
+
+app.delete("/api/delete/receipt/ekKhatam", async (req, res) => {
+	try {
+		const {userEmail,paymentId} = req.body;
+		const reqEvent = await PaymentReceipt.findOneAndDelete({ userEmail: userEmail,paymentId:paymentId });
+		res.status(200).send(`Event deleted receipt ${userEmail} ${paymentId}`);
 	} catch (error) {
 		res.status(500).send(`error deleting event=> error = ${error}`);
 	}
