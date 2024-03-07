@@ -43,7 +43,7 @@ const page = () => {
       <Header />
       <EventsDetails
         imageLink="../posters/hackaThon.png"
-        prize={30000}
+        prize={35000}
         heading="Hackathon – Sponsored by CodeForIT"
         paragraph={
           <>

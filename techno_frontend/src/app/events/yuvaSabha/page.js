@@ -43,7 +43,7 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/yuvaSabha.png"
-				prize={7000}
+				prize={9000}
 				heading="YUVA SABHA 2024"
 				paragraph={<><p>Welcome to Yuva Sabha, a stage where youth voices echo with 
 					passion and conviction. On 20th March, 2024 let’s ignite change 

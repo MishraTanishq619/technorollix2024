@@ -43,7 +43,7 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/brainyEscape.png"
-				prize={7000}
+				prize={6000}
 				heading="Brainy Escape"
 				paragraph={<><p>Engrossed with fun and Quiz-mania to tackle puzzles, riddles, and memes.
 					Brush up your memory in the Technology, and General knowledge, build up curiosity

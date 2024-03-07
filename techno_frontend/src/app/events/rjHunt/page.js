@@ -44,7 +44,7 @@ const page = () => {
 			<Header />
 			<EventsDetails
 				imageLink="../posters/rjHunt.png"
-				prize={7000}
+				prize={6000}
 				heading="Radio Jockey (RJ) Hunt"
 				paragraph={<><p>Unleash your inner voice! Join the Radio Jockey (RJ) Hunt and let your stories echo through the waves. Hunt and compete for the title of the ultimate campus voice.
 					Are you ready to be heard? </p></>}

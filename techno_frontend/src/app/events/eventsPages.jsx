@@ -52,7 +52,7 @@ function EventsViewPage() {
         onClick={() => (window.location.href = `/events/roboVation`)}
       />
       <ThreeDCardDemo
-        prize={30000}
+        prize={35000}
         title={'Hackathon'}
         description={'Competetive coding challenges mainly DSA'}
         members={"Have sub-events"}
@@ -90,7 +90,7 @@ function EventsViewPage() {
         onClick={() => (window.location.href = `/events/roadies`)}
       />
       <ThreeDCardDemo
-        // prize={15000}
+        prize={18000}
         title={'Aaghaaz'}
         description={'Compete to become face of opju'}
         members={1}
@@ -99,7 +99,7 @@ function EventsViewPage() {
         onClick={() => (window.location.href = `/events/aaghaaz`)}
       />
       <ThreeDCardDemo
-        // prize={8000}
+        prize={9000}
         title={'Yuva sabha'}
         description={'Empower the voice of dynamic yuva'}
         members={4}
@@ -117,7 +117,7 @@ function EventsViewPage() {
         onClick={() => (window.location.href = `/events/masterChef`)}
       />
       <ThreeDCardDemo
-        // prize={15000}
+        prize={15000}
         title={'Game Fusion'}
         description={
           'Step into arena and compete your opponents in virtual world'
@@ -128,7 +128,7 @@ function EventsViewPage() {
         onClick={() => (window.location.href = `/events/gameFusion`)}
       />
       <ThreeDCardDemo
-        // prize={4500}
+        prize={7000}
         title={'Mock Cid'}
         description={
           'Put your skill to investigate and find out the mystery behind the crime'
@@ -166,7 +166,7 @@ function EventsViewPage() {
         onClick={() => (window.location.href = `/events/brainyEscape`)}
       />
       <ThreeDCardDemo
-        // prize={15000}
+        prize={20000}
         title={'Aero Drone'}
         description={'Showcase your drone flying skills'}
         members={4}
