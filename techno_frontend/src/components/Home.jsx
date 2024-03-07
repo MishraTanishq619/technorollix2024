@@ -9,6 +9,15 @@ import localFont from 'next/font/local';
 const myFont = localFont({ src: '../app/fonts/rog.ttf' });
 
 function Home() {
+  //
+  var crsr = document.querySelector('#cursor');
+
+  document.addEventListener('mousemove', function (dets) {
+    crsr.style.left = dets.x - 150 + 'px';
+    crsr.style.top = dets.y - 150 + 'px';
+  });
+
+  //
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [verificationCode, setVerificationCode] = useState('');
@@ -145,13 +154,13 @@ function Home() {
   };
   const handlePaste = (event) => {
     // Prevent the default paste behavior
-    let pasteemail = document.getElementById('pasteemail');
-    pasteemail.style.display = 'block';
-    event.preventDefault();
+    // let pasteemail = document.getElementById('pasteemail');
+    // pasteemail.style.display = 'block';
+    // event.preventDefault();
     // Get the pasted content from the event
     const pastedText = event.clipboardData.getData('text');
     // Update the input value with the pasted content
-    console.log('Pasted text:', pastedText);
+    // console.log('Pasted text:', pastedText);
     setEmail(pastedText);
     setgenerateClicked(false);
     validateEmail(email);
@@ -163,6 +172,8 @@ function Home() {
         isOpen ? 'glass-morphism' : ''
       } h-full w-full overflow-x-scroll overflow-y-scroll `}
     >
+      {/*  */}
+      <div id="cursor"></div>
       {/*  */}
       <div
         id="alert-1"
@@ -278,7 +289,7 @@ function Home() {
                 } rounded-md px-1 py-1 justify-between `}
               >
                 <input
-                  type="text"
+                  type="email"
                   placeholder="Enter your email"
                   value={email}
                   onChange={handleEmailChange}
@@ -287,10 +298,9 @@ function Home() {
                     outline: 'none',
                     boxShadow: 'none',
                   }}
-                  onPaste={() => {
-                    setTimeout(() => {
-                      handlePaste();
-                    }, 5);
+                  onPaste={(e) => {
+                    // console.log(e);
+                    handlePaste(e);
                   }}
                   className={`bg-transparent border-2 px-2 py-2 text-white w-40 md:w-50`}
                 />
