@@ -27,12 +27,11 @@ const Page = () => {
       {isLoading ? (
         <SplashScreen />
       ) : (
-        <main className="h-full w-full overflow-x-hidden ">
+        <div className="h-full w-full overflow-x-hidden ">
           <Header />
           <DynamicThreeDhelmet /> {/* Render the dynamic component */}
           <Home />
-          
-        </main>
+        </div>
       )}
     </>
   );
