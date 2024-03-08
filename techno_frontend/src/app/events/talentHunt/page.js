@@ -5,6 +5,38 @@ import Header from "@/components/Header";
 import { BackgroundBeams } from '@/components/ui/background-beams';
 
 const page = () => {
+	const eventId = 'event-Talent Hunt-202403';
+	const [Teams, setTeams] = useState({});
+	const [Participants, setParticipants] = useState({});
+	useEffect(() => {
+		fetch(
+			`http://technorollix.opju.ac.in:4000/api/registeredTeam/count/perEvent/${eventId}`
+		)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('teams : ', data);
+				setTeams(data);
+				return data;
+			})
+			.catch((error) => {
+				console.error('Error fetching events:', error);
+				// return null;
+			});
+
+		fetch(
+			`http://technorollix.opju.ac.in:4000/api/participants/count/perEvent/${eventId}`
+		)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('participants :', data);
+				setParticipants(data);
+				return data;
+			})
+			.catch((error) => {
+				console.error('Error fetching events:', error);
+				// return null;
+			});
+	}, []);
 
 	return (
 		<main className="w-full h-screen">
@@ -13,116 +45,168 @@ const page = () => {
 				imageLink="../posters/talentHunt.png"
 				prize={9000}
 				heading="Talent Hunt"
-				paragraph={<><p>Get ready to ignite the stage with your exceptional talents and mesmerize the world with your
-					awe-inspiring performances! Join us on an electrifying odyssey of creativity, where dreams take
-					flight and legends are born. Unleash your boundless potential, seize the spotlight, and let your
-					brilliance shine like a supernova, illuminating the universe with your extraordinary gifts!</p></>}
+				paragraph={<><p>Calling all talented individuals! It's time to take the stage and dazzle us with your skills at our
+					Talent Hunt event. Whether you're a poet, comedian, musician, artist, or a magician, this is your
+					chance to shine. Compete against other talented individuals and let your creativity soar. Join us for
+					a day filled with excitement, laughter, and unforgettable performances!</p></>}
 				subHeading="“Unleash Your Campus Star Power!”"
 				theme={<p>Harmony in chaos: Finding beauty in complexity</p>}
 				subEventHeading={"Events"}
-				subEvents={<>
-					<table><tbody>
+				registrationCount={
+					<>
+						<h2 className="neon-text-red-lighter">Registrations</h2>
+						<table className="-mx-4">
+							<thead>
+								<tr>
+									<td className="text-[10px] sm:text-[1.4rem] ">Counts</td>
+									<td className="hidden sm:block text-[10px] sm:text-[1.4rem] ">
+										Total
+									</td>
+									<td className="text-[10px] sm:text-[1.4rem] ">Insider</td>
+									<td className="text-[10px] sm:text-[1.4rem] ">Outsider</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td className="text-[10px] sm:text-[1.4rem] ">Teams</td>
+									<td className="hidden sm:block text-[17px] sm:text-[1.4rem]  font-bold  text-center">
+										{Teams.totalCount}
+									</td>
+									<td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+										{Teams.insiderCount}
+									</td>
+									<td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+										{Teams.outsiderCount}
+									</td>
+								</tr>
+								<tr>
+									<td className="text-[10px] sm:text-[1.4rem] ">
+										Participants
+									</td>
+									<td className="hidden sm:block text-[17px] sm:text-[1.4rem] font-bold  text-center">
+										{Participants.totalCount}
+									</td>
+									<td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+										{Participants.insiderCount}
+									</td>
+									<td className="text-[17px] sm:text-[1.4rem] font-bold  text-center">
+										{Participants.outsiderCount}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</>
+				}
+				subEvents={<><div className='max-w-screen overflow-x-scroll'>
+					<table>
+						<thead>
 						<tr>
 							<td className="neon-text-red-light">Open Mic</td>
 							<td className="neon-text-red-light">Musical Showcase</td>
 							<td className="neon-text-red-light">Beat Battle</td>
 							<td className="neon-text-red-light">Art and Craft</td>
-						</tr>
-						<tr>
-							<td><li>Poetry</li></td>
-							<td><li>Instrumental</li></td>
-							<td><li>Dance faceoff</li></td>
-							<td><li>Painting</li></td>
-						</tr>
-						<tr>
-							<td><li>Storytelling</li></td>
-							<td><li>Beat boxing</li></td>
-							<td></td>
-							<td><li>Hand craft</li></td>
-						</tr>
-						<tr>
-							<td><li>Standup comedy</li></td>
-							<td><li>Rap Battle</li></td>
-							<td></td>
-							<td><li>Face Painting</li></td>
-						</tr>
-						<tr>
-							<td><li>Mimicry</li></td>
-							<td></td>
-							<td></td>
-							<td><li>Glass Painting</li></td>
-						</tr>
-					</tbody></table>
+						</tr></thead><tbody>
+							<tr>
+								<td><li>Poetry</li></td>
+								<td><li>Instrumental</li></td>
+								<td><li>DIY Craft</li></td>
+								<td><li className='text-ellipsis'>Your Unique
+									Talents Like
+									Magic, Toss
+									Juggling,
+									Shadow Act
+									etc..</li></td>
+							</tr>
+							<tr>
+								<td><li>Storytelling</li></td>
+								<td><li>Beat boxing</li></td>
+								<td><li>Sand art</li></td>
+								<td><li>Hand craft</li></td>
+							</tr>
+							<tr>
+								<td><li>Standup comedy</li></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><li>Mimicry</li></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody></table></div>
 				</>}
 				rulesHeading={"Rules of the event:"}
 				rules={<>
+				<h3 className='neon-text-red-light'>Note:- For All The Sub-events Only Individual Participants are allowed!</h3>
 					<br />	<p className="neon-text-red-lighter">OPEN MIC</p>
 					<ol className="list-decimal">
 						<li>
-							Participants must perform original poetry written by themselves.
+						Participants must perform original poetry written by themselves
 						</li>
 						<li>
-							Participants must bring any props or notes they require for their performance.
+						Participants must bring any props or notes they require for their performance
 						</li>
 						<li>
-							No offensive language or content allowed.
+						Time Limit : 5min for each category.
+						</li>
+						<li>
+						No offensive language or content allowed.
 						</li>
 					</ol>
 					<br />	<p className="neon-text-red-lighter">MUSICAL SHOWCASE</p>
 					<ol className="list-decimal">
 						<li>
-							Participants must perform instrumental music using any chosen instrument.
+						Participants must perform instrumental music using any chosen instrument.
 						</li>
 						<li>
-							Participants must bring their own instruments and any necessary accessories (e.g.,picks, drumsticks).
+						Participants must bring their own instruments and any necessary accessories (e.g.,picks, drumsticks).
 						</li>
 						<li>
-							No pre-recorded music allowed.
-						</li>
-					</ol>
-					<br /><p className="neon-text-red-lighter">RAP BATTLE RULES</p>
-					<ol className="list-decimal">
-						<li>
-							Participants take turns delivering verses without interruption.
-						</li>
-						<li>
-							Vulgar languages are not allowed; no personal attacks or offensive content..
-						</li>
-						<li>
-							Use of pre-written verses is generally allowed, but spontaneity is encouraged.
-						</li>
-					</ol>
-					<br /><p className="neon-text-red-lighter">DANCE FACEOFF RULES</p>
-					<ol className="list-decimal">
-						<li>
-							Participants should follow the rhythm of the music, stay within the designated dance area, and be considerate of others.
-						</li>
-						<li>
-							Judges evaluate based on creativity, technique, and stage presence.
-						</li>
-						<li>
-							No physical contact or offensive gestures allowed.
-						</li>
-						<li>
-							Fair play is essential; any unsportsmanlike behavior may result in disqualification.
+						No pre-recorded music allowed.
 						</li>
 					</ol>
 					<br /><p className="neon-text-red-lighter">ART AND CRAFTS</p>
 					<ol className="list-decimal">
 						<li>
-							Participants create original artwork using any painting medium.
+						Participants must arrive 15 mins before the event begins.
 						</li>
 						<li>
-							Participants must showcase handmade craft works.
+						Crafts must be original creations.
 						</li>
 						<li>
-							Participants must bring their own crafting items and their own painting supplies, including canvas, paints, brushes, and easels.
+						Participants must bring any materials they require for their performance.
 						</li>
 						<li>
-							Finished crafts will be evaluated based on visual appeal and craftsmanship.
+						Maximum time limit :- 15 min.
 						</li>
 						<li>
-							Time limit:- 10 minutes.
+						Finished crafts will be evaluated based on visual appeal and craftsmanship.
+						</li>
+					</ol>
+					<br /><p className="neon-text-red-lighter">SPECIAL TALENTS</p>
+					<ol className="list-decimal">
+						<li>
+						Showcase your unique talent in 3-5 minutes with originality and flair
+						</li>
+						<li>
+						Safety first! Keep your performance safe for yourself and the audience.
+						</li>
+						<li>
+						Impress the judges with your creativity, skill, and stage presence.
+						</li>
+						<li>
+						Props are allowed, but they must be safe and enhance your act
+						</li>
+						<li>
+						Communicate any technical needs in advance for a smooth performance.
+						</li>
+						<li>
+						Cheating or unfair play will result in disqualification.
+						</li>
+						<li>
+						Make your talent shine in a short but memorable performance.
 						</li>
 					</ol>
 				</>}
@@ -132,12 +216,12 @@ const page = () => {
 				// </>}
 				judgeMentalCriteria={<>
 					<li>Originality and uniqueness.</li>
+					<li>Creativity and innovation.</li>
 					<li>Performance quality and confidence.</li>
 					<li>Audience engagement and connection.</li>
 					<li>Overall impact and memorability.</li>
-					<li>Judges will evaluate based on rhyme skill, flow, and overall performance for the rap battle.</li>
 				</>}
-				eventVenue={<p>Not Confirmed yet</p>}
+				eventVenue={<p>OPJU playground</p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>

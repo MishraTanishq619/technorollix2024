@@ -250,29 +250,7 @@ function Home() {
           </p>
         </Button>
       </motion.div>
-      {/* </LampContainer> */}
       {isOpen && (
-        // <div className="overlay" onClick={handleClosePopup}>
-        // 	<GoogleLogin
-        // 		onSuccess={async (credentialResponse) => {
-        // 			const userResponse = jwtDecode(
-        // 				credentialResponse.credential
-        // 			);
-        // 			const result = await fetch(
-        // 				`http://technorollix.opju.ac.in:4000/api/user/${userResponse.email}`
-        // 			);
-        // 			console.log(result);
-        // 			if (result.status === 409) {
-        // 				window.location.href = `/registration/invitations?emailRef=${userResponse.email}`;
-        // 			} else if (result.status === 404) {
-        // 				window.location.href = `/registration?urlRef=${userResponse.picture}/email?=${userResponse.email}/name?=${userResponse.name}`;
-        // 			}
-        // 		}}
-        // 		onError={() => {
-        // 			console.log("Login Failed");
-        // 		}}
-        // 	/>
-        // </div>
         <div
           onClick={handleClosePopup}
           className="overlay flex flex-col items-center justify-center h-full w-full overflow-x-scroll "

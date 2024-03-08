@@ -71,13 +71,13 @@ const StarBackground = () => {
           }
         }
         this.update = function() {
-          this.vel.x *= 1.02; // Adjust the velocity increment factor
-          this.vel.y *= 1.02; // Adjust the velocity increment factor
-          this.lineWidth += 0.035;
+          this.vel.x *= 1.000001; // Adjust the velocity increment factor
+          this.vel.y *= 1.000001; // Adjust the velocity increment factor
+          this.lineWidth += 0.0081;
           this.x0 = this.x;
           this.y0 = this.y;
-          this.x += this.vel.x * 0.1; // Adjust the speed by multiplying by a smaller factor
-          this.y += this.vel.y * 0.1; // Adjust the speed by multiplying by a smaller factor
+          this.x += this.vel.x * 0.42; // Adjust the speed by multiplying by a smaller factor
+          this.y += this.vel.y * 0.42; // Adjust the speed by multiplying by a smaller factor
           this.draw();
           if (this.isDead()) this.init();
       }
