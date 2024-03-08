@@ -29,13 +29,13 @@ async function makeEventMessage(leader, eventIdArr) {
 		reqEvents.forEach((event) => {
 			eventsHtml += `
 		<div style="background-color: #333; color: #fff; padding: 20px; margin-bottom: 20px;">
-		<h2 style="font-size: 20px; font-weight: bold;">Event Name: ${event.eventName}</h2>
+		<h2 style="font-size: 20px; font-weight: bold;">Event Name: ${event.eventName}</h2><br/><p>${event.eventDescription}</p>
 	</div>
 		`;
 		});
 		let accommodationLink = "";
 		if (!user.isUserOPJUStudent) {
-			accommodationLink = `<h2><a href="https://docs.google.com/forms/d/e/1FAIpQLSczoPzhwQMTQ-ZPzPB1GYGQvIoR8N5yi1_ADyFdj2xyNZfIAQ/viewform?usp=sf_link">Accommodation Form</a></h2>`;
+			accommodationLink = `<div style="background-color: #333; color: #fff; padding: 20px; margin-bottom: 20px;"><p>If you need accomodation then kindly fill the accomodation form</p><br/><h2><a href="https://docs.google.com/forms/d/e/1FAIpQLSczoPzhwQMTQ-ZPzPB1GYGQvIoR8N5yi1_ADyFdj2xyNZfIAQ/viewform?usp=sf_link">Accommodation Form</a></h2><br/><p style="color:red;">Note:- We provide one way fare for Tech Lab Participants </p></div>`;
 		}
 		const message = {
 			from: '"TechnoRollix 2k24" <technorollix@opju.ac.in>',
