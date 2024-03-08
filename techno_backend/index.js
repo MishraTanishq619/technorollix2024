@@ -5,6 +5,12 @@ const mailer = require("./mailer");
 const thankMailer = require("./thankMailer");
 const registeredEventMailer = require("./registeredMailer");
 const cors = require("cors");
+
+const xlsx = require('xlsx');
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
+
 // const corsOptions = {
 //   origin: "http://localhost:3000", // Allow requests from this origin
 //   methods: ["GET", "POST"], // Allow only GET and POST requests
@@ -72,18 +78,6 @@ app.post("/api/create/user", async (req, res) => {
 	}
 });
 
-app.delete("api/delete/user", async (req, res) => {
-	try {
-		const user = req.body;
-		const exsitingUser = await User.findOneAndDelete({
-			userEmail: user.userEmail,
-		});
-		return res.status(200).send("user deleted succesfully");
-	} catch (error) {
-		res.status(500).send(`Error deleting user: Error ${error}`);
-	}
-});
-
 // to get all users
 app.get("/api/allUsers", async (req, res) => {
 	try {
@@ -123,6 +117,7 @@ app.get("/api/user/universityVerification/:email", async (req, res) => {
 		res.status(500).send(`Error fetching user details: ${error}`);
 	}
 });
+
 app.get("/api/user/name/:email", async (req, res) => {
 	const userEmail = req.params.email;
 	try {
@@ -201,15 +196,6 @@ app.put("/api/update/event/byEventId", async (req, res) => {
 		res.status(500).send(`Error creating event=> error: ${error}`);
 	}
 });
-app.delete("/api/delete/event:eventId", async (req, res) => {
-	try {
-		const eventId = res.params.eventId;
-		const reqEvent = await Event.findOneAndDelete({ eventId: eventId });
-		res.status(200).send(`Event deleted event ID = ${eventId}`);
-	} catch (error) {
-		res.status(500).send(`error deleting event=> error = ${error}`);
-	}
-});
 
 // to get all events
 app.get("/api/allEvents", async (req, res) => {
@@ -220,6 +206,7 @@ app.get("/api/allEvents", async (req, res) => {
 		res.status(500).send(`Error fetching event details: ${error}`);
 	}
 });
+
 app.get("/api/allMainEvents", async (req, res) => {
 	try {
 		const events = await Event.find({ mainEventId: "Technorollix2k24" });
@@ -228,6 +215,7 @@ app.get("/api/allMainEvents", async (req, res) => {
 		res.status(500).send(`Error fetching event details: ${error}`);
 	}
 });
+
 app.get("/api/allSubEvents/:eventId", async (req, res) => {
 	const request = req.params.eventId;
 	try {
@@ -237,6 +225,7 @@ app.get("/api/allSubEvents/:eventId", async (req, res) => {
 		res.status(500).send(`Error fetching event details: ${error}`);
 	}
 });
+
 app.post("/api/allSubEvents/eventIdArray/byMainIdArray", async (req, res) => {
 	try {
 		const { mainEventsArray } = req.body;
@@ -270,6 +259,7 @@ app.get("/api/allEvents/technorollix", async (req, res) => {
 		res.status(500).send(`Error fetching event details: ${error}`);
 	}
 });
+
 app.get("/api/byEventId/:eventId", async (req, res) => {
 	const eventId = req.params.eventId;
 	try {
@@ -281,6 +271,7 @@ app.get("/api/byEventId/:eventId", async (req, res) => {
 		res.status(500).send(`Error fetching event details: ${error}`);
 	}
 });
+
 app.get("/api/eventName/byEventId/:eventId", async (req, res) => {
 	const eventId = req.params.eventId;
 	try {
@@ -292,6 +283,7 @@ app.get("/api/eventName/byEventId/:eventId", async (req, res) => {
 		res.status(500).send(`Error fetching event details: ${error}`);
 	}
 });
+
 app.get("/api/byArrayEventId", async (req, res) => {
 	const { eventIdArr } = req.body;
 	try {
@@ -304,6 +296,7 @@ app.get("/api/byArrayEventId", async (req, res) => {
 		res.status(500).send(`Error fetching event details: ${error}`);
 	}
 });
+
 // Team Registration
 app.post("/api/team-registration/event", async (req, res) => {
 	try {
@@ -381,17 +374,6 @@ app.post("/api/team-registration/event", async (req, res) => {
 		res.status(500).send(`Error regitring team=> error: ${error}`);
 	}
 });
-app.delete("/api/delete/team:teamId", async (req, res) => {
-	try {
-		const teamId = res.params.teamId;
-		const reqEvent = await RegisteredTeam.findOneAndDelete({
-			teamId: teamId,
-		});
-		res.status(200).send(`Team deleted teaam ID = ${teamId}`);
-	} catch (error) {
-		res.status(500).send(`error deleting team=> error = ${error}`);
-	}
-});
 
 app.get("/api/allTeams", async (req, res) => {
 	try {
@@ -404,6 +386,7 @@ app.get("/api/allTeams", async (req, res) => {
 		);
 	}
 });
+
 app.post("/api/registeredTeam/leader/teamId", async (req, res) => {
 	const { leader, eventId } = req.body;
 	try {
@@ -420,6 +403,7 @@ app.post("/api/registeredTeam/leader/teamId", async (req, res) => {
 		res.status(500).send(`Error fetching participants : ${error}`);
 	}
 });
+
 app.get("/api/registeredTeam/eventId/:email", async (req, res) => {
 	const leader = req.params.email;
 	try {
@@ -438,6 +422,25 @@ app.get("/api/registeredTeam/eventId/:email", async (req, res) => {
 	} catch (error) {
 		res.status(500).send(`Error fetching participants : ${error}`);
 	}
+});
+
+app.get("/api/registeredTeam/ofSingleEvent/byEventId/:eventId", async (req, res) => {
+    const eventId = req.params.eventId;
+    try {
+        const participants = await RegisteredTeam.find({ eventId: eventId });
+        const leaderDetailsPromises = participants.map(async (element) => {
+            const data = await User.findOne({ userEmail: element.leader });
+            return data;
+        });
+        const leaderDetails = await Promise.all(leaderDetailsPromises);
+		const insiders = leaderDetails.filter(user => user.isUserOPJUStudent);
+        const outsiders = leaderDetails.filter(user => !user.isUserOPJUStudent);
+		const inSiderCount = insiders.length;
+		const outSiderCount = outsiders.length;
+        res.json({ inSiderCount,outSiderCount,insiders, outsiders });
+    } catch (error) {
+        res.status(500).send(`Error fetching participants : ${error}`);
+    }
 });
 
 app.get("/api/registeredTeam/count/perEvent/:eventId", async (req, res) => {
@@ -466,6 +469,103 @@ app.get("/api/registeredTeam/count/perEvent/:eventId", async (req, res) => {
 		res.status(500).send(`Error fetching registered teams: ${error}`);
 	}
 });
+
+app.get("/api/registeredTeamAndMembers/Details/perEvent/:eventId", async (req, res) => {
+    const eventId = req.params.eventId;
+    try {
+        // Fetch event details to get team size
+        const eventDetails = await Event.findOne({ eventId: eventId });
+        if (!eventDetails) {
+            return res.status(404).send("Event not found");
+        }
+        const teamSize = eventDetails.teamSize;
+
+        // Fetch all registered teams for the given event
+        const registeredTeams = await RegisteredTeam.find({ eventId: eventId });
+
+        // Create a workbook and worksheet
+        const workbook = xlsx.utils.book_new();
+        const worksheet = xlsx.utils.aoa_to_sheet([]);
+
+        // Initialize the row and column counters
+        let row = 1;
+        let col = 0;
+
+        // Add headers for TeamId, Participants, Insider/Outsider, and User Details
+        xlsx.utils.sheet_add_aoa(worksheet, [['Team ID', 'Participants', 'Insider/Outsider', 'Name', 'Email', 'Phone no.', 'University', 'Gender', 'District', 'Pincode', 'State']], { origin: `A${row}` });
+        row++;
+
+        // Iterate over each registered team
+        for (const team of registeredTeams) {
+            // Fetch participants for the current team
+            const participants = await Participants.find({ teamId: team.teamId });
+
+            // Fill team ID in the first column
+            xlsx.utils.sheet_add_aoa(worksheet, [[team.teamId]], { origin: `A${row}` });
+
+            // Fill participant details in subsequent columns
+            let participantIndex = 1;
+            for (const participant of participants) {
+                const userDetails = await User.findOne({ userEmail: participant.participantEmail });
+
+                if (userDetails) {
+                    // Determine if the user is an Insider or Outsider
+                    const insiderOrOutsider = userDetails.isUserOPJUStudent ? 'Insider' : 'Outsider';
+
+                    // Fill participant index in the Participants column
+                    const participantIndexLabel = `Participant ${participantIndex}`;
+                    xlsx.utils.sheet_add_aoa(worksheet, [[participantIndexLabel, insiderOrOutsider]], { origin: `B${row}` });
+
+                    // Fill user details in respective columns
+                    const userData = [
+                        userDetails.userName,
+                        userDetails.userEmail,
+                        userDetails.userPhoneNumber,
+                        userDetails.userUniversity,
+                        userDetails.userGender,
+                        userDetails.userAddress.district,
+                        userDetails.userAddress.pincode,
+                        userDetails.userAddress.state
+                    ];
+
+                    // Add user details to the worksheet
+                    xlsx.utils.sheet_add_aoa(worksheet, [userData], { origin: `D${row}` });
+                }
+
+                // Increment the participant index and row counter
+                participantIndex++;
+                row++;
+            }
+
+            // Increment the row counter to leave space between teams
+            row++;
+        }
+
+        // Add the worksheet to the workbook
+        xlsx.utils.book_append_sheet(workbook, worksheet, `Event_${eventId}`);
+
+        // Generate the Excel file
+        const excelFileName = `Team_Details_${eventId}.xlsx`;
+        const excelFilePath = path.join(os.homedir(), 'Downloads', excelFileName);
+
+        // Write the workbook to the file system
+        xlsx.writeFile(workbook, excelFilePath);
+
+        // Send the file as a response for download
+        res.download(excelFilePath, excelFileName, (err) => {
+            if (err) {
+                console.error('Error sending file:', err);
+            }
+            // Delete the file after download
+            fs.unlinkSync(excelFilePath);
+        });
+    } catch (error) {
+        res.status(500).send(`Error generating Excel sheet: ${error}`);
+    }
+});
+
+
+
 // Participants
 app.post("/api/register/participant", async (req, res) => {
 	// const {reqEvent, reqTeam, reqUser} = req.body;
@@ -510,17 +610,6 @@ app.post("/api/register/participant", async (req, res) => {
 		res.status(500).send(
 			`Error registering user ${participantEmail} with team ${teamId} \nerror: ${error}`
 		);
-	}
-});
-app.delete("/api/delete/participants:participantId", async (req, res) => {
-	try {
-		const participantId = res.params.participantId;
-		const reqEvent = await Participants.findOneAndDelete({
-			participantEmail: participantId,
-		});
-		res.status(200).send(`Participant deleted participant ID = ${eventId}`);
-	} catch (error) {
-		res.status(500).send(`error deleting participant=> error = ${error}`);
 	}
 });
 
