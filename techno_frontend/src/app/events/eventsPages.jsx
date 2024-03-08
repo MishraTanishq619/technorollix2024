@@ -10,7 +10,8 @@ function EventsViewPage() {
         prize={45000}
         title={'Tech Lab'}
         description={'Prototype, Model, Technical poster'}
-        members={"Have sub-events"}
+        description2={'"Reimbursement of one-way fair" '}
+        members={'Have sub-events'}
         image="/thumbnail/techLab.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/techLab`)}
@@ -46,7 +47,7 @@ function EventsViewPage() {
         prize={30000}
         title={'Robovation'}
         description={'Compete to design and make powerful and efficient robots'}
-        members={"Have sub-events"}
+        members={'Have sub-events'}
         image="/thumbnail/roboVation.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/roboVation`)}
@@ -55,7 +56,7 @@ function EventsViewPage() {
         prize={35000}
         title={'Hackathon'}
         description={'Competetive coding challenges mainly DSA'}
-        members={"Have sub-events"}
+        members={'Have sub-events'}
         image="/thumbnail/hackaThon.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/hackaThon`)}
@@ -64,7 +65,7 @@ function EventsViewPage() {
         prize={23000}
         title={'Kalakriti'}
         description={'Explore the magnanimous arts and aesthetics of India'}
-        members={"Have sub-events"}
+        members={'Have sub-events'}
         entryFee={''}
         image="/thumbnail/kalaKriti.png"
         onClick={() => (window.location.href = `/events/kalaKriti`)}
@@ -75,7 +76,7 @@ function EventsViewPage() {
         description={
           'Showcase your passion for cultural excellence in Antaragni'
         }
-        members={"Have sub-events"}
+        members={'Have sub-events'}
         image="/thumbnail/antaragni.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/antaragni`)}
@@ -122,7 +123,7 @@ function EventsViewPage() {
         description={
           'Step into arena and compete your opponents in virtual world'
         }
-        members={"Have sub-events"}
+        members={'Have sub-events'}
         image="/thumbnail/gameFusion.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/gameFusion`)}
@@ -151,7 +152,7 @@ function EventsViewPage() {
         prize={9000}
         title={'Talent hunt'}
         description={'Showcase you diverse talent across the spectrum'}
-        members={"Have sub-events"}
+        members={'Have sub-events'}
         image="/thumbnail/talentHunt.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/talentHunt`)}
@@ -160,7 +161,7 @@ function EventsViewPage() {
         prize={6000}
         title={'Brainy escape'}
         description={'Challenge your intellect to solve puzzles'}
-        members={"Have sub-events"}
+        members={'Have sub-events'}
         image="/thumbnail/brainyEscape.png"
         entryFee={''}
         onClick={() => (window.location.href = `/events/brainyEscape`)}
