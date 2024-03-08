@@ -12,6 +12,7 @@ export default function ThreeDCardDemo({
   prize = 999,
   title = 'title',
   description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  description2 = '',
   image = 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   members = 4,
   entryFee = 400,
@@ -50,7 +51,18 @@ export default function ThreeDCardDemo({
             {description}
           </CardItem>
 
-          <CardItem translateZ="100" className={`w-1/2 mt-4 text-white text-xs ${microFont.className}`}>
+          <CardItem
+            as="p"
+            translateZ="70"
+            className=" text-sm font-bold max-w-sm mt-2 neon-text-red"
+          >
+            {description2}
+          </CardItem>
+
+          <CardItem
+            translateZ="100"
+            className={`w-1/2 mt-4 text-white text-xs ${microFont.className}`}
+          >
             Prize: {prize}
             <Image
               // src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

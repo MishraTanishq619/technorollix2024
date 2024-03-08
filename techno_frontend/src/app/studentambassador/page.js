@@ -20,12 +20,12 @@ const page = () => {
     <div className="w-full p-10 flex flex-wrap justify-evenly gap-6">
       <Header />
       <p
-        className={`mb-4 md:mb-10 text-center text-2xl md:text-6xl text-white mt-20 p-10  font-bold shadow-red-400 shadow-2xl neon-text-red  ${rog.className} `} // 
+        className={`mb-4 md:mb-10 text-center text-2xl md:text-6xl text-white mt-20 p-10  font-bold shadow-red-400 shadow-2xl neon-text-red  ${rog.className} `} //
       >
         About Campus Ambassador Program:
       </p>
       {/* <p className="text-white bg-red-600">StudentAmbassador</p> */}
-      <CampusAmbassadorProgram/>
+      <CampusAmbassadorProgram />
     </div>
   );
 };
@@ -36,7 +36,9 @@ const CampusAmbassadorProgram = () => {
   const [Icon4Value, setIcon4Value] = useState(2);
 
   return (
-    <div className={`bg-white bg-opacity-20 opacity-90 text-white p-4 md:p-10 text-lg md:text-2xl md:-m-4 rounded-lg shadow-md ${rog.className}`}>
+    <div
+      className={`bg-white bg-opacity-20 opacity-90 text-white p-4 md:p-10 text-lg md:text-2xl md:-m-4 rounded-lg shadow-md ${rog.className}`}
+    >
       {/* <h2 className="text-2xl font-bold mb-4">TECHNOROLLIX-2024</h2> */}
       {/* <p className="mb-4">About Campus Ambassador Program:</p> */}
       <div className="border-red-500 border-2 m-4 p-8 shadow-xl shadow-red-400">
@@ -66,13 +68,13 @@ const CampusAmbassadorProgram = () => {
         </div>
       </div>
       <div className="my-4">
-        <p className="font-bold text-center my-8 md:mt-14 md:ml-10 text-2xl xsm:text-4xl md:text-5xl neon-text-red ">
+        <p className="font-bold text-center my-8 md:mt-14 md:ml-10 text-xl xsm:text-2xl md:text-4xl neon-text-red ">
           Visual Representation:
         </p>
         <div className="flex flex-col md:flex-row justify-around items-center">
           <div>
             <div>
-              <div className="flex items-center my-4 gap-3 xsm:gap-0">
+              <div className="flex items-center my-4 gap-3 ">
                 <button
                   className="flex flex-col items-center border-red-500 border-2 text-sm w-[5rem] xsm:w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
                   onClick={() => setIcon4Value(0)}
@@ -80,7 +82,6 @@ const CampusAmbassadorProgram = () => {
                   <p> Represent technorollix</p>
                   <img src="4icons/1.png" alt="I" className="w-32 h-32" />
                 </button>
-                <p className=" hidden xsm:block">------&gt; </p>
                 <button
                   className="flex flex-col items-center border-red-500 border-2 text-sm w-[5rem] xsm:w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
                   onClick={() => setIcon4Value(1)}
@@ -95,7 +96,7 @@ const CampusAmbassadorProgram = () => {
               </div>
             </div>
             <div>
-              <div className="flex items-center my-4 gap-3 xsm:gap-0">
+              <div className="flex items-center my-4 gap-3 ">
                 <button
                   className="flex flex-col items-center border-red-500 border-2 text-sm w-[5rem] xsm:w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
                   onClick={() => setIcon4Value(2)}
@@ -107,7 +108,6 @@ const CampusAmbassadorProgram = () => {
                     className="w-32 h-32"
                   />
                 </button>
-                <p className=" hidden xsm:block">------&gt; </p>
                 <button
                   className="flex flex-col items-center border-red-500 border-2 text-sm w-[5rem] xsm:w-[8rem] md:w-[22rem] hover:scale-95 hover:shadow-2xl hover:shadow-red-500"
                   onClick={() => setIcon4Value(3)}
@@ -145,6 +145,18 @@ const CampusAmbassadorProgram = () => {
         </p>
         <div className="flex flex-col md:flex-row gap-4 md:gap-12 justify-around items-center mt-10 p-2 md:p-10 mx-2 md:mx-10">
           <ContactCard
+            name={'Shivam Jha'}
+            imageUrl={'/contacts/shivamJha2.jpg'}
+            whatsappLink={'https://wa.me/8271953137'}
+            instagramLink={
+              'https://www.instagram.com/jhashiv_03/?igsh=MWx2OWdvNGJ3YXVxdg%3D%3D'
+            }
+            linkedinLink={
+              'https://www.linkedin.com/in/shivam-kumar-jha-b5984474/'
+            }
+            email={'skjha0111@gmail.com'}
+          />
+          <ContactCard
             name={'Vishal Singh'}
             imageUrl={'/contacts/studentCoConveners/vishalSingh.png'}
             whatsappLink={'https://wa.link/o9ehab'}
@@ -152,6 +164,7 @@ const CampusAmbassadorProgram = () => {
             linkedinLink={'https://www.linkedin.com/in/vishal-singh-58b365223/'}
             email={'vishalsingh12999@gmail.com'}
           />
+
           <ContactCard
             name={'Tanuja Nair'}
             imageUrl={'/contacts/studentConveners/tanujaNair.png'}
