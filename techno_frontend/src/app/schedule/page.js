@@ -24,14 +24,13 @@ const page = () => {
           <div className="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
             <div className="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 p-8 shadow-2xl shadow-red-500">
               <p className="ml-2 text-yellow-300 uppercase tracking-loose">
-                Working Process
+                Schedule
               </p>
               <p className="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2">
-                Working Process of Fest
+                Schedule of Technorollix2024
               </p>
               <p className="text-sm md:text-base text-gray-50 mb-4">
-                Here’s your guide to the tech fest 2021 process. Go through all
-                the steps to know the exact process of the fest.
+                Here’s your guide to the tech & cultural fest 2024 process.
               </p>
               <a
                 href="#"
