@@ -4,9 +4,9 @@ import React from 'react';
 
 const ScheduleTimelineCards = ({
   id,
-  date,
-  heading,
-  paragraph,
+  datetime,
+  event_name,
+  venue,
   WinWidthBool,
 }) => {
   return (
@@ -28,10 +28,10 @@ const ScheduleTimelineCards = ({
           id % 2 ? 'right' : 'left'
         }`}
       >
-        <p className="mb-3 text-base text-yellow-300">{date}</p>
-        <h4 className="mb-3 font-bold text-lg md:text-2xl">{heading}</h4>
+        <p className="mb-3 text-base text-yellow-300">{datetime}</p>
+        <h4 className="mb-3 font-bold text-lg md:text-2xl">{event_name}</h4>
         <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
-          {paragraph}
+          {venue}
         </p>
       </motion.div>
     </motion.div>
