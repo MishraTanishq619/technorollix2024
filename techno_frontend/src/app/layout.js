@@ -5,7 +5,7 @@ import { BackgroundBeams } from '@/components/ui/background-beams';
 import StarBackground from "@/scripts/starBackground";
 
 export const metadata = {
-  title: 'Technorollix_2024',
+  title: 'Technorollix',
   description: 'by CodeForIt team.',
 };
 
