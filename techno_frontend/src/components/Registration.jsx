@@ -332,7 +332,7 @@ function Registration() {
                                   state: state,
                                   pincode: pincode,
                                 },
-                                userGender: gender,
+                                userGender: selectedGender,
                               }),
                               headers: {
                                 'Content-type': 'application/json',

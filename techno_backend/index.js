@@ -88,6 +88,36 @@ app.get("/api/allUsers", async (req, res) => {
 		res.status(500).send(`Error fetching user details: ${error}`);
 	}
 });
+app.get("/api/allOutSiderUsers", async (req, res) => {
+	try {
+		const user = await User.find({isUserOPJUStudent: false});
+		const numberOfUsers = await User.countDocuments({isUserOPJUStudent: false});
+		res.json({ numberOfUsers, user });
+	} catch (error) {
+		res.status(500).send(`Error fetching user details: ${error}`);
+	}
+});
+app.put("/api/update/userDetails", async (req, res) => {
+	try {
+		const user = req.body;
+		const isExsitingUser = await User.findOne({
+			userEmail: user.userEmail,
+		});
+		if (isExsitingUser) {
+			const exsitingUser = await User.findOneAndUpdate(
+				{ userEmail: user.userEmail },
+				user
+			);
+			return res.status(205).json(`Updated details ${user}`);
+			// return res.status(409).json(`User already Exist ${exsitingUser}`)
+		}
+		thankMailer(user.userEmail);
+		const newUser = await User.create(req.body);
+		res.status(201).json(newUser);
+	} catch (error) {
+		res.status(500).send(`Error creating user: Error ${error}`);
+	}
+});
 
 //pass /api/user/example@email.com
 app.get("/api/user/:email", async (req, res) => {

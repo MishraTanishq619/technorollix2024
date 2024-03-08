@@ -5,6 +5,7 @@ const headingFont = localFont({ src: '../fonts/rog.ttf' });
 const digital = localFont({ src: '../fonts/digital.ttf' });
 const dataFont = localFont({ src: '../fonts/rog.ttf' });
 function SubEventsDetails({
+	registrationCount,
 	imageLink = "",
 	prize = 10000,
 	heading = "",
@@ -54,26 +55,23 @@ function SubEventsDetails({
 					<div className={`${headingFont.className} neon-text-red-light px-3 py-1 md:py-4 text-1rem md:text-4rem font-medium text-justify`}>
 						{subHeading}
 					</div>
+					<div
+						className={`${headingFont.className} px-3 py-1 md:py-4 text-1rem md:text-4rem font-medium text-justify`}
+					>
+						{registrationCount}
+					</div>
 					<div className="mt-1 md:py-0 text-justify">
 						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>{subEventHeading}</h2>
 						<div className={`text-3rem ml-5 ${dataFont.className}  text-1xs md:text-1xl font-medium max-w-[85%]`}><ul className="list-disc">{subEvents}</ul></div>
 					</div>
 					<div className="mt-2 md:py-4 text-justify w-full">
-								<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>Faculty Coordinators:</h2>
-								<div className={`text-3rem ml-5  text-1xl md:text-2xs font-medium`}>{facultyCoordinators}</div>
+						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>Faculty Coordinators:</h2>
+						<div className={`text-3rem ml-5  text-1xl md:text-2xs font-medium`}>{facultyCoordinators}</div>
 					</div>
 					<div className="mt-2 md:py-4 text-justify ">
 						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>Event manager and contacts:</h2>
 						<div className={`text-3rem ml-5  text-1xl md:text-2xs font-medium`}>{eventManagers}</div>
 					</div>
-					{/* <div className="mt-2 md:py-4 text-justify flex flex-wrap">
-						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>Student Coordinators:</h2>
-						<div className={`text-3rem ml-5 ${dataFont.className}  text-1xl md:text-2xl font-medium max-w-[85%] `}>{studentCoordinator}</div>
-					</div> */}
-					{/* <div className="mt-2 md:py-4 text-justify flex flex-wrap">
-						<h2 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}>Staff Coordinators:</h2>
-						<div className={`text-3rem ml-5 ${dataFont.className}  text-1xl md:text-2xl font-medium max-w-[85%] `}>{staffCoordinators}</div>
-					</div> */}
 				</div>
 			</div>
 		</div>
