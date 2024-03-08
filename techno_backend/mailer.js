@@ -35,7 +35,7 @@ async function makeMessage(recieversList, teamId) {
 			// text: `This invitation is sent by ${user.userName}`, // plain text body
 			//     or
 			html: `<b>This invitation is sent by ${user.userName}</b>
-			<p>He/she wants you to join his team in Technorollix 2k24's event ${event.eventName} hosted by O.P. Jindal University Raigarh, Chhattisgarh</p>
+			<p>He/she wants you to join his/her team in Technorollix 2k24's event ${event.eventName} hosted by O.P. Jindal University Raigarh, Chhattisgarh</p>
 			<h1><a href="http://technorollix.opju.ac.in">Invitation Link</a></h1>
 			<h3>Thank you</h3>
 			`, // html body

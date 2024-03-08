@@ -78,11 +78,11 @@ function Home() {
     setTimeout(() => {
       clearInterval(countdownInterval);
     }, 30000);
-    console.log('called');
+    // console.log('called');
     if (isValidEmail) {
-      console.log('entered');
+      // console.log('entered');
       const number = Math.floor(10000 + Math.random() * 90000);
-      // console.log(number);
+      console.log(number);
       setGeneratedNumber(number);
       // try {
       let otpdata = await fetch(
@@ -99,14 +99,14 @@ function Home() {
           },
         }
       ).catch((error) => {
-        console.log('Error during fetch:', error);
+        // console.log('Error during fetch:', error);
       });
-      console.log(`otpdata ${otpdata}`);
+      // console.log(`otpdata ${otpdata}`);
       // } catch (error) {
-      // 	console.log(error);
+      	console.log(error);
       // }
     }
-    console.log('exit');
+    // console.log('exit');
   };
 
   const verifyCode = async () => {
@@ -129,12 +129,12 @@ function Home() {
       } catch (error) {
         console.error('Error during registration:', error);
       }
-      console.log('Code verified successfully');
+      // console.log('Code verified successfully');
     } else {
       // Code verification failed
       let invalidOTP = document.getElementById('invalidOTP');
       invalidOTP.style.display = 'block';
-      console.log('Invalid verification code');
+      // console.log('Invalid verification code');
       return false;
     }
   };
@@ -142,13 +142,13 @@ function Home() {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (regex.test(email)) {
       setIsValidEmail(true);
-      console.log('set');
+      // console.log('set');
     }
     if (!regex.test(email)) {
       setIsValidEmail(false);
-      console.log('not set');
+      // console.log('not set');
     }
-    console.log(regex.test(email));
+    // console.log(regex.test(email));
 
     // return regex.test(email);
   };
@@ -160,7 +160,7 @@ function Home() {
     // Get the pasted content from the event
     const pastedText = event.clipboardData.getData('text');
     // Update the input value with the pasted content
-    // console.log('Pasted text:', pastedText);
+    console.log('Pasted text:', pastedText);
     setEmail(pastedText);
     setgenerateClicked(false);
     validateEmail(email);
@@ -277,7 +277,7 @@ function Home() {
                     boxShadow: 'none',
                   }}
                   onPaste={(e) => {
-                    // console.log(e);
+                    console.log(e);
                     handlePaste(e);
                   }}
                   className={`bg-transparent border-2 px-2 py-2 text-white w-40 md:w-50`}

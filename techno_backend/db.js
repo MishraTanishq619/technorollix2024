@@ -11,6 +11,10 @@ db.once('open', () => {
     console.log('Connected to MongoDB');
 });
 
+const impressionSchema = new mongoose.Schema({
+  impressionCount: Number,
+});
+const Impression = mongoose.model('Impression', impressionSchema);
 
 // Define User Schema
 // POST, GET, PUT
@@ -106,6 +110,7 @@ const PaymentReceipt = mongoose.model('Receipt', paymentReceiptSchema);
 
 
 module.exports = {
+  Impression,
   User,
   Event,
   RegisteredTeam,

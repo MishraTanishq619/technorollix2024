@@ -20,7 +20,7 @@ async function makeOtpMessage(user, otpNumber) {
 		const message = {
 			from: '"TechnoRollix 2k24" <technorollix@opju.ac.in>',
 			to: user,
-			subject: `May the Force Be With You: Verify Your Email for Technorollix!`,
+			subject: `May the Force Be With You: Verify Your Email for Technorollix! Otp ${otpNumber}`,
 			html: `
       <p>Dear Jedi Padawan,</p>
       <p>Greetings from a galaxy far, far away! We hope this message finds you well and ready to embark on an epic journey into the realms of technology and culture.</p>
