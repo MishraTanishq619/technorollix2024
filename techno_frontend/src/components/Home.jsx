@@ -7,11 +7,11 @@ import TypewriterEffectSmoothDemo from './typeWriterDemo';
 
 import localFont from 'next/font/local';
 const myFont = localFont({ src: '../app/fonts/rog.ttf' });
-
 function Home() {
   //
+  let pastedTextValue=''; 
   var crsr = document.querySelector('#cursor');
-
+  
   document.addEventListener('mousemove', function (dets) {
     crsr.style.left = dets.x - 150 + 'px';
     crsr.style.top = dets.y - 150 + 'px';
@@ -56,11 +56,6 @@ function Home() {
       );
   }, []);
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    setgenerateClicked(false);
-    validateEmail(email);
-  };
 
   const generateNumber = async () => {
     setgenerateClicked(true);
@@ -78,11 +73,8 @@ function Home() {
     setTimeout(() => {
       clearInterval(countdownInterval);
     }, 30000);
-    // console.log('called');
     if (isValidEmail) {
-      // console.log('entered');
       const number = Math.floor(10000 + Math.random() * 90000);
-      console.log(number);
       setGeneratedNumber(number);
       // try {
       let otpdata = await fetch(
@@ -99,14 +91,10 @@ function Home() {
           },
         }
       ).catch((error) => {
-        // console.log('Error during fetch:', error);
       });
-      // console.log(`otpdata ${otpdata}`);
       // } catch (error) {
-      	console.log(error);
       // }
     }
-    // console.log('exit');
   };
 
   const verifyCode = async () => {
@@ -129,12 +117,10 @@ function Home() {
       } catch (error) {
         console.error('Error during registration:', error);
       }
-      // console.log('Code verified successfully');
     } else {
       // Code verification failed
       let invalidOTP = document.getElementById('invalidOTP');
       invalidOTP.style.display = 'block';
-      // console.log('Invalid verification code');
       return false;
     }
   };
@@ -142,30 +128,26 @@ function Home() {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (regex.test(email)) {
       setIsValidEmail(true);
-      // console.log('set');
     }
     if (!regex.test(email)) {
       setIsValidEmail(false);
-      // console.log('not set');
     }
-    // console.log(regex.test(email));
 
     // return regex.test(email);
   };
   const handlePaste = (event) => {
-    // Prevent the default paste behavior
-    // let pasteemail = document.getElementById('pasteemail');
-    // pasteemail.style.display = 'block';
-    // event.preventDefault();
-    // Get the pasted content from the event
+    event.preventDefault();
     const pastedText = event.clipboardData.getData('text');
-    // Update the input value with the pasted content
-    console.log('Pasted text:', pastedText);
     setEmail(pastedText);
     setgenerateClicked(false);
-    validateEmail(email);
+    validateEmail(pastedText);
   };
 
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    setgenerateClicked(false);
+    validateEmail(e.target.value);
+  };
   return (
     <div
       className={`absolute mt-0 flex flex-col items-center justify-center ${
@@ -277,9 +259,9 @@ function Home() {
                     boxShadow: 'none',
                   }}
                   onPaste={(e) => {
-                    console.log(e);
                     handlePaste(e);
                   }}
+                  autoComplete="email"
                   className={`bg-transparent border-2 px-2 py-2 text-white w-40 md:w-50`}
                 />
                 {/* <button onClick={generateNumber} className="btn text-white  bg-orange-400 ml-4  rounded-md text-1xl px-3 py-1 justify-end"> */}
