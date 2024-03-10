@@ -103,8 +103,8 @@ const page = () => {
 						<tr>
 							<td className="neon-text-red-light">Open Mic</td>
 							<td className="neon-text-red-light">Musical Showcase</td>
-							<td className="neon-text-red-light">Beat Battle</td>
 							<td className="neon-text-red-light">Art and Craft</td>
+							<td className="neon-text-red-light">Special Talent</td>
 						</tr></thead><tbody>
 							<tr>
 								<td><li>Poetry</li></td>
@@ -121,7 +121,7 @@ const page = () => {
 								<td><li>Storytelling</li></td>
 								<td><li>Beat boxing</li></td>
 								<td><li>Sand art</li></td>
-								<td><li>Hand craft</li></td>
+								<td></td>
 							</tr>
 							<tr>
 								<td><li>Standup comedy</li></td>

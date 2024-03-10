@@ -62,7 +62,7 @@ const page = () => {
           </>
         }
         subHeading=""
-        theme={<p>Science and Technology</p>}
+        // theme={<p>Science and Technology</p>}
         subEventHeading={
           <>
             <p>EVENT CATEGORIES</p>

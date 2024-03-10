@@ -12,6 +12,7 @@ function EventsDetails({
   heading = '',
   paragraph,
   subHeading = '',
+  themeHead,
   theme = '',
   subEventHeading,
   subEvents,
@@ -74,7 +75,7 @@ function EventsDetails({
               <h2
                 className={`${headingFont.className}  neon-text-red-lighter text-1xl font-bold md:text-2xl`}
               >
-                THEME :{' '}
+                {themeHead}
               </h2>
               <div
                 className={`text-1xl ml-2 md:text-2xl ${dataFont.className}  `}

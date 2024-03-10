@@ -57,6 +57,7 @@ const page = () => {
           </>
         }
         subHeading="WHERE CULTURES UNITE IN VIBRANT CELEBRATIONS"
+        themeHead={'THEME:'}
         theme={<p>BOLLYWOOD</p>}
         rulesHeading={'Rules of the event:'}
         registrationCount={

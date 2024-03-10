@@ -111,6 +111,7 @@ const page = () => {
           </>
         }
         // subHeading="“Don't worry about the results; focus only on your actions - a lesson from the Bhagavad Gita”"
+        themeHead={'THEME:'}
         theme={<p>Embracing Diversity: Uniting Through Technology</p>}
         rulesHeading={'Rules of the event:'}
         registrationCount={

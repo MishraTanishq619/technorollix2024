@@ -50,6 +50,7 @@ const page = () => {
 					CS skills based on your drone. Your drone would be tested rigorously across the event through various
 					rounds. Show your skills and abilities to bring out max potential of your UAVs.</p></>}
 				// subHeading="“Where Minds Clash and Ideas Illuminate”"
+				themeHead={'THEME:'}
 				theme={<p>“ Innovation, transformation and vitalizing equipment’s, knowledge Skill”</p>}
 				rulesHeading={"RULES OF THE EVENT:"}
 				registrationCount={

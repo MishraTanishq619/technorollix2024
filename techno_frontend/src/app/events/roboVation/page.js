@@ -59,7 +59,7 @@ const page = () => {
           </>
         }
         subHeading=""
-        theme={<p>All Kinds of Art and Collection.</p>}
+        theme={<p>Compete to design and make powerful and efficient robots</p>}
         rulesHeading={'Events:'}
         registrationCount={
           <>

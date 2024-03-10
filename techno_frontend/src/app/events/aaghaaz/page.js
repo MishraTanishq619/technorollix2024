@@ -103,6 +103,7 @@ const page = () => {
             </table>
           </>
         }
+        themeHead={'THEME:'}
         theme={<>
         <li>Round 1: Mixmatch Culture</li>
         <li>Round 2: The Villain</li>

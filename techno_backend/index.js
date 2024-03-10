@@ -90,8 +90,8 @@ app.get("/api/allUsers", async (req, res) => {
 });
 app.get("/api/allOutSiderUsers", async (req, res) => {
 	try {
-		const user = await User.find({isUserOPJUStudent: false});
-		const numberOfUsers = await User.countDocuments({isUserOPJUStudent: false});
+		const user = await User.find({ isUserOPJUStudent: false });
+		const numberOfUsers = await User.countDocuments({ isUserOPJUStudent: false });
 		res.json({ numberOfUsers, user });
 	} catch (error) {
 		res.status(500).send(`Error fetching user details: ${error}`);
@@ -417,6 +417,67 @@ app.get("/api/allTeams", async (req, res) => {
 	}
 });
 
+app.get("/api/allOutSiderTeams", async (req, res) => {
+	try {
+		const participants = await RegisteredTeam.find();
+		// console.log(participants);
+		const leaderDetailsPromises = participants.map(async (element) => {
+			const data = await User.findOne({ userEmail: element.leader });
+			return data;
+		});
+		const leaderDetails = await Promise.all(leaderDetailsPromises);
+		console.log(leaderDetails);
+		const outsidersLeaders = leaderDetails.filter(user => !user.isUserOPJUStudent);
+		const outSiderCount = outsidersLeaders.length;
+		res.json({ outSiderCount, outsidersLeaders });
+	} catch (error) {
+		res.status(500).send(`Error fetching participants : ${error}`);
+	}
+});
+
+app.get("/api/allOutSiderTeams/eventId/teamId", async (req, res) => {
+	try {
+		const teams = await RegisteredTeam.find();
+		let insiderUser = [];
+		let outsiderUser = [];
+		teams.forEach((element) => {
+			// Extract the email domain from the leader's email address
+			const emailDomain = element.leader.split('@')[1];
+			// Check if the email domain is 'opju.ac.in'
+			if (emailDomain === 'opju.ac.in') {
+				insiderUser.push(element);
+			} else {
+				outsiderUser.push(element);
+			}
+		});
+		let outsideCount = outsiderUser.length;
+		res.status(201).json({outsideCount,outsiderUser});
+	} catch (error) {
+		res.status(500).send(`Error fetching teams : ${error}`);
+	}
+});
+
+app.get("/api/allInSiderTeams/eventId/teamId", async (req, res) => {
+	try {
+		const teams = await RegisteredTeam.find();
+		let insiderUser = [];
+		let outsiderUser = [];
+		teams.forEach((element) => {
+			// Extract the email domain from the leader's email address
+			const emailDomain = element.leader.split('@')[1];
+			// Check if the email domain is 'opju.ac.in'
+			if (emailDomain === 'opju.ac.in') {
+				insiderUser.push(element);
+			} else {
+				outsiderUser.push(element);
+			}
+		});
+		let insideCount = insiderUser.length;
+		res.status(201).json({insideCount,insiderUser});
+	} catch (error) {
+		res.status(500).send(`Error fetching teams : ${error}`);
+	}
+});
 app.post("/api/registeredTeam/leader/teamId", async (req, res) => {
 	const { leader, eventId } = req.body;
 	try {
@@ -455,22 +516,22 @@ app.get("/api/registeredTeam/eventId/:email", async (req, res) => {
 });
 
 app.get("/api/registeredTeam/ofSingleEvent/byEventId/:eventId", async (req, res) => {
-    const eventId = req.params.eventId;
-    try {
-        const participants = await RegisteredTeam.find({ eventId: eventId });
-        const leaderDetailsPromises = participants.map(async (element) => {
-            const data = await User.findOne({ userEmail: element.leader });
-            return data;
-        });
-        const leaderDetails = await Promise.all(leaderDetailsPromises);
+	const eventId = req.params.eventId;
+	try {
+		const participants = await RegisteredTeam.find({ eventId: eventId });
+		const leaderDetailsPromises = participants.map(async (element) => {
+			const data = await User.findOne({ userEmail: element.leader });
+			return data;
+		});
+		const leaderDetails = await Promise.all(leaderDetailsPromises);
 		const insiders = leaderDetails.filter(user => user.isUserOPJUStudent);
-        const outsiders = leaderDetails.filter(user => !user.isUserOPJUStudent);
+		const outsiders = leaderDetails.filter(user => !user.isUserOPJUStudent);
 		const inSiderCount = insiders.length;
 		const outSiderCount = outsiders.length;
-        res.json({ inSiderCount,outSiderCount,insiders, outsiders });
-    } catch (error) {
-        res.status(500).send(`Error fetching participants : ${error}`);
-    }
+		res.json({ inSiderCount, outSiderCount, insiders, outsiders });
+	} catch (error) {
+		res.status(500).send(`Error fetching participants : ${error}`);
+	}
 });
 
 app.get("/api/registeredTeam/count/perEvent/:eventId", async (req, res) => {
@@ -501,97 +562,97 @@ app.get("/api/registeredTeam/count/perEvent/:eventId", async (req, res) => {
 });
 
 app.get("/api/registeredTeamAndMembers/Details/perEvent/:eventId", async (req, res) => {
-    const eventId = req.params.eventId;
-    try {
-        // Fetch event details to get team size
-        const eventDetails = await Event.findOne({ eventId: eventId });
-        if (!eventDetails) {
-            return res.status(404).send("Event not found");
-        }
-        const teamSize = eventDetails.teamSize;
+	const eventId = req.params.eventId;
+	try {
+		// Fetch event details to get team size
+		const eventDetails = await Event.findOne({ eventId: eventId });
+		if (!eventDetails) {
+			return res.status(404).send("Event not found");
+		}
+		const teamSize = eventDetails.teamSize;
 
-        // Fetch all registered teams for the given event
-        const registeredTeams = await RegisteredTeam.find({ eventId: eventId });
+		// Fetch all registered teams for the given event
+		const registeredTeams = await RegisteredTeam.find({ eventId: eventId });
 
-        // Create a workbook and worksheet
-        const workbook = xlsx.utils.book_new();
-        const worksheet = xlsx.utils.aoa_to_sheet([]);
+		// Create a workbook and worksheet
+		const workbook = xlsx.utils.book_new();
+		const worksheet = xlsx.utils.aoa_to_sheet([]);
 
-        // Initialize the row and column counters
-        let row = 1;
-        let col = 0;
+		// Initialize the row and column counters
+		let row = 1;
+		let col = 0;
 
-        // Add headers for TeamId, Participants, Insider/Outsider, and User Details
-        xlsx.utils.sheet_add_aoa(worksheet, [['Team ID', 'Participants', 'Insider/Outsider', 'Name', 'Email', 'Phone no.', 'University', 'Gender', 'District', 'Pincode', 'State']], { origin: `A${row}` });
-        row++;
+		// Add headers for TeamId, Participants, Insider/Outsider, and User Details
+		xlsx.utils.sheet_add_aoa(worksheet, [['Team ID', 'Participants', 'Insider/Outsider', 'Name', 'Email', 'Phone no.', 'University', 'Gender', 'District', 'Pincode', 'State']], { origin: `A${row}` });
+		row++;
 
-        // Iterate over each registered team
-        for (const team of registeredTeams) {
-            // Fetch participants for the current team
-            const participants = await Participants.find({ teamId: team.teamId });
+		// Iterate over each registered team
+		for (const team of registeredTeams) {
+			// Fetch participants for the current team
+			const participants = await Participants.find({ teamId: team.teamId });
 
-            // Fill team ID in the first column
-            xlsx.utils.sheet_add_aoa(worksheet, [[team.teamId]], { origin: `A${row}` });
+			// Fill team ID in the first column
+			xlsx.utils.sheet_add_aoa(worksheet, [[team.teamId]], { origin: `A${row}` });
 
-            // Fill participant details in subsequent columns
-            let participantIndex = 1;
-            for (const participant of participants) {
-                const userDetails = await User.findOne({ userEmail: participant.participantEmail });
+			// Fill participant details in subsequent columns
+			let participantIndex = 1;
+			for (const participant of participants) {
+				const userDetails = await User.findOne({ userEmail: participant.participantEmail });
 
-                if (userDetails) {
-                    // Determine if the user is an Insider or Outsider
-                    const insiderOrOutsider = userDetails.isUserOPJUStudent ? 'Insider' : 'Outsider';
+				if (userDetails) {
+					// Determine if the user is an Insider or Outsider
+					const insiderOrOutsider = userDetails.isUserOPJUStudent ? 'Insider' : 'Outsider';
 
-                    // Fill participant index in the Participants column
-                    const participantIndexLabel = `Participant ${participantIndex}`;
-                    xlsx.utils.sheet_add_aoa(worksheet, [[participantIndexLabel, insiderOrOutsider]], { origin: `B${row}` });
+					// Fill participant index in the Participants column
+					const participantIndexLabel = `Participant ${participantIndex}`;
+					xlsx.utils.sheet_add_aoa(worksheet, [[participantIndexLabel, insiderOrOutsider]], { origin: `B${row}` });
 
-                    // Fill user details in respective columns
-                    const userData = [
-                        userDetails.userName,
-                        userDetails.userEmail,
-                        userDetails.userPhoneNumber,
-                        userDetails.userUniversity,
-                        userDetails.userGender,
-                        userDetails.userAddress.district,
-                        userDetails.userAddress.pincode,
-                        userDetails.userAddress.state
-                    ];
+					// Fill user details in respective columns
+					const userData = [
+						userDetails.userName,
+						userDetails.userEmail,
+						userDetails.userPhoneNumber,
+						userDetails.userUniversity,
+						userDetails.userGender,
+						userDetails.userAddress.district,
+						userDetails.userAddress.pincode,
+						userDetails.userAddress.state
+					];
 
-                    // Add user details to the worksheet
-                    xlsx.utils.sheet_add_aoa(worksheet, [userData], { origin: `D${row}` });
-                }
+					// Add user details to the worksheet
+					xlsx.utils.sheet_add_aoa(worksheet, [userData], { origin: `D${row}` });
+				}
 
-                // Increment the participant index and row counter
-                participantIndex++;
-                row++;
-            }
+				// Increment the participant index and row counter
+				participantIndex++;
+				row++;
+			}
 
-            // Increment the row counter to leave space between teams
-            row++;
-        }
+			// Increment the row counter to leave space between teams
+			row++;
+		}
 
-        // Add the worksheet to the workbook
-        xlsx.utils.book_append_sheet(workbook, worksheet, `${eventDetails.eventName}`);
+		// Add the worksheet to the workbook
+		xlsx.utils.book_append_sheet(workbook, worksheet, `${eventDetails.eventName}`);
 
-        // Generate the Excel file
-        const excelFileName = `Team_Details_${eventId}.xlsx`;
-        const excelFilePath = path.join(os.homedir(), 'Downloads', excelFileName);
+		// Generate the Excel file
+		const excelFileName = `Team_Details_${eventId}.xlsx`;
+		const excelFilePath = path.join(os.homedir(), 'Downloads', excelFileName);
 
-        // Write the workbook to the file system
-        xlsx.writeFile(workbook, excelFilePath);
+		// Write the workbook to the file system
+		xlsx.writeFile(workbook, excelFilePath);
 
-        // Send the file as a response for download
-        res.download(excelFilePath, excelFileName, (err) => {
-            if (err) {
-                console.error('Error sending file:', err);
-            }
-            // Delete the file after download
-            fs.unlinkSync(excelFilePath);
-        });
-    } catch (error) {
-        res.status(500).send(`Error generating Excel sheet: ${error}`);
-    }
+		// Send the file as a response for download
+		res.download(excelFilePath, excelFileName, (err) => {
+			if (err) {
+				console.error('Error sending file:', err);
+			}
+			// Delete the file after download
+			fs.unlinkSync(excelFilePath);
+		});
+	} catch (error) {
+		res.status(500).send(`Error generating Excel sheet: ${error}`);
+	}
 });
 
 
@@ -707,6 +768,65 @@ app.get("/api/participants/count/perEvent/:eventId", async (req, res) => {
 		res.status(201).json({ insiderCount, outsiderCount, totalCount });
 	} catch (error) {
 		res.status(500).send(`Error fetching registered teams: ${error}`);
+	}
+});
+app.get("/api/allOutSiderParticipants", async (req, res) => {
+	try {
+		const participants = await Participants.find();
+		const leaderDetailsPromises = participants.map(async (element) => {
+			const data = await User.findOne({ userEmail: element.participantEmail });
+			return data;
+		});
+		const leaderDetails = await Promise.all(leaderDetailsPromises);
+		const outsidersLeaders = leaderDetails.filter(user => !user.isUserOPJUStudent);
+		console.log(outsidersLeaders);
+		const outSiderCount = outsidersLeaders.length;
+		res.json({ outSiderCount, outsidersLeaders });
+	} catch (error) {
+		res.status(500).send(`Error fetching participants : ${error}`);
+	}
+});
+app.get("/api/allOutSiderParticipants/eventId/teamId", async (req, res) => {
+	try {
+		const participants = await Participants.find();
+		let insiderUser = [];
+		let outsiderUser = [];
+		participants.forEach((element) => {
+			// Extract the email domain from the leader's email address
+			const emailDomain = element.participantEmail.split('@')[1];
+			// Check if the email domain is 'opju.ac.in'
+			if (emailDomain === 'opju.ac.in') {
+				insiderUser.push(element);
+			} else {
+				outsiderUser.push(element);
+			}
+		});
+		let outsideCount = outsiderUser.length;
+		res.status(201).json({outsideCount,outsiderUser});
+	} catch (error) {
+		res.status(500).send(`Error fetching participants : ${error}`);
+	}
+});
+
+app.get("/api/allInSiderParticipants/eventId/teamId", async (req, res) => {
+	try {
+		const participants = await Participants.find();
+		let insiderUser = [];
+		let outsiderUser = [];
+		participants.forEach((element) => {
+			// Extract the email domain from the leader's email address
+			const emailDomain = element.participantEmail.split('@')[1];
+			// Check if the email domain is 'opju.ac.in'
+			if (emailDomain === 'opju.ac.in') {
+				insiderUser.push(element);
+			} else {
+				outsiderUser.push(element);
+			}
+		});
+		let insideCount = insiderUser.length;
+		res.status(201).json({insideCount,insiderUser});
+	} catch (error) {
+		res.status(500).send(`Error fetching participants : ${error}`);
 	}
 });
 //Team-members
@@ -891,6 +1011,41 @@ app.get("/api/event/invitations/email/:email", async (req, res) => {
 		res.status(500).send(`Error fetching participants : ${error}`);
 	}
 });
+
+app.get("/api/eventName/inviterName/invitations/email/:email", async (req, res) => {
+	const request = req.params.email;
+	try {
+		const rawInvitations = await Invitation.find({
+			inviteeEmail: request,
+			status: "pending",
+		});
+		const eventDetailsPromises = rawInvitations.map(async (element) => {
+			// const event = await Event.findOne({ eventId: element.eventId });
+			// const inviter = await User.findOne({ inviterEmail: element.inviterEmail });
+			const [event, inviter] = await Promise.all([
+                Event.findOne({ eventId: element.eventId }),
+                User.findOne({ userEmail: element.inviterEmail })
+            ]);
+			const invites = {
+				invitationId: element.invitationId,
+				status: element.status,
+				eventName: event.eventName,
+				teamId: element.teamId,
+				inviterName: inviter.userName,
+				inviteeEmail: element.inviteeEmail
+			}
+			return invites;
+		});
+		const invitation = await Promise.all(eventDetailsPromises);
+		const totalInvitation = await Invitation.countDocuments({
+			inviteeEmail: request,
+			status: "pending",
+		});
+		res.json({ totalInvitation, invitation });
+	} catch (error) {
+		res.status(500).send(`Error fetching participants : ${error}`);
+	}
+});
 app.get("/api/event/invitations/inviteId/:invitationId", async (req, res) => {
 	const request = req.params.invitationId;
 	try {
@@ -1033,7 +1188,7 @@ app.post("/api/payment/gateway/receipt", async (req, res) => {
 		if (isExsitingID) {
 			return res.status(409).json(`Already exist ${isExsitingID}`);
 		}
-		const receipt = await PaymentReceipt.create({ userEmail: userEmail, paymentId: paymentId,numberOfEvents: numberOfEvents,paidEntryFee: paidEntryFee })
+		const receipt = await PaymentReceipt.create({ userEmail: userEmail, paymentId: paymentId, numberOfEvents: numberOfEvents, paidEntryFee: paidEntryFee })
 		res.status(201).json(receipt);
 	} catch (error) {
 		console.log(error);
@@ -1058,7 +1213,7 @@ app.get("/api/payment/allreceipt/gateway/details", async (req, res) => {
 	console.log("enter");
 	try {
 		const isExsitingID = await PaymentReceipt.find();
-		res.status(201).json({isExsitingID});
+		res.status(201).json({ isExsitingID });
 	} catch (error) {
 		console.log(error);
 		res.status(500).json(`error hai`);
@@ -1066,7 +1221,7 @@ app.get("/api/payment/allreceipt/gateway/details", async (req, res) => {
 });
 app.delete("/api/delete/event/ekKhatam", async (req, res) => {
 	try {
-		const {eventId} = req.body;
+		const { eventId } = req.body;
 		const reqEvent = await Event.findOneAndDelete({ eventId: eventId });
 		res.status(200).send(`Event deleted all ${reqEvent}`);
 	} catch (error) {
@@ -1093,7 +1248,7 @@ app.delete("/api/delete/team/purakhatam", async (req, res) => {
 });
 app.delete("/api/delete/team/ekKhatam", async (req, res) => {
 	try {
-		const {teamId} = req.body;
+		const { teamId } = req.body;
 		const reqEvent = await RegisteredTeam.findOneAndDelete({ teamId: teamId });
 		res.status(200).send(`Event deleted single team ${teamId}`);
 	} catch (error) {
@@ -1112,7 +1267,7 @@ app.delete("/api/delete/user/purakhatam", async (req, res) => {
 
 app.delete("/api/delete/user/ekKhatam", async (req, res) => {
 	try {
-		const {userEmail} = req.body;
+		const { userEmail } = req.body;
 		const reqEvent = await User.findOneAndDelete({ userEmail: userEmail });
 		res.status(200).send(`Event deleted single user ${userEmail}`);
 	} catch (error) {
@@ -1140,8 +1295,8 @@ app.delete("/api/delete/participants/purakhatam", async (req, res) => {
 
 app.delete("/api/delete/participant/ekKhatam", async (req, res) => {
 	try {
-		const {eventId,teamId,participantEmail} = req.body;
-		const reqEvent = await Participants.findOneAndDelete({ eventId: eventId,teamId:teamId,participantEmail:participantEmail });
+		const { eventId, teamId, participantEmail } = req.body;
+		const reqEvent = await Participants.findOneAndDelete({ eventId: eventId, teamId: teamId, participantEmail: participantEmail });
 		res.status(200).send(`Event deleted participant ${eventId} ${teamId} ${participantEmail}`);
 	} catch (error) {
 		res.status(500).send(`error deleting event=> error = ${error}`);
@@ -1150,8 +1305,8 @@ app.delete("/api/delete/participant/ekKhatam", async (req, res) => {
 
 app.delete("/api/delete/receipt/ekKhatam", async (req, res) => {
 	try {
-		const {userEmail,paymentId} = req.body;
-		const reqEvent = await PaymentReceipt.findOneAndDelete({ userEmail: userEmail,paymentId:paymentId });
+		const { userEmail, paymentId } = req.body;
+		const reqEvent = await PaymentReceipt.findOneAndDelete({ userEmail: userEmail, paymentId: paymentId });
 		res.status(200).send(`Event deleted receipt ${userEmail} ${paymentId}`);
 	} catch (error) {
 		res.status(500).send(`error deleting event=> error = ${error}`);
