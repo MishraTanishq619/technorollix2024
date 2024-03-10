@@ -520,8 +520,8 @@ const page = () => {
                   </li>
                   <li>There will be only one round of competition.</li>
                   <li>
-                    The participants have to bring their own
-                    Requirements. Paper/Canvas Will be provided by Organizers.
+                    The participants have to bring their own Requirements.
+                    Paper/Canvas Will be provided by Organizers.
                   </li>
                   <li>
                     The participants will be given 2hr for making the Art No

@@ -150,7 +150,14 @@ function SubEventsRegistrationPage() {
         {MainEvents?.map((subEvents, i) => {
           return subEvents.map(
             (
-              { eventId, eventDescription, eventName, teamSize, priceMoney,eventpic },
+              {
+                eventId,
+                eventDescription,
+                eventName,
+                teamSize,
+                priceMoney,
+                eventpic,
+              },
               j
             ) => {
               // return <p>shbfhbshfs</p>;

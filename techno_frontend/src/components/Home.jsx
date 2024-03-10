@@ -9,9 +9,9 @@ import localFont from 'next/font/local';
 const myFont = localFont({ src: '../app/fonts/rog.ttf' });
 function Home() {
   //
-  let pastedTextValue=''; 
+  let pastedTextValue = '';
   var crsr = document.querySelector('#cursor');
-  
+
   document.addEventListener('mousemove', function (dets) {
     crsr.style.left = dets.x - 150 + 'px';
     crsr.style.top = dets.y - 150 + 'px';
@@ -56,7 +56,6 @@ function Home() {
       );
   }, []);
 
-
   const generateNumber = async () => {
     setgenerateClicked(true);
     if (isValidEmail) {
@@ -90,8 +89,7 @@ function Home() {
             // user_email: email,
           },
         }
-      ).catch((error) => {
-      });
+      ).catch((error) => {});
       // } catch (error) {
       // }
     }
@@ -231,6 +229,17 @@ function Home() {
             Register
           </p>
         </Button>
+        <br />
+        <button
+          className={`px-6 py-2 rounded-md transition-transform transform hover:scale-105 `}
+          onClick={() => {
+            window.location.href = '/team';
+          }}
+        >
+          <p className={`${myFont.className} text-2xl neon-text-blue-light`}>
+            Manage Team
+          </p>
+        </button>
       </motion.div>
       {isOpen && (
         <div
