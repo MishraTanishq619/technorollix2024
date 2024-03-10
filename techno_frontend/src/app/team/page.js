@@ -88,7 +88,7 @@ const page = () => {
     if (isValidEmail) {
       // console.log('entered');
       const number = Math.floor(10000 + Math.random() * 90000);
-      console.log(number);
+      // console.log(number);
       setGeneratedNumber(number);
       // try {
       let otpdata = await fetch(
