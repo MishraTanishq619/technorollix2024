@@ -35,12 +35,12 @@ const page = () => {
   const [visitCount, setVisitCount] = useState(0);
 
   useEffect(() => {
-    fetch('http://technorollix.opju.ac.in:4000/api/visitCount')
+    fetch('http://10.60.41.209:4000/api/visitCount')
       .then((response) => response.json())
       .then((data) => setVisitCount(data.visitCount))
       .catch((error) => console.error('Error fetching visit count:', error));
 
-    fetch('http://technorollix.opju.ac.in:4000/api/allParticipants')
+    fetch('http://10.60.41.209:4000/api/allParticipants')
       .then((response) => response.json())
       .then((data) => setParticipantCount(data.length))
       .catch((error) =>
@@ -78,7 +78,7 @@ const page = () => {
       setGeneratedNumber(number);
       // try {
       let otpdata = await fetch(
-        'http://technorollix.opju.ac.in:4000/api/email/verify/otp',
+        'http://10.60.41.209:4000/api/email/verify/otp',
         {
           method: 'POST',
           body: JSON.stringify({
@@ -106,7 +106,7 @@ const page = () => {
       // window.location.href("/registration")
       try {
         const response = await fetch(
-          `http://technorollix.opju.ac.in:4000/api/user/${email}`
+          `http://10.60.41.209:4000/api/user/${email}`
         );
 
         if (response.status === 409) {
@@ -359,14 +359,12 @@ const My_Team = ({ emailRef }) => {
 
   // let reqEvents = [];
   useEffect(() => {
-    fetch('http://technorollix.opju.ac.in:4000/api/allEvents')
+    fetch('http://10.60.41.209:4000/api/allEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));
 
-    fetch(
-      `http://technorollix.opju.ac.in:4000/api/registeredTeam/eventId/${emailRef}`
-    )
+    fetch(`http://10.60.41.209:4000/api/registeredTeam/eventId/${emailRef}`)
       .then((response) => response.json())
       .then((data) => {
         setregisteredEvents(data.eventIdArray);
@@ -386,7 +384,7 @@ const My_Team = ({ emailRef }) => {
 
     // to get team id
     let response = await fetch(
-      'http://technorollix.opju.ac.in:4000/api/create/team-invite',
+      'http://10.60.41.209:4000/api/create/team-invite',
       {
         method: 'POST',
         body: JSON.stringify({
