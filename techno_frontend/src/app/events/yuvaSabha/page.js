@@ -10,7 +10,7 @@ const page = () => {
   const [Participants, setParticipants] = useState({});
   useEffect(() => {
     fetch(
-      `http://10.60.41.209:4000/api/registeredTeam/count/perEvent/${eventId}`
+      `http://technorollix.opju.ac.in:4000/api/registeredTeam/count/perEvent/${eventId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -23,7 +23,9 @@ const page = () => {
         // return null;
       });
 
-    fetch(`http://10.60.41.209:4000/api/participants/count/perEvent/${eventId}`)
+    fetch(
+      `http://technorollix.opju.ac.in:4000/api/participants/count/perEvent/${eventId}`
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log('participants :', data);
