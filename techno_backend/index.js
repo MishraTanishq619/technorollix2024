@@ -572,7 +572,7 @@ app.get("/api/registeredTeamAndMembers/Details/perEvent/:eventId", async (req, r
         }
 
         // Add the worksheet to the workbook
-        xlsx.utils.book_append_sheet(workbook, worksheet, `Event_${eventId}`);
+        xlsx.utils.book_append_sheet(workbook, worksheet, `${eventDetails.eventName}`);
 
         // Generate the Excel file
         const excelFileName = `Team_Details_${eventId}.xlsx`;

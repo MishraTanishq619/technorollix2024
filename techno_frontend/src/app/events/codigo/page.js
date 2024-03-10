@@ -177,7 +177,7 @@ const page = () => {
             </li>
           </>
         }
-        eventVenue={<p>TB-01</p>}
+        eventVenue={<p>TB-09</p>}
         judgeMentalCriteria={
           <>
             <li>Maximum question solved</li>
@@ -190,8 +190,8 @@ const page = () => {
           <table>
             <tbody>
               <tr>
-                <td>Dr. R N Shukla</td>
-                <td>+91 9826321667</td>
+                <td>Dr Bhupesh Dewangan</td>
+                <td>+91 7060599233</td>
               </tr>
             </tbody>
           </table>
@@ -200,12 +200,12 @@ const page = () => {
           <table>
             <tbody>
               <tr>
-                <td>Nirmalayya</td>
-                <td>+91 7978389641</td>
+                <td>Jasdeep singh</td>
+                <td>+91 9770270249</td>
               </tr>
               <tr>
-                <td>Suryanshu</td>
-                <td>+91 7008575068</td>
+                <td>Shilpy Kumari Gupta</td>
+                <td>+91 8982621237</td>
               </tr>
             </tbody>
           </table>

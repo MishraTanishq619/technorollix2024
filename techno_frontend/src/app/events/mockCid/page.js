@@ -129,27 +129,51 @@ const page = () => {
 						<li>Presentation (10%): Clear, concise, and well-organized presentation of the findings, including a compelling explanation of the case.</li>
 					</ul>
 				</>}
-				eventVenue={<p> The event will be at MP Hall, OPJU </p>}
+				eventVenue={<p> University Campus </p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>
-							<td>Dr. Biranchi Prasad Panda</td>
-							<td>+91 9438560357</td>
-						</tr>
-						<tr>
-							<td>Dr. Arindam Patra</td>
-							<td>+91 9131167896</td>
-						</tr>
-						<tr>
-							<td>Dr. Ravindra Singh Saluja</td>
-							<td>+91 9007787434</td>
+							<td>Dr Ankur Rastogi </td>
+							<td>+91 9109977043</td>
 						</tr>
 					</tbody></table>}
 				eventManagers={<table>
 					<tbody>
 						<tr>
-							<td>Mr. Jeet B Bhayani </td>
-							<td>+91 8777676808</td>
+							<td>Navneet Tripathi</td>
+							<td>+91 7489462029</td>
+						</tr>
+						<tr>
+							<td>Sahil Sahu</td>
+							<td>+91 9668048310</td>
+						</tr>
+						<tr>
+							<td>Ayuv Keshar Dewangan</td>
+							<td>+91 7803887095</td>
+						</tr>
+						<tr>
+							<td>Neeraj Patel</td>
+							<td>+91 9171269588</td>
+						</tr>
+						<tr>
+							<td>Priyanshu Kumar</td>
+							<td>+91 6202669334</td>
+						</tr>
+						<tr>
+							<td>Abhishek Kumar</td>
+							<td>+91 6202268483</td>
+						</tr>
+						<tr>
+							<td>Komal Chauhan</td>
+							<td>+91 9178322466</td>
+						</tr>
+						<tr>
+							<td>Mantosh Mandal</td>
+							<td>+91 7351933404</td>
+						</tr>
+						<tr>
+							<td>Anjali Kumari</td>
+							<td>+91 9142120122</td>
 						</tr>
 					</tbody></table>}
 			/>

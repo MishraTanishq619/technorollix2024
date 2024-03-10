@@ -179,7 +179,7 @@ const page = () => {
         }
         rounds={''}
         judgeMentalCriteria={<p>Innovative Idea</p>}
-        eventVenue={<p>Babuji Chauwk</p>}
+        eventVenue={<p>Babuji Chowk</p>}
         studentCoordinator={<p></p>}
         eventManagers={
           <table>
@@ -187,22 +187,34 @@ const page = () => {
               <tr>
                 <td>Ayush Kumar Mishra</td>
                 <td>+91 7974916570</td>
-                {/* <td>himanshu.vaishnaw@opju.ac.in</td> */}
               </tr>
               <tr>
-                <td>Prince Singh</td>
-                <td>+91 7067927558</td>
-                {/* <td>himanshu.vaishnaw@opju.ac.in</td> */}
+                <td>Swapnil Singh</td>
+                <td>+91 9752991064</td>
               </tr>
               <tr>
-                <td>Sunny Kumar Sahu</td>
-                <td>+91 6268336318</td>
-                {/* <td>himanshu.vaishnaw@opju.ac.in</td> */}
+                <td>Rudrani Mishra</td>
+                <td>+91 8260699213</td>
               </tr>
               <tr>
                 <td>Abhishek Dhankar</td>
                 <td>+91 8770919281</td>
-                {/* <td>himanshu.vaishnaw@opju.ac.in</td> */}
+              </tr>
+              <tr>
+                <td>Rihal Agrawal</td>
+                <td>+91 6261176407</td>
+              </tr>
+              <tr>
+                <td>Nikhil Patel</td>
+                <td>+91 8305216569</td>
+              </tr>
+              <tr>
+                <td>Sunny Kumar Sahu</td>
+                <td>+91 6268336318</td>
+              </tr>
+              <tr>
+                <td>Akash Pandey</td>
+                <td>+91 9827477731</td>
               </tr>
             </tbody>
           </table>
@@ -213,8 +225,7 @@ const page = () => {
             <tbody>
               <tr>
                 <td>Dr. L R Bhandarkar</td>
-                <td>+91 9109977042</td>
-                {/* <td>example@opju.ac.in</td> */}
+                <td>+91 8349426962</td>
               </tr>
             </tbody>
           </table>

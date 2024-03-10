@@ -13,7 +13,7 @@ import { LayoutGrid } from '@/components/ui/layout-grid';
 
 export default function LegacyCardsContainer() {
   return (
-    <div className="h-[300%] pt-[25vh] w-full">
+    <div className="h-[700%] pt-[25vh] w-full">
       <LayoutGrid cards={cards} />
     </div>
   );
@@ -22,64 +22,21 @@ export default function LegacyCardsContainer() {
 const SkeletonOne = () => {
   return (
     <div>
-      <p className="font-bold text-4xl text-white">House in the woods</p>
-      <p className="font-normal text-base text-white"></p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A serene and tranquil retreat, this house in the woods offers a peaceful
-        escape from the hustle and bustle of city life.
-      </p>
     </div>
   );
 };
 
-const SkeletonTwo = () => {
-  return (
-    <div>
-      <p className="font-bold text-4xl text-white">House above the clouds</p>
-      <p className="font-normal text-base text-white"></p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Perched high above the world, this house offers breathtaking views and a
-        unique living experience. It&apos;s a place where the sky meets home,
-        and tranquility is a way of life.
-      </p>
-    </div>
-  );
-};
-const SkeletonThree = () => {
-  return (
-    <div>
-      <p className="font-bold text-4xl text-white">Greens all over</p>
-      <p className="font-normal text-base text-white"></p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A house surrounded by greenery and nature&apos;s beauty. It&apos;s the
-        perfect place to relax, unwind, and enjoy life.
-      </p>
-    </div>
-  );
-};
-const SkeletonFour = () => {
-  return (
-    <div>
-      <p className="font-bold text-4xl text-white">Rivers are serene</p>
-      <p className="font-normal text-base text-white"></p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A house by the river is a place of peace and tranquility. It&apos;s the
-        perfect place to relax, unwind, and enjoy life.
-      </p>
-    </div>
-  );
-};
 
 const cards = [
   {
     id: 1,
-    content: <SkeletonFour />,
+    content: <SkeletonOne />,
     className: 'col-span-2',
     thumbnail:'/gallery/darshanRaval1.jpg',
   },
   {
     id: 2,
-    content: <SkeletonFour />,
+    content: <SkeletonOne />,
     className: 'col-span-1',
     thumbnail:'/gallery/darshanRaval2.jpg',
   },
@@ -91,68 +48,176 @@ const cards = [
   },
   {
     id: 4,
-    content: <SkeletonTwo />,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
+    thumbnail: '/gallery/djPerisha2.jpg',
+  },
+  {
+    id: 5,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
+    thumbnail:'/gallery/game1.jpg',
+  },
+  {
+    id: 6,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
+    thumbnail:'/gallery/yuvaSabha1.jpg',
+  },
+  {
+    id: 7,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
+    thumbnail: '/gallery/car1.jpg',
+  },
+  {
+    id: 8,
+    content: <SkeletonOne />,
     className: 'col-span-2',
     thumbnail: '/gallery/codigo1.jpg',
   },
   {
-    id: 5,
-    content: <SkeletonThree />,
+    id: 9,
+    content: <SkeletonOne />,
     className: 'col-span-2',
+    thumbnail:'/gallery/djHunt.jpg',
+  },
+  {
+    id: 10,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
     thumbnail:'/gallery/award1.jpg',
   },
   {
-    id: 6,
-    content: <SkeletonFour />,
+    id: 11,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
+    thumbnail: '/gallery/facultyGroup1.jpg',
+  },
+  {
+    id: 12,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
+    thumbnail: '/gallery/facultyGroup2.jpg',
+  },
+  {
+    id: 13,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
+    thumbnail:'/gallery/facultyGroup3.jpg',
+  },
+  {
+    id: 14,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
+    thumbnail:'/gallery/facultyGroup4.jpg',
+  },
+  {
+    id: 15,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
+    thumbnail: '/gallery/food1.jpg',
+  },
+  {
+    id: 16,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
+    thumbnail: '/gallery/field1.jpg',
+  },
+  {
+    id: 17,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
+    thumbnail:'/gallery/field2.jpg',
+  },
+  {
+    id: 18,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
+    thumbnail:'/gallery/field3.jpg',
+  },
+  {
+    id: 19,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
+    thumbnail: '/gallery/field4.jpg',
+  },
+  {
+    id: 20,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
+    thumbnail: '/gallery/field5.jpg',
+  },
+  {
+    id: 21,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
+    thumbnail:'/gallery/stage10.jpg',
+  },
+  {
+    id: 22,
+    content: <SkeletonOne />,
     className: 'col-span-1',
     thumbnail:'/gallery/art1.jpg',
   },
   {
-    id: 7,
-    content: <SkeletonFour />,
+    id: 23,
+    content: <SkeletonOne />,
     className: 'col-span-1',
+    thumbnail: '/gallery/robo1.jpg',
+  },
+  {
+    id: 24,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
+    thumbnail: '/gallery/stage5.jpg',
+  },
+  {
+    id: 25,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
     thumbnail:'/gallery/stage1.jpg',
   },
   {
-    id: 8,
-    content: <SkeletonFour />,
-    className: 'col-span-2',
+    id: 26,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
     thumbnail:'/gallery/stage2.jpg',
   },
   {
-    id: 9,
-    content: <SkeletonFour />,
+    id: 27,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
+    thumbnail: '/gallery/stage3.jpg',
+  },
+  {
+    id: 28,
+    content: <SkeletonOne />,
     className: 'col-span-2',
-    thumbnail:'/gallery/stage3.jpg',
+    thumbnail: '/gallery/stage4.jpg',
   },
   {
-    id: 10,
-    content: <SkeletonFour />,
-    className: 'col-span-1',
-    thumbnail:'/gallery/stage4.jpg',
-  },
-  {
-    id: 11,
-    content: <SkeletonFour />,
-    className: 'col-span-1',
+    id: 29,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
     thumbnail:'/gallery/stage6.jpg',
   },
   {
-    id: 12,
-    content: <SkeletonFour />,
-    className: 'col-span-2',
+    id: 30,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
     thumbnail:'/gallery/stage7.jpg',
   },
   {
-    id: 13,
-    content: <SkeletonFour />,
-    className: 'col-span-2',
-    thumbnail:'/gallery/stage8.jpg',
+    id: 31,
+    content: <SkeletonOne />,
+    className: 'col-span-1',
+    thumbnail: '/gallery/stage8.jpg',
   },
   {
-    id: 14,
-    content: <SkeletonFour />,
-    className: 'col-span-1',
-    thumbnail:'/gallery/stage9.jpg',
+    id: 32,
+    content: <SkeletonOne />,
+    className: 'col-span-2',
+    thumbnail: '/gallery/stage9.jpg',
   },
 ];

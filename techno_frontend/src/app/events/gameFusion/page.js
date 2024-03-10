@@ -140,14 +140,12 @@ const page = () => {
 				judgeMentalCriteria={<>
 					<p>Scoring System: Points will be awarded based on the Official Point Systems Of each Games.</p>
 				</>}
-				eventVenue={<p>TB01 , TB05 , TB07 (OPJU CAMPUS)</p>}
+				eventVenue={<p>TB04, TB05, TB06, TB07</p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>
 							<td>PROF. UMASHANKAR PANDEY</td>
-						</tr>
-						<tr>
-							<td>PROF. PRADEEP KUMAR SHRIWAS</td>
+							<td>+91 9229666502</td>
 						</tr>
 					</tbody></table>}
 				eventManagers={<table>

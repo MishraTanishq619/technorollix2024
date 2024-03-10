@@ -140,17 +140,12 @@ const page = () => {
 				judgeMentalCriteria={<>
 					<p>It will be based on time.</p>
 				</>}
-				eventVenue={<p>OP Jindal University Campus</p>}
+				eventVenue={<p>Opposite to CDC office garden</p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>
 							<td>DR. DEEPAK PATEL</td>
-						</tr>
-						<tr>
-							<td>DR. SAURABH GUPTA</td>
-						</tr>
-						<tr>
-							<td>Prof. SHASHIKANT KAUSHALEY</td>
+							<td>+91 7587360160</td>
 						</tr>
 					</tbody></table>}
 				eventManagers={<table>

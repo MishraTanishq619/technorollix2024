@@ -153,7 +153,7 @@ const page = () => {
 						<li>Overall Presentation (30 points): Overall impression, flow, and execution of the segment.</li>
 					</ul>
 				</>}
-				eventVenue={<p>EEE Seminar Hall, First Floor, New Engineering building  </p>}
+				eventVenue={<p>EE Seminar Hall (FB-14)</p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>
@@ -174,22 +174,6 @@ const page = () => {
 						<tr>
 							<td>Puja Pandey </td>
 							<td>+91 7471177157</td>
-						</tr>
-						<tr>
-							<td>Avinash Mahto</td>
-							<td>+91 7870716369</td>
-						</tr>
-						<tr>
-							<td>Sanchit Bende</td>
-							<td>+91 7620464170</td>
-						</tr>
-						<tr>
-							<td>Shrishti Choudhary</td>
-							<td>+91 9343142449</td>
-						</tr>
-						<tr>
-							<td>Bharti Mahant</td>
-							<td>+91 6268411376</td>
 						</tr>
 					</tbody></table>}
 			/>

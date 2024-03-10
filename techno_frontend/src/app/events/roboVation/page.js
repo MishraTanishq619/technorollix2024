@@ -130,6 +130,14 @@ const page = () => {
                   winner. and not allowed to skip any obstacles or hurdles.
                 </p>
               </div>
+              <div className="mt-2 md:py-4 text-justify flex flex-wrap">
+                <h2
+                  className={` neon-text-red-lighter text-1xl font-bold md:text-2xl`}
+                >
+                  VENUE:{' '}
+                </h2>
+                <div className={`text-1xl ml-2 md:text-2xl `}>Volleyball Court</div>
+              </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2
                   className={` neon-text-red-lighter text-1xl font-bold md:text-2xl`}
@@ -301,6 +309,14 @@ const page = () => {
                   ROUND 2.
                 </p>
               </div>
+              <div className="mt-2 md:py-4 text-justify flex flex-wrap">
+                <h2
+                  className={` neon-text-red-lighter text-1xl font-bold md:text-2xl`}
+                >
+                  VENUE:{' '}
+                </h2>
+                <div className={`text-1xl ml-2 md:text-2xl `}>Babuji Chowk</div>
+              </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2
                   className={` neon-text-red-lighter text-1xl font-bold md:text-2xl`}
@@ -458,6 +474,14 @@ const page = () => {
                   The most rewarding part of designing bots is that students
                   have fun, and work together as a team.
                 </p>
+              </div>
+              <div className="mt-2 md:py-4 text-justify flex flex-wrap">
+                <h2
+                  className={` neon-text-red-lighter text-1xl font-bold md:text-2xl`}
+                >
+                  VENUE:{' '}
+                </h2>
+                <div className={`text-1xl ml-2 md:text-2xl `}>Babuji Chowk</div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2
@@ -678,11 +702,10 @@ const page = () => {
         facultyCoordinators={
           <table>
             <tbody>
-              {/* <tr>
-							<td>Dr. Kavita Patel</td>
-							<td>+91 9993993019</td>
-							<td>Kavita.patel@opju.ac.in</td>
-						</tr> */}
+              <tr>
+							<td>Dr Saroj Kumar </td>
+							<td>+91 9431910388</td>
+						</tr>
             </tbody>
           </table>
         }

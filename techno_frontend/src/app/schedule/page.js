@@ -147,7 +147,7 @@ const events = [
     id: 11,
     datetime: '20th March, 6:30 PM',
     venue: 'University Playground',
-    event_name: 'Inaugural Function',
+    event_name: 'Inaugural Function & Sports Award distribution',
   },
   {
     id: 12,
@@ -272,7 +272,7 @@ const events = [
   {
     id: 32,
     datetime: '22nd March, 4:00 PM',
-    venue: 'Babuji Chowk',
+    venue: 'Volleyball Court',
     event_name: 'Aero Drone',
   },
   {
@@ -280,7 +280,7 @@ const events = [
     datetime: '22nd March, 6:30 PM',
     venue: 'OAT',
     event_name:
-      'Valedictory Function, Prize Distribution, Sports, Academic and Annual Awards',
+      'Valedictory Function, Prize Distribution, Academic and Annual Awards',
   },
   {
     id: 34,

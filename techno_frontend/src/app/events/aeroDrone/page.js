@@ -132,23 +132,27 @@ const page = () => {
 				judgeMentalCriteria={<>
 					<p> All rounds are Elimination rounds. Final round will be decided by the drone that wins the race first by time.</p>
 				</>}
-				eventVenue={<p>Basketball ground</p>}
+				eventVenue={<p>Volleyball Court</p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>
-							<td>Prof. Dr. Kuber Nath Mishra</td>
+							<td>Dr. Kuber Nath Mishra</td>
 							<td>+91 9043632723</td>
-						</tr>
-						<tr>
-							<td>Prof. Rakesh Patidar</td>
-							<td>+91 9109909265</td>
 						</tr>
 					</tbody></table>}
 				eventManagers={<table>
 					<tbody>
 						<tr>
-							<td>Mr. Jeet B Bhayani </td>
-							<td>+91 8777676808</td>
+							<td>Vishnu Kumar Gupta </td>
+							<td>+91 7544000243</td>
+						</tr>
+						<tr>
+							<td>Nikhil Kumar Singh</td>
+							<td>+91 6205414835</td>
+						</tr>
+						<tr>
+							<td>Aaditya Prabhakar</td>
+							<td>+91 7008254263</td>
 						</tr>
 					</tbody></table>}
 			/>

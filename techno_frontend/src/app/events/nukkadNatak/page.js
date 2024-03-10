@@ -145,20 +145,12 @@ const page = () => {
 					<li>Dialogue delivery– 10 points</li>
 					<li>Costume– 10 points</li>
 				</>}
-				eventVenue={<p>Babuji Chowk</p>}
+				eventVenue={<p>Opposite Gym</p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>
 							<td>Dr. Rekha Sharma</td>
 							<td>+91 8077277676</td>
-						</tr>
-						<tr>
-							<td>Prof. Suchismita Panda</td>
-							<td>+91 9775675383</td>
-						</tr>
-						<tr>
-							<td>Prof. Vinod Nagpure</td>
-							<td>+91 8827673347</td>
 						</tr>
 					</tbody></table>}
 				eventManagers={<table>

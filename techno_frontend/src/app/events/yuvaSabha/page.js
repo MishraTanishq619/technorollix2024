@@ -151,20 +151,12 @@ const page = () => {
 						<li>Overall impact and effectiveness of the participant’s performance in influencing the audience and judges.</li>
 					</ul>
 				</>}
-				eventVenue={<p> The event will be at MP Hall, OPJU </p>}
+				eventVenue={<p>MP Hall</p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>
-							<td>Dr. Biranchi Prasad Panda</td>
+							<td>Dr B.P. Panda </td>
 							<td>+91 9438560357</td>
-						</tr>
-						<tr>
-							<td>Dr. Arindam Patra</td>
-							<td>+91 9131167896</td>
-						</tr>
-						<tr>
-							<td>Dr. Ravindra Singh Saluja</td>
-							<td>+91 9007787434</td>
 						</tr>
 					</tbody></table>}
 				eventManagers={<table>

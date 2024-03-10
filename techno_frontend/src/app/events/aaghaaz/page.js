@@ -103,7 +103,10 @@ const page = () => {
             </table>
           </>
         }
-        theme={<p>RED CARPET</p>}
+        theme={<>
+        <li>Round 1: Mixmatch Culture</li>
+        <li>Round 2: The Villain</li>
+        </>}
         rulesHeading={'Rules of the event:'}
         rules={
           <>
@@ -148,14 +151,13 @@ const page = () => {
             <li>COMMUNICATION</li>
           </>
         }
-        eventVenue={<p>IN FRONT OF CHEMISTRY LAB (ROUND 1 & ROUND 2)</p>}
+        eventVenue={<p>University Playground</p>}
         facultyCoordinators={
           <table>
             <tbody>
               <tr>
                 <td>PROF. TULIKA GUPTA</td>
-                {/* <td>+91 </td> */}
-                {/* <td>@opju.ac.in</td> */}
+                <td>+91 9109977055</td>
               </tr>
             </tbody>
           </table>
@@ -163,6 +165,10 @@ const page = () => {
         eventManagers={
           <table>
             <tbody>
+              <tr>
+                <td>Prasoon Ranjan</td>
+                <td>+91 8827886724</td>
+              </tr>
               <tr>
                 <td>Vaibhav Singh</td>
                 <td>+91 9109016426</td>

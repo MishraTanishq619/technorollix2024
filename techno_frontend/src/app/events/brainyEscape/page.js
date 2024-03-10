@@ -147,28 +147,27 @@ const page = () => {
 					<p>Winners will be decided by points.</p>
 				</>}
 				eventVenue={<>
-				<li>For CAD-modelling & Simulation: Lab G-09</li>
-				<li>For Quiz will be informed soon.</li>
+				<li>For CAD-modelling & Simulation: Lab G-08</li>
+				<li>For Quiz: MP Hall</li>
 				</>}
 				facultyCoordinators={<table>
 					<tbody>
+						<tr>
+							<td>Prof. Neeraj Kumar Verma </td>
+							<td>+91 9109977038</td>
+						</tr>
 					</tbody></table>}
 				eventManagers={<table>
 					<tbody>
 						<tr>
 							<td>Kushal Kumar Barsiwal </td>
 							<td>+91 7987829224</td>
-							<td>kush.bt22me18@opju.ac.in</td>
-						</tr>
-						<tr>
-							<td>Mahavratayajula Shrikanth </td>
-							<td>+91 9754996459</td>
-							<td>maha.bt21ee14@opju.ac.in</td>
+							{/* <td>kush.bt22me18@opju.ac.in</td> */}
 						</tr>
 						<tr>
 							<td>Shubham Kumar Thakur </td>
 							<td>+91 9304749918</td>
-							<td>shub.bt21me50@opju.ac.in</td>
+							{/* <td>shub.bt21me50@opju.ac.in</td> */}
 						</tr>
 					</tbody></table>}
 			/>

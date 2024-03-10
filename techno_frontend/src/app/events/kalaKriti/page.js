@@ -152,7 +152,7 @@ const page = () => {
                 >
                   VENUE:{' '}
                 </h2>
-                <div className={`text-1xl ml-2 md:text-2xl `}>OPJU Library</div>
+                <div className={`text-1xl ml-2 md:text-2xl `}>Central Library</div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2
@@ -230,7 +230,7 @@ const page = () => {
                 >
                   VENUE:{' '}
                 </h2>
-                <div className={`text-1xl ml-2 md:text-2xl `}>OPJU Campus</div>
+                <div className={`text-1xl ml-2 md:text-2xl `}>Library Lawn & opposite to  Chemistry lab</div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2
@@ -329,7 +329,7 @@ const page = () => {
                 >
                   VENUE:{' '}
                 </h2>
-                <div className={`text-1xl ml-2 md:text-2xl `}>Online.</div>
+                <div className={`text-1xl ml-2 md:text-2xl `}>Library Lawn & opposite to  Chemistry lab</div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2
@@ -407,7 +407,7 @@ const page = () => {
                   VENUE:{' '}
                 </h2>
                 <div className={`text-1xl ml-2 md:text-2xl `}>
-                  Infront of Chem. Lab.
+                Library Lawn & opposite to  Chemistry lab.
                 </div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
@@ -505,7 +505,7 @@ const page = () => {
                 >
                   VENUE:{' '}
                 </h2>
-                <div className={`text-1xl ml-2 md:text-2xl `}>Library</div>
+                <div className={`text-1xl ml-2 md:text-2xl `}>Central Library</div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2
@@ -577,12 +577,6 @@ const page = () => {
               <tr>
                 <td>Dr. Saumya Singh</td>
                 <td>+91 8103698224</td>
-                {/* <td>Kavita.patel@opju.ac.in</td> */}
-              </tr>
-              <tr>
-                <td>Dr. Deepti Sharma</td>
-                {/* <td>+91 8103698224</td> */}
-                {/* <td>Kavita.patel@opju.ac.in</td> */}
               </tr>
             </tbody>
           </table>

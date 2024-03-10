@@ -141,29 +141,19 @@ const page = () => {
 					<li>Each parameter contains 10 marks</li>
 					<li>The parameter of judgement may change which will be intimated later</li>
 				</>}
-				eventVenue={<p>Cafeteria ground floor</p>}
+				eventVenue={<p>Cafeteria</p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>
 							<td>Dr. Kavita Patel</td>
 							<td>+91 9993993019</td>
-							<td>Kavita.patel@opju.ac.in</td>
-						</tr>
-						<tr>
-							<td>Dr. Nidhi Khobragade</td>
-							<td>+91 9771864653</td>
-							<td>nidhi.khorbragade@opju.ac.in</td>
-						</tr>
-						<tr>
-							<td>Prof. Rupesh Patel</td>
-							<td>+91 9109909248</td>
-							<td>rupesh.patel@opju.ac.in</td>
+							{/* <td>Kavita.patel@opju.ac.in</td> */}
 						</tr>
 					</tbody></table>}
 				eventManagers={<table>
 					<tbody>
 						<tr>
-							<td>Vaibhav Gupta</td>
+							<td>Vaibhav Ratn Gupta</td>
 							<td>+91 8827902201</td>
 						</tr>
 						<tr>
@@ -173,6 +163,14 @@ const page = () => {
 						<tr>
 							<td>Nousin Khatun</td>
 							<td>+91 9039947225</td>
+						</tr>
+						<tr>
+							<td>Surojit</td>
+							<td>+91 9827160480</td>
+						</tr>
+						<tr>
+							<td>Roshni sahu</td>
+							<td>+91 8103807655</td>
 						</tr>
 					</tbody></table>}
 			/>

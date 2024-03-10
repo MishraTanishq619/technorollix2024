@@ -173,30 +173,13 @@ const page = () => {
             </p>
           </>
         }
-        eventVenue={<p>FB-14 (EE seminar hall) and FB-08</p>}
+        eventVenue={<p>FB-14 (EE seminar hall)</p>}
         facultyCoordinators={
           <table>
             <tbody>
               <tr>
                 <td>Dr Swapnasarit Kar</td>
-              </tr>
-              <tr>
-                <td>Dr Dharmender Singh Saini</td>
-              </tr>
-              <tr>
-                <td>Dr Guru Prakash</td>
-              </tr>
-              <tr>
-                <td>Dr Saroj Kumar Chandra</td>
-              </tr>
-              <tr>
-                <td>Dr Sandeep Biswal</td>
-              </tr>
-              <tr>
-                <td>Dr Pranjal Kumar</td>
-              </tr>
-              <tr>
-                <td>Dr Gopal Krishna Rathore</td>
+                <td>+91 9853364747</td>
               </tr>
             </tbody>
           </table>

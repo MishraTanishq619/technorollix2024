@@ -156,19 +156,8 @@ const page = () => {
           <table>
             <tbody>
               <tr>
-                <td>Dr. Amit Kumar Paras</td>
-              </tr>
-              <tr>
-                <td>Mr. Abhishek Thakur</td>
-              </tr>
-              <tr>
-                <td>Dr. Mukesh Kumar Sharma</td>
-              </tr>
-              <tr>
-                <td>Ms. Jyoti Sahu</td>
-              </tr>
-              <tr>
-                <td>Mr. Y Santosh Kumar</td>
+                <td>Dr. Amit Paras</td>
+                <td>+91 7879610288</td>
               </tr>
             </tbody>
           </table>
@@ -189,6 +178,10 @@ const page = () => {
                 <td>+91 8602027951</td>
               </tr>
               <tr>
+                <td>Amit kumar yadav</td>
+                <td>+91 9589771582</td>
+              </tr>
+              <tr>
                 <td>Suryakant balhal</td>
                 <td>+91 9343127792</td>
               </tr>
@@ -197,7 +190,7 @@ const page = () => {
                 <td>+91 9668048310</td>
               </tr>
               <tr>
-                <td>Yash Vardhan</td>
+                <td>Yash Vardhan Jaiswal</td>
                 <td>+91 8319274347</td>
               </tr>
             </tbody>

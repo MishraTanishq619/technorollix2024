@@ -221,17 +221,12 @@ const page = () => {
 					<li>Audience engagement and connection.</li>
 					<li>Overall impact and memorability.</li>
 				</>}
-				eventVenue={<p>OPJU playground</p>}
+				eventVenue={<p>MP Hall</p>}
 				facultyCoordinators={<table>
 					<tbody>
 						<tr>
 							<td>Prof.Manoj Kumar Mishra</td>
-						</tr>
-						<tr>
-							<td>Prof.Shrikant Chaini</td>
-						</tr>
-						<tr>
-							<td>Prof.Akash Pandey</td>
+							<td>+91 9839661837</td>
 						</tr>
 					</tbody></table>}
 				eventManagers={<table>

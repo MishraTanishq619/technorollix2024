@@ -159,7 +159,7 @@ function EventsDetails({
               <h2
                 className={`${headingFont.className} neon-text-red-lighter text-1xl font-bold md:text-2xl`}
               >
-                Faculty Coordinators:
+                Faculty Coordinator:
               </h2>
               <div
                 className={`text-3rem ml-5  text-1xl md:text-2xs font-medium`}

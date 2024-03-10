@@ -168,29 +168,13 @@ const page = () => {
             <li>Selection of background music</li>
           </>
         }
-        eventVenue={<p>Multi Purpose Hall</p>}
+        eventVenue={<p>University Playground</p>}
         facultyCoordinators={
           <table>
             <tbody>
               <tr>
                 <td>Prof. Pushpanjali Shadangi</td>
                 <td>+91 8358880501</td>
-                {/* <td>@opju.ac.in</td> */}
-              </tr>
-              <tr>
-                <td>Dr Jitesh Singh</td>
-                {/* <td>+91 </td> */}
-                {/* <td>@opju.ac.in</td> */}
-              </tr>
-              <tr>
-                <td>Prof. Namrata Ojha</td>
-                {/* <td>+91 </td> */}
-                {/* <td>@opju.ac.in</td> */}
-              </tr>
-              <tr>
-                <td>Prof. Sanjana Dewangan</td>
-                {/* <td>+91 </td> */}
-                {/* <td>@opju.ac.in</td> */}
               </tr>
             </tbody>
           </table>

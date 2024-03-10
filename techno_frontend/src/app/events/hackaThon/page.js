@@ -48,81 +48,72 @@ const page = () => {
         paragraph={
           <>
             <p>
-              Develop an AI solution capable of reading expressions in real-time
-              from live video and voice inputs, and provide statistical analysis
-              of the detected expressions.
+              The OPJU HackSprint 2024 is a hackathon event of OP Jindal University that aims to inspire students to use their creativity to develop innovative, cost-effective and practical solutions with code to create sustainable impact through technology.
             </p>{' '}
             <br />
-            <h1 className="neon-text-red-light">Problem Statement 1:</h1> <br />
+            <h1 className="neon-text-red-light">PID 2405 (Theme: Disaster Management)</h1> <br />
+            <h3 className="neon-text-red-light">Projection of the extent of inundation corresponding to the forecasts of flood levels in a river.</h3> <br />
             <p>
-              In today's world, understanding human emotions is crucial for
-              various applications, ranging from customer service to mental
-              health support. However, accurately interpreting emotions from
-              both facial expressions and vocal cues presents a significant
-              challenge. In this hackathon, participants are tasked with
-              developing an AI solution that can analyze live video and voice
-              streams, accurately identify facial expressions and emotional
-              tones, and provide meaningful statistical insights.
+              Many states in India are regularly affected by flooding especially in monsoon season. Central Water Commission (CWC) issues flood warnings in all flood-prone districts based on the regularly measured water gauge level. Flood warnings are issued by CWC to the state administration, whenever the gauge levels cross the danger mark. In all such cases, the severity of the problem is essentially indicated in terms of flood levels. However, the major concern of the state administration is regarding the difficulty faced in assessing the spatial extent of flooding for mapping rescue and relief works. Large volumes of imagery corresponding to varied flood inundations are expected to be available with NRSA and other freely assessable sources. The past imageries corresponding to a specific forecast site can be collected and each imagery be stamped with the observed water level of that particular date and time. An AI-ML-based GIS application can be developed to process the available imageries for projecting new imageries using suitable interpolation/extrapolation of 2D information corresponding to specific flood levels within a given range. The participants of SIH are expected to develop the above-mentioned application using open-source software and demonstrate its utility for any one of the CWC’s forecast sites (List will be shared) with readily available imageries. Participants can also seek to add value by incorporating tools for making critical infrastructure, filtering outliers, pointing out accuracy levels of projected inundation, etc.
             </p>
             <br />
-            <h1 className="neon-text-red-light">Problem Statement 2:</h1> <br />
+            <h1 className="neon-text-red-light">PID 2404 (Theme: Mental Health) </h1> <br />
+            <h3 className="neon-text-red-light">Mental health and well-being surveillance, assessment and tracking solution among children.</h3> <br />
             <p>
-              In today's digital age, collecting information through online
-              forms is a common practice for various purposes, including
-              surveys, registrations, feedback collection, and more. However,
-              many existing form-building platforms lack flexibility and
-              customization options, making it challenging for users to create
-              forms tailored to their specific needs. The task is to develop a
-              web and/or mobile application that provides a highly customizable
-              and user-friendly platform for creating and managing online forms,
-              akin to Google Forms, but with enhanced features and flexibility.
+              Develop a model/software which will help students to assess mental health of students, build methods to find out and provide solution for the improvement.
             </p>
+            <br />
+            <h1 className="neon-text-red-light">PID 2403 (Theme: Web development) </h1> <br />
+            <h3 className="neon-text-red-light">Elevating Form Creation with Personalized Precision</h3> <br />
+            <p>
+              In today's digital age, collecting information through online forms is a common practice for
+              various purposes, including surveys, registrations, feedback collection, and more. However, many existing form-building platforms lack flexibility and customization options for formdesigning, making it simple and common forms based on a basic UI design. The task is todevelop a web and/or mobile application that provides a highly customizable and user-friendlyplatform for creating and managing online forms, akin to Google Forms, but with optiontochange form Design and template for users            </p>
+            <br />
+            <h1 className="neon-text-red-light">PID 2402 (Theme: Health & Fitness) </h1> <br />
+            <h3 className="neon-text-red-light">Fitness or Exercise Assistant.</h3> <br />
+            <p>
+              Create a user-friendly digital assistant that helps individuals achieve their fitness goals by providing personalized workout plans, tracking progress, offering nutritional guidance, and motivating users to stay active. The assistant should be accessible via mobile devices and incorporate features such as exercise demonstrations, goal setting, progress analytics, and reminders to ensure users stay on track with their fitness journey.            </p>
+            <br />
+            <h1 className="neon-text-red-light">PID 2401 (Theme: Technology Integration in Education) </h1> <br />
+            <h3 className="neon-text-red-light">AI Harmony for Real-Time Emotional Analysis in Voice Streams</h3> <br />
+            <p>
+              In today's world, understanding human emotions is crucial for various applications, rangingfrom customer service to mental health support. However, accurately interpreting emotionsfrom vocal cues presents a significant challenge. In this hackathon, participants are taskedwithdeveloping an AI solution that can analyze live voice streams, accurately identify emotional
+              tones, and provide meaningful statistical insights.            </p>
             <br />
           </>
         }
         subHeading="“Don't worry about the results; focus only on your actions - a lesson from the Bhagavad Gita”"
         theme={<p>Embracing Diversity: Uniting Through Technology</p>}
-        subEventHeading={<p className="neon-text-red-light">Key Components:</p>}
+        subEventHeading={<p className="neon-text-red-light">Rules and Regulations:</p>}
         subEvents={
           <>
             <li>
-              <b>Real-time Data Processing:</b>Participants need to develop
-              algorithms capable of processing live video and voice streams in
-              real-time. This involves efficient data handling and processing to
-              ensure minimal latency.
+              <b>Team size: </b>Minimum of 2 & maximum 3 members are needed to participate in the hackathon.
             </li>
             <li>
-              <b>Expression Recognition:</b>The AI solution should accurately
-              recognize a wide range of facial expressions, including happiness,
-              sadness, anger, surprise, fear, and more. Additionally, it should
-              analyze vocal cues such as tone, pitch, and intensity to infer
-              emotional states.
+              Working solutions will be considered.
             </li>
             <li>
-              <b>Statistical Analysis: </b>Once expressions are detected, the AI
-              should provide statistical analysis, including frequency of
-              different expressions, trends over time, and correlations between
-              facial expressions and vocal cues.
+              There will be 3 rounds and in each round - present your progress in detailed ppt.
             </li>
             <li>
-              <b>Customization Options: </b>Provide a wide range of
-              customization options for form elements, including the ability to
-              customize colors, fonts, sizes, and layout.
+              Code Plagarism will be checked
             </li>
             <li>
-              <b>Conditional Logic: </b>Implement conditional logic features
-              that enable users to show or hide form fields based on previous
-              responses, making the forms more dynamic and interactive.
+              Solutions credibility must be unique.
             </li>
             <li>
-              <b>Multi-step Forms: </b>Support the creation of multi-step or
-              multi-page forms to break down lengthy forms into smaller, more
-              manageable sections, enhancing user experience.
+              One winning team per problem statement.
+            </li>
+            <li>
+              Finale Round will be held during the Technorollix in front of Jury members
+            </li>
+            <li>
+              Selected teams will get an opportunity to give presentation in front of invited judges.
             </li>
             <br />
           </>
         }
-        rulesHeading={'Rules of the event:'}
         registrationCount={
           <>
             <h2 className="neon-text-red-lighter">Registrations</h2>
@@ -168,76 +159,56 @@ const page = () => {
             </table>
           </>
         }
-        rules={
-          <>
-            <li>There will be a lockdown of 6-8 hours for all teams.</li>
-            <li>
-              The number of participants in a team should be of 5 members.
-            </li>
-            <li>Teams are not allowed to leave the venue during the event.</li>
-            <li>
-              Selected team may get an opportunity to work with our Sponsers.
-            </li>
-            <li>Use of multiple devices for testing is allowed.</li>
-            <li>
-              Time for 1<sup>st</sup>round is only 1 hour
-            </li>
-            <li>
-              Time for 2<sup>nd</sup>round will be 3-4 hour
-            </li>
-            <li>
-              Time for 3<sup>rd</sup>round will be 2-3 hour
-            </li>
-            <li>
-              Participants are free to use any programming languages,
-              frameworks, or tools to develop their solutions.
-            </li>
-          </>
-        }
-        roundsHeading={'Rounds:'}
-        rounds={
-          <>
-            <p>There will be 3 rounds.</p>
-            <ol className="list-decimal">
-              <li>Work-Flow and approach</li>
-              <li>Prototype Demontration</li>
-              <li>Funtionality and Capability of model</li>
-            </ol>
-          </>
-        }
+        // rulesHeading={'Rounds Details for Evaluation'}
+        // rules={
+        //   <>
+        //     <h2>Round 1</h2>
+        //     <li><b>Presentation of the Solution/ldea:</b>The basic solution provided by the team against the problem statement.</li>
+        //     <li><b>Innovation:</b>Uniqueness and creativity of the solution.</li>
+        //     <li><b>Solution Approach:</b>The roadmap or framework that guides the development or creation of asolution to a given problem.</li>
+        //     <li><b>Technical Soundness/ Feasibility:</b>Strength and reliability of the technical aspects and Practicality and viability of implementation.</li>
+        //     <li><b>Execution Time Line for Hackathon:</b>Blueprint of Prototype Completion Timeline with respect to the hackathon duration.</li><br />
+        //     <h2>Round 2</h2>
+        //     <li><b>Prototype Development:</b>Progress made in developing aworking prototype.</li>
+        //     <li><b>Improvement:</b>Any changes or additions in the functionality of the product based on the feedback/suggestion provided by the evaluators/mentors.</li>
+        //     <li><b>Integration:</b>How well different components work together.</li>
+        //     <li><b>Usability:</b>User-friendliness and ease of adoption.</li>
+        //     <li><b>Team work:</b>Contribution of the individual team member..</li><br />
+        //     <h2>Round 3</h2>
+        //     <li><b>Functionality / Relevance to the problem statement or Theme:</b>How well the prototype meets the specified requirements.</li>
+        //     <li><b>Performance/ Final Demo:</b>Eficiency and effectiveness in real-world scenarios.
+        //       Clarity, coherence, and persuasiveness of the presentation.
+        //     </li>
+        //     <li><b>User Experience/ Aesthetic and Design of the final product/ User ergonomics:</b>Quality of interaction and satisfaction for end-users.</li>
+        //     <li><b>Market readiness/ impact:</b>The preparedness of a product, service, or solution to enter the market and make an impact.</li>
+        //     <li><b>Implementation / Future Scope:</b>Strategy for putting the solution into action and its potential for the future development.</li><br />
+        //   </>
+        // }
         judgeMentalCriteria={
           <>
-            <p className="neon-text-red-lighter">
-              Judgement for 1<sup>st</sup> round will be based on:
-            </p>
-            <ul>
-              <li>Presentation Skills</li>
-              <li>Thinking capability</li>
-              <li>Approach for multiple use cases</li>
-            </ul>
-            <p className="neon-text-red-lighter">
-              Judgement for 2<sup>nd</sup> round will be based on:
-            </p>
-            <ul>
-              <li>Working of camera speech recognition</li>
-              <li>Real-time Processing Efficiency</li>
-              <li>Team work</li>
-            </ul>
-            <p className="neon-text-red-lighter">
-              Judgement for 3<sup>rd</sup> round will be based on:
-            </p>
-            <ul>
-              <li>Accuracy of model</li>
-              <li>UI/UX (most important for PS2)</li>
-              <li>Statistical Insights Provided</li>
-            </ul>
-            <p>
-              Note: Participation all team members are necessary for 2
-              <sup>nd</sup> and 3<sup>rd</sup> round
-            </p>
+            <h2>Round 1</h2>
+            <li><b>Presentation of the Solution/ldea:</b>The basic solution provided by the team against the problem statement.</li>
+            <li><b>Innovation:</b>Uniqueness and creativity of the solution.</li>
+            <li><b>Solution Approach:</b>The roadmap or framework that guides the development or creation of asolution to a given problem.</li>
+            <li><b>Technical Soundness/ Feasibility:</b>Strength and reliability of the technical aspects and Practicality and viability of implementation.</li>
+            <li><b>Execution Time Line for Hackathon:</b>Blueprint of Prototype Completion Timeline with respect to the hackathon duration.</li><br />
+            <h2>Round 2</h2>
+            <li><b>Prototype Development:</b>Progress made in developing aworking prototype.</li>
+            <li><b>Improvement:</b>Any changes or additions in the functionality of the product based on the feedback/suggestion provided by the evaluators/mentors.</li>
+            <li><b>Integration:</b>How well different components work together.</li>
+            <li><b>Usability:</b>User-friendliness and ease of adoption.</li>
+            <li><b>Team work:</b>Contribution of the individual team member..</li><br />
+            <h2>Round 3</h2>
+            <li><b>Functionality / Relevance to the problem statement or Theme:</b>How well the prototype meets the specified requirements.</li>
+            <li><b>Performance/ Final Demo:</b>Eficiency and effectiveness in real-world scenarios.
+              Clarity, coherence, and persuasiveness of the presentation.
+            </li>
+            <li><b>User Experience/ Aesthetic and Design of the final product/ User ergonomics:</b>Quality of interaction and satisfaction for end-users.</li>
+            <li><b>Market readiness/ impact:</b>The preparedness of a product, service, or solution to enter the market and make an impact.</li>
+            <li><b>Implementation / Future Scope:</b>Strategy for putting the solution into action and its potential for the future development.</li><br />
           </>
         }
-        eventVenue={<p>TB-09</p>}
+        eventVenue={<p>TB-01</p>}
         facultyCoordinators={
           <table>
             <tbody>
@@ -252,28 +223,28 @@ const page = () => {
           <table>
             <tbody>
               <tr>
-                <td>Shrey Raj Singh</td>
-                <td>+91 7587845520</td>
+                <td>Nirmalya Kumar Patra</td>
+                <td>+91 7978389641</td>
               </tr>
               <tr>
                 <td>Kajal Gupta</td>
                 <td>+91 9340616900</td>
               </tr>
               <tr>
-                <td>Nikhil Patel</td>
-                <td>+91 8305216569</td>
+                <td>Siddharth Mishra</td>
+                <td>+91 7970234185</td>
               </tr>
               <tr>
-                <td>Shreeya Sharma</td>
-                <td>+91 8602470239</td>
+                <td>Shrey Raj Singh</td>
+                <td>+91 7587845520</td>
               </tr>
               <tr>
-                <td>Anand Vishwakarma</td>
-                <td>+91 7011472391</td>
+                <td>Priya Agrawal</td>
+                <td>+91 9065939389</td>
               </tr>
               <tr>
-                <td>Satendra Kumar</td>
-                <td>+91 9301196473</td>
+                <td>Suryanshu Dobai</td>
+                <td>+91 7008575068</td>
               </tr>
             </tbody>
           </table>

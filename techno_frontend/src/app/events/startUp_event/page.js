@@ -163,12 +163,35 @@ const page = () => {
               <tr>
                 <td>Dr.Himanshu Vaishnaw</td>
                 <td>+91 9713863587</td>
-                <td>himanshu.vaishnaw@opju.ac.in</td>
               </tr>
             </tbody>
           </table>
         }
-        eventManagers={<p>Not Provided</p>}
+        eventManagers={
+          <table>
+            <tbody>
+              <tr>
+                <td>Soumya Agarwal</td>
+                <td>+91 9178681332</td>
+              </tr>
+              <tr>
+                <td>V Sai Sushma</td>
+                <td>+91 9618153822</td>
+              </tr>
+              <tr>
+                <td>Divyansh Sharma</td>
+                <td>+91 7223043576</td>
+              </tr>
+              <tr>
+                <td>Aniket Mishra</td>
+                <td>+91 8210860157</td>
+              </tr>
+              <tr>
+                <td>Shahnaz Fatima Khna</td>
+                <td>+91 9343282561</td>
+              </tr>
+            </tbody>
+          </table>}
         staffCoordinators={<p></p>}
       />
     </main>
