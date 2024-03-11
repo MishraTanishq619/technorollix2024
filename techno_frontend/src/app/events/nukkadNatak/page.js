@@ -192,7 +192,6 @@ const page = () => {
       />
     </main>
   );
->>>>>>> 4659357 (team-page)
 };
 
 export default page;
