@@ -451,7 +451,7 @@ app.get("/api/allOutSiderTeams/eventId/teamId", async (req, res) => {
 			}
 		});
 		let outsideCount = outsiderUser.length;
-		res.status(201).json({outsideCount,outsiderUser});
+		res.status(201).json({ outsideCount, outsiderUser });
 	} catch (error) {
 		res.status(500).send(`Error fetching teams : ${error}`);
 	}
@@ -473,7 +473,7 @@ app.get("/api/allInSiderTeams/eventId/teamId", async (req, res) => {
 			}
 		});
 		let insideCount = insiderUser.length;
-		res.status(201).json({insideCount,insiderUser});
+		res.status(201).json({ insideCount, insiderUser });
 	} catch (error) {
 		res.status(500).send(`Error fetching teams : ${error}`);
 	}
@@ -629,11 +629,11 @@ app.get("/api/registeredTeamAndMembers/Details/perEvent/:eventId", async (req, r
 			}
 
 			// Increment the row counter to leave space between teams
-			row++;
+			// row++;
 		}
-
+		const spiltedSheet = eventDetails.eventName.slice(0, 30);
 		// Add the worksheet to the workbook
-		xlsx.utils.book_append_sheet(workbook, worksheet, `${eventDetails.eventName}`);
+		xlsx.utils.book_append_sheet(workbook, worksheet, `${spiltedSheet}`);
 
 		// Generate the Excel file
 		const excelFileName = `Team_Details_${eventId}.xlsx`;
@@ -802,7 +802,7 @@ app.get("/api/allOutSiderParticipants/eventId/teamId", async (req, res) => {
 			}
 		});
 		let outsideCount = outsiderUser.length;
-		res.status(201).json({outsideCount,outsiderUser});
+		res.status(201).json({ outsideCount, outsiderUser });
 	} catch (error) {
 		res.status(500).send(`Error fetching participants : ${error}`);
 	}
@@ -824,7 +824,7 @@ app.get("/api/allInSiderParticipants/eventId/teamId", async (req, res) => {
 			}
 		});
 		let insideCount = insiderUser.length;
-		res.status(201).json({insideCount,insiderUser});
+		res.status(201).json({ insideCount, insiderUser });
 	} catch (error) {
 		res.status(500).send(`Error fetching participants : ${error}`);
 	}
@@ -837,6 +837,46 @@ app.get("/api/participant/teamMembers/:teamId", async (req, res) => {
 			teamId: teamId,
 		});
 		res.json(participants);
+	} catch (error) {
+		res.status(500).send(`Error fetching participants : ${error}`);
+	}
+});
+
+app.get("/api/myParticipations/allTeam/:email", async (req, res) => {
+	const email = req.params.email;
+	try {
+
+		const participants = await Participants.find({
+			participantEmail: email,
+		});
+		const rawResult = participants.map(async (p) => {
+			const eventDetails = await Event.findOne({ eventId: p.eventId });
+			let leader = p.teamId.split(`team-${eventDetails.eventName}-`)[1];
+			const teamDetails = await Participants.find({ teamId: p.teamId });
+			const rawTeamMembers = teamDetails.map(async (t) => {
+				const userDetails = await User.findOne({ userEmail: t.participantEmail });
+				if (t.participantEmail === leader) {
+					leader = userDetails.userName;
+					return null;
+				} else {
+					return userDetails.userName;
+				}
+			})
+			const teamMembers = await Promise.all(rawTeamMembers);
+			let finalMembers = []
+			for (let index = 0; index < teamMembers.length; index++) {
+				if (teamMembers[index] === null) {
+					continue;
+				} else {
+					finalMembers.push(teamMembers[index])
+				}
+			}
+			let items = { event: { eventName: eventDetails.eventName, teamSize: eventDetails.teamSize }, leader: leader, teamMembers: finalMembers }
+			return items;
+		})
+		const result = await Promise.all(rawResult);
+		// console.log(result);
+		res.status(201).json(result);
 	} catch (error) {
 		res.status(500).send(`Error fetching participants : ${error}`);
 	}
@@ -884,20 +924,20 @@ app.post("/api/create/team-invite", async (req, res) => {
 		if (isInvited) {
 			if (isInvited.status === "pending") {
 				return res
-					.status(409)
+					.status(410)
 					.json(
 						`User: ${inviteeEmail} already invited to join team: ${teamId}`
 					);
 			} else if (isInvited.status === "rejected") {
 				return res
-					.status(409)
+					.status(411)
 					.json(
 						`User: ${inviteeEmail} have rejected invitation to join team: ${teamId}`
 					);
 			}
 			{
 				return res
-					.status(409)
+					.status(412)
 					.json(`User: ${inviteeEmail} has joined different team`);
 			}
 		}
@@ -907,7 +947,7 @@ app.post("/api/create/team-invite", async (req, res) => {
 		});
 		if (hasJoined) {
 			return res
-				.status(409)
+				.status(413)
 				.json(
 					`User: ${inviteeEmail} has joined different team for ${team.eventId}`
 				);
@@ -926,7 +966,7 @@ app.post("/api/create/team-invite", async (req, res) => {
 			const sendMail = await mailer(invitation.inviteeEmail, teamId);
 			res.status(201).json(invitation);
 		} else {
-			return res.status(409).send(`Error3 Limit cross`);
+			return res.status(414).send(`Error3 Limit cross`);
 		}
 	} catch (error) {
 		res.status(500).send(
@@ -966,6 +1006,27 @@ app.put("/api/update/team-invite", async (req, res) => {
 		} else {
 			return res.status(404).send("rejected");
 		}
+	} catch (error) {
+		res.status(500).send(
+			`Error responding user ${inviterEmail} invitation for ${teamId}\nerror: ${error}`
+		);
+	}
+});
+app.put("/api/restore/team-invite", async (req, res) => {
+	try {
+		const allInvitations = await Invitation.find();
+		allInvitations.map(async (i) => {
+			const participation = await Participants.findOne({ teamId: i.teamId, participantEmail: i.inviteeEmail });
+			console.log(participation);
+			if (participation !== null) {
+				const acceptedInvite = await Invitation.findOneAndUpdate(
+					{ teamId: i.teamId, inviteeEmail: i.inviteeEmail, inviterEmail: i.inviterEmail },
+					{ status: "accepted" }
+				);
+				console.log(acceptedInvite);
+			}
+		})
+		return res.status(201).json(`runned`);
 	} catch (error) {
 		res.status(500).send(
 			`Error responding user ${inviterEmail} invitation for ${teamId}\nerror: ${error}`
@@ -1023,9 +1084,9 @@ app.get("/api/eventName/inviterName/invitations/email/:email", async (req, res) 
 			// const event = await Event.findOne({ eventId: element.eventId });
 			// const inviter = await User.findOne({ inviterEmail: element.inviterEmail });
 			const [event, inviter] = await Promise.all([
-                Event.findOne({ eventId: element.eventId }),
-                User.findOne({ userEmail: element.inviterEmail })
-            ]);
+				Event.findOne({ eventId: element.eventId }),
+				User.findOne({ userEmail: element.inviterEmail })
+			]);
 			const invites = {
 				invitationId: element.invitationId,
 				status: element.status,
