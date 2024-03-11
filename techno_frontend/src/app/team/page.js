@@ -224,7 +224,18 @@ const page = () => {
         </button>
       </div>
       <div className="mt-10 mx-5 w-full">
-        <div className="text-6xl font-bold text-center w-full">Manage Team</div>
+        <div className="text-6xl font-bold text-center w-full flex justify-center items-center relative">
+          <p className="">Manage Team</p>
+          <button
+            className=" md:absolute md:right-12 bg-red-500 text-xl md:text-3xl px-6 py-2 h-14 md:h-auto mb-2 mx-4 rounded-md transition-transform item-center justify-center transform hover:scale-110"
+            onClick={() => {
+              window.location.href = '/';
+            }}
+          >
+            Exit
+          </button>
+        </div>
+
         <div className="w-full flex justify-center my-4 ">
           {!isVerified ? (
             <Button className={'text-4xl'} onClick={() => setIsOpen(true)}>
