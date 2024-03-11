@@ -21,10 +21,22 @@ export default page;
 
 const JunoonEvent = () => {
   return (
-    <div className="container absolute md:top-1/2 left-1/2 -translate-x-[50%] my-10  md:-translate-y-[50%] rounded-lg border-2 border-red-500 mx-auto px-4 py-8 text-white bg-white bg-opacity-25  ">
-      <h1 className="text-3xl font-bold mb-4 w-full text-center underline">
+    <div className="container  mt-20 mb-10  rounded-lg border-2 border-red-500 mx-auto px-4 py-8 text-white bg-white bg-opacity-25  ">
+      <h1 className="text-4xl sm:text-6xl neon-text-red font-bold mb-4 w-full text-center underline">
         JUNOON
       </h1>
+      <div className="flex flex-col md:flex-row justify-around items-center gap-5 md:gap-0 my-10">
+        <img
+          src="/junoonPic1.jpg"
+          alt=""
+          className="w-[95%] md:w-[47%] md:h-[43rem] border-2 border-red-600 shadow-lg shadow-red-600 rounded-2xl"
+        />
+        <img
+          src="/junoonPic2.jpg"
+          alt=""
+          className="w-[95%] md:w-[47%] md:h-[43rem] border-2 border-red-600 shadow-lg shadow-red-600 rounded-2xl"
+        />
+      </div>
       <p className="mb-6">
         OPJU Junoon is an annual cultural extravaganza hosted by the O.P. Jindal
         University (OPJU) in Chhattisgarh, India. This vibrant event showcases
