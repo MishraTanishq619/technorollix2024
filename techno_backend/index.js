@@ -655,6 +655,91 @@ app.get("/api/registeredTeamAndMembers/Details/perEvent/:eventId", async (req, r
 	}
 });
 
+app.get("/api/alternative/registeredTeamAndMembers/Details/perEvent/eventId", async (req, res) => {
+    const {eventId} = req.body;
+	console.log(eventId);
+    try {
+        // Fetch event details to get team size
+        const eventDetails = await Event.findOne({eventId: eventId});
+        if (!eventDetails) {
+            return res.status(404).send("Event not found");
+        }
+        const teamSize = eventDetails.teamSize;
+
+        // Fetch all registered teams for the given event
+        const registeredTeams = await RegisteredTeam.find({ eventId: eventId });
+
+        // Create a workbook and worksheet
+        const workbook = xlsx.utils.book_new();
+        const worksheet = xlsx.utils.aoa_to_sheet([]);
+
+        // Initialize the row and column counters
+        let row = 1;
+        let col = 0;
+
+        // Add headers for TeamId, Participants, Insider/Outsider, and User Details
+        xlsx.utils.sheet_add_aoa(worksheet, [['Team ID', 'Participants', 'Insider/Outsider', 'Name', 'Email', 'Phone no.', 'University', 'Gender', 'District', 'Pincode', 'State']], { origin: `A${row}` });
+        row++;
+
+        // Iterate over each registered team
+        for (const team of registeredTeams) {
+            // Fetch participants for the current team
+            const participants = await Participants.find({ teamId: team.teamId });
+
+            // Fill team ID in the first column
+            xlsx.utils.sheet_add_aoa(worksheet, [[team.teamId]], { origin: `A${row}` });
+
+            // Fill participant details in subsequent columns
+            let participantIndex = 1;
+            for (const participant of participants) {
+                const userDetails = await User.findOne({ userEmail: participant.participantEmail });
+
+                if (userDetails) {
+                    // Determine if the user is an Insider or Outsider
+                    const insiderOrOutsider = userDetails.isUserOPJUStudent ? 'Insider' : 'Outsider';
+
+                    // Fill participant index in the Participants column
+                    const participantIndexLabel = `Participant ${participantIndex}`;
+                    xlsx.utils.sheet_add_aoa(worksheet, [[participantIndexLabel, insiderOrOutsider]], { origin: `B${row}` });
+
+                    // Fill user details in respective columns
+                    const userData = [
+                        userDetails.userName,
+                        userDetails.userEmail,
+                        userDetails.userPhoneNumber,
+                        userDetails.userUniversity,
+                        userDetails.userGender,
+                        userDetails.userAddress.district,
+                        userDetails.userAddress.pincode,
+                        userDetails.userAddress.state
+                    ];
+
+                    // Add user details to the worksheet
+                    xlsx.utils.sheet_add_aoa(worksheet, [userData], { origin: `D${row}` });
+                }
+
+                // Increment the participant index and row counter
+                participantIndex++;
+                row++;
+            }
+
+            // Increment the row counter to leave space between teams
+            row++;
+        }
+
+        // Add the worksheet to the workbook
+        xlsx.utils.book_append_sheet(workbook, worksheet, `Event_${eventId}`);
+
+        // Generate the Excel file
+        const excelFileName = `Team_Details_${eventId}.xlsx`;
+        xlsx.writeFile(workbook, excelFileName);
+
+        // Send the response with the file name
+        res.status(200).send({ fileName: excelFileName });
+    } catch (error) {
+        res.status(500).send(`Error generating Excel sheet: ${error}`);
+    }
+});
 
 
 // Participants
@@ -1027,7 +1112,7 @@ app.put("/api/restore/team-invite", async (req, res) => {
 			}else{
 				const pendingInvite = await Invitation.findOneAndUpdate(
 					{ teamId: i.teamId, inviteeEmail: i.inviteeEmail, inviterEmail: i.inviterEmail },
-					{ status: "pending" }
+					{ status: "rejected" }
 				);
 				return pendingInvite;
 			}
