@@ -4,7 +4,7 @@ const ComponentFunc = async (eventId, emailRef) => {
   let response = 'ahwbdhwafwa';
   // console.log(eventId, emailRef);
   response = await fetch(
-    'http://technorollix.opju.ac.in:4000/api/event/invite/status/byInviter/eventId',
+    'http://10.60.41.209:4000/api/event/invite/status/byInviter/eventId',
     {
       method: 'POST',
       body: JSON.stringify({
@@ -38,7 +38,7 @@ const Invitestatuses = ({ eventId, emailRef, teamId }) => {
 
   return (
     <ul className="text-white">
-      {/* {console.log("Here", inviteesArray)} */}
+      {console.log('Here', inviteesArray)}
       {inviteesArray?.map((i, k) => {
         return (
           <li
@@ -86,20 +86,17 @@ const DeleteBtn = ({ teamId, inviterEmail, inviteeEmail }) => {
       type="button"
       // class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-9 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
       onClick={async () => {
-        await fetch(
-          'http://technorollix.opju.ac.in:4000/api/delete/team/invite',
-          {
-            method: 'DELETE',
-            body: JSON.stringify({
-              teamId: teamId,
-              inviterEmail: inviterEmail,
-              inviteeEmail: inviteeEmail,
-            }),
-            headers: {
-              'Content-type': 'application/json',
-            },
-          }
-        ).catch((error) => {
+        await fetch('http://10.60.41.209:4000/api/delete/team/invite', {
+          method: 'DELETE',
+          body: JSON.stringify({
+            teamId: teamId,
+            inviterEmail: inviterEmail,
+            inviteeEmail: inviteeEmail,
+          }),
+          headers: {
+            'Content-type': 'application/json',
+          },
+        }).catch((error) => {
           console.error('Error deleting.');
         });
       }}

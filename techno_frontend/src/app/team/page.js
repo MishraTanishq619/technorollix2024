@@ -40,12 +40,12 @@ const page = () => {
   const [visitCount, setVisitCount] = useState(0);
 
   useEffect(() => {
-    fetch('http://technorollix.opju.ac.in:4000/api/visitCount')
+    fetch('http://10.60.41.209:4000/api/visitCount')
       .then((response) => response.json())
       .then((data) => setVisitCount(data.visitCount))
       .catch((error) => console.error('Error fetching visit count:', error));
 
-    fetch('http://technorollix.opju.ac.in:4000/api/allParticipants')
+    fetch('http://10.60.41.209:4000/api/allParticipants')
       .then((response) => response.json())
       .then((data) => setParticipantCount(data.length))
       .catch((error) =>
@@ -88,11 +88,11 @@ const page = () => {
     if (isValidEmail) {
       // console.log('entered');
       const number = Math.floor(10000 + Math.random() * 90000);
-      // console.log(number);
+      console.log(number);
       setGeneratedNumber(number);
       // try {
       let otpdata = await fetch(
-        'http://technorollix.opju.ac.in:4000/api/email/verify/otp',
+        'http://10.60.41.209:4000/api/email/verify/otp',
         {
           method: 'POST',
           body: JSON.stringify({
@@ -120,7 +120,7 @@ const page = () => {
       // window.location.href("/registration")
       try {
         const response = await fetch(
-          `http://technorollix.opju.ac.in:4000/api/user/${email}`
+          `http://10.60.41.209:4000/api/user/${email}`
         );
 
         if (response.status === 409 || 404) {
@@ -375,14 +375,12 @@ const My_Team = ({ emailRef }) => {
 
   // let reqEvents = [];
   useEffect(() => {
-    fetch('http://technorollix.opju.ac.in:4000/api/allEvents')
+    fetch('http://10.60.41.209:4000/api/allEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));
 
-    fetch(
-      `http://technorollix.opju.ac.in:4000/api/registeredTeam/eventId/${emailRef}`
-    )
+    fetch(`http://10.60.41.209:4000/api/registeredTeam/eventId/${emailRef}`)
       .then((response) => response.json())
       .then((data) => {
         setregisteredEvents(data.eventIdArray);
@@ -402,7 +400,7 @@ const My_Team = ({ emailRef }) => {
 
     // to get team id
     let response = await fetch(
-      'http://technorollix.opju.ac.in:4000/api/create/team-invite',
+      'http://10.60.41.209:4000/api/create/team-invite',
       {
         method: 'POST',
         body: JSON.stringify({
@@ -591,34 +589,24 @@ const dismissAlert2 = () => {
 
 const Participations = ({ emailRef }) => {
   //   console.log(emailRef);
-  const [registeredEvents, setregisteredEvents] = useState([]);
-  const [reqTeamsArray, setreqTeamsArray] = useState([]);
+  // const [registeredEvents, setregisteredEvents] = useState([]);
+  // const [reqTeamsArray, setreqTeamsArray] = useState([]);
   const [events, setEvents] = useState([]);
   // const [myEvents, setMyEvents] = useState([]);
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   // const emailRef = searchParams.get('emailRef');
 
   // let reqEvents = [];
   useEffect(() => {
-    fetch('http://technorollix.opju.ac.in:4000/api/allEvents')
-      .then((response) => response.json())
-      .then((data) => setEvents(data))
-      .catch((error) => console.error('Error fetching events:', error));
-
-    fetch(
-      `http://technorollix.opju.ac.in:4000/api/registeredTeam/eventId/${emailRef}`
-    )
+    fetch(`http://10.60.41.209:4000/api/myParticipations/allTeam/${emailRef}`)
       .then((response) => response.json())
       .then((data) => {
-        setregisteredEvents(data.eventIdArray);
-        setreqTeamsArray(data.teamIdArray);
+        setEvents(data);
+        console.log(data);
       })
-      .catch((error) =>
-        console.error('Error fetching registeredEvents:', error)
-      );
-    // reqEvents;
+      .catch((error) => console.error('Error fetching events:', error));
   }, []);
-  let reqEvents = events.filter((e) => registeredEvents.includes(e.eventId));
+  let reqEvents = events;
   // console.log('reqEvents:');
   // console.log(reqEvents, registeredEvents);
 
@@ -680,30 +668,33 @@ const Participations = ({ emailRef }) => {
               transition={{
                 type: 'tween',
               }}
-              key={i.eventId}
+              key={index}
               className={`bg-black bg-opacity-50 p-4 px-10 mx-4 rounded-lg border-4 w-[95vw] xsm:w-[22rem] md:w-full border-red-500 flex  justify-between md:items-center flex-col md:flex-row   gap-10`}
             >
               <div className=" py-3 md:py-5  text-left   text-white  text-wrap">
                 <h2 className="text-lg font-bold m-2 ">
-                  Event Name: {i.eventName}
+                  Event Name: {i.event.eventName}
                 </h2>
                 <p className="text-lg font-bold m-2 ">
-                  Team Size: {i.teamSize}
+                  Team Size: {i.event.teamSize}
                 </p>
               </div>
               <div
                 id="statuses"
                 className="text-yellow-500 py-3 md:py-5  text-lg "
               >
-                <Invitestatuses
-                  emailRef={emailRef}
-                  eventId={i.eventId}
-                  teamId={
-                    reqTeamsArray[
-                      registeredEvents.findIndex((e) => e == i.eventId)
-                    ]
-                  }
-                />
+                <ul className="text-white">
+                  <li className={` text-xl font-semibold p-2`}>
+                    Leader: {i.leader}
+                  </li>
+                  {i.teamMembers?.map((j, k) => {
+                    return (
+                      <li key={k} className={` text-xl p-4`}>
+                        {j}
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </motion.div>
           ))}
@@ -790,7 +781,7 @@ const RecievedInvitations = ({ emailRef }) => {
 
   useEffect(() => {
     fetch(
-      `http://technorollix.opju.ac.in:4000/api/eventName/inviterName/invitations/email/${emailRef}`
+      `http://10.60.41.209:4000/api/eventName/inviterName/invitations/email/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -842,27 +833,18 @@ const RecievedInvitations = ({ emailRef }) => {
                 className="btn overflow-hidden relative w-25 md:w-40 bg-white text-red-600 py-3 px-2 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-red-400 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-red-500 hover:before:animate-ping transition-all duration-300"
                 onClick={() => {
                   try {
-                    // console.log({
-                    // 	teamId: i.teamId,
-                    // 	inviterEmail: i.inviterEmail,
-                    // 	inviteeEmail: i.inviteeEmail,
-                    // 	response: "accept",
-                    // });
-                    fetch(
-                      'http://technorollix.opju.ac.in:4000/api/update/team-invite',
-                      {
-                        method: 'PUT',
-                        body: JSON.stringify({
-                          teamId: i.teamId,
-                          inviterEmail: i.inviterEmail,
-                          inviteeEmail: i.inviteeEmail,
-                          response: 'accept',
-                        }),
-                        headers: {
-                          'Content-type': 'application/json',
-                        },
-                      }
-                    ).then(() => setClicked((a) => a++));
+                    fetch('http://10.60.41.209:4000/api/update/team-invite', {
+                      method: 'PUT',
+                      body: JSON.stringify({
+                        teamId: i.teamId,
+                        inviterEmail: i.inviterEmail,
+                        inviteeEmail: i.inviteeEmail,
+                        response: 'accept',
+                      }),
+                      headers: {
+                        'Content-type': 'application/json',
+                      },
+                    }).then(() => setClicked(Clicked + 1));
                   } catch (error) {
                     console.log(error);
                   }
@@ -874,21 +856,18 @@ const RecievedInvitations = ({ emailRef }) => {
                 className="btn overflow-hidden relative w-25 md:w-40 bg-red-700 text-white py-3 px-2 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-red-500 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-orange-200 hover:before:animate-ping transition-all duration-300"
                 onClick={() => {
                   try {
-                    fetch(
-                      'http://technorollix.opju.ac.in:4000/api/update/team-invite',
-                      {
-                        method: 'PUT',
-                        body: JSON.stringify({
-                          teamId: i.teamId,
-                          inviterEmail: i.inviterEmail,
-                          inviteeEmail: i.inviteeEmail,
-                          response: 'decline',
-                        }),
-                        headers: {
-                          'Content-type': 'application/json',
-                        },
-                      }
-                    ).then(() => setClicked((a) => a++));
+                    fetch('http://10.60.41.209:4000/api/update/team-invite', {
+                      method: 'PUT',
+                      body: JSON.stringify({
+                        teamId: i.teamId,
+                        inviterEmail: i.inviterEmail,
+                        inviteeEmail: i.inviteeEmail,
+                        response: 'decline',
+                      }),
+                      headers: {
+                        'Content-type': 'application/json',
+                      },
+                    }).then(() => setClicked(Clicked + 1));
                   } catch (error) {
                     console.log(error);
                   }
@@ -909,7 +888,7 @@ const RecievedInvitations = ({ emailRef }) => {
 
 const getInviter = async (email) => {
   // console.log('entered');
-  let data = fetch(`http://technorollix.opju.ac.in:4000/api/user/name/${email}`)
+  let data = fetch(`http://10.60.41.209:4000/api/user/name/${email}`)
     .then((response) => response.json())
     .then((data) => {
       // console.log(data);
@@ -925,7 +904,7 @@ const getInviter = async (email) => {
 const getEvent = async (eventId) => {
   // console.log('entered');
   let data = fetch(
-    `http://technorollix.opju.ac.in:4000/api/eventName/byEventId/${eventId}`
+    `http://10.60.41.209:4000/api/eventName/byEventId/${eventId}`
   )
     .then((response) => response.json())
     .then((data) => {
