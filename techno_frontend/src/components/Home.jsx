@@ -200,7 +200,7 @@ function Home() {
       {/* <LampContainer> */}
       <motion.div
         initial={{ opacity: 0.5, y: -400 }}
-        animate={{ opacity: 1, y: window.innerWidth < 800 ? -20 : 100 }}
+        animate={{ opacity: 1, y: window.innerWidth < 800 ? -30 : 140 }}
         transition={{
           delay: 0.3,
           duration: 1.5,

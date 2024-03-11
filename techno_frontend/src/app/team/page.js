@@ -40,12 +40,12 @@ const page = () => {
   const [visitCount, setVisitCount] = useState(0);
 
   useEffect(() => {
-    fetch('http://technorollix.opju.ac.in/api/visitCount')
+    fetch('http://technorollix.opju.ac.in:4000/api/visitCount')
       .then((response) => response.json())
       .then((data) => setVisitCount(data.visitCount))
       .catch((error) => console.error('Error fetching visit count:', error));
 
-    fetch('http://technorollix.opju.ac.in/api/allParticipants')
+    fetch('http://technorollix.opju.ac.in:4000/api/allParticipants')
       .then((response) => response.json())
       .then((data) => setParticipantCount(data.length))
       .catch((error) =>
@@ -92,7 +92,7 @@ const page = () => {
       setGeneratedNumber(number);
       // try {
       let otpdata = await fetch(
-        'http://technorollix.opju.ac.in/api/email/verify/otp',
+        'http://technorollix.opju.ac.in:4000/api/email/verify/otp',
         {
           method: 'POST',
           body: JSON.stringify({
@@ -120,7 +120,7 @@ const page = () => {
       // window.location.href("/registration")
       try {
         const response = await fetch(
-          `http://technorollix.opju.ac.in/api/user/${email}`
+          `http://technorollix.opju.ac.in:4000/api/user/${email}`
         );
 
         if (response.status === 409 || 404) {
@@ -375,13 +375,13 @@ const My_Team = ({ emailRef }) => {
 
   // let reqEvents = [];
   useEffect(() => {
-    fetch('http://technorollix.opju.ac.in/api/allEvents')
+    fetch('http://technorollix.opju.ac.in:4000/api/allEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));
 
     fetch(
-      `http://technorollix.opju.ac.in/api/registeredTeam/eventId/${emailRef}`
+      `http://technorollix.opju.ac.in:4000/api/registeredTeam/eventId/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -402,7 +402,7 @@ const My_Team = ({ emailRef }) => {
 
     // to get team id
     let response = await fetch(
-      'http://technorollix.opju.ac.in/api/create/team-invite',
+      'http://technorollix.opju.ac.in:4000/api/create/team-invite',
       {
         method: 'POST',
         body: JSON.stringify({
@@ -601,7 +601,7 @@ const Participations = ({ emailRef }) => {
   // let reqEvents = [];
   useEffect(() => {
     fetch(
-      `http://technorollix.opju.ac.in/api/myParticipations/allTeam/${emailRef}`
+      `http://technorollix.opju.ac.in:4000/api/myParticipations/allTeam/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -785,7 +785,7 @@ const RecievedInvitations = ({ emailRef }) => {
 
   useEffect(() => {
     fetch(
-      `http://technorollix.opju.ac.in/api/eventName/inviterName/invitations/email/${emailRef}`
+      `http://technorollix.opju.ac.in:4000/api/eventName/inviterName/invitations/email/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -838,7 +838,7 @@ const RecievedInvitations = ({ emailRef }) => {
                 onClick={() => {
                   try {
                     fetch(
-                      'http://technorollix.opju.ac.in/api/update/team-invite',
+                      'http://technorollix.opju.ac.in:4000/api/update/team-invite',
                       {
                         method: 'PUT',
                         body: JSON.stringify({
@@ -864,7 +864,7 @@ const RecievedInvitations = ({ emailRef }) => {
                 onClick={() => {
                   try {
                     fetch(
-                      'http://technorollix.opju.ac.in/api/update/team-invite',
+                      'http://technorollix.opju.ac.in:4000/api/update/team-invite',
                       {
                         method: 'PUT',
                         body: JSON.stringify({
@@ -898,7 +898,7 @@ const RecievedInvitations = ({ emailRef }) => {
 
 const getInviter = async (email) => {
   // console.log('entered');
-  let data = fetch(`http://technorollix.opju.ac.in/api/user/name/${email}`)
+  let data = fetch(`http://technorollix.opju.ac.in:4000/api/user/name/${email}`)
     .then((response) => response.json())
     .then((data) => {
       // console.log(data);
@@ -914,7 +914,7 @@ const getInviter = async (email) => {
 const getEvent = async (eventId) => {
   // console.log('entered');
   let data = fetch(
-    `http://technorollix.opju.ac.in/api/eventName/byEventId/${eventId}`
+    `http://technorollix.opju.ac.in:4000/api/eventName/byEventId/${eventId}`
   )
     .then((response) => response.json())
     .then((data) => {
