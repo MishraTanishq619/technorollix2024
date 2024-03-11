@@ -1015,18 +1015,25 @@ app.put("/api/update/team-invite", async (req, res) => {
 app.put("/api/restore/team-invite", async (req, res) => {
 	try {
 		const allInvitations = await Invitation.find();
-		allInvitations.map(async (i) => {
+		const waiting = allInvitations.map(async (i) => {
 			const participation = await Participants.findOne({ teamId: i.teamId, participantEmail: i.inviteeEmail });
-			console.log(participation);
+			// console.log(participation);
 			if (participation !== null) {
 				const acceptedInvite = await Invitation.findOneAndUpdate(
 					{ teamId: i.teamId, inviteeEmail: i.inviteeEmail, inviterEmail: i.inviterEmail },
 					{ status: "accepted" }
 				);
-				console.log(acceptedInvite);
+				return acceptedInvite;
+			}else{
+				const pendingInvite = await Invitation.findOneAndUpdate(
+					{ teamId: i.teamId, inviteeEmail: i.inviteeEmail, inviterEmail: i.inviterEmail },
+					{ status: "pending" }
+				);
+				return pendingInvite;
 			}
-		})
-		return res.status(201).json(`runned`);
+		});
+		const result = await Promise.all(waiting)
+		return res.status(201).json({total: result.length,Result: result});
 	} catch (error) {
 		res.status(500).send(
 			`Error responding user ${inviterEmail} invitation for ${teamId}\nerror: ${error}`
