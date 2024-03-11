@@ -33,12 +33,6 @@ const WebLook = () => {
       >
         <div className="flex justify-around neon-text-red-light w-[100%]">
           <a
-            href="/junoon"
-            className="flex items-center justify-start   transition-transform transform hover:scale-110"
-          >
-            JUNOON
-          </a>
-          <a
             href="/about"
             className="flex items-center justify-end   transition-transform transform hover:scale-110"
           >
@@ -62,12 +56,18 @@ const WebLook = () => {
           >
             CONTACT
           </a>
+          <a
+            href="/junoon"
+            className="flex items-center justify-start   transition-transform transform hover:scale-110"
+          >
+            JUNOON
+          </a>
 
           <ul className="navbar-links float-right">
             <li
               className="navbar-dropdown flex items-center justify-center "
-              // onClick={DropdownState ? dropRev : drop}
-              // onDoubleClick={dropRev}
+            // onClick={DropdownState ? dropRev : drop}
+            // onDoubleClick={dropRev}
             >
               <div className="flex items-center justify-end  pr-6  transition-transform transform hover:scale-110">
                 <CiMenuBurger />
@@ -147,18 +147,12 @@ const MobLook = () => {
               <li
                 className="navbar-dropdown"
                 onClick={DropdownState ? dropRev : drop}
-                // onDoubleClick={dropRev}
+              // onDoubleClick={dropRev}
               >
                 <div className="flex items-center justify-end  mt-5 transition-transform transform hover:scale-110">
                   <CiMenuFries />
                 </div>
                 <div id="dropdown" className="dropdown">
-                  <a
-                    href="/junoon"
-                    className="flex items-center justify-start   transition-transform transform hover:scale-110"
-                  >
-                    JUNOON
-                  </a>
                   <a
                     href="/about"
                     className="flex items-center justify-start   transition-transform transform hover:scale-110"
@@ -182,6 +176,12 @@ const MobLook = () => {
                     className="flex items-center justify-start   transition-transform transform hover:scale-110"
                   >
                     CONTACT
+                  </a>
+                  <a
+                    href="/junoon"
+                    className="flex items-center justify-start   transition-transform transform hover:scale-110"
+                  >
+                    JUNOON
                   </a>
                   <a
                     href="/schedule"

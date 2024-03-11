@@ -123,15 +123,15 @@ const page = () => {
           `http://technorollix.opju.ac.in:4000/api/user/${email}`
         );
 
-        if (response.status === 409 || 404) {
+        if (response.status === 409) {
           //   window.location.href = `/registration/invitations?emailRef=${email}`;
           setisVerified(true);
           setIsOpen(false);
           // } else if (response.status === 404) {
           // const userData = await response.json();
           // const { picture, email, name } = userData;
-          //   window.location.href = `/registration?urlRef=${email}`;
         } else {
+            window.location.href = `/registration?urlRef=${email}`;
           // Handle other status codes if needed
         }
       } catch (error) {
@@ -162,14 +162,7 @@ const page = () => {
   };
   const handlePaste = (event) => {
     event.preventDefault();
-    // Prevent the default paste behavior
-    // let pasteemail = document.getElementById('pasteemail');
-    // pasteemail.style.display = 'block';
-    // event.preventDefault();
-    // Get the pasted content from the event
     const pastedText = event.clipboardData.getData('text');
-    // Update the input value with the pasted content
-    // console.log('Pasted text:', pastedText);
     setEmail(pastedText);
     setgenerateClicked(false);
     validateEmail(pastedText);
@@ -275,9 +268,9 @@ const page = () => {
                     boxShadow: 'none',
                   }}
                   onPaste={(e) => {
-                    // console.log(e);
                     handlePaste(e);
                   }}
+                  autoComplete="email"
                   className={`bg-transparent border-2 px-2 py-2 text-white w-40 md:w-50`}
                 />
                 {/* <button onClick={generateNumber} className="btn text-white  bg-orange-400 ml-4  rounded-md text-1xl px-3 py-1 justify-end"> */}
