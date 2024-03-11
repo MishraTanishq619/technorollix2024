@@ -489,10 +489,9 @@ export const InformationPublicityInvitation = [
   },
   {
     image: '/contacts/studentCoConveners/jayant.png',
-    title: 'Jayant Sekhar Singh',
+    title: 'Jayant Shekhar Singh',
     phoneNumber: '9123147552',
     role: 'Co-Convenor',
-
     link: '',
   },
 ];
