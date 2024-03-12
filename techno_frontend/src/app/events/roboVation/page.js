@@ -10,7 +10,7 @@ const page = () => {
   const [Participants, setParticipants] = useState({});
   useEffect(() => {
     fetch(
-      `http://technorollix.opju.ac.in:4000/api/registeredTeam/count/perEvent/${eventId}`
+      `http://10.60.41.209:4000/api/registeredTeam/count/perEvent/${eventId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -23,9 +23,7 @@ const page = () => {
         // return null;
       });
 
-    fetch(
-      `http://technorollix.opju.ac.in:4000/api/participants/count/perEvent/${eventId}`
-    )
+    fetch(`http://10.60.41.209:4000/api/participants/count/perEvent/${eventId}`)
       .then((response) => response.json())
       .then((data) => {
         console.log('participants :', data);
@@ -136,7 +134,9 @@ const page = () => {
                 >
                   VENUE:{' '}
                 </h2>
-                <div className={`text-1xl ml-2 md:text-2xl `}>Volleyball Court</div>
+                <div className={`text-1xl ml-2 md:text-2xl `}>
+                  Volleyball Court
+                </div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2
@@ -703,9 +703,9 @@ const page = () => {
           <table>
             <tbody>
               <tr>
-							<td>Dr Saroj Kumar </td>
-							<td>+91 9431910388</td>
-						</tr>
+                <td>Dr Saroj Kumar </td>
+                <td>+91 9431910388</td>
+              </tr>
             </tbody>
           </table>
         }

@@ -10,7 +10,7 @@ const page = () => {
   const [Participants, setParticipants] = useState({});
   useEffect(() => {
     fetch(
-      `http://technorollix.opju.ac.in:4000/api/registeredTeam/count/perEvent/${eventId}`
+      `http://10.60.41.209:4000/api/registeredTeam/count/perEvent/${eventId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -23,9 +23,7 @@ const page = () => {
         // return null;
       });
 
-    fetch(
-      `http://technorollix.opju.ac.in:4000/api/participants/count/perEvent/${eventId}`
-    )
+    fetch(`http://10.60.41.209:4000/api/participants/count/perEvent/${eventId}`)
       .then((response) => response.json())
       .then((data) => {
         console.log('participants :', data);
@@ -152,7 +150,9 @@ const page = () => {
                 >
                   VENUE:{' '}
                 </h2>
-                <div className={`text-1xl ml-2 md:text-2xl `}>Central Library</div>
+                <div className={`text-1xl ml-2 md:text-2xl `}>
+                  Central Library
+                </div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2
@@ -230,7 +230,9 @@ const page = () => {
                 >
                   VENUE:{' '}
                 </h2>
-                <div className={`text-1xl ml-2 md:text-2xl `}>Library Lawn & opposite to  Chemistry lab</div>
+                <div className={`text-1xl ml-2 md:text-2xl `}>
+                  Library Lawn & opposite to Chemistry lab
+                </div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2
@@ -329,7 +331,9 @@ const page = () => {
                 >
                   VENUE:{' '}
                 </h2>
-                <div className={`text-1xl ml-2 md:text-2xl `}>Library Lawn & opposite to  Chemistry lab</div>
+                <div className={`text-1xl ml-2 md:text-2xl `}>
+                  Library Lawn & opposite to Chemistry lab
+                </div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2
@@ -407,7 +411,7 @@ const page = () => {
                   VENUE:{' '}
                 </h2>
                 <div className={`text-1xl ml-2 md:text-2xl `}>
-                Library Lawn & opposite to  Chemistry lab.
+                  Library Lawn & opposite to Chemistry lab.
                 </div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
@@ -505,7 +509,9 @@ const page = () => {
                 >
                   VENUE:{' '}
                 </h2>
-                <div className={`text-1xl ml-2 md:text-2xl `}>Central Library</div>
+                <div className={`text-1xl ml-2 md:text-2xl `}>
+                  Central Library
+                </div>
               </div>
               <div className="mt-2 md:py-4 text-justify">
                 <h2

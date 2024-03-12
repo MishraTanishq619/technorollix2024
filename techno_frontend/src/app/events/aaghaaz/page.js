@@ -10,7 +10,7 @@ const page = () => {
   const [Participants, setParticipants] = useState({});
   useEffect(() => {
     fetch(
-      `http://technorollix.opju.ac.in:4000/api/registeredTeam/count/perEvent/${eventId}`
+      `http://10.60.41.209:4000/api/registeredTeam/count/perEvent/${eventId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -23,9 +23,7 @@ const page = () => {
         // return null;
       });
 
-    fetch(
-      `http://technorollix.opju.ac.in:4000/api/participants/count/perEvent/${eventId}`
-    )
+    fetch(`http://10.60.41.209:4000/api/participants/count/perEvent/${eventId}`)
       .then((response) => response.json())
       .then((data) => {
         console.log('participants :', data);
@@ -104,10 +102,12 @@ const page = () => {
           </>
         }
         themeHead={'THEME:'}
-        theme={<>
-        <li>Round 1: Mixmatch Culture</li>
-        <li>Round 2: The Villain</li>
-        </>}
+        theme={
+          <>
+            <li>Round 1: Mixmatch Culture</li>
+            <li>Round 2: The Villain</li>
+          </>
+        }
         rulesHeading={'Rules of the event:'}
         rules={
           <>
