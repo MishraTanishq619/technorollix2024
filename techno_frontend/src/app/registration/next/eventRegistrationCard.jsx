@@ -25,19 +25,21 @@ function EventsRegistrationPage() {
   }, []);
 
   useEffect(() => {
-    fetch('http://10.60.41.209:4000/api/allMainEvents')
+    fetch('http://technorollix.opju.ac.in:4000/api/allMainEvents')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error('Error fetching events:', error));
 
-    fetch(`http://10.60.41.209:4000/api/participant/eventId/${emailRef}`)
+    fetch(
+      `http://technorollix.opju.ac.in:4000/api/participant/eventId/${emailRef}`
+    )
       .then((response) => response.json())
       .then((data) => setregisteredEvents(data))
       .catch((error) =>
         console.error('Error fetching registeredEvents:', error)
       );
     fetch(
-      `http://10.60.41.209:4000/api/user/universityVerification/${emailRef}`
+      `http://technorollix.opju.ac.in:4000/api/user/universityVerification/${emailRef}`
     )
       .then((response) => response.json())
       .then((data) => setIsOpjuStudent(data))
@@ -259,7 +261,7 @@ function EventsRegistrationPage() {
         //     ? () => {
         //       try {
         //         fetch(
-        //           'http://10.60.41.209:4000/api/team-registration/event',
+        //           'http://technorollix.opju.ac.in:4000/api/team-registration/event',
         //           {
         //             method: 'POST',
         //             body: JSON.stringify({
@@ -329,7 +331,7 @@ function EventsRegistrationPage() {
                     ? () => {
                         try {
                           fetch(
-                            'http://10.60.41.209:4000/api/team-registration/event',
+                            'http://technorollix.opju.ac.in:4000/api/team-registration/event',
                             {
                               method: 'POST',
                               body: JSON.stringify({
@@ -394,7 +396,7 @@ function EventsRegistrationPage() {
                       ? () => {
                           try {
                             fetch(
-                              'http://10.60.41.209:4000/api/payment/gateway/receipt',
+                              'http://technorollix.opju.ac.in:4000/api/payment/gateway/receipt',
                               {
                                 method: 'POST',
                                 body: JSON.stringify({
@@ -416,7 +418,7 @@ function EventsRegistrationPage() {
                                 }
                                 try {
                                   fetch(
-                                    'http://10.60.41.209:4000/api/team-registration/event',
+                                    'http://technorollix.opju.ac.in:4000/api/team-registration/event',
                                     {
                                       method: 'POST',
                                       body: JSON.stringify({
