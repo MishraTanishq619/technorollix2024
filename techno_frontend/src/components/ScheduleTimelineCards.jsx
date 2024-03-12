@@ -28,7 +28,7 @@ const ScheduleTimelineCards = ({
           id % 2 ? 'right' : 'left'
         }`}
       >
-        <p className="mb-3 text-base text-yellow-300">{datetime}</p>
+        <p className="mb-3 text-base text-red-500">{datetime}</p>
         <h4 className="mb-3 font-bold text-lg md:text-2xl">{event_name}</h4>
         <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
           {venue}

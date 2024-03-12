@@ -23,7 +23,7 @@ const page = () => {
         <div className="bg-transparent text-white py-8">
           <div className="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
             <div className="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 p-8 shadow-2xl shadow-red-500">
-              <p className="ml-2 text-yellow-300 uppercase tracking-loose">
+              <p className="ml-2 text-red-500 uppercase tracking-loose">
                 Schedule
               </p>
               <p className="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2">
@@ -34,7 +34,7 @@ const page = () => {
               </p>
               <a
                 href="#"
-                className="bg-transparent mr-auto hover:bg-yellow-300 text-yellow-300 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent"
+                className="bg-transparent mr-auto hover:bg-red-500 text-red-500 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-red-500 hover:border-transparent"
               >
                 Explore Now
               </a>
@@ -43,13 +43,13 @@ const page = () => {
               <div className="container mx-auto w-full h-full">
                 <div className="relative wrap overflow-hidden p-5 md:p-10 h-full">
                   <div
-                    className={`border-2-2 border-yellow-555 absolute h-full border ${
+                    className={`border-2-2 border-red-555 absolute h-full border ${
                       WinWidth ? 'BorMob' : 'BorR'
                     }`}
                     // style="right: 50%; border: 2px solid #FFC100; border-radius: 1%;"
                   ></div>
                   <div
-                    className={`border-2-2 border-yellow-555 absolute  h-full border ${
+                    className={`border-2-2 border-red-555 absolute  h-full border ${
                       WinWidth ? 'BorMob' : 'BorL'
                     }`}
                     // style="left: 50%; border: 2px solid #FFC100; border-radius: 1%;"

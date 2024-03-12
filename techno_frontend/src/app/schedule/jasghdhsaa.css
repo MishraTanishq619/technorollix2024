@@ -1,17 +1,17 @@
 .BorR {
   right: 50%;
-  border: 2px solid #ffc100;
+  border: 2px solid #fd0000;
   border-radius: 1%;
 }
 
 .BorL {
   left: 50%;
-  border: 2px solid #ffc100;
+  border: 2px solid #fd0000;
   border-radius: 1%;
 }
 
 .BorMob {
   right: 10%;
-  border: 2px solid #ffc100;
+  border: 2px solid #fd0000;
   border-radius: 1%;
 }

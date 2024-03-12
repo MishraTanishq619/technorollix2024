@@ -1,23 +1,20 @@
-"use client"
-import Link from "next/link";
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+'use client';
+import Link from 'next/link';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-export const HoverEffect = ({
-  items,
-  className,
-}) => {
+export const HoverEffect = ({ items, className }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
     <div
-      className={`px-20 max-[1200px]:px-5 py-10 w-full flex flex-wrap gap-10${className}`}
+      className={`px-20 max-[1200px]:px-5 py-10 w-full flex flex-wrap gap-10 ${className}`}
     >
       {items.map((item, idx) => (
         <Link
           href={item?.link}
           key={item?.link}
-        className="relative group block p-2 h-full "
+          className="relative group block p-2 h-full "
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -39,10 +36,12 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card>
-            <CardImage src={item.image}/>
+            <CardImage src={item.image} />
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.email}</CardDescription>
-            <CardDescription className={"neon-text-red-lighter"}>{item.role}</CardDescription>
+            <CardDescription className={'neon-text-red-lighter'}>
+              {item.role}
+            </CardDescription>
             <CardDescription>{item.phoneNumber}</CardDescription>
           </Card>
         </Link>
@@ -51,13 +50,10 @@ export const HoverEffect = ({
   );
 };
 
-export const Card = ({
-  className,
-  children,
-}) => {
+export const Card = ({ className, children }) => {
   return (
     <div
-      className={`rounded-2xl h-80 w-60 overflow-hidden p-2 md:p-4 bg-black bg-opacity-20 border group-hover:border-slate-700 relative z-8 ${className}`}
+      className={`rounded-2xl flex flex-col justify-center items-center h-80 w-60 overflow-hidden p-2 md:p-4 bg-black bg-opacity-20 border group-hover:border-slate-700 relative z-8 ${className}`}
     >
       <div className="relative z-5">
         <div className="p-0 md:p-4">{children}</div>
@@ -66,10 +62,7 @@ export const Card = ({
   );
 };
 
-export const CardTitle = ({
-  className,
-  children,
-}) => {
+export const CardTitle = ({ className, children }) => {
   return (
     <h4 className={`text-zinc-100 font-bold tracking-wide mt-4 ${className}`}>
       {children}
@@ -77,10 +70,7 @@ export const CardTitle = ({
   );
 };
 
-export const CardDescription = ({
-  className,
-  children,
-}) => {
+export const CardDescription = ({ className, children }) => {
   return (
     <p
       className={`mt-1 text-zinc-400 tracking-wide leading-relaxed text-sm ${className}`}
@@ -90,19 +80,15 @@ export const CardDescription = ({
   );
 };
 
-export const CardImage = ({
-  src,
-  className,
-  children,
-}) => {
+export const CardImage = ({ src, className, children }) => {
   return (
     <div>
       <img
-      className={`mt-1 text-zinc-400 h-40 w-40 rounded-full tracking-wide leading-relaxed text-sm ${className}`}
-      src = {src}
-    >
-      {children}
-    </img>
+        className={`mt-1 text-zinc-400 h-40 w-40 rounded-full tracking-wide leading-relaxed text-sm ${className}`}
+        src={src}
+      >
+        {children}
+      </img>
     </div>
   );
 };

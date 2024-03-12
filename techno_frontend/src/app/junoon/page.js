@@ -2,6 +2,7 @@
 // import CardHoverEffectDemo from "@/components/cardTrackhover";
 import React from 'react';
 import Header from '@/components/Header';
+import { HoverEffect } from '@/components/ui/card-hover-effect';
 
 const page = () => {
   return (
@@ -91,15 +92,35 @@ const JunoonEvent = () => {
         collaborated with Atrangi Band.
       </p>
 
-      <h3 className="text-lg font-bold mb-2">Faculty Co-ordinator</h3>
-      <p className="mb-2">Dr. Vikash Kumar</p>
-      <p>Mithilesh Sahu</p>
-
-      <h3 className="text-lg font-bold mb-2 mt-4">Student Co-ordinator</h3>
-      <p>Yogendra Karsh</p>
+      <h3 className="text-lg font-bold mb-2">Co-ordinators:</h3>
+      <HoverEffect items={items} className={'md:w-full md:justify-around'} />
     </div>
   );
 };
+
+export const items = [
+  {
+    id: 1,
+    image: '/junoon/junoonVikash.jpeg',
+    title: 'Dr. Vikash Kumar',
+    role: 'Faculty Co-ordinator',
+    link: '',
+  },
+  {
+    id: 2,
+    image: '/junoon/junoonMithlesh.jpeg',
+    title: 'Mithilesh Sahu',
+    role: 'Faculty Co-ordinator',
+    link: '',
+  },
+  {
+    id: 3,
+    image: '/junoon/junoonYogendra.jpeg',
+    title: 'Yogendra Karsh',
+    role: 'Student Co-ordinator',
+    link: '',
+  },
+];
 
 const JunoonInfo = () => {
   return (
