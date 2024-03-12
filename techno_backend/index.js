@@ -1118,7 +1118,7 @@ app.put("/api/restore/team-invite", async (req, res) => {
 			}
 		});
 		const result = await Promise.all(waiting)
-		return res.status(201).json({total: result.length,Result: result});
+		// return res.status(201).json({total: result.length,Result: result});
 	} catch (error) {
 		res.status(500).send(
 			`Error responding user ${inviterEmail} invitation for ${teamId}\nerror: ${error}`
