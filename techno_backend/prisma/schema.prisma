@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Define User Schema
+model User {
+  id                Int         @id @default(autoincrement())
+  userEmail         String      @unique
+  userName          String
+  userPic           String
+  userPhoneNumber   String
+  userUniversity    String
+  isUserOPJUStudent Boolean
+  userAddress       UserAddress @relation(fields: [userAddressId], references: [id])
+  userGender        String
+  userAddressId     Int
+}
+
+model UserAddress {
+  id       Int    @id @default(autoincrement())
+  district String
+  state    String
+  pincode  Int
+  User     User[]
+}
+
+// Define Event Schema
+model Event {
+  id               Int    @id @default(autoincrement())
+  mainEventId      String @db.VarChar(255)
+  eventId          String @unique @db.VarChar(255)
+  eventName        String
+  eventDescription String
+  eventpic         String
+  teamSize         Int    @default(1) @db.Integer()
+  priceMoney       Int?
+  entryFee         Int?
+}
+
+// Define Team Registration Schema
+model RegisteredTeam {
+  id                Int     @id @default(autoincrement())
+  eventId           String  @db.VarChar(255)
+  teamId            String  @unique @db.VarChar(255)
+  leader            String  @db.VarChar(255)
+  additionalDetails String?
+}
+
+// Define  Participant Schema - Confirmation
+model Participant {
+  id               Int     @id @default(autoincrement())
+  eventId          String? @db.VarChar(255)
+  teamId           String  @db.VarChar(255)
+  participantEmail String  @db.VarChar(255)
+
+  @@unique([eventId, participantEmail])
+}
+
+// Define Invitation Schema
+model Invitation {
+  id           Int    @id @default(autoincrement())
+  invitationId String @unique @db.VarChar(255)
+  eventId      String @db.VarChar(255)
+  teamId       String @db.VarChar(255)
+  inviterEmail String @db.VarChar(255)
+  inviteeEmail String @db.VarChar(255)
+  status       String @default("pending") @db.VarChar(255)
+}
+
+// Payment Recieption Schema
+model PaymentReceipt {
+  id             Int    @id @default(autoincrement())
+  userEmail      String @db.VarChar(255)
+  paymentId      String @db.VarChar(255)
+  numberOfEvents Int?
+  paidEntryFee   Int
+}

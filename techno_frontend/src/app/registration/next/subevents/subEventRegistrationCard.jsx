@@ -20,9 +20,7 @@ function SubEventsRegistrationPage() {
 
   useEffect(() => {
     // getData();
-    fetch(
-      `http://technorollix.opju.ac.in:4000/api/participant/eventId/${emailRef}`
-    )
+    fetch(`http://127.0.0.1:4000/api/participant/eventId/${emailRef}`)
       .then((response) => response.json())
       .then((data) => {
         setregisteredEvents(data);
@@ -31,7 +29,7 @@ function SubEventsRegistrationPage() {
       })
       .then((data) => {
         fetch(
-          `http://technorollix.opju.ac.in:4000/api/allSubEvents/eventIdArray/byMainIdArray`,
+          `http://127.0.0.1:4000/api/allSubEvents/eventIdArray/byMainIdArray`,
           {
             method: 'POST',
             headers: {
@@ -81,9 +79,7 @@ function SubEventsRegistrationPage() {
   // 1
   const getRegisteredEvents = async () => {
     console.log('getregistereddata');
-    await fetch(
-      `http://technorollix.opju.ac.in:4000/api/participant/eventId/${emailRef}`
-    )
+    await fetch(`http://127.0.0.1:4000/api/participant/eventId/${emailRef}`)
       .then((response) => response.json())
       .then(async (data) => {
         setregisteredEvents(data);
@@ -101,7 +97,7 @@ function SubEventsRegistrationPage() {
     console.log('getmainevents', registeredEvents);
     registeredEvents.forEach(async (e) => {
       console.log('Here', e);
-      await fetch(`http://technorollix.opju.ac.in:4000/api/allSubEvents/${e}`)
+      await fetch(`http://127.0.0.1:4000/api/allSubEvents/${e}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.length != 0) setMainEvents(...MainEvents, data);
@@ -258,23 +254,20 @@ function SubEventsRegistrationPage() {
         className="bg-orange-600  rounded-md text-3xl px-6 py-3 items-center justify-center my-10"
         onClick={() => {
           try {
-            fetch(
-              'http://technorollix.opju.ac.in:4000/api/team-registration/event',
-              {
-                method: 'POST',
-                body: JSON.stringify({
-                  eventId: selectedEvents,
-                  leader: leaderEmail,
-                  additionalDetails: additionalDetails,
-                  teammates: teammateEmails.filter(
-                    (email) => email.trim() !== ''
-                  ),
-                }),
-                headers: {
-                  'Content-type': 'application/json',
-                },
-              }
-            )
+            fetch('http://127.0.0.1:4000/api/team-registration/event', {
+              method: 'POST',
+              body: JSON.stringify({
+                eventId: selectedEvents,
+                leader: leaderEmail,
+                additionalDetails: additionalDetails,
+                teammates: teammateEmails.filter(
+                  (email) => email.trim() !== ''
+                ),
+              }),
+              headers: {
+                'Content-type': 'application/json',
+              },
+            })
               .then(async (res) => {
                 if (!res.ok) {
                   throw new Error(`HTTP error! Status: ${res.status}`);

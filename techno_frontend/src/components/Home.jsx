@@ -43,12 +43,12 @@ function Home() {
   const [visitCount, setVisitCount] = useState(0);
 
   useEffect(() => {
-    fetch('http://technorollix.opju.ac.in:4000/api/visitCount')
+    fetch('http://127.0.0.1:4000/api/visitCount')
       .then((response) => response.json())
       .then((data) => setVisitCount(data.visitCount))
       .catch((error) => console.error('Error fetching visit count:', error));
 
-    fetch('http://technorollix.opju.ac.in:4000/api/allParticipants')
+    fetch('http://127.0.0.1:4000/api/allParticipants')
       .then((response) => response.json())
       .then((data) => setParticipantCount(data.length))
       .catch((error) =>
@@ -75,22 +75,19 @@ function Home() {
     if (isValidEmail) {
       const number = Math.floor(10000 + Math.random() * 90000);
       setGeneratedNumber(number);
-      // console.log(number);
+      console.log(number);
       // try {
-      let otpdata = await fetch(
-        'http://technorollix.opju.ac.in:4000/api/email/verify/otp',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            user: email,
-            number: number,
-          }),
-          headers: {
-            'Content-type': 'application/json',
-            // user_email: email,
-          },
-        }
-      ).catch((error) => {});
+      let otpdata = await fetch('http://127.0.0.1:4000/api/email/verify/otp', {
+        method: 'POST',
+        body: JSON.stringify({
+          user: email,
+          number: number,
+        }),
+        headers: {
+          'Content-type': 'application/json',
+          // user_email: email,
+        },
+      }).catch((error) => {});
       // } catch (error) {
       // }
     }
@@ -100,11 +97,9 @@ function Home() {
     if (verificationCode === generatedNumber.toString()) {
       // window.location.href("/registration")
       try {
-        const response = await fetch(
-          `http://technorollix.opju.ac.in:4000/api/user/${email}`
-        );
+        const response = await fetch(`http://127.0.0.1:4000/api/user/${email}`);
 
-        if (response.status === 409) {
+        if (response.status === 200) {
           window.location.href = `/registration/invitations?emailRef=${email}`;
         } else if (response.status === 404) {
           // const userData = await response.json();
