@@ -153,7 +153,8 @@ router.get("/api/user/:email", (req, res) => __awaiter(void 0, void 0, void 0, f
         if (!user) {
             return res.status(404).json(`User not found: email: ${userEmail}`);
         }
-        return res.status(200).json(user);
+        else
+            return res.status(200).json(user);
     }
     catch (error) {
         console.error("Error fetching user details:", error);

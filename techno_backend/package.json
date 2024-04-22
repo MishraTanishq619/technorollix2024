@@ -3,7 +3,8 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"start": "node dist/www"
+		"start": "node dist/www",
+		"build": "npx tsc -b"
 	},
 	"dependencies": {
 		"@prisma/client": "^5.12.1",

@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+    techno_db:
+        container_name: techno_db
+        restart: always
+        image: postgres:latest
+        environment:
+            POSTGRES_USER: "${POSTGRES_USER}"
+            POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+            POSTGRES_DB: "${POSTGRES_DB}"
+        ports:
+            - "5432:5432"
+        expose:
+            - 5432
+        volumes:
+            - postgres_data:/prisma/data
+        networks:
+            - internal
+
+#     techno_frontend:
+#         container_name: techno_frontend
+#         build:
+#             context: ./techno_frontend
+#             dockerfile: Dockerfile
+#         ports:
+#             - "3000:3000"
+#         networks:
+#             - internal
+
+#     techno_backend:
+#         container_name: techno_backend
+#         build:
+#             context: ./techno_backend
+#             dockerfile: Dockerfile
+#         ports:
+#             - "4000:4000"
+#         environment:
+#             DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@techno_db:5432/${POSTGRES_DB}?schema=public"
+#             PORT: 4000
+#         depends_on:
+#             techno_db:
+#                 condition: service_started
+#         networks:
+#             - internal
+
+volumes:
+    postgres_data:
+networks:
+    internal:
