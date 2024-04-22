@@ -73,6 +73,13 @@ npm run dev
 
 6. Access the Application at `https://localhost:3000/`.
 
+7. (optional) To watch your Database , navigate to techno_backend , run prisma studio:
+
+```bash
+cd techno_backend
+npx prisma studio
+```
+
 ## Ports
 
 Database - localhost:5432 (docker port)
