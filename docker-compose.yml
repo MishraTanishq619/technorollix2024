@@ -1,22 +1,28 @@
-version: "3.8"
+##
 
-services:
-    techno_db:
-        container_name: techno_db
-        restart: always
-        image: postgres:latest
-        environment:
-            POSTGRES_USER: "${POSTGRES_USER}"
-            POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-            POSTGRES_DB: "${POSTGRES_DB}"
-        ports:
-            - "5432:5432"
-        expose:
-            - 5432
-        volumes:
-            - postgres_data:/prisma/data
-        networks:
-            - internal
+######## Not implemented correctly ######
+
+##
+
+# version: "3.8"
+
+# services:
+#     techno_db:
+#         container_name: techno_db
+#         restart: always
+#         image: postgres:latest
+#         environment:
+#             POSTGRES_USER: "${POSTGRES_USER}"
+#             POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+#             POSTGRES_DB: "${POSTGRES_DB}"
+#         ports:
+#             - "5432:5432"
+#         expose:
+#             - 5432
+#         volumes:
+#             - postgres_data:/prisma/data
+#         networks:
+#             - internal
 
 #     techno_frontend:
 #         container_name: techno_frontend
@@ -44,7 +50,7 @@ services:
 #         networks:
 #             - internal
 
-volumes:
-    postgres_data:
-networks:
-    internal:
+# volumes:
+#     postgres_data:
+# networks:
+#     internal:
